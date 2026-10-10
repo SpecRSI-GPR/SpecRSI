@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="101" height="28" viewBox="0 0 101 28" role="img" aria-label="小红书">
+  <title>小红书</title>
+  <defs><clipPath id="round"><rect width="101" height="28" rx="5"/></clipPath></defs>
+  <g clip-path="url(#round)">
+    <rect width="101" height="28" fill="#F6F8FA"/>
+    <rect width="33" height="28" fill="#FF2442"/>
+    <rect x="33" width="68" height="28" fill="#EAEFF4"/>
+  </g>
+  <g transform="translate(8 6)" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="14" height="14" rx="2"/><path d="M5 2v12M8 5h4M8 8h4M8 11h3"/></g>
+  <text x="67.0" y="18.7" fill="#243247" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle">小红书</text>
+</svg>
