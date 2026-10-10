@@ -10,7 +10,7 @@ The manuscript reports five main findings:
 
 - **Draft ahead, verify before adoption.** Incomplete or repairable parents can support further edits; only the selected complete, admissible successor can be adopted.
 - **Consistent scientific progress.** SpecRSI exceeds Janus in all five primary scientific domains and all 50 additional scientific backbone–task pairs.
-- **Consistent cross-backbone improvements.** Across the ten backbones in Figure 2, SpecRSI achieves higher four-task macro-average scores and lower target-cost indices than MetaRSI-v1. Gains also persist when task-model weight updates are disabled.
+- **Consistent cross-backbone improvements.** Across all twenty system backbones, SpecRSI achieves higher four-task macro-average scores than MetaRSI-v1; the ten representative backbones in Figure 2 also show lower target-cost indices. Gains persist when task-model weight updates are disabled.
 - **Stronger coding successors.** In the separate SWE-Pro coding-validation profile, success reaches **69.4% versus HGM's 64.3%**, at a **20.8% lower target-cost index**.
 - **Completion-aware resource allocation.** At fixed full-state information, permitting verification bundles improves gain and reduces total cost; the separate lifecycle ledger reports a **5.7% lower total-cost index** than MetaRSI-v1.
 
@@ -42,9 +42,9 @@ The paper evaluates several distinct profiles. Their initial agents, edit permis
 | Workflow optimization | PlanBench, Math, MBPP, Game24 | Success (%) and task-inference token counts, excluding search and training |
 | Mechanism studies | Information/scope, planning, evidence, learning, resource controls | Verified gains, completion, prediction diagnostics, and separately defined cost indices |
 
-**Qwen3.5-35B-A3B** is the reference backbone for mechanism studies and the primary matched system comparison. Validation normally uses **five training seeds with three nested searches per seed**. Scientific backbone evaluation covers ten backbones and five domains, totaling 50 pairs. Figure 2 compares four-task macro-average scores and target-cost indices across ten additional system backbones.
+**Qwen3.5-35B-A3B** is the reference backbone for mechanism studies and the primary matched system comparison. Validation normally uses **five training seeds with three nested searches per seed**. Scientific backbone evaluation covers ten backbones and five domains, totaling 50 pairs. The full system comparison spans twenty backbones; Figure 2 presents four-task macro-average scores and target-cost indices for ten representative backbones.
 
-The ten additional system backbone labels are GPT-6-Astra, Claude-Opus-5, Gemini-3.5-Flash, DeepSeek-V4-Pro, GLM-5.3, Kimi-K3, MiniMax-M3, GPT-5.6-Sol, Claude-Sonnet-5-1M, and GPT-5.5.
+The ten representative system backbones in Figure 2 are GPT-6-Astra, Claude-Opus-5, Gemini-3.5-Flash, DeepSeek-V4-Pro, GLM-5.3, Kimi-K3, MiniMax-M3, GPT-5.6-Sol, Claude-Sonnet-5-1M, and GPT-5.5.
 
 ### Implementation configuration
 
@@ -138,7 +138,7 @@ Mean advantages over the matched MetaRSI controls are **2.25 pp with D/H/M** and
 
 [Vector PDF](docs/figures/backbone-comparison.pdf) · [Vector SVG](docs/figures/backbone-comparison.svg)
 
-Figure 2 shows consistently higher four-task macro-average scores and lower target-cost indices for SpecRSI across all ten backbones, with total-cost indices **0.83%–0.90% higher** than MetaRSI-v1.
+Across the full twenty-backbone system comparison in Appendix B, SpecRSI improves four-task macro-average scores over MetaRSI-v1 by **1.85–2.38 pp**. Figure 2 presents ten representative backbones, all with higher macro-average scores and lower target-cost indices; their total-cost indices are **0.83%–0.90% higher** than MetaRSI-v1.
 
 ### Separate coding, prompt, and workflow profiles
 
