@@ -151,7 +151,7 @@ Entries show mean ± reported SD. Higher terminal gain and AUBC are preferred wi
 | Janus | 42.8 ± 1.0 | 34.7 ± 0.8 | 51.3 ± 1.1 | 36.9 ± 0.8 | 31.5 ± 0.7 |
 | **SpecRSI** | **56.7 ± 1.2** | **45.8 ± 1.0** | **66.9 ± 1.3** | **49.3 ± 1.0** | **42.1 ± 0.9** |
 
-Relative to Janus, terminal gain improves by **33.3%–40.0%** and AUBC by **30.4%–33.7%**. The separate 50-pair backbone sweep reports positive uplifts throughout: **17.8%–27.6%** for terminal gain and **15.7%–19.8%** for AUBC. Scientific total-cost indices are **158.7 versus 148.1**, a 7.2% premium; higher call-budget efficiency does not imply lower total scientific expense.
+Relative to Janus, SpecRSI improves terminal gain by **33.3%–40.0%** and AUBC by **30.4%–33.7%**, with only a **7.2%** increase in the scientific total-cost index (**158.7 versus 148.1**). The separate 50-pair backbone sweep reports positive uplifts throughout: **17.8%–27.6%** for terminal gain and **15.7%–19.8%** for AUBC.
 
 ### Matched system permissions: Table 1B
 
@@ -313,7 +313,16 @@ configs/science/cases/<domain>.json
 
 The case manifest declares `case_count`, `cases`, and registered patches. PyBaMM requires its simulator; AQM requires native ns-3.44 libraries and a C++20 compiler; FDTD requires Numba; Reactor uses SciPy stiff ODE integration; IRP uses NumPy inventory simulation. The PyBaMM adapter explicitly distinguishes its registered predictor from the undisclosed original predictor. Isolated native executors may additionally require Linux bubblewrap or a digest-pinned Docker runtime.
 
-The AQM native executor also requires a writable executable cache at `/opt/specrsi-science/bin`. The source's generic dataset runner registers `game24`, `aime25`, `aime_2025_2026`, `hotpotqa`, `hover`, `ifbench`, `mbpp`, `math`, `livebench_math`, `polyglot`, `pupa`, `planbench`, `swe_verified`, and `swe_lite`; each still requires its corresponding data and evaluator contract.
+AQM caches compiled native executables in `/opt/specrsi-science/bin`; this directory must be writable.
+
+The generic dataset runner accepts the following dataset identifiers. Supply the corresponding dataset files and matching evaluator for each task.
+
+- **Math and reasoning:** `game24`, `aime25`, `aime_2025_2026`, `math`, `livebench_math`.
+- **Question answering and fact verification:** `hotpotqa`, `hover`.
+- **Instruction following:** `ifbench`.
+- **Code:** `mbpp`, `polyglot`, `swe_verified`, `swe_lite`.
+- **Privacy:** `pupa`.
+- **Planning:** `planbench`.
 
 ---
 
