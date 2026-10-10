@@ -172,8 +172,8 @@ SWE-Pro 代码结果采用的实验配置，不同于匹配权限系统表中得
 使用 **Python 3.11 或更新版本**。
 
 ```sh
-git clone https://github.com/xuxinthuad/SpecRSI-public.git
-cd SpecRSI-public
+git clone https://github.com/xuxinthuad/SpecRSI.git
+cd SpecRSI
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.[test]'

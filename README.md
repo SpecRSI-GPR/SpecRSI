@@ -172,8 +172,8 @@ The SWE-Pro coding result uses a different profile from the matched system table
 Use **Python 3.11 or newer**.
 
 ```sh
-git clone https://github.com/xuxinthuad/SpecRSI-public.git
-cd SpecRSI-public
+git clone https://github.com/xuxinthuad/SpecRSI.git
+cd SpecRSI
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.[test]'
