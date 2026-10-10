@@ -1,0 +1,1498 @@
+{
+  "schema_version": 1,
+  "datasets": [
+    {
+      "dataset": "aime25",
+      "source_page": "https://math-ai-org.github.io/aime25/",
+      "source_definition": {
+        "family": "prompts",
+        "format": "aime25",
+        "source_page": "https://math-ai-org.github.io/aime25/",
+        "files": [
+          {
+            "url": "https://huggingface.co/datasets/math-ai/aime25/resolve/563bb8404243c5f09de6ec262f2db674fe5bce9b/test.jsonl",
+            "filename": "test.jsonl",
+            "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b"
+          },
+          {
+            "url": "https://huggingface.co/datasets/math-ai/aime25/resolve/563bb8404243c5f09de6ec262f2db674fe5bce9b/README.md",
+            "filename": "README.md",
+            "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b"
+          },
+          {
+            "url": "https://huggingface.co/datasets/math-ai/aime25/resolve/563bb8404243c5f09de6ec262f2db674fe5bce9b/LICENSE",
+            "filename": "LICENSE",
+            "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b"
+          }
+        ],
+        "blockers": []
+      },
+      "split_policy": {
+        "algorithm": "sha256-group-or-normalized-input-v2",
+        "seed": 20260916,
+        "fractions": [
+          0.2,
+          0.4,
+          0.4
+        ],
+        "group_metadata_field": "split_group"
+      },
+      "counts": {
+        "audit": 6,
+        "development": 13,
+        "selection": 11
+      },
+      "original_source_histogram": {
+        "test.jsonl": 30
+      },
+      "subtype_by_split_histogram": {
+        "audit/all": 6,
+        "development/all": 13,
+        "selection/all": 11
+      },
+      "source_files": [
+        {
+          "path": "data/raw/aime25/test.jsonl",
+          "sha256": "b4e273c02d3e7fe1b74b59eae768fc8230bfb0f79539890cb56f4361caac0331",
+          "bytes": 15813,
+          "url": "https://huggingface.co/datasets/math-ai/aime25/resolve/563bb8404243c5f09de6ec262f2db674fe5bce9b/test.jsonl",
+          "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b"
+        },
+        {
+          "path": "data/raw/aime25/README.md",
+          "sha256": "ea8589560f464f85305edd22e4f5033759561af8040aa59d8b2759b606489c10",
+          "bytes": 878,
+          "url": "https://huggingface.co/datasets/math-ai/aime25/resolve/563bb8404243c5f09de6ec262f2db674fe5bce9b/README.md",
+          "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b"
+        },
+        {
+          "path": "data/raw/aime25/LICENSE",
+          "sha256": "498cdc89653a01fca77c90c94f5deb526398a1d4c0f8b54f0fdb93827dd011a9",
+          "bytes": 11356,
+          "url": "https://huggingface.co/datasets/math-ai/aime25/resolve/563bb8404243c5f09de6ec262f2db674fe5bce9b/LICENSE",
+          "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b"
+        }
+      ],
+      "processed_files": [
+        {
+          "path": "data/processed/aime25/audit.jsonl",
+          "bytes": 4025,
+          "sha256": "796f3b8514aefddf1e1188679312e4acbbfcb90fbc00f3980d361d9947207237"
+        },
+        {
+          "path": "data/processed/aime25/development.jsonl",
+          "bytes": 7186,
+          "sha256": "51e1fe3c1b831c5b4d92af444c7e20f2986641ca245b16a6ad3f6c918a19d7b6"
+        },
+        {
+          "path": "data/processed/aime25/selection.jsonl",
+          "bytes": 7414,
+          "sha256": "a74204d2af9dc24389375602bb71f92c3f6d4b85d8cb94b605a2fe93b694fc3c"
+        }
+      ]
+    },
+    {
+      "dataset": "game24",
+      "source_page": "https://github.com/princeton-nlp/tree-of-thought-llm",
+      "source_definition": {
+        "family": "workflows",
+        "format": "game24",
+        "source_page": "https://github.com/princeton-nlp/tree-of-thought-llm",
+        "files": [
+          {
+            "url": "https://raw.githubusercontent.com/princeton-nlp/tree-of-thought-llm/8050e67d0e3a0fddc424d7fa5801538722a4c4cc/src/tot/data/24/24.csv",
+            "filename": "24.csv",
+            "revision": "8050e67d0e3a0fddc424d7fa5801538722a4c4cc"
+          }
+        ],
+        "blockers": []
+      },
+      "split_policy": {
+        "algorithm": "sha256-group-or-normalized-input-v2",
+        "seed": 20260916,
+        "fractions": [
+          0.2,
+          0.4,
+          0.4
+        ],
+        "group_metadata_field": "split_group"
+      },
+      "counts": {
+        "audit": 534,
+        "development": 254,
+        "selection": 574
+      },
+      "original_source_histogram": {
+        "24.csv": 1362
+      },
+      "subtype_by_split_histogram": {
+        "audit/all": 534,
+        "development/all": 254,
+        "selection/all": 574
+      },
+      "source_files": [
+        {
+          "path": "data/raw/game24/24.csv",
+          "sha256": "b9f12b3e36d987a3c714c4cef17d89a137d7c59da26532fcfb93b4821d8111b5",
+          "bytes": 48235,
+          "url": "https://raw.githubusercontent.com/princeton-nlp/tree-of-thought-llm/8050e67d0e3a0fddc424d7fa5801538722a4c4cc/src/tot/data/24/24.csv",
+          "revision": "8050e67d0e3a0fddc424d7fa5801538722a4c4cc"
+        }
+      ],
+      "processed_files": [
+        {
+          "path": "data/processed/game24/audit.jsonl",
+          "bytes": 139180,
+          "sha256": "473b7936437eb3fddcd5021c5d092e9087829ddac9cfcebec547d45dfd01006d"
+        },
+        {
+          "path": "data/processed/game24/development.jsonl",
+          "bytes": 67711,
+          "sha256": "2edb2af9462edca8f48f8153be15dfba3f72e1eb1edb873f9c7e624edc519fe3"
+        },
+        {
+          "path": "data/processed/game24/selection.jsonl",
+          "bytes": 151904,
+          "sha256": "ee1009575a19eccfdbcaaf5477d10ae964627d11cce7b99c238f8e95b217b61e"
+        }
+      ]
+    },
+    {
+      "dataset": "hotpotqa",
+      "source_page": "https://huggingface.co/datasets/hotpotqa/hotpot_qa",
+      "source_definition": {
+        "family": "prompts",
+        "format": "hotpotqa",
+        "source_page": "https://huggingface.co/datasets/hotpotqa/hotpot_qa",
+        "files": [
+          {
+            "url": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/resolve/1908d6afbbead072334abe2965f91bd2709910ab/distractor/train-00000-of-00002.parquet",
+            "filename": "train-00000-of-00002.parquet",
+            "revision": "1908d6afbbead072334abe2965f91bd2709910ab"
+          },
+          {
+            "url": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/resolve/1908d6afbbead072334abe2965f91bd2709910ab/distractor/train-00001-of-00002.parquet",
+            "filename": "train-00001-of-00002.parquet",
+            "revision": "1908d6afbbead072334abe2965f91bd2709910ab"
+          },
+          {
+            "url": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/resolve/1908d6afbbead072334abe2965f91bd2709910ab/distractor/validation-00000-of-00001.parquet",
+            "filename": "validation-00000-of-00001.parquet",
+            "revision": "1908d6afbbead072334abe2965f91bd2709910ab"
+          },
+          {
+            "url": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/resolve/1908d6afbbead072334abe2965f91bd2709910ab/README.md",
+            "filename": "README.md",
+            "revision": "1908d6afbbead072334abe2965f91bd2709910ab"
+          }
+        ],
+        "blockers": [
+          "Distractor context supplied. SpecRSI retrieval variant, retriever/index and exact split unspecified."
+        ],
+        "source_note": "Official CMU HTTPS endpoint timed out after three attempts; use publisher-namespaced Hugging Face Parquet distribution, preserving native IDs and all distractor train/validation rows."
+      },
+      "split_policy": {
+        "algorithm": "sha256-group-or-normalized-input-v2",
+        "seed": 20260916,
+        "fractions": [
+          0.2,
+          0.4,
+          0.4
+        ],
+        "group_metadata_field": "split_group"
+      },
+      "counts": {
+        "audit": 38879,
+        "development": 19622,
+        "selection": 39351
+      },
+      "original_source_histogram": {
+        "train-00000-of-00002.parquet": 45224,
+        "train-00001-of-00002.parquet": 45223,
+        "validation-00000-of-00001.parquet": 7405
+      },
+      "subtype_by_split_histogram": {
+        "audit/all": 38879,
+        "development/all": 19622,
+        "selection/all": 39351
+      },
+      "source_files": [
+        {
+          "path": "data/raw/hotpotqa/train-00000-of-00002.parquet",
+          "sha256": "76d3bb3048a7cc73c1958107c0c5872a00d7e7d00c105b81e92f6769e7822e68",
+          "bytes": 165624177,
+          "url": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/resolve/1908d6afbbead072334abe2965f91bd2709910ab/distractor/train-00000-of-00002.parquet",
+          "revision": "1908d6afbbead072334abe2965f91bd2709910ab"
+        },
+        {
+          "path": "data/raw/hotpotqa/train-00001-of-00002.parquet",
+          "sha256": "713661628434fbb19fff7392e2e321e4ed107e3c7c7784d0690946e5f722763f",
+          "bytes": 166162479,
+          "url": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/resolve/1908d6afbbead072334abe2965f91bd2709910ab/distractor/train-00001-of-00002.parquet",
+          "revision": "1908d6afbbead072334abe2965f91bd2709910ab"
+        },
+        {
+          "path": "data/raw/hotpotqa/validation-00000-of-00001.parquet",
+          "sha256": "c20b638ca82b21d04fe12e14ff417ad05153d4d215a65de54497fca4e972f7c6",
+          "bytes": 27452575,
+          "url": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/resolve/1908d6afbbead072334abe2965f91bd2709910ab/distractor/validation-00000-of-00001.parquet",
+          "revision": "1908d6afbbead072334abe2965f91bd2709910ab"
+        },
+        {
+          "path": "data/raw/hotpotqa/README.md",
+          "sha256": "3cfab003a856275d3198b031c6b2ac46c63178fb462a4123705f652b71b22813",
+          "bytes": 9522,
+          "url": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/resolve/1908d6afbbead072334abe2965f91bd2709910ab/README.md",
+          "revision": "1908d6afbbead072334abe2965f91bd2709910ab"
+        }
+      ],
+      "processed_files": [
+        {
+          "path": "data/processed/hotpotqa/audit.jsonl",
+          "bytes": 244504845,
+          "sha256": "69dcad44840983a8b0d6836c2f4f43b47f92fd5c785b813bf25292ff98eee252"
+        },
+        {
+          "path": "data/processed/hotpotqa/development.jsonl",
+          "bytes": 123012048,
+          "sha256": "fb39e4c587d26067525e0fbca3f40dfcd5ea5098bb69aefb4236200e22660d2e"
+        },
+        {
+          "path": "data/processed/hotpotqa/selection.jsonl",
+          "bytes": 246988198,
+          "sha256": "436e03445ddaa11d45a5549e44da4a61e690b07e1b4b26fca8908f731ea9f4a1"
+        }
+      ]
+    },
+    {
+      "dataset": "hover",
+      "source_page": "https://github.com/hover-nlp/hover",
+      "source_definition": {
+        "family": "prompts",
+        "format": "hover",
+        "source_page": "https://github.com/hover-nlp/hover",
+        "files": [
+          {
+            "url": "https://raw.githubusercontent.com/hover-nlp/hover/39b84697f196308f398a251a7aea9b82ae0f0562/data/hover/hover_train_release_v1.1.json",
+            "filename": "hover_train_release_v1.1.json",
+            "revision": "39b84697f196308f398a251a7aea9b82ae0f0562"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/hover-nlp/hover/39b84697f196308f398a251a7aea9b82ae0f0562/data/hover/hover_dev_release_v1.1.json",
+            "filename": "hover_dev_release_v1.1.json",
+            "revision": "39b84697f196308f398a251a7aea9b82ae0f0562"
+          }
+        ],
+        "blockers": [
+          "Original retrieval corpus/index and retriever configuration are not identified in SpecRSI paper. Claim labels alone do not reconstruct its retrieval pipeline."
+        ]
+      },
+      "split_policy": {
+        "algorithm": "sha256-group-or-normalized-input-v2",
+        "seed": 20260916,
+        "fractions": [
+          0.2,
+          0.4,
+          0.4
+        ],
+        "group_metadata_field": "split_group"
+      },
+      "counts": {
+        "audit": 8852,
+        "development": 4421,
+        "selection": 8898
+      },
+      "original_source_histogram": {
+        "hover_train_release_v1.1.json": 18171,
+        "hover_dev_release_v1.1.json": 4000
+      },
+      "subtype_by_split_histogram": {
+        "audit/all": 8852,
+        "development/all": 4421,
+        "selection/all": 8898
+      },
+      "source_files": [
+        {
+          "path": "data/raw/hover/hover_train_release_v1.1.json",
+          "sha256": "1f1cd57abd616fa00c70bdc575ce77c16fc6cf1a6cffd5ff87c208030a336bb6",
+          "bytes": 9205582,
+          "url": "https://raw.githubusercontent.com/hover-nlp/hover/39b84697f196308f398a251a7aea9b82ae0f0562/data/hover/hover_train_release_v1.1.json",
+          "revision": "39b84697f196308f398a251a7aea9b82ae0f0562"
+        },
+        {
+          "path": "data/raw/hover/hover_dev_release_v1.1.json",
+          "sha256": "67c14858f2d7fcdb96b6fe3d538ffcd6f76e3ba594aa2c0cd4359f601101e89d",
+          "bytes": 2153439,
+          "url": "https://raw.githubusercontent.com/hover-nlp/hover/39b84697f196308f398a251a7aea9b82ae0f0562/data/hover/hover_dev_release_v1.1.json",
+          "revision": "39b84697f196308f398a251a7aea9b82ae0f0562"
+        }
+      ],
+      "processed_files": [
+        {
+          "path": "data/processed/hover/audit.jsonl",
+          "bytes": 6281059,
+          "sha256": "1d699d280785b02d54fa232bad611a82e25b6b2311bac13bc066b82188c874ac"
+        },
+        {
+          "path": "data/processed/hover/development.jsonl",
+          "bytes": 3179097,
+          "sha256": "3780450572efbd4ae01bb0e97aa37ec3cb22e46f1ee47dc45bc9e7171ed7a3fc"
+        },
+        {
+          "path": "data/processed/hover/selection.jsonl",
+          "bytes": 6349499,
+          "sha256": "d85e257e323190d7179f10bcca5e1540e257068c46c4d20fdad83a7ce2037bb8"
+        }
+      ]
+    },
+    {
+      "dataset": "ifbench",
+      "source_page": "https://github.com/allenai/IFBench",
+      "source_definition": {
+        "family": "prompts",
+        "format": "ifbench",
+        "source_page": "https://github.com/allenai/IFBench",
+        "files": [
+          {
+            "url": "https://raw.githubusercontent.com/allenai/IFBench/1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d/data/IFBench_test.jsonl",
+            "filename": "IFBench_test.jsonl",
+            "revision": "1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d"
+          },
+          {
+            "url": "https://codeload.github.com/allenai/IFBench/zip/1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d",
+            "filename": "source.zip",
+            "revision": "1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d",
+            "extract": true
+          }
+        ],
+        "blockers": [],
+        "runtime": "Install locked official source and local NLTK resources"
+      },
+      "split_policy": {
+        "algorithm": "sha256-group-or-normalized-input-v2",
+        "seed": 20260916,
+        "fractions": [
+          0.2,
+          0.4,
+          0.4
+        ],
+        "group_metadata_field": "split_group"
+      },
+      "counts": {
+        "audit": 142,
+        "development": 48,
+        "selection": 110
+      },
+      "original_source_histogram": {
+        "IFBench_test.jsonl": 300
+      },
+      "subtype_by_split_histogram": {
+        "audit/all": 142,
+        "development/all": 48,
+        "selection/all": 110
+      },
+      "source_files": [
+        {
+          "path": "data/raw/ifbench/IFBench_test.jsonl",
+          "sha256": "d2ada7da94a38cfe406351614c4e686846ed2da6d1b339db95fa5ead19554a4a",
+          "bytes": 421499,
+          "url": "https://raw.githubusercontent.com/allenai/IFBench/1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d/data/IFBench_test.jsonl",
+          "revision": "1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d"
+        },
+        {
+          "path": "data/raw/ifbench/source.zip",
+          "sha256": "255dfa1d6d0594d2248f9bdba56af90e492cbccd2a018328022cb3808d31b12b",
+          "bytes": 3183401,
+          "url": "https://codeload.github.com/allenai/IFBench/zip/1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d",
+          "revision": "1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d"
+        }
+      ],
+      "processed_files": [
+        {
+          "path": "data/processed/ifbench/audit.jsonl",
+          "bytes": 260234,
+          "sha256": "375f6f8130175c9273394cec265c0e14d1aabdfec10fe933c553ad44e9ef30ce"
+        },
+        {
+          "path": "data/processed/ifbench/development.jsonl",
+          "bytes": 89329,
+          "sha256": "ea49891546db2f6a0fb7e3281a814304c64d8720755b2ffca819ddebe5805fff"
+        },
+        {
+          "path": "data/processed/ifbench/selection.jsonl",
+          "bytes": 187870,
+          "sha256": "1b729820c8803e8ee4587a386906e7f90e4ef2add43d23b25b3627a18c2b9a89"
+        }
+      ]
+    },
+    {
+      "dataset": "livebench_math",
+      "source_page": "https://huggingface.co/datasets/livebench/math",
+      "source_definition": {
+        "family": "prompts",
+        "format": "livebench_math",
+        "source_page": "https://huggingface.co/datasets/livebench/math",
+        "files": [
+          {
+            "url": "https://huggingface.co/datasets/livebench/math/resolve/bb66571c8ccf32d3df9e6f48b920d3770ff4aacb/data/test-00000-of-00001.parquet",
+            "filename": "test-00000-of-00001.parquet",
+            "revision": "bb66571c8ccf32d3df9e6f48b920d3770ff4aacb"
+          },
+          {
+            "url": "https://huggingface.co/datasets/livebench/math/resolve/bb66571c8ccf32d3df9e6f48b920d3770ff4aacb/README.md",
+            "filename": "README.md",
+            "revision": "bb66571c8ccf32d3df9e6f48b920d3770ff4aacb"
+          }
+        ],
+        "blockers": [
+          "SpecRSI release date is absent; this public version is prospective. AMPS cases requiring the native gpt-5-mini fallback are incomplete until an explicit judge is registered; automatic external calls disabled."
+        ]
+      },
+      "split_policy": {
+        "algorithm": "sha256-group-or-normalized-input-v2",
+        "seed": 20260916,
+        "fractions": [
+          0.2,
+          0.4,
+          0.4
+        ],
+        "group_metadata_field": "split_group"
+      },
+      "counts": {
+        "audit": 137,
+        "development": 91,
+        "selection": 140
+      },
+      "original_source_histogram": {
+        "test-00000-of-00001.parquet": 368
+      },
+      "subtype_by_split_histogram": {
+        "audit/olympiad": 26,
+        "audit/AMPS_Hard": 56,
+        "audit/math_comp": 55,
+        "development/olympiad": 12,
+        "development/AMPS_Hard": 40,
+        "development/math_comp": 39,
+        "selection/olympiad": 34,
+        "selection/AMPS_Hard": 54,
+        "selection/math_comp": 52
+      },
+      "source_files": [
+        {
+          "path": "data/raw/livebench_math/test-00000-of-00001.parquet",
+          "sha256": "3d365cad1f9b8d7c5416d63866653d6854b270d9c93b51323d405ed5fd51df54",
+          "bytes": 185605,
+          "url": "https://huggingface.co/datasets/livebench/math/resolve/bb66571c8ccf32d3df9e6f48b920d3770ff4aacb/data/test-00000-of-00001.parquet",
+          "revision": "bb66571c8ccf32d3df9e6f48b920d3770ff4aacb"
+        },
+        {
+          "path": "data/raw/livebench_math/README.md",
+          "sha256": "8d63de322edb4c0f5fb3964189aab445b8e471d72e659104986ae34359923d9b",
+          "bytes": 1652,
+          "url": "https://huggingface.co/datasets/livebench/math/resolve/bb66571c8ccf32d3df9e6f48b920d3770ff4aacb/README.md",
+          "revision": "bb66571c8ccf32d3df9e6f48b920d3770ff4aacb"
+        }
+      ],
+      "processed_files": [
+        {
+          "path": "data/processed/livebench_math/audit.jsonl",
+          "bytes": 417959,
+          "sha256": "527fdbf9c9b907639c5731639f60399eede54f412287f478c2889137e4454cd5"
+        },
+        {
+          "path": "data/processed/livebench_math/development.jsonl",
+          "bytes": 243323,
+          "sha256": "9f41a854143c352dc3375b3df8310ab8a6255dcf2d1286b8f5cf5703d5799601"
+        },
+        {
+          "path": "data/processed/livebench_math/selection.jsonl",
+          "bytes": 488505,
+          "sha256": "da5f58a2be133ff744eece793ded980c44beb5f0b2762f9fef7b26702aadd375"
+        }
+      ]
+    },
+    {
+      "dataset": "math",
+      "source_page": "https://huggingface.co/datasets/EleutherAI/hendrycks_math",
+      "source_definition": {
+        "family": "workflows",
+        "format": "math",
+        "source_page": "https://huggingface.co/datasets/EleutherAI/hendrycks_math",
+        "files": [
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/algebra/train-00000-of-00001.parquet",
+            "filename": "algebra_train.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/algebra/test-00000-of-00001.parquet",
+            "filename": "algebra_test.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/counting_and_probability/train-00000-of-00001.parquet",
+            "filename": "counting_and_probability_train.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/counting_and_probability/test-00000-of-00001.parquet",
+            "filename": "counting_and_probability_test.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/geometry/train-00000-of-00001.parquet",
+            "filename": "geometry_train.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/geometry/test-00000-of-00001.parquet",
+            "filename": "geometry_test.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/intermediate_algebra/train-00000-of-00001.parquet",
+            "filename": "intermediate_algebra_train.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/intermediate_algebra/test-00000-of-00001.parquet",
+            "filename": "intermediate_algebra_test.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/number_theory/train-00000-of-00001.parquet",
+            "filename": "number_theory_train.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/number_theory/test-00000-of-00001.parquet",
+            "filename": "number_theory_test.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/prealgebra/train-00000-of-00001.parquet",
+            "filename": "prealgebra_train.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/prealgebra/test-00000-of-00001.parquet",
+            "filename": "prealgebra_test.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/precalculus/train-00000-of-00001.parquet",
+            "filename": "precalculus_train.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/precalculus/test-00000-of-00001.parquet",
+            "filename": "precalculus_test.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/README.md",
+            "filename": "README.md",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          }
+        ],
+        "blockers": [],
+        "variant": "prospective_complete_MATH_7500_train_5000_heldout_test; SpecRSI original Math identity unspecified"
+      },
+      "split_policy": {
+        "algorithm": "original-test-audit; train-sha256-parity-development-selection",
+        "seed": 20260916,
+        "removed_training_test_overlap_ids": [
+          "geometry_train:433"
+        ]
+      },
+      "counts": {
+        "audit": 5000,
+        "development": 3750,
+        "selection": 3749
+      },
+      "original_source_histogram": {
+        "algebra_test.parquet": 1187,
+        "counting_and_probability_test.parquet": 474,
+        "geometry_test.parquet": 479,
+        "intermediate_algebra_test.parquet": 903,
+        "number_theory_test.parquet": 540,
+        "prealgebra_test.parquet": 871,
+        "precalculus_test.parquet": 546,
+        "algebra_train.parquet": 1744,
+        "counting_and_probability_train.parquet": 771,
+        "geometry_train.parquet": 869,
+        "intermediate_algebra_train.parquet": 1295,
+        "number_theory_train.parquet": 869,
+        "prealgebra_train.parquet": 1205,
+        "precalculus_train.parquet": 746
+      },
+      "subtype_by_split_histogram": {
+        "audit/Algebra": 1187,
+        "audit/Counting & Probability": 474,
+        "audit/Geometry": 479,
+        "audit/Intermediate Algebra": 903,
+        "audit/Number Theory": 540,
+        "audit/Prealgebra": 871,
+        "audit/Precalculus": 546,
+        "development/Algebra": 837,
+        "development/Counting & Probability": 377,
+        "development/Geometry": 455,
+        "development/Intermediate Algebra": 670,
+        "development/Number Theory": 463,
+        "development/Prealgebra": 579,
+        "development/Precalculus": 369,
+        "selection/Algebra": 907,
+        "selection/Counting & Probability": 394,
+        "selection/Geometry": 414,
+        "selection/Intermediate Algebra": 625,
+        "selection/Number Theory": 406,
+        "selection/Prealgebra": 626,
+        "selection/Precalculus": 377
+      },
+      "source_files": [
+        {
+          "path": "data/raw/math/algebra_train.parquet",
+          "sha256": "73347f5b55869f21ff094361025dbd12d291e971aa4d72142eacee10438e449f",
+          "bytes": 505186,
+          "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/algebra/train-00000-of-00001.parquet",
+          "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+        },
+        {
+          "path": "data/raw/math/algebra_test.parquet",
+          "sha256": "0e04a850dac9cfc758eac0c80afd2d0cc65e29ea72f916c8ac1045b12af937f5",
+          "bytes": 353114,
+          "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/algebra/test-00000-of-00001.parquet",
+          "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+        },
+        {
+          "path": "data/raw/math/counting_and_probability_train.parquet",
+          "sha256": "d37ae017930df41678edee50dcde18c17fb06afaff9eb505c1b95f1002bfcb31",
+          "bytes": 329354,
+          "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/counting_and_probability/train-00000-of-00001.parquet",
+          "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+        },
+        {
+          "path": "data/raw/math/counting_and_probability_test.parquet",
+          "sha256": "c324818949c75a6227c0328a8499d58023cbbf6757cfc1736f5ab24cc8d87966",
+          "bytes": 175032,
+          "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/counting_and_probability/test-00000-of-00001.parquet",
+          "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+        },
+        {
+          "path": "data/raw/math/geometry_train.parquet",
+          "sha256": "9dbf5e5b55499e696e0ba72da9d85d4f0be3acbf7eaa6cb014b0fc78bb63784f",
+          "bytes": 549388,
+          "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/geometry/train-00000-of-00001.parquet",
+          "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+        },
+        {
+          "path": "data/raw/math/geometry_test.parquet",
+          "sha256": "98720f3a8134ad9784fd8951195245264495df03ffc5c9485a9a54ff5ae2431a",
+          "bytes": 263835,
+          "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/geometry/test-00000-of-00001.parquet",
+          "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+        },
+        {
+          "path": "data/raw/math/intermediate_algebra_train.parquet",
+          "sha256": "0c87f3798ebdfb915b1f9b6fc13c1a8d064c3cb91631ccbe85b83ed5d71150f6",
+          "bytes": 575154,
+          "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/intermediate_algebra/train-00000-of-00001.parquet",
+          "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+        },
+        {
+          "path": "data/raw/math/intermediate_algebra_test.parquet",
+          "sha256": "e859f72486c951c2017da880541ca729940eaa986b0364eb23e238983df9bfeb",
+          "bytes": 394797,
+          "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/intermediate_algebra/test-00000-of-00001.parquet",
+          "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+        },
+        {
+          "path": "data/raw/math/number_theory_train.parquet",
+          "sha256": "81c08649149b39811f2d1d7ddf5dfccf6c4c8044a2e169cfb24db09160c941f4",
+          "bytes": 308653,
+          "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/number_theory/train-00000-of-00001.parquet",
+          "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+        },
+        {
+          "path": "data/raw/math/number_theory_test.parquet",
+          "sha256": "ba156c9c9fa2040836ba12135fd964e6e67d6bccd8c469ec4a3ad941f8f6fbe9",
+          "bytes": 182003,
+          "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/number_theory/test-00000-of-00001.parquet",
+          "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+        },
+        {
+          "path": "data/raw/math/prealgebra_train.parquet",
+          "sha256": "765b526fb5c0b8385cb7be2c16bf4f6f28cf71f2bc15c826abfbb5fa7f8616cc",
+          "bytes": 383626,
+          "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/prealgebra/train-00000-of-00001.parquet",
+          "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+        },
+        {
+          "path": "data/raw/math/prealgebra_test.parquet",
+          "sha256": "301e5d8ade5c7b5038032532e498bdc9dca799e7f1061a63f2e7d980803240cc",
+          "bytes": 267729,
+          "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/prealgebra/test-00000-of-00001.parquet",
+          "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+        },
+        {
+          "path": "data/raw/math/precalculus_train.parquet",
+          "sha256": "28bb1ff95525c8d32521509bef91de76339659f5467a381e6e8deea204538f0e",
+          "bytes": 353745,
+          "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/precalculus/train-00000-of-00001.parquet",
+          "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+        },
+        {
+          "path": "data/raw/math/precalculus_test.parquet",
+          "sha256": "da37474ba3761ae5727af3844a7ba963a735bd6a14c65e6137593669a4fe3b9c",
+          "bytes": 242241,
+          "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/precalculus/test-00000-of-00001.parquet",
+          "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+        },
+        {
+          "path": "data/raw/math/README.md",
+          "sha256": "2372e22a154ca3ed5865378e270b32d8ed5b615c4592fad42630a731a950bcc0",
+          "bytes": 3926,
+          "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/README.md",
+          "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+        }
+      ],
+      "processed_files": [
+        {
+          "path": "data/processed/math/audit.jsonl",
+          "bytes": 6168263,
+          "sha256": "87ee89efc3aa6493cb4a0d4f0adb2a1a500f1d5d1477900c258dee241df3ad0c"
+        },
+        {
+          "path": "data/processed/math/development.jsonl",
+          "bytes": 4964839,
+          "sha256": "fd0eaf1874963946f508872b140645664ba7f5b6586e598ee97fa1dd00e3b948"
+        },
+        {
+          "path": "data/processed/math/selection.jsonl",
+          "bytes": 4892301,
+          "sha256": "61c114b14891cc0e90bad4e89277a644915c45c187746ec61429e0aa2cbfc601"
+        }
+      ]
+    },
+    {
+      "dataset": "mbpp",
+      "source_page": "https://github.com/google-research/google-research/tree/master/mbpp",
+      "source_definition": {
+        "family": "workflows",
+        "format": "mbpp",
+        "source_page": "https://github.com/google-research/google-research/tree/master/mbpp",
+        "files": [
+          {
+            "url": "https://raw.githubusercontent.com/google-research/google-research/8025cf1351da4d3cb8c289afe2d11247623fbdfb/mbpp/mbpp.jsonl",
+            "filename": "mbpp.jsonl",
+            "revision": "8025cf1351da4d3cb8c289afe2d11247623fbdfb"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/google-research/google-research/8025cf1351da4d3cb8c289afe2d11247623fbdfb/mbpp/README.md",
+            "filename": "README.md",
+            "revision": "8025cf1351da4d3cb8c289afe2d11247623fbdfb"
+          }
+        ],
+        "blockers": [],
+        "runtime": "bubblewrap sandbox or digest-pinned Docker image"
+      },
+      "split_policy": {
+        "algorithm": "sha256-group-or-normalized-input-v2",
+        "seed": 20260916,
+        "fractions": [
+          0.2,
+          0.4,
+          0.4
+        ],
+        "group_metadata_field": "split_group"
+      },
+      "counts": {
+        "audit": 413,
+        "development": 186,
+        "selection": 375
+      },
+      "original_source_histogram": {
+        "mbpp.jsonl": 974
+      },
+      "subtype_by_split_histogram": {
+        "audit/all": 413,
+        "development/all": 186,
+        "selection/all": 375
+      },
+      "source_files": [
+        {
+          "path": "data/raw/mbpp/mbpp.jsonl",
+          "sha256": "ccf64ceae9c5403bf50a044cb6d505bfd2a2963ee58338ba268fd65beab92a9f",
+          "bytes": 563743,
+          "url": "https://raw.githubusercontent.com/google-research/google-research/8025cf1351da4d3cb8c289afe2d11247623fbdfb/mbpp/mbpp.jsonl",
+          "revision": "8025cf1351da4d3cb8c289afe2d11247623fbdfb"
+        },
+        {
+          "path": "data/raw/mbpp/README.md",
+          "sha256": "02d63a4ffdad806c3c87b5ea2aa91e946f6eec0c2869643b09831650883f41be",
+          "bytes": 1422,
+          "url": "https://raw.githubusercontent.com/google-research/google-research/8025cf1351da4d3cb8c289afe2d11247623fbdfb/mbpp/README.md",
+          "revision": "8025cf1351da4d3cb8c289afe2d11247623fbdfb"
+        }
+      ],
+      "processed_files": [
+        {
+          "path": "data/processed/mbpp/audit.jsonl",
+          "bytes": 326660,
+          "sha256": "3a04c16b46130d4a1ffb8bfa91104fe09e403574c06a3871a737d3db6514f568"
+        },
+        {
+          "path": "data/processed/mbpp/development.jsonl",
+          "bytes": 146334,
+          "sha256": "0e3d349158655cd9439117343896991cda73879adb5a22e3562d3879bc800752"
+        },
+        {
+          "path": "data/processed/mbpp/selection.jsonl",
+          "bytes": 303009,
+          "sha256": "82e6946148e6f27b7aab6543f5fc24c14aec073146cdbc76a4b153a8eb90f32e"
+        }
+      ]
+    },
+    {
+      "dataset": "planbench",
+      "source_page": "https://github.com/harshakokel/PlanBench",
+      "source_definition": {
+        "family": "workflows",
+        "format": "planbench",
+        "source_page": "https://github.com/harshakokel/PlanBench",
+        "files": [
+          {
+            "url": "https://codeload.github.com/harshakokel/PlanBench/zip/1f4d600f4806bedbefebbbe44b168372aaf5060d",
+            "filename": "source.zip",
+            "revision": "1f4d600f4806bedbefebbbe44b168372aaf5060d",
+            "extract": true
+          }
+        ],
+        "blockers": [
+          "SpecRSI original task/subset is not identified. Normalized track is prospective zero-shot task_1 plan_generation with demonstrations removed and grouped instance splits; all other tasks retained only in raw source."
+        ]
+      },
+      "split_policy": {
+        "algorithm": "sha256-group-or-normalized-input-v2",
+        "seed": 20260916,
+        "fractions": [
+          0.2,
+          0.4,
+          0.4
+        ],
+        "instance_group": "planbench-instance:<native_instance_id>, shared across domain encodings",
+        "normalized_track": "prospective_zero_shot_task_1_plan_generation",
+        "demonstrations_removed": true,
+        "group_metadata_field": "split_group"
+      },
+      "counts": {
+        "audit": 798,
+        "development": 479,
+        "selection": 993
+      },
+      "original_source_histogram": {
+        "data/raw/planbench/source/PlanBench-1f4d600f4806bedbefebbbe44b168372aaf5060d/plan-bench/prompts/blocksworld/task_1_plan_generation.json": 500,
+        "data/raw/planbench/source/PlanBench-1f4d600f4806bedbefebbbe44b168372aaf5060d/plan-bench/prompts/blocksworld_3/task_1_plan_generation.json": 100,
+        "data/raw/planbench/source/PlanBench-1f4d600f4806bedbefebbbe44b168372aaf5060d/plan-bench/prompts/depots/task_1_plan_generation.json": 500,
+        "data/raw/planbench/source/PlanBench-1f4d600f4806bedbefebbbe44b168372aaf5060d/plan-bench/prompts/logistics/task_1_plan_generation.json": 285,
+        "data/raw/planbench/source/PlanBench-1f4d600f4806bedbefebbbe44b168372aaf5060d/plan-bench/prompts/mystery_blocksworld/task_1_plan_generation.json": 500,
+        "data/raw/planbench/source/PlanBench-1f4d600f4806bedbefebbbe44b168372aaf5060d/plan-bench/prompts/mystery_blocksworld_3/task_1_plan_generation.json": 100,
+        "data/raw/planbench/source/PlanBench-1f4d600f4806bedbefebbbe44b168372aaf5060d/plan-bench/prompts/obfuscated_deceptive_logistics/task_1_plan_generation.json": 285
+      },
+      "subtype_by_split_histogram": {
+        "audit/blocksworld": 174,
+        "audit/blocksworld_3": 38,
+        "audit/depots": 174,
+        "audit/logistics": 100,
+        "audit/mystery_blocksworld": 174,
+        "audit/mystery_blocksworld_3": 38,
+        "audit/obfuscated_deceptive_logistics": 100,
+        "development/blocksworld": 107,
+        "development/blocksworld_3": 19,
+        "development/depots": 107,
+        "development/logistics": 60,
+        "development/mystery_blocksworld": 107,
+        "development/mystery_blocksworld_3": 19,
+        "development/obfuscated_deceptive_logistics": 60,
+        "selection/blocksworld": 219,
+        "selection/blocksworld_3": 43,
+        "selection/depots": 219,
+        "selection/logistics": 125,
+        "selection/mystery_blocksworld": 219,
+        "selection/mystery_blocksworld_3": 43,
+        "selection/obfuscated_deceptive_logistics": 125
+      },
+      "source_files": [
+        {
+          "path": "data/raw/planbench/source.zip",
+          "sha256": "027e9726cac2d36c3e26786f663c7fdf049111d88641aa403fd74ac6ab69c1fe",
+          "bytes": 58552270,
+          "url": "https://codeload.github.com/harshakokel/PlanBench/zip/1f4d600f4806bedbefebbbe44b168372aaf5060d",
+          "revision": "1f4d600f4806bedbefebbbe44b168372aaf5060d"
+        }
+      ],
+      "processed_files": [
+        {
+          "path": "data/processed/planbench/audit.jsonl",
+          "bytes": 5433564,
+          "sha256": "8d5322b7e3874443238dbbb9d790590073015f35d029a1c2b2d4c5bab40a6435"
+        },
+        {
+          "path": "data/processed/planbench/development.jsonl",
+          "bytes": 3296435,
+          "sha256": "f4596168b1a9092fec580a9eb462f785c9fe4e65324c8649f86c99642c4208a5"
+        },
+        {
+          "path": "data/processed/planbench/selection.jsonl",
+          "bytes": 6796364,
+          "sha256": "0468808047b2478b67a0bd5c1c2db92e11a72ccc7aa422e1733caf5eb4fa60b3"
+        }
+      ]
+    },
+    {
+      "dataset": "polyglot",
+      "source_page": "https://github.com/aider-ai/polyglot-benchmark",
+      "source_definition": {
+        "family": "coding",
+        "format": "polyglot",
+        "source_page": "https://github.com/aider-ai/polyglot-benchmark",
+        "files": [
+          {
+            "url": "https://codeload.github.com/aider-ai/polyglot-benchmark/zip/7e0611e77b54e2dea774cdc0aa00cf9f7ed6144f",
+            "filename": "source.zip",
+            "revision": "7e0611e77b54e2dea774cdc0aa00cf9f7ed6144f",
+            "extract": true
+          }
+        ],
+        "blockers": [
+          "Official Aider language toolchain harness and SpecRSI adaptation configuration required."
+        ]
+      },
+      "split_policy": {
+        "algorithm": "sha256-group-or-normalized-input-v2",
+        "seed": 20260916,
+        "fractions": [
+          0.2,
+          0.4,
+          0.4
+        ],
+        "group_metadata_field": "split_group"
+      },
+      "counts": {
+        "audit": 95,
+        "development": 50,
+        "selection": 80
+      },
+      "original_source_histogram": {
+        "cpp": 26,
+        "go": 39,
+        "java": 47,
+        "javascript": 49,
+        "python": 34,
+        "rust": 30
+      },
+      "subtype_by_split_histogram": {
+        "audit/cpp": 10,
+        "audit/go": 15,
+        "audit/java": 22,
+        "audit/javascript": 21,
+        "audit/python": 13,
+        "audit/rust": 14,
+        "development/cpp": 5,
+        "development/go": 9,
+        "development/java": 10,
+        "development/javascript": 11,
+        "development/python": 9,
+        "development/rust": 6,
+        "selection/cpp": 11,
+        "selection/go": 15,
+        "selection/java": 15,
+        "selection/javascript": 17,
+        "selection/python": 12,
+        "selection/rust": 10
+      },
+      "source_files": [
+        {
+          "path": "data/raw/polyglot/source.zip",
+          "sha256": "98c528e991135c82ff309d297e140dd3f648b9e466785f58d251cf2ef8496203",
+          "bytes": 7603731,
+          "url": "https://codeload.github.com/aider-ai/polyglot-benchmark/zip/7e0611e77b54e2dea774cdc0aa00cf9f7ed6144f",
+          "revision": "7e0611e77b54e2dea774cdc0aa00cf9f7ed6144f"
+        }
+      ],
+      "processed_files": [
+        {
+          "path": "data/processed/polyglot/audit.jsonl",
+          "bytes": 194606,
+          "sha256": "5e0a799ad8183960a6f78e594385eb7f8d46b8fca901302c2da855d5f39001ff"
+        },
+        {
+          "path": "data/processed/polyglot/development.jsonl",
+          "bytes": 87445,
+          "sha256": "6cb7f36151ff7962862129e9490a5ef85d8a844be1c3436675c4945841847710"
+        },
+        {
+          "path": "data/processed/polyglot/selection.jsonl",
+          "bytes": 177126,
+          "sha256": "8298ad45a95e290daaa0ea76415b55dededec56962de555822f626edc958cc15"
+        }
+      ]
+    },
+    {
+      "dataset": "pupa",
+      "source_page": "https://huggingface.co/datasets/Columbia-NLP/PUPA",
+      "source_definition": {
+        "family": "prompts",
+        "format": "pupa",
+        "source_page": "https://huggingface.co/datasets/Columbia-NLP/PUPA",
+        "files": [
+          {
+            "url": "https://huggingface.co/datasets/Columbia-NLP/PUPA/resolve/9981b49b6ced0033988a224b6712895ebf119294/PUPA_New.csv",
+            "filename": "PUPA_New.csv",
+            "revision": "9981b49b6ced0033988a224b6712895ebf119294"
+          },
+          {
+            "url": "https://huggingface.co/datasets/Columbia-NLP/PUPA/resolve/9981b49b6ced0033988a224b6712895ebf119294/PUPA_TNB.csv",
+            "filename": "PUPA_TNB.csv",
+            "revision": "9981b49b6ced0033988a224b6712895ebf119294"
+          },
+          {
+            "url": "https://huggingface.co/datasets/Columbia-NLP/PUPA/resolve/9981b49b6ced0033988a224b6712895ebf119294/README.md",
+            "filename": "README.md",
+            "revision": "9981b49b6ced0033988a224b6712895ebf119294"
+          }
+        ],
+        "blockers": [
+          "PAPILLON quality/leakage native judge is gpt-4.1-mini in GEPA artifact; SpecRSI judge identity and query pipeline are absent."
+        ]
+      },
+      "split_policy": {
+        "algorithm": "sha256-group-or-normalized-input-v2",
+        "seed": 20260916,
+        "fractions": [
+          0.2,
+          0.4,
+          0.4
+        ],
+        "group_metadata_field": "split_group"
+      },
+      "counts": {
+        "audit": 344,
+        "development": 171,
+        "selection": 386
+      },
+      "original_source_histogram": {
+        "PUPA_New.csv": 664,
+        "PUPA_TNB.csv": 237
+      },
+      "subtype_by_split_histogram": {
+        "audit/all": 344,
+        "development/all": 171,
+        "selection/all": 386
+      },
+      "source_files": [
+        {
+          "path": "data/raw/pupa/PUPA_New.csv",
+          "sha256": "72d7659c717706bc987f0d296d9714f63db5e75c6645376ec75380e6638b8f91",
+          "bytes": 2854027,
+          "url": "https://huggingface.co/datasets/Columbia-NLP/PUPA/resolve/9981b49b6ced0033988a224b6712895ebf119294/PUPA_New.csv",
+          "revision": "9981b49b6ced0033988a224b6712895ebf119294"
+        },
+        {
+          "path": "data/raw/pupa/PUPA_TNB.csv",
+          "sha256": "237985b507c05f796a5011c80e312c8262b94529d23293988d5abd31fdbbb47a",
+          "bytes": 896538,
+          "url": "https://huggingface.co/datasets/Columbia-NLP/PUPA/resolve/9981b49b6ced0033988a224b6712895ebf119294/PUPA_TNB.csv",
+          "revision": "9981b49b6ced0033988a224b6712895ebf119294"
+        },
+        {
+          "path": "data/raw/pupa/README.md",
+          "sha256": "63abef05c891751fe13786e80e0494dbd19d710fb03701f434b311c41ee9eed3",
+          "bytes": 403,
+          "url": "https://huggingface.co/datasets/Columbia-NLP/PUPA/resolve/9981b49b6ced0033988a224b6712895ebf119294/README.md",
+          "revision": "9981b49b6ced0033988a224b6712895ebf119294"
+        }
+      ],
+      "processed_files": [
+        {
+          "path": "data/processed/pupa/audit.jsonl",
+          "bytes": 1998978,
+          "sha256": "d71db54494e112075245d4d40b18cd2379ddd1400bdca070d0fb29904689769b"
+        },
+        {
+          "path": "data/processed/pupa/development.jsonl",
+          "bytes": 1057209,
+          "sha256": "99a80600caedbbd3044492c7d1d2ecb25b1f81645d8130d21e435c3e2ddb7b03"
+        },
+        {
+          "path": "data/processed/pupa/selection.jsonl",
+          "bytes": 2062639,
+          "sha256": "6ba0513a0c941b1b96245308983215d5ce857cda3d20454c23abae776b3775f6"
+        }
+      ]
+    },
+    {
+      "dataset": "swe_lite",
+      "source_page": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Lite",
+      "source_definition": {
+        "family": "coding",
+        "format": "swe",
+        "source_page": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Lite",
+        "files": [
+          {
+            "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Lite/resolve/6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2/data/dev-00000-of-00001.parquet",
+            "filename": "dev-00000-of-00001.parquet",
+            "revision": "6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2"
+          },
+          {
+            "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Lite/resolve/6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2/data/test-00000-of-00001.parquet",
+            "filename": "test-00000-of-00001.parquet",
+            "revision": "6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2"
+          },
+          {
+            "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Lite/resolve/6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2/README.md",
+            "filename": "README.md",
+            "revision": "6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2"
+          }
+        ],
+        "blockers": [
+          "Exact Lite-filtered audit IDs absent; filter overlap against frozen selection IDs before use. Official Docker harness/images required."
+        ]
+      },
+      "split_policy": {
+        "algorithm": "sha256-group-or-normalized-input-v2",
+        "seed": 20260916,
+        "fractions": [
+          0.2,
+          0.4,
+          0.4
+        ],
+        "group_metadata_field": "split_group"
+      },
+      "counts": {
+        "audit": 122,
+        "development": 60,
+        "selection": 141
+      },
+      "original_source_histogram": {
+        "dev-00000-of-00001.parquet": 23,
+        "test-00000-of-00001.parquet": 300
+      },
+      "subtype_by_split_histogram": {
+        "audit/all": 122,
+        "development/all": 60,
+        "selection/all": 141
+      },
+      "source_files": [
+        {
+          "path": "data/raw/swe_lite/dev-00000-of-00001.parquet",
+          "sha256": "8312f321838051849d2fa7c6ca071244733a3e90bb517ff6ca8186f722199b5c",
+          "bytes": 119551,
+          "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Lite/resolve/6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2/data/dev-00000-of-00001.parquet",
+          "revision": "6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2"
+        },
+        {
+          "path": "data/raw/swe_lite/test-00000-of-00001.parquet",
+          "sha256": "7a21f37b8bc179c7db5beeb14e88ac538ba283455c776e6b2535bbfb6e3551b4",
+          "bytes": 1119540,
+          "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Lite/resolve/6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2/data/test-00000-of-00001.parquet",
+          "revision": "6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2"
+        },
+        {
+          "path": "data/raw/swe_lite/README.md",
+          "sha256": "01d69da06269ac911e8d716a868838d53c9bf0a16b9b2fee9097cb5c84bff3d3",
+          "bytes": 3674,
+          "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Lite/resolve/6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2/README.md",
+          "revision": "6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2"
+        }
+      ],
+      "processed_files": [
+        {
+          "path": "data/processed/swe_lite/audit.jsonl",
+          "bytes": 1790830,
+          "sha256": "c408b5abd2631ae8ca28ec2b50581c611221290de6b3c98ee9fece1cfc99e2ec"
+        },
+        {
+          "path": "data/processed/swe_lite/development.jsonl",
+          "bytes": 766570,
+          "sha256": "b48f524bbfd822c47dccd8c859612efdbafc3ff6e0e9eb72f78ed478ec32c963"
+        },
+        {
+          "path": "data/processed/swe_lite/selection.jsonl",
+          "bytes": 2020649,
+          "sha256": "716772c4e0096bccf38bff8d33b13a782024bf92b4ae5328cbcdd0280874b6e7"
+        }
+      ]
+    },
+    {
+      "dataset": "swe_verified",
+      "source_page": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
+      "source_definition": {
+        "family": "coding",
+        "format": "swe",
+        "source_page": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
+        "files": [
+          {
+            "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified/resolve/c104f840cc67f8b6eec6f759ebc8b2693d585d4a/data/test-00000-of-00001.parquet",
+            "filename": "test-00000-of-00001.parquet",
+            "revision": "c104f840cc67f8b6eec6f759ebc8b2693d585d4a"
+          },
+          {
+            "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified/resolve/c104f840cc67f8b6eec6f759ebc8b2693d585d4a/README.md",
+            "filename": "README.md",
+            "revision": "c104f840cc67f8b6eec6f759ebc8b2693d585d4a"
+          }
+        ],
+        "blockers": [
+          "SWE-V-60 IDs absent; SWE-V-500 checkpoint/split protocol absent; official Docker harness and task images required."
+        ]
+      },
+      "split_policy": {
+        "algorithm": "sha256-group-or-normalized-input-v2",
+        "seed": 20260916,
+        "fractions": [
+          0.2,
+          0.4,
+          0.4
+        ],
+        "group_metadata_field": "split_group"
+      },
+      "counts": {
+        "audit": 207,
+        "development": 103,
+        "selection": 190
+      },
+      "original_source_histogram": {
+        "test-00000-of-00001.parquet": 500
+      },
+      "subtype_by_split_histogram": {
+        "audit/all": 207,
+        "development/all": 103,
+        "selection/all": 190
+      },
+      "source_files": [
+        {
+          "path": "data/raw/swe_verified/test-00000-of-00001.parquet",
+          "sha256": "a45b1fe4e2f0c8390b2b2938ac83e92ed5979000856808f3679c07812e9e6dcd",
+          "bytes": 2096679,
+          "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified/resolve/c104f840cc67f8b6eec6f759ebc8b2693d585d4a/data/test-00000-of-00001.parquet",
+          "revision": "c104f840cc67f8b6eec6f759ebc8b2693d585d4a"
+        },
+        {
+          "path": "data/raw/swe_verified/README.md",
+          "sha256": "6edb58b1b2c44ce858426c4ebc90077827713b75cebc243661e4433c81fd57f5",
+          "bytes": 3336,
+          "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified/resolve/c104f840cc67f8b6eec6f759ebc8b2693d585d4a/README.md",
+          "revision": "c104f840cc67f8b6eec6f759ebc8b2693d585d4a"
+        }
+      ],
+      "processed_files": [
+        {
+          "path": "data/processed/swe_verified/audit.jsonl",
+          "bytes": 3270051,
+          "sha256": "ab4c91e5057d4fc62375379003342b7778d280281bce002110a4a7abbbd858eb"
+        },
+        {
+          "path": "data/processed/swe_verified/development.jsonl",
+          "bytes": 2191169,
+          "sha256": "ef041a5904f4042cb54dea60d409a1c51765d114cda0a180a1846e7e99461aa1"
+        },
+        {
+          "path": "data/processed/swe_verified/selection.jsonl",
+          "bytes": 3658548,
+          "sha256": "e2952a824d989f3a759021d47a7378ebe47227b14f6c7f75a997041a7521ff6e"
+        }
+      ]
+    },
+    {
+      "dataset": "aime_2025_2026",
+      "source_page": null,
+      "source_definition": {},
+      "split_policy": "2024 normalized input hash first15 development/rest15 selection; all2025+2026 audit",
+      "counts": {
+        "audit": 60,
+        "development": 15,
+        "selection": 15
+      },
+      "original_source_histogram": {
+        "math-ai/aime25": 30,
+        "math-ai/aime26": 30,
+        "math-ai/aime24": 30
+      },
+      "subtype_by_split_histogram": {
+        "audit/2025": 30,
+        "audit/2026": 30,
+        "development/2024": 15,
+        "selection/2024": 15
+      },
+      "source_files": [
+        {
+          "path": "performance_extension/raw/aime_2025_2026/2024-test-00000-of-00001.parquet",
+          "bytes": 11183,
+          "sha256": "2602156eb2a0ab64393dc46617a3bfee3451ae3c985a7ea6ac2b55436e094a38",
+          "url": "https://huggingface.co/datasets/math-ai/aime24/resolve/83a7f387baaa524a8bda0022eac0541582297103/test-00000-of-00001.parquet",
+          "revision": "83a7f387baaa524a8bda0022eac0541582297103"
+        },
+        {
+          "path": "performance_extension/raw/aime_2025_2026/2025-test.jsonl",
+          "bytes": 15813,
+          "sha256": "b4e273c02d3e7fe1b74b59eae768fc8230bfb0f79539890cb56f4361caac0331",
+          "url": "https://huggingface.co/datasets/math-ai/aime25/resolve/563bb8404243c5f09de6ec262f2db674fe5bce9b/test.jsonl",
+          "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b"
+        },
+        {
+          "path": "performance_extension/raw/aime_2025_2026/2026-aime2026.jsonl",
+          "bytes": 13101,
+          "sha256": "52822957957a3f577d1e9706c36a66a8108a3f99b6aff424cfb72dff0094a9ee",
+          "url": "https://huggingface.co/datasets/math-ai/aime26/resolve/79037aebdb6580008fb960d17cb21fd3099083e3/aime2026.jsonl",
+          "revision": "79037aebdb6580008fb960d17cb21fd3099083e3"
+        }
+      ],
+      "processed_files": [
+        {
+          "path": "data/performance_extension/processed/aime_2025_2026/audit.jsonl",
+          "bytes": 42855,
+          "sha256": "722a8490a351d2c1a4b4bbf6976e58abeec7e69d3ea3d6c9c02d2b97ad5891a0"
+        },
+        {
+          "path": "data/performance_extension/processed/aime_2025_2026/development.jsonl",
+          "bytes": 9239,
+          "sha256": "01af4c68cd84b3c0f7ad165c360f807bbdf7f327e5b5c64b2f4ae1ee9b405b89"
+        },
+        {
+          "path": "data/performance_extension/processed/aime_2025_2026/selection.jsonl",
+          "bytes": 9380,
+          "sha256": "ae425fd9883a3ae0bcf04adb9fac1b13c1947a4ad48a8c01c9b670212e505f5d"
+        }
+      ]
+    }
+  ],
+  "retrieval": {
+    "schema_version": 1,
+    "revision": "ef6a5e72a98b47cef31574a400fea8fe149559a3",
+    "url": "https://huggingface.co/dspy/cache/resolve/ef6a5e72a98b47cef31574a400fea8fe149559a3/wiki.abstracts.2017.tar.gz",
+    "implementation": "bm25s==0.2.14; PyStemmer==3.0.0",
+    "parameters": {
+      "k1": 0.9,
+      "b": 0.4,
+      "stopwords": "en",
+      "stemmer": "english",
+      "delta": 0.5,
+      "method": "lucene",
+      "idf_method": "lucene",
+      "dtype": "float32",
+      "int_dtype": "int32",
+      "backend": "numpy"
+    },
+    "source": "GEPA artifact hover_program.py",
+    "files": [
+      {
+        "path": "data/retrieval/hover/wiki.abstracts.2017.tar.gz",
+        "sha256": "744183e61af986bde9b25c880b59c1502618a8b673671e189cbc0ee684fceb42",
+        "bytes": 608448121
+      },
+      {
+        "path": "data/retrieval/hover/wiki.abstracts.2017.jsonl",
+        "sha256": "c006527c7c600f85ed594afa36d2a34d0598996405f560474227738342463724",
+        "bytes": 1780742620
+      },
+      {
+        "path": "data/retrieval/hover/passages.jsonl",
+        "sha256": "55d9b89a1776ab56b7abf7699a9b5f3c3880cc319cddc5b7351c79fb9d89fdee",
+        "bytes": 1561686696
+      },
+      {
+        "path": "data/retrieval/hover/bm25s/data.csc.index.npy",
+        "sha256": "35144c2e96cd12c1038954f0c652502cb1ec60e1cc250945f0d99c6537099bca",
+        "bytes": 527253192
+      },
+      {
+        "path": "data/retrieval/hover/bm25s/indices.csc.index.npy",
+        "sha256": "a4622ca13d369f4c507d5207ee17415fd9aa4f577181c5a208c92320a6e1463c",
+        "bytes": 527253192
+      },
+      {
+        "path": "data/retrieval/hover/bm25s/indptr.csc.index.npy",
+        "sha256": "e7fe09a99ace818d1daa3e163af2795964bac894503519d335334ae747e37770",
+        "bytes": 10196768
+      },
+      {
+        "path": "data/retrieval/hover/bm25s/params.index.json",
+        "sha256": "aa3e8b61aa4bd3ca8b285df0e794773655c0e2738e156673600cb19a51dc1948",
+        "bytes": 225
+      },
+      {
+        "path": "data/retrieval/hover/bm25s/vocab.index.json",
+        "sha256": "42ce5cc2cae0fb5b0d11d516f0ce039111a1613ecacc0716c4fb0d21aa2017cb",
+        "bytes": 49044376
+      }
+    ],
+    "documents": 5233330,
+    "passage_format": "title + \" | \" + \" \".join(text)",
+    "hops": 3
+  },
+  "scorer_resources": {
+    "nltk_archives": [
+      {
+        "path": "data/raw/nltk/punkt.zip",
+        "sha256": "51c3078994aeaf650bfc8e028be4fb42b4a0d177d41c012b6a983979653660ec",
+        "bytes": 13905355,
+        "url": "https://raw.githubusercontent.com/nltk/nltk_data/550b6625bcef1f2abff2ff770a5a0d272c9c6b2a/packages/tokenizers/punkt.zip",
+        "revision": "550b6625bcef1f2abff2ff770a5a0d272c9c6b2a"
+      },
+      {
+        "path": "data/raw/nltk/punkt_tab.zip",
+        "sha256": "e57f64187974277726a3417ca6f181ec5403676c717672eef6a748a7b20e0106",
+        "bytes": 4319076,
+        "url": "https://raw.githubusercontent.com/nltk/nltk_data/550b6625bcef1f2abff2ff770a5a0d272c9c6b2a/packages/tokenizers/punkt_tab.zip",
+        "revision": "550b6625bcef1f2abff2ff770a5a0d272c9c6b2a"
+      },
+      {
+        "path": "data/raw/nltk/stopwords.zip",
+        "sha256": "48c0e52d8b52546e827f53761fb30300c0ab94f70660d28bd65ba0a86270946b",
+        "bytes": 37733,
+        "url": "https://raw.githubusercontent.com/nltk/nltk_data/550b6625bcef1f2abff2ff770a5a0d272c9c6b2a/packages/corpora/stopwords.zip",
+        "revision": "550b6625bcef1f2abff2ff770a5a0d272c9c6b2a"
+      },
+      {
+        "path": "data/raw/nltk/averaged_perceptron_tagger_eng.zip",
+        "sha256": "6025f530624335c67d6547d44757b357b4e79bae030a0383e9887a92c1718f0b",
+        "bytes": 1539115,
+        "url": "https://raw.githubusercontent.com/nltk/nltk_data/550b6625bcef1f2abff2ff770a5a0d272c9c6b2a/packages/taggers/averaged_perceptron_tagger_eng.zip",
+        "revision": "550b6625bcef1f2abff2ff770a5a0d272c9c6b2a"
+      }
+    ]
+  },
+  "split_exceptions": {
+    "math": {
+      "audit": "All 5000 original test members",
+      "development_selection": "For original train: int(input_hash[:8],16) % 2; even=development, odd=selection",
+      "excluded_train_ids": [
+        "geometry_train:433"
+      ]
+    },
+    "planbench": {
+      "track": "prospective_zero_shot_plan_generation",
+      "prompt_transform": "Split on [STATEMENT]; retain domain rules preceding the first marker and current problem beginning at the final marker",
+      "group": "planbench-instance:<instance_id>"
+    },
+    "aime_2025_2026": {
+      "development_selection_year": 2024,
+      "development_selection": "Sort 2024 members by input_hash; first15 development, remaining15 selection",
+      "audit_years": [
+        2025,
+        2026
+      ],
+      "year_revisions": {
+        "2024": "83a7f387baaa524a8bda0022eac0541582297103",
+        "2025": "563bb8404243c5f09de6ec262f2db674fe5bce9b",
+        "2026": "79037aebdb6580008fb960d17cb21fd3099083e3"
+      }
+    }
+  },
+  "input_identity": {
+    "normalization": "\" \".join(prompt.split()).casefold()",
+    "hash": "sha256(normalized_prompt.encode(\"utf-8\"))"
+  },
+  "audit_overlap_filter": "Exclude audit IDs or normalized input hashes present in the frozen selection set"
+}
