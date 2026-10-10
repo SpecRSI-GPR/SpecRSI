@@ -66,6 +66,24 @@ The ten scientific backbone labels are GPT-6-Astra, Claude-Opus-5, Gemini-3.5-Fl
 | Learning | Supervised warm-up, then GVO; one observed-return Scorer, separate Policy preferences |
 | Repeated rounds | Round 1 initializes; rounds 2–5 evaluated; task agents carried; real evaluator fixed |
 
+### Reproducibility specifications
+
+[Complete specifications](docs/REPRODUCIBILITY.md) provide version-pinned inputs, exact split members, scientific scenarios, model snapshots, and configuration-specific training settings. Fixed verification contracts and separate development, selection, and audit roles make the evaluation conditions explicit while retaining SpecRSI's adaptive allocation of edits and checks.
+
+- **Data and splits:** 14 versioned data pools and 42 splits, containing **139,865 exact member IDs**. The [dataset specifications](docs/reproducibility-datasets.json) include upstream revisions, URLs and SHA-256 fingerprints; the [member lists](docs/reproducibility-splits.json) preserve source order and ID-list hashes. The default content/group-hash split uses seed `20260916` and 20%/40%/40% probability intervals; MATH, PlanBench and the AIME extension retain their specified split rules.
+- **Scientific settings:** [168 scenario registrations](docs/reproducibility-science.json) cover 56 cases: PyBaMM 12, AQM 11, FDTD 12, Reactor 10 and IRP 11, each with development/selection/audit configurations, simulator seeds, tolerances, constraints and evaluator identities.
+- **Open-model training:** frozen BF16 Qwen3-8B representations, Drafter LoRA rank/alpha/dropout **16/32/0**, and separate width-256 Scorer/Policy branches. SFT uses AdamW, learning rate **`2e-5`**, weight decay **`1e-4`**, and component batch size **1**. [Effective training profiles](docs/reproducibility-training.json) provide 16 effective stages, seeds, collection sizes and actual update counts.
+
+| GVO profile | Optimizer and learning rates | Stage rounds / updates |
+|---|---|---|
+| Component batches | AdamW `2e-5` | 1–2 rounds; profile-specific component updates |
+| Frozen collections, AdamW | AdamW `2e-5` | 3 rounds / 3 updates; 8 contexts × 8 tasks, group 3 |
+| Frozen collections, SGD | Actor `1e-3`, Scorer `5e-4` | 3 rounds / 3 updates; 8 contexts × 4 tasks, group 3 |
+
+Frozen-collection updates accumulate gradients before at most one optimizer step per collection. The SGD profile uses PPO clipping **0.2**, KL weight **0.02**, and zero momentum/weight decay; supervised component batches and groups of complete searches remain distinct.
+
+[Model snapshots and deployment settings](docs/reproducibility-models.json) pin **Qwen3-8B, Kimi-K2.6 and Qwen3.5-35B-A3B-FP8** to full immutable revisions and file hashes, including precision, context and serving limits. [Hardware/software specifications](docs/reproducibility-environment.json) describe the **eight-H20 host** (97,871 MiB per GPU; dual 96-core AMD EPYC 9K84), with open-model training on one H20: Python **3.11.6**, PyTorch **2.6.0+cu124**, Transformers **4.57.6**, PEFT **0.18.1**. Serving uses vLLM **0.19.1** and PyTorch **2.10.0+cu128**; scientific dependencies include PyBaMM **25.12.2**, ns-3 **3.44.post0**, NumPy **1.26.4** and SciPy **1.17.1**.
+
 ## Main reported results
 
 ![Main scientific and system results](docs/figures/main-results.png)

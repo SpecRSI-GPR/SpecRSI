@@ -66,6 +66,24 @@ SpecRSI 在中间版本尚未完成全部评估时，就为智能体起草可执
 | 学习 | 监督预热后进行 GVO；一个基于观测回报的 Scorer，以及独立的 Policy 偏好 |
 | 重复轮次 | 第 1 轮初始化；评估第 2–5 轮；保留任务智能体；真实评估器固定 |
 
+### 复现规格
+
+[完整复现规格](docs/REPRODUCIBILITY.md)提供固定版本的数据、精确划分成员、科学场景、模型快照与各训练配置的参数。固定验证合同以及独立的开发、选择和审计角色明确了评估条件，同时保留 SpecRSI 自适应分配编辑与验证工作的机制。
+
+- **数据与划分：**14 个固定版本的数据池、42 个划分，共 **139,865 条精确成员 ID**。[数据规格](docs/reproducibility-datasets.json)提供上游 revision、下载地址和 SHA-256；[完整成员列表](docs/reproducibility-splits.json)保留原始顺序及 ID 列表哈希。默认内容／分组哈希划分使用种子 `20260916`，概率区间为 20%／40%／40%；MATH、PlanBench 与 AIME 扩展保留各自规定的划分规则。
+- **科学配置：**[168 份场景注册](docs/reproducibility-science.json)覆盖 56 个案例：PyBaMM 12、AQM 11、FDTD 12、Reactor 10、IRP 11。每个案例均提供开发／选择／审计配置、模拟种子、数值容差、约束与评估器身份。
+- **开放模型训练：**冻结 BF16 Qwen3-8B 表示，Drafter LoRA 的 rank／alpha／dropout 为 **16／32／0**，Scorer 与 Policy 使用独立的宽度 256 分支。SFT 使用 AdamW，学习率 **`2e-5`**、权重衰减 **`1e-4`**、监督组件批大小 **1**。[有效训练配置](docs/reproducibility-training.json)提供 16 个有效阶段的种子、采集规模及实际更新次数。
+
+| GVO 配置 | 优化器与学习率 | 阶段轮数／更新次数 |
+|---|---|---|
+| 组件批次 | AdamW `2e-5` | 1–2 轮；按配置进行组件更新 |
+| 冻结采集，AdamW | AdamW `2e-5` | 3 轮／3 次更新；8 个上下文 × 8 个任务，组大小 3 |
+| 冻结采集，SGD | Actor `1e-3`、Scorer `5e-4` | 3 轮／3 次更新；8 个上下文 × 4 个任务，组大小 3 |
+
+冻结采集配置先累积梯度，每次采集最多进行一次优化器更新。SGD 配置使用 PPO 裁剪 **0.2**、KL 权重 **0.02**，动量与权重衰减均为零；监督组件批次与完整搜索组分别定义。
+
+[模型快照与部署参数](docs/reproducibility-models.json)将 **Qwen3-8B、Kimi-K2.6、Qwen3.5-35B-A3B-FP8** 固定到完整 revision 和文件哈希，并提供精度、上下文及服务批次限制。[软硬件规格](docs/reproducibility-environment.json)包含 **8 张 H20 的主机**（每卡 97,871 MiB，双路 96 核 AMD EPYC 9K84）；开放模型训练使用单张 H20、Python **3.11.6**、PyTorch **2.6.0+cu124**、Transformers **4.57.6** 与 PEFT **0.18.1**。推理服务使用 vLLM **0.19.1**、PyTorch **2.10.0+cu128**；科学依赖包括 PyBaMM **25.12.2**、ns-3 **3.44.post0**、NumPy **1.26.4** 与 SciPy **1.17.1**。
+
 ## 主要报告结果
 
 ![主要科学与系统实验结果](docs/figures/main-results.png)
