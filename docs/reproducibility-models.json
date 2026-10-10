@@ -1,686 +1,589 @@
 {
-  "schema_version": 1,
-  "scope": "Pinned local base-model snapshots and deployment profiles",
-  "models": [
-    {
-      "repo_id": "Qwen/Qwen3-8B",
-      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
-      "format": "BF16",
-      "files": [
-        {
-          "filename": "LICENSE",
-          "bytes": 11343,
-          "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e"
-        },
-        {
-          "filename": "README.md",
-          "bytes": 16660,
-          "sha256": "0f36caaff9c2516411a7738db384606263ba653c1e63e61d72f511606164d5a6"
-        },
-        {
-          "filename": "config.json",
-          "bytes": 728,
-          "sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30"
-        },
-        {
-          "filename": "generation_config.json",
-          "bytes": 239,
-          "sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2"
-        },
-        {
-          "filename": "merges.txt",
-          "bytes": 1671853,
-          "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5"
-        },
-        {
-          "filename": "model-00001-of-00005.safetensors",
-          "bytes": 3996250744,
-          "sha256": "31d6a825ae35f11fb85b195b4c42c146c051e446433125a215336abdf95cbf5f"
-        },
-        {
-          "filename": "model-00002-of-00005.safetensors",
-          "bytes": 3993160032,
-          "sha256": "5991236cea6fe21f3d43cab0f0e84448734fbbe0789816202989f2ddc9d18282"
-        },
-        {
-          "filename": "model-00003-of-00005.safetensors",
-          "bytes": 3959604768,
-          "sha256": "c5185c4794be2d8a9784d5753c9922db38df478ce11f9ed0b415b7304d896836"
-        },
-        {
-          "filename": "model-00004-of-00005.safetensors",
-          "bytes": 3187841392,
-          "sha256": "b5ee7de71fbf17db3d5704e0c8f2bc7d005ca9e1d7ca2aeb19827b0cfcaa917a"
-        },
-        {
-          "filename": "model-00005-of-00005.safetensors",
-          "bytes": 1244659840,
-          "sha256": "20c2d6366ab85c90786ccdd829cd2b9e7d30ef3b2ebbb998280e7e4014b542ff"
-        },
-        {
-          "filename": "model.safetensors.index.json",
-          "bytes": 32878,
-          "sha256": "f9fdbcb91c23971c13ec5d5f2573d2349e8f61f2f049371ec699281748fdb1bc"
-        },
-        {
-          "filename": "tokenizer.json",
-          "bytes": 11422654,
-          "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
-        },
-        {
-          "filename": "tokenizer_config.json",
-          "bytes": 9732,
-          "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101"
-        },
-        {
-          "filename": "vocab.json",
-          "bytes": 2776833,
-          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
-        }
+  "schema": "specrsi_reference_model_v2",
+  "scope": "Locally deployed reference reproduction configuration",
+  "model_id": "Qwen/Qwen3.5-35B-A3B",
+  "revision": "59d61f3ce65a6d9863b86d2e96597125219dc754",
+  "publisher_snapshot_url": "https://huggingface.co/Qwen/Qwen3.5-35B-A3B/tree/59d61f3ce65a6d9863b86d2e96597125219dc754",
+  "base_weights": {
+    "precision": "BF16",
+    "quantization": null,
+    "text_tower_only": true,
+    "frozen_components": [
+      "text backbone",
+      "router",
+      "experts"
+    ]
+  },
+  "trainable_modules": {
+    "drafter_lora": {
+      "rank": 16,
+      "alpha": 32,
+      "dropout": 0.0,
+      "target_profile": "qwen35_hybrid_attention",
+      "targets": [
+        "full-attention query/key/value/output projections",
+        "Gated DeltaNet input/output/gate projections"
+      ],
+      "stored_tensor_dtype": "float32",
+      "resolved_target_count": 190,
+      "resolved_native_target_paths": [
+        "base_model.model.model.layers.0.linear_attn.in_proj_a",
+        "base_model.model.model.layers.0.linear_attn.in_proj_b",
+        "base_model.model.model.layers.0.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.0.linear_attn.in_proj_z",
+        "base_model.model.model.layers.0.linear_attn.out_proj",
+        "base_model.model.model.layers.1.linear_attn.in_proj_a",
+        "base_model.model.model.layers.1.linear_attn.in_proj_b",
+        "base_model.model.model.layers.1.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.1.linear_attn.in_proj_z",
+        "base_model.model.model.layers.1.linear_attn.out_proj",
+        "base_model.model.model.layers.10.linear_attn.in_proj_a",
+        "base_model.model.model.layers.10.linear_attn.in_proj_b",
+        "base_model.model.model.layers.10.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.10.linear_attn.in_proj_z",
+        "base_model.model.model.layers.10.linear_attn.out_proj",
+        "base_model.model.model.layers.11.self_attn.k_proj",
+        "base_model.model.model.layers.11.self_attn.o_proj",
+        "base_model.model.model.layers.11.self_attn.q_proj",
+        "base_model.model.model.layers.11.self_attn.v_proj",
+        "base_model.model.model.layers.12.linear_attn.in_proj_a",
+        "base_model.model.model.layers.12.linear_attn.in_proj_b",
+        "base_model.model.model.layers.12.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.12.linear_attn.in_proj_z",
+        "base_model.model.model.layers.12.linear_attn.out_proj",
+        "base_model.model.model.layers.13.linear_attn.in_proj_a",
+        "base_model.model.model.layers.13.linear_attn.in_proj_b",
+        "base_model.model.model.layers.13.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.13.linear_attn.in_proj_z",
+        "base_model.model.model.layers.13.linear_attn.out_proj",
+        "base_model.model.model.layers.14.linear_attn.in_proj_a",
+        "base_model.model.model.layers.14.linear_attn.in_proj_b",
+        "base_model.model.model.layers.14.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.14.linear_attn.in_proj_z",
+        "base_model.model.model.layers.14.linear_attn.out_proj",
+        "base_model.model.model.layers.15.self_attn.k_proj",
+        "base_model.model.model.layers.15.self_attn.o_proj",
+        "base_model.model.model.layers.15.self_attn.q_proj",
+        "base_model.model.model.layers.15.self_attn.v_proj",
+        "base_model.model.model.layers.16.linear_attn.in_proj_a",
+        "base_model.model.model.layers.16.linear_attn.in_proj_b",
+        "base_model.model.model.layers.16.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.16.linear_attn.in_proj_z",
+        "base_model.model.model.layers.16.linear_attn.out_proj",
+        "base_model.model.model.layers.17.linear_attn.in_proj_a",
+        "base_model.model.model.layers.17.linear_attn.in_proj_b",
+        "base_model.model.model.layers.17.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.17.linear_attn.in_proj_z",
+        "base_model.model.model.layers.17.linear_attn.out_proj",
+        "base_model.model.model.layers.18.linear_attn.in_proj_a",
+        "base_model.model.model.layers.18.linear_attn.in_proj_b",
+        "base_model.model.model.layers.18.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.18.linear_attn.in_proj_z",
+        "base_model.model.model.layers.18.linear_attn.out_proj",
+        "base_model.model.model.layers.19.self_attn.k_proj",
+        "base_model.model.model.layers.19.self_attn.o_proj",
+        "base_model.model.model.layers.19.self_attn.q_proj",
+        "base_model.model.model.layers.19.self_attn.v_proj",
+        "base_model.model.model.layers.2.linear_attn.in_proj_a",
+        "base_model.model.model.layers.2.linear_attn.in_proj_b",
+        "base_model.model.model.layers.2.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.2.linear_attn.in_proj_z",
+        "base_model.model.model.layers.2.linear_attn.out_proj",
+        "base_model.model.model.layers.20.linear_attn.in_proj_a",
+        "base_model.model.model.layers.20.linear_attn.in_proj_b",
+        "base_model.model.model.layers.20.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.20.linear_attn.in_proj_z",
+        "base_model.model.model.layers.20.linear_attn.out_proj",
+        "base_model.model.model.layers.21.linear_attn.in_proj_a",
+        "base_model.model.model.layers.21.linear_attn.in_proj_b",
+        "base_model.model.model.layers.21.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.21.linear_attn.in_proj_z",
+        "base_model.model.model.layers.21.linear_attn.out_proj",
+        "base_model.model.model.layers.22.linear_attn.in_proj_a",
+        "base_model.model.model.layers.22.linear_attn.in_proj_b",
+        "base_model.model.model.layers.22.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.22.linear_attn.in_proj_z",
+        "base_model.model.model.layers.22.linear_attn.out_proj",
+        "base_model.model.model.layers.23.self_attn.k_proj",
+        "base_model.model.model.layers.23.self_attn.o_proj",
+        "base_model.model.model.layers.23.self_attn.q_proj",
+        "base_model.model.model.layers.23.self_attn.v_proj",
+        "base_model.model.model.layers.24.linear_attn.in_proj_a",
+        "base_model.model.model.layers.24.linear_attn.in_proj_b",
+        "base_model.model.model.layers.24.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.24.linear_attn.in_proj_z",
+        "base_model.model.model.layers.24.linear_attn.out_proj",
+        "base_model.model.model.layers.25.linear_attn.in_proj_a",
+        "base_model.model.model.layers.25.linear_attn.in_proj_b",
+        "base_model.model.model.layers.25.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.25.linear_attn.in_proj_z",
+        "base_model.model.model.layers.25.linear_attn.out_proj",
+        "base_model.model.model.layers.26.linear_attn.in_proj_a",
+        "base_model.model.model.layers.26.linear_attn.in_proj_b",
+        "base_model.model.model.layers.26.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.26.linear_attn.in_proj_z",
+        "base_model.model.model.layers.26.linear_attn.out_proj",
+        "base_model.model.model.layers.27.self_attn.k_proj",
+        "base_model.model.model.layers.27.self_attn.o_proj",
+        "base_model.model.model.layers.27.self_attn.q_proj",
+        "base_model.model.model.layers.27.self_attn.v_proj",
+        "base_model.model.model.layers.28.linear_attn.in_proj_a",
+        "base_model.model.model.layers.28.linear_attn.in_proj_b",
+        "base_model.model.model.layers.28.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.28.linear_attn.in_proj_z",
+        "base_model.model.model.layers.28.linear_attn.out_proj",
+        "base_model.model.model.layers.29.linear_attn.in_proj_a",
+        "base_model.model.model.layers.29.linear_attn.in_proj_b",
+        "base_model.model.model.layers.29.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.29.linear_attn.in_proj_z",
+        "base_model.model.model.layers.29.linear_attn.out_proj",
+        "base_model.model.model.layers.3.self_attn.k_proj",
+        "base_model.model.model.layers.3.self_attn.o_proj",
+        "base_model.model.model.layers.3.self_attn.q_proj",
+        "base_model.model.model.layers.3.self_attn.v_proj",
+        "base_model.model.model.layers.30.linear_attn.in_proj_a",
+        "base_model.model.model.layers.30.linear_attn.in_proj_b",
+        "base_model.model.model.layers.30.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.30.linear_attn.in_proj_z",
+        "base_model.model.model.layers.30.linear_attn.out_proj",
+        "base_model.model.model.layers.31.self_attn.k_proj",
+        "base_model.model.model.layers.31.self_attn.o_proj",
+        "base_model.model.model.layers.31.self_attn.q_proj",
+        "base_model.model.model.layers.31.self_attn.v_proj",
+        "base_model.model.model.layers.32.linear_attn.in_proj_a",
+        "base_model.model.model.layers.32.linear_attn.in_proj_b",
+        "base_model.model.model.layers.32.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.32.linear_attn.in_proj_z",
+        "base_model.model.model.layers.32.linear_attn.out_proj",
+        "base_model.model.model.layers.33.linear_attn.in_proj_a",
+        "base_model.model.model.layers.33.linear_attn.in_proj_b",
+        "base_model.model.model.layers.33.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.33.linear_attn.in_proj_z",
+        "base_model.model.model.layers.33.linear_attn.out_proj",
+        "base_model.model.model.layers.34.linear_attn.in_proj_a",
+        "base_model.model.model.layers.34.linear_attn.in_proj_b",
+        "base_model.model.model.layers.34.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.34.linear_attn.in_proj_z",
+        "base_model.model.model.layers.34.linear_attn.out_proj",
+        "base_model.model.model.layers.35.self_attn.k_proj",
+        "base_model.model.model.layers.35.self_attn.o_proj",
+        "base_model.model.model.layers.35.self_attn.q_proj",
+        "base_model.model.model.layers.35.self_attn.v_proj",
+        "base_model.model.model.layers.36.linear_attn.in_proj_a",
+        "base_model.model.model.layers.36.linear_attn.in_proj_b",
+        "base_model.model.model.layers.36.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.36.linear_attn.in_proj_z",
+        "base_model.model.model.layers.36.linear_attn.out_proj",
+        "base_model.model.model.layers.37.linear_attn.in_proj_a",
+        "base_model.model.model.layers.37.linear_attn.in_proj_b",
+        "base_model.model.model.layers.37.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.37.linear_attn.in_proj_z",
+        "base_model.model.model.layers.37.linear_attn.out_proj",
+        "base_model.model.model.layers.38.linear_attn.in_proj_a",
+        "base_model.model.model.layers.38.linear_attn.in_proj_b",
+        "base_model.model.model.layers.38.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.38.linear_attn.in_proj_z",
+        "base_model.model.model.layers.38.linear_attn.out_proj",
+        "base_model.model.model.layers.39.self_attn.k_proj",
+        "base_model.model.model.layers.39.self_attn.o_proj",
+        "base_model.model.model.layers.39.self_attn.q_proj",
+        "base_model.model.model.layers.39.self_attn.v_proj",
+        "base_model.model.model.layers.4.linear_attn.in_proj_a",
+        "base_model.model.model.layers.4.linear_attn.in_proj_b",
+        "base_model.model.model.layers.4.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.4.linear_attn.in_proj_z",
+        "base_model.model.model.layers.4.linear_attn.out_proj",
+        "base_model.model.model.layers.5.linear_attn.in_proj_a",
+        "base_model.model.model.layers.5.linear_attn.in_proj_b",
+        "base_model.model.model.layers.5.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.5.linear_attn.in_proj_z",
+        "base_model.model.model.layers.5.linear_attn.out_proj",
+        "base_model.model.model.layers.6.linear_attn.in_proj_a",
+        "base_model.model.model.layers.6.linear_attn.in_proj_b",
+        "base_model.model.model.layers.6.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.6.linear_attn.in_proj_z",
+        "base_model.model.model.layers.6.linear_attn.out_proj",
+        "base_model.model.model.layers.7.self_attn.k_proj",
+        "base_model.model.model.layers.7.self_attn.o_proj",
+        "base_model.model.model.layers.7.self_attn.q_proj",
+        "base_model.model.model.layers.7.self_attn.v_proj",
+        "base_model.model.model.layers.8.linear_attn.in_proj_a",
+        "base_model.model.model.layers.8.linear_attn.in_proj_b",
+        "base_model.model.model.layers.8.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.8.linear_attn.in_proj_z",
+        "base_model.model.model.layers.8.linear_attn.out_proj",
+        "base_model.model.model.layers.9.linear_attn.in_proj_a",
+        "base_model.model.model.layers.9.linear_attn.in_proj_b",
+        "base_model.model.model.layers.9.linear_attn.in_proj_qkv",
+        "base_model.model.model.layers.9.linear_attn.in_proj_z",
+        "base_model.model.model.layers.9.linear_attn.out_proj"
       ]
     },
+    "scorer": {
+      "type": "single Q head",
+      "width": 256,
+      "attention_heads": 4,
+      "stored_tensor_dtype": "float32"
+    },
+    "policy": {
+      "separate_from_scorer": true,
+      "width": 256,
+      "attention_heads": 4,
+      "stored_tensor_dtype": "float32"
+    }
+  },
+  "role_model_configuration": {
+    "model_path": "Qwen/Qwen3.5-35B-A3B",
+    "architecture_version": 3,
+    "option_dim": 12,
+    "head_hidden_dim": 256,
+    "feature_dim": 8,
+    "lora_rank": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj"
+    ],
+    "dtype": "bfloat16",
+    "max_length": 2048,
+    "gradient_checkpointing": true,
+    "revision": "59d61f3ce65a6d9863b86d2e96597125219dc754",
+    "semantic_budget_mode": "redistribute",
+    "semantic_global_tokens": 512,
+    "semantic_node_min_tokens": 32,
+    "semantic_node_max_tokens": 1024,
+    "semantic_total_tokens": 8192,
+    "semantic_truncation": "head_tail",
+    "graph_schema": "actual_jobs_v2",
+    "role_observation_version": "observed_results_v2",
+    "frozen_global_cache": true,
+    "language_model_only": true,
+    "require_unquantized_backbone": true,
+    "lora_target_profile": "qwen35_hybrid_attention",
+    "experts_implementation": "eager",
+    "disable_mmap": true,
+    "target_module_list_semantics": "The q/k/v/o list is the dataclass compatibility/default list; the explicit qwen35_hybrid_attention profile resolves all 190 full-attention and Gated DeltaNet targets listed above."
+  },
+  "publisher_config": {
+    "architectures": [
+      "Qwen3_5MoeForConditionalGeneration"
+    ],
+    "image_token_id": 248056,
+    "model_type": "qwen3_5_moe",
+    "text_config": {
+      "attention_bias": false,
+      "attention_dropout": 0.0,
+      "attn_output_gate": true,
+      "dtype": "bfloat16",
+      "eos_token_id": 248044,
+      "full_attention_interval": 4,
+      "head_dim": 256,
+      "hidden_act": "silu",
+      "hidden_size": 2048,
+      "initializer_range": 0.02,
+      "layer_types": [
+        "linear_attention",
+        "linear_attention",
+        "linear_attention",
+        "full_attention",
+        "linear_attention",
+        "linear_attention",
+        "linear_attention",
+        "full_attention",
+        "linear_attention",
+        "linear_attention",
+        "linear_attention",
+        "full_attention",
+        "linear_attention",
+        "linear_attention",
+        "linear_attention",
+        "full_attention",
+        "linear_attention",
+        "linear_attention",
+        "linear_attention",
+        "full_attention",
+        "linear_attention",
+        "linear_attention",
+        "linear_attention",
+        "full_attention",
+        "linear_attention",
+        "linear_attention",
+        "linear_attention",
+        "full_attention",
+        "linear_attention",
+        "linear_attention",
+        "linear_attention",
+        "full_attention",
+        "linear_attention",
+        "linear_attention",
+        "linear_attention",
+        "full_attention",
+        "linear_attention",
+        "linear_attention",
+        "linear_attention",
+        "full_attention"
+      ],
+      "linear_conv_kernel_dim": 4,
+      "linear_key_head_dim": 128,
+      "linear_num_key_heads": 16,
+      "linear_num_value_heads": 32,
+      "linear_value_head_dim": 128,
+      "max_position_embeddings": 262144,
+      "mlp_only_layers": [],
+      "model_type": "qwen3_5_moe_text",
+      "moe_intermediate_size": 512,
+      "mtp_num_hidden_layers": 1,
+      "mtp_use_dedicated_embeddings": false,
+      "num_attention_heads": 16,
+      "num_experts": 256,
+      "num_experts_per_tok": 8,
+      "num_hidden_layers": 40,
+      "num_key_value_heads": 2,
+      "rms_norm_eps": 1e-06,
+      "router_aux_loss_coef": 0.001,
+      "shared_expert_intermediate_size": 512,
+      "use_cache": true,
+      "vocab_size": 248320,
+      "mamba_ssm_dtype": "float32",
+      "rope_parameters": {
+        "mrope_interleaved": true,
+        "mrope_section": [
+          11,
+          11,
+          10
+        ],
+        "rope_type": "default",
+        "rope_theta": 10000000,
+        "partial_rotary_factor": 0.25
+      }
+    },
+    "tie_word_embeddings": false,
+    "transformers_version": "4.57.0.dev0",
+    "video_token_id": 248057,
+    "vision_config": {
+      "deepstack_visual_indexes": [],
+      "depth": 27,
+      "hidden_act": "gelu_pytorch_tanh",
+      "hidden_size": 1152,
+      "in_channels": 3,
+      "initializer_range": 0.02,
+      "intermediate_size": 4304,
+      "model_type": "qwen3_5_moe",
+      "num_heads": 16,
+      "num_position_embeddings": 2304,
+      "out_hidden_size": 2048,
+      "patch_size": 16,
+      "spatial_merge_size": 2,
+      "temporal_patch_size": 2
+    },
+    "vision_end_token_id": 248054,
+    "vision_start_token_id": 248053
+  },
+  "publisher_generation_config": {
+    "bos_token_id": 248044,
+    "do_sample": true,
+    "eos_token_id": [
+      248046,
+      248044
+    ],
+    "pad_token_id": 248044,
+    "temperature": 1.0,
+    "top_k": 20,
+    "top_p": 0.95,
+    "transformers_version": "4.57.0.dev0"
+  },
+  "generation_protocol": {
+    "tokenizer_revision": "59d61f3ce65a6d9863b86d2e96597125219dc754",
+    "chat_template_revision": "59d61f3ce65a6d9863b86d2e96597125219dc754",
+    "enable_thinking": false,
+    "inference_generation_config": "vllm",
+    "training_role_sequence_limit": 2048,
+    "service_context_limit": 32768,
+    "publisher_generation_defaults_are_not_service_request_overrides": true
+  },
+  "publisher_files": [
     {
-      "repo_id": "moonshotai/Kimi-K2.6",
-      "revision": "7eb5002f6aadc958aed6a9177b7ed26bb94011bb",
-      "format": "Official INT4 experts; BF16 other tensors",
-      "files": [
-        {
-          "filename": "LICENSE",
-          "bytes": 1465,
-          "sha256": "1d4ab2d8404287de44429024a78b58d3aabc4df9d0c490e73fec9ff1fd842529"
-        },
-        {
-          "filename": "README.md",
-          "bytes": 29325,
-          "sha256": "95db3be1d0473e482c7aa901f237ad7af8bb7929625a777b27428081bb8ea9f7"
-        },
-        {
-          "filename": "chat_template.jinja",
-          "bytes": 4022,
-          "sha256": "8bf859698fd4781c0e1e1c63ce74422aab27e53ccc5f47116317c64cda06132f"
-        },
-        {
-          "filename": "config.json",
-          "bytes": 5416,
-          "sha256": "85825ca6e18cbe539eb83ee09eedfb3f4222265929f06e9f535a6d9364f55899"
-        },
-        {
-          "filename": "configuration_deepseek.py",
-          "bytes": 10615,
-          "sha256": "c1327c307e2dd11d1bf0adc8bcef69ae51f9617a3a869a9497bb08aec912f931"
-        },
-        {
-          "filename": "configuration_kimi_k25.py",
-          "bytes": 5435,
-          "sha256": "2bc5487efced291e0e6aa3b24aad1082bade4172aff94ea1b6f0ae20a1d6bb4f"
-        },
-        {
-          "filename": "docs/deploy_guidance.md",
-          "bytes": 3648,
-          "sha256": "103a660460f6ce9b43a68b5c7a98a76271b5b3121dc57afd521fe11953abc530"
-        },
-        {
-          "filename": "generation_config.json",
-          "bytes": 52,
-          "sha256": "5431db52f431099f309ece737670e977de148f8cfd5340e920ff1f44d7cff596"
-        },
-        {
-          "filename": "kimi_k25_processor.py",
-          "bytes": 6906,
-          "sha256": "537d7a708e1654766fc628c99667bdb9364136d3541633d6522ac43cef9bfea0"
-        },
-        {
-          "filename": "kimi_k25_vision_processing.py",
-          "bytes": 10019,
-          "sha256": "498e20753c9aa6b6224ddbcd05b04deb7e987b76595bf5c28ee8583f33ebc375"
-        },
-        {
-          "filename": "media_utils.py",
-          "bytes": 13179,
-          "sha256": "77a6b1fed3580b0562443092928a0240c2989e3950377e93893952123ae48e3d"
-        },
-        {
-          "filename": "model-00001-of-000064.safetensors",
-          "bytes": 995001888,
-          "sha256": "cb6e037206c1936876c33f348bc644fd6f9f4d7ac973f8906359977c1eaebd43"
-        },
-        {
-          "filename": "model-00002-of-000064.safetensors",
-          "bytes": 9809047464,
-          "sha256": "a609fccff2406505ae575850a51470474e8bb3eb825ddd208f84aae31cfb4960"
-        },
-        {
-          "filename": "model-00003-of-000064.safetensors",
-          "bytes": 9809047464,
-          "sha256": "f79ae8d220ecbba674c1224bbb36e2ad826ccc365765a89fab57555af47a8540"
-        },
-        {
-          "filename": "model-00004-of-000064.safetensors",
-          "bytes": 9809047464,
-          "sha256": "efa041ff6fd295b3a5b8bc4fe7db502d32e6f887d650353425c3074388ecaa33"
-        },
-        {
-          "filename": "model-00005-of-000064.safetensors",
-          "bytes": 9809047464,
-          "sha256": "6f772c9bf434aea41b6f6dc05eb32da4e8259548a3145d79e26607b4a9d1753b"
-        },
-        {
-          "filename": "model-00006-of-000064.safetensors",
-          "bytes": 9809047464,
-          "sha256": "5cf4c4593e5a7e5b4ababc8991245ab53121be414558099dc12dd01ab00eb920"
-        },
-        {
-          "filename": "model-00007-of-000064.safetensors",
-          "bytes": 9809047464,
-          "sha256": "66775118dec5d4f549aa19d0c8cd07dcc42c48d4d9dd6f289f772ec5d692a3af"
-        },
-        {
-          "filename": "model-00008-of-000064.safetensors",
-          "bytes": 9809047464,
-          "sha256": "cdca9b399dce8e82e0cf5bf9c59f600ea9f6001c56b84c78d9364cb8f55f48a5"
-        },
-        {
-          "filename": "model-00009-of-000064.safetensors",
-          "bytes": 9809047464,
-          "sha256": "4f8c2dcde7c51a3eca91bb892eacd8bcbcd7724842254a0000bb1c45faf92eb2"
-        },
-        {
-          "filename": "model-00010-of-000064.safetensors",
-          "bytes": 9809047464,
-          "sha256": "311ffdf698fb27c03697598cd2c652a1ec210d9a7351d5c2de1b14d605635195"
-        },
-        {
-          "filename": "model-00011-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "b2a93273e323843ad067e00dc859f63d90f62bd2e81ef0a77ffe49a9f39a3607"
-        },
-        {
-          "filename": "model-00012-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "fa3200710275f7e8d60cdb91d1d623477fda55d04bda5e32be29b5809383f4ca"
-        },
-        {
-          "filename": "model-00013-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "8925783dd26187bbff4f9030aeff392c3fe3d931409daa341d673bc93393965d"
-        },
-        {
-          "filename": "model-00014-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "ee309d11f1c4194db36e961293d6e7b9d3c3c8227da5064ffc32b806ac03cc91"
-        },
-        {
-          "filename": "model-00015-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "4859b4dfe8eb7998bbda5e453f9336b139881d403b0a8c128b98842c9c27800d"
-        },
-        {
-          "filename": "model-00016-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "4345e4706a01e63aef6a43025bc101ebbfb8e8c235ea44604fb9c5ad7038b4cc"
-        },
-        {
-          "filename": "model-00017-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "e0b6e9d578c7f0eaa3e91aa917fb3cbdcaf5637caa3ad97e9dc002bcb35feb22"
-        },
-        {
-          "filename": "model-00018-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "1bef116d936999f347b83403ee13fe479f51214a87592409121614793d7e65e7"
-        },
-        {
-          "filename": "model-00019-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "71b624faee1df5cc99bad259b018befb0bdbbdd160af3d130487bf1165d48b9a"
-        },
-        {
-          "filename": "model-00020-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "9c6ee52ccb57bd2fdba6077a18faaf3ea6da1b3536597af4fef6c5cf713bec34"
-        },
-        {
-          "filename": "model-00021-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "fb99455eb90ddd9ab343538496c3e90b40868c0029a344d79b0b94f73820dd1f"
-        },
-        {
-          "filename": "model-00022-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "f98118e5b5e700ad57b510f3c80183fc2e5e3dcd1badf43a959ce63140ae4e61"
-        },
-        {
-          "filename": "model-00023-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "0a4f4fb4557c2954dc07ffd8d81af93587ab784e6810eca093fef6b0fab03d3c"
-        },
-        {
-          "filename": "model-00024-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "9fa6f9aba1f02a552a66d0bcf2808fdc9192425b5554684b637d7e9d9312fb3d"
-        },
-        {
-          "filename": "model-00025-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "98a0dc92227ed3beb2a1491558d2fa631dca256a5c28e1895b1bf28ae4c9731b"
-        },
-        {
-          "filename": "model-00026-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "6b6e19204d6f74af7ff2c78c67a33991f5ee4105e0262d99eda6ba6bc0362630"
-        },
-        {
-          "filename": "model-00027-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "8476d21ab258330c16020124d634d2cd1f22a5a7859d3dd778132dea0271e810"
-        },
-        {
-          "filename": "model-00028-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "ee16b8cf5c8a9efb0c5fd89c282622e5cfbf4f49fb28d5b3638240434dadef7a"
-        },
-        {
-          "filename": "model-00029-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "87e0e7b5caf5b39314caf4158b666d0b0c9fe00a96dd09ea545563f4a6f408ed"
-        },
-        {
-          "filename": "model-00030-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "3f8d186de5354913a9aab43b26395c97bdf27b695586260bbd6492ba8ab795dc"
-        },
-        {
-          "filename": "model-00031-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "696da932f44c248e96ca8b616424ee87e0609fb32ef640bd086f296665ad4ad8"
-        },
-        {
-          "filename": "model-00032-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "eee21740e4d75ba175965f322dd8d2747411fedc1b59b9a0559630d7c94d06c6"
-        },
-        {
-          "filename": "model-00033-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "cc9a7b5737151ca68fed23cb16308aff1527d8932be59d507318795025a9034e"
-        },
-        {
-          "filename": "model-00034-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "783faa4cbeac1c7336070596c5a3f603bd49193c1ab6da74eb29d6fed935d905"
-        },
-        {
-          "filename": "model-00035-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "0256b0e5c83716c66871f0b63b0b87fe92aab595355aae583d5a674a691411e2"
-        },
-        {
-          "filename": "model-00036-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "6a86f1000cad632e3bfc96507d8217ccda56e7e1581671e592071a1e1c23c210"
-        },
-        {
-          "filename": "model-00037-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "0c7c1080287ab3b2968335b87c0652000b0bfdffa1925be375fca3bda44c307f"
-        },
-        {
-          "filename": "model-00038-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "3def12f0c85c494faafdfa3ce30d53aae7eff0baf9d195a347893a09b411e69f"
-        },
-        {
-          "filename": "model-00039-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "2e09b40d7cc63d12c721b80a628246d984e39613b8c04c3f17c178d8c2b2b08e"
-        },
-        {
-          "filename": "model-00040-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "e2274434831845c62d4c82e15e37583720062b97093b897333d59ec2ff037097"
-        },
-        {
-          "filename": "model-00041-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "a7105088b5deeabf085121a0b1107fac42662eb3fea5baa09f027f0a7c5e9bdf"
-        },
-        {
-          "filename": "model-00042-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "1215992a0a15aac21b7100c1f236c8029e361d03e69749d5d3e2d93c94dc8315"
-        },
-        {
-          "filename": "model-00043-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "170fa46329c380b972269f75ccf01c3a4addeb29dd4ee865a700e1be3a0241c0"
-        },
-        {
-          "filename": "model-00044-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "46101090a2c0b8c1a656a52ff9f10b71b42235470df68acf496eaaf1907cd4ef"
-        },
-        {
-          "filename": "model-00045-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "e0deb85da8e48a71353ce08b6b834de618791ee493a4e168ba9668f5f508be3b"
-        },
-        {
-          "filename": "model-00046-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "5ba68e4ac7c67a64d61804ebc3107fb183fa613591ea6da58d331a58f43d89a3"
-        },
-        {
-          "filename": "model-00047-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "29c023ba04d62faae4d2ffb73b59b5595d849727cb937626366cb512586fd5bb"
-        },
-        {
-          "filename": "model-00048-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "ebbde9208528e898fd82a76825c3149e3054a540824b5ca98e1cd56ca7ecfc11"
-        },
-        {
-          "filename": "model-00049-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "4cb4685422970c3933807e3bd2bd81e2b931a0fb4aa43a900d17bc692a2efc7a"
-        },
-        {
-          "filename": "model-00050-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "f9a2ca8f3adb0e15215be60d9d0b2f11a8aa47cffaee8185c738cb7703fc8a23"
-        },
-        {
-          "filename": "model-00051-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "bc9588957be18f8e10b21e279b1764fa140b316c16a2d09583fcaa23188c8ce0"
-        },
-        {
-          "filename": "model-00052-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "8861c6344eb946121bdc67bb3c0c64f6c600c13d83861399862b2c4176d5d25f"
-        },
-        {
-          "filename": "model-00053-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "7e9ed6ed7757d845262390e645c663be925c5634c1afea5e918a0dec5bd4e034"
-        },
-        {
-          "filename": "model-00054-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "a1d4d2090a4e1d2500a5eb7b64a85b9a2386b50e9081220387b910c2153ec4a4"
-        },
-        {
-          "filename": "model-00055-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "7e67cb8e165d64674fc743a80b66588feab2f4319d4772b578ca9778538ceb5a"
-        },
-        {
-          "filename": "model-00056-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "b92fb0d442a6c4c3bf68fcc9d2e88ecb0d35f775d09bbad72096a2f245c92010"
-        },
-        {
-          "filename": "model-00057-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "fbce540ebf43d5161cb69ca732a4d32850c73b051d29cd065d3fd717346b5b47"
-        },
-        {
-          "filename": "model-00058-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "e15bd7e760663b37a5c5eecaed66ac936b3540f5125ba71cc13607a07a26eeca"
-        },
-        {
-          "filename": "model.safetensors.index.json",
-          "bytes": 23597438,
-          "sha256": "00a982d005d6e39b25cfcb379a7e6d57f393fc0346e70892ea4271c259c0d1e3"
-        },
-        {
-          "filename": "modeling_deepseek.py",
-          "bytes": 78528,
-          "sha256": "1fd8d198ff6ad69a5aec6fd85bf489d91ae2c432560b1e8ba7e34f710463c80a"
-        },
-        {
-          "filename": "modeling_kimi_k25.py",
-          "bytes": 50961,
-          "sha256": "ef28f469e7cb5ab91008a52c1b34718ad37de8428e2ed6aadc408d031a38a372"
-        },
-        {
-          "filename": "preprocessor_config.json",
-          "bytes": 742,
-          "sha256": "0c43520fbcc076dacbffcf0273f0dfa0ee318ff9aa55537cf7f2788d906de7b2"
-        },
-        {
-          "filename": "tiktoken.model",
-          "bytes": 2795286,
-          "sha256": "b6c497a7469b33ced9c38afb1ad6e47f03f5e5dc05f15930799210ec050c5103"
-        },
-        {
-          "filename": "tokenization_kimi.py",
-          "bytes": 13462,
-          "sha256": "2ab1ffb6f5c4380758bd8d9752ff1041c09024182676a4311528fbdf92fb9599"
-        },
-        {
-          "filename": "tokenizer_config.json",
-          "bytes": 4862,
-          "sha256": "12fcab43d2b6068f46769f5ff373960bf7c17a94d7abbc50e2491306b2f6cf58"
-        },
-        {
-          "filename": "tool_declaration_ts.py",
-          "bytes": 16517,
-          "sha256": "97e09ed262f1cd38f87584eaa46c5d4d5b3c9725dd299b21642f389040794ebc"
-        },
-        {
-          "filename": "model-00059-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "46dcfd4ef0e87d6ac5fb72275cca67dcc1422adf05aa16a03eab747fdf387aa0"
-        },
-        {
-          "filename": "model-00063-of-000064.safetensors",
-          "bytes": 108556344,
-          "sha256": "ace801249ecca82c93b82c0abfc18ab21beca2fea8e94c410353e26c14cd11f2"
-        },
-        {
-          "filename": "model-00064-of-000064.safetensors",
-          "bytes": 833769904,
-          "sha256": "af1c927919bd073c2ab893bf2c6d9826100a06828c3b40f0128fabb4660a610d"
-        },
-        {
-          "filename": "model-00062-of-000064.safetensors",
-          "bytes": 4697635160,
-          "sha256": "794cc68f5dcb9d7fbb1c10ef7346ae37c094ecf05a147137f1a7d2163ab6e031"
-        },
-        {
-          "filename": "model-00060-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "3f942b79b835d3eaf96117302adbb7baa8ebea283cc9c3f32c27c04f3772e3a9"
-        },
-        {
-          "filename": "model-00061-of-000064.safetensors",
-          "bytes": 9809050936,
-          "sha256": "ad295842a722b5cc700fbbf485ec9a9875f0aab756326b6b62ff4fc4bed0bd1b"
-        }
-      ]
+      "file": "LICENSE",
+      "bytes": 11544,
+      "sha256": "bbedc3fda3305820b977265f01b8619d87570a6739de3a5582c3464840f1e57a",
+      "publisher_git_blob_sha1": "f938136e3adacfd92be087f6e113b5d6d97f678f"
     },
     {
-      "repo_id": "Qwen/Qwen3.5-35B-A3B-FP8",
-      "revision": "9d1823d2dee688a6b25e77009dc727688c44936e",
-      "format": "Publisher FP8 weights; BF16 model dtype",
-      "files": [
-        {
-          "filename": "LICENSE",
-          "bytes": 11343,
-          "sha256": "50cbab8a892c5f2993b8c7351a99182507472def3b1374558308605d99b86b32"
-        },
-        {
-          "filename": "README.md",
-          "bytes": 93391,
-          "sha256": "2e09fd9d54bd1854b1be9e161fe65002493e025812a2447399e8eeea6b90bbfc"
-        },
-        {
-          "filename": "chat_template.jinja",
-          "bytes": 7756,
-          "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715"
-        },
-        {
-          "filename": "config.json",
-          "bytes": 20530,
-          "sha256": "236c373b0682a4f40c2fa49ef8e5f722a87a8dbfe265286b6d5260b23d7cb229"
-        },
-        {
-          "filename": "configuration.json",
-          "bytes": 51,
-          "sha256": "2d4464e2ead06bc9bc718c781309ad1e7baded626d66e8dcdc8b469ba185faf0"
-        },
-        {
-          "filename": "generation_config.json",
-          "bytes": 244,
-          "sha256": "4f25002776b741773666203dcea8f54619f177ace3ae483d311102092a4658e0"
-        },
-        {
-          "filename": "merges.txt",
-          "bytes": 3353259,
-          "sha256": "a9d356d7bdf1ef4949e3e748e95b8e10ad9d4e2e838eddc38a0a7b6b94d1db8d"
-        },
-        {
-          "filename": "model.safetensors-00001-of-00014.safetensors",
-          "bytes": 2685395560,
-          "sha256": "8eec0929a43c759abc4e230ca6c55b1a314f26b8870cb63941b674b95ce6d49e"
-        },
-        {
-          "filename": "model.safetensors-00002-of-00014.safetensors",
-          "bytes": 2685393512,
-          "sha256": "4cb364215f617628defac9a1345c9122ab65b36d555349285f73b7595eb068a6"
-        },
-        {
-          "filename": "model.safetensors-00003-of-00014.safetensors",
-          "bytes": 2685393512,
-          "sha256": "f94b20e10e856926b902a51c9aa575ff8beb483cef6130996e098a40e3a2a92a"
-        },
-        {
-          "filename": "model.safetensors-00004-of-00014.safetensors",
-          "bytes": 2685394536,
-          "sha256": "c3a0d1593280aeb44ba100a1dbef643071284519b58654b14591984ae558c5d3"
-        },
-        {
-          "filename": "model.safetensors-00005-of-00014.safetensors",
-          "bytes": 2685395560,
-          "sha256": "a754c48ee879302bbb16debedea9032010bb616aa3fe9f1fd0340f81230b5e12"
-        },
-        {
-          "filename": "model.safetensors-00006-of-00014.safetensors",
-          "bytes": 2685394536,
-          "sha256": "b5435e836f62b7d915e84f0f327d07ed773a0939d4acd3e16b9b082c35318ce9"
-        },
-        {
-          "filename": "model.safetensors-00007-of-00014.safetensors",
-          "bytes": 2685393512,
-          "sha256": "684840ee3af77f22ddaa5df7330384c472b7e50efdd4ba1699558152a182045c"
-        },
-        {
-          "filename": "model.safetensors-00008-of-00014.safetensors",
-          "bytes": 2685393512,
-          "sha256": "70ac96a66c7bc85d97649e460bdfaebc5947c191bb0742d596c35d53d833060a"
-        },
-        {
-          "filename": "model.safetensors-00009-of-00014.safetensors",
-          "bytes": 3645492144,
-          "sha256": "775cec9a6755ecddcd3d41954f14e40051a5d8306ce6d5f6ccd96af58a8d93cb"
-        },
-        {
-          "filename": "model.safetensors-00010-of-00014.safetensors",
-          "bytes": 2685398632,
-          "sha256": "5a86d13781bb91dbfce6602095e424f9b53fe76d3bb0d1ea1800f584fc1f41ab"
-        },
-        {
-          "filename": "model.safetensors-00011-of-00014.safetensors",
-          "bytes": 2685400680,
-          "sha256": "6f0c1b222c972fb8ce4936f861a71e6f2987db80b523d290954473d7643bf417"
-        },
-        {
-          "filename": "model.safetensors-00012-of-00014.safetensors",
-          "bytes": 2685399144,
-          "sha256": "040c27529a66e43f3a2cfef338ac121f5897ea476984ee3ba35540a49388809b"
-        },
-        {
-          "filename": "model.safetensors-00013-of-00014.safetensors",
-          "bytes": 3011229472,
-          "sha256": "ee1088b806b0ce6ad374eec852503efa68d70f01480bd75815f8ca7b91327df0"
-        },
-        {
-          "filename": "model.safetensors-00014-of-00014.safetensors",
-          "bytes": 1267650368,
-          "sha256": "38842b8f3d0a4ea29c064317591c4b6529efbcc0a1f7665c41b58e6852638dc9"
-        },
-        {
-          "filename": "model.safetensors.index.json",
-          "bytes": 8088168,
-          "sha256": "b009f7a49c442fce959a2ff6fee41c69248879b90d7ff5636ec6d2068ac4876d"
-        },
-        {
-          "filename": "preprocessor_config.json",
-          "bytes": 390,
-          "sha256": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516"
-        },
-        {
-          "filename": "tokenizer.json",
-          "bytes": 12807982,
-          "sha256": "5f9e4d4901a92b997e463c1f46055088b6cca5ca61a6522d1b9f64c4bb81cb42"
-        },
-        {
-          "filename": "tokenizer_config.json",
-          "bytes": 16710,
-          "sha256": "316230d6a809701f4db5ea8f8fc862bc3a6f3229c937c174e674ff3ca0a64ac8"
-        },
-        {
-          "filename": "video_preprocessor_config.json",
-          "bytes": 385,
-          "sha256": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13"
-        },
-        {
-          "filename": "vocab.json",
-          "bytes": 6722759,
-          "sha256": "ce99b4cb2983d118806ce0a8b777a35b093e2000a503ebde25853284c9dfa003"
-        }
-      ]
+      "file": "README.md",
+      "bytes": 93160,
+      "sha256": "71c3bbc2eadadd5980bbdbb15df958c27d42ede24821015602a021109aacf492",
+      "publisher_git_blob_sha1": "75c6f5f04f1108770b571179ed8aa6a37d631aa4"
+    },
+    {
+      "file": "chat_template.jinja",
+      "bytes": 7756,
+      "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+      "publisher_git_blob_sha1": "a585dec894e63da457d9440ec6aa7caa16d20860"
+    },
+    {
+      "file": "config.json",
+      "bytes": 3544,
+      "sha256": "5e4d7f74fec2f360eb9cfbfcd6ec0c4c76e684d3a11caaed259d9fd9bfbc7944",
+      "publisher_git_blob_sha1": "2fd92bfc9ee58bd0274ad207d4120c3e7458dde8"
+    },
+    {
+      "file": "generation_config.json",
+      "bytes": 244,
+      "sha256": "4f25002776b741773666203dcea8f54619f177ace3ae483d311102092a4658e0",
+      "publisher_git_blob_sha1": "5ff346d6f85d566dd3e77105e91ce8dcfef766f0"
+    },
+    {
+      "file": "merges.txt",
+      "bytes": 3353259,
+      "sha256": "a9d356d7bdf1ef4949e3e748e95b8e10ad9d4e2e838eddc38a0a7b6b94d1db8d",
+      "publisher_git_blob_sha1": "a494e019ca1502219fd0128658b979e5f05ae8e8"
+    },
+    {
+      "file": "model.safetensors-00001-of-00014.safetensors",
+      "bytes": 5368709816,
+      "sha256": "1b9f16fdae2411c0c50dbc7a5dacaebd033b28f3fd083e708f53cda3420e7247"
+    },
+    {
+      "file": "model.safetensors-00002-of-00014.safetensors",
+      "bytes": 5368709808,
+      "sha256": "79f06bc069d273b37ae7e1ef21eb24d8641ac74227b6139b00af55addf27e9ee"
+    },
+    {
+      "file": "model.safetensors-00003-of-00014.safetensors",
+      "bytes": 5368709808,
+      "sha256": "2cb56343806fd845eb2ca3ff5c46b1de409e05dc09d03edb86f7fb2d752b4f3d"
+    },
+    {
+      "file": "model.safetensors-00004-of-00014.safetensors",
+      "bytes": 5368709816,
+      "sha256": "39a39c799e52db2ca3d6123dad077b7dbfff3dbad4bcc9cbf66502db7be650a3"
+    },
+    {
+      "file": "model.safetensors-00005-of-00014.safetensors",
+      "bytes": 5368709816,
+      "sha256": "1a3b31ebb04bffa60d0ad5d9f2973d476d88959bb842ce003f068a6a9c5d4776"
+    },
+    {
+      "file": "model.safetensors-00006-of-00014.safetensors",
+      "bytes": 5368709816,
+      "sha256": "af5f17d292df6b200ee928d7dac30a66eab3e8f6d5d88a84fe1d27859d4a64fe"
+    },
+    {
+      "file": "model.safetensors-00007-of-00014.safetensors",
+      "bytes": 5368709808,
+      "sha256": "52885dbecd4e8e2e52e6cd50a1693a640ce622f219c35bf317aad89f72d956fc"
+    },
+    {
+      "file": "model.safetensors-00008-of-00014.safetensors",
+      "bytes": 5368709808,
+      "sha256": "43f232ba029dc4ca5ad994e38913c6ff74f110198e005ee2f35e42f9ce438cb3"
+    },
+    {
+      "file": "model.safetensors-00009-of-00014.safetensors",
+      "bytes": 5255463936,
+      "sha256": "8fa6a375dd539822b19ad18ad002f8acedd4920ff770bc284cfb428a213c9f17"
+    },
+    {
+      "file": "model.safetensors-00010-of-00014.safetensors",
+      "bytes": 5368710456,
+      "sha256": "d89e80aaf84c0b8a442162fc97c38fe7ce85d11ae728f67aa449350da86f8212"
+    },
+    {
+      "file": "model.safetensors-00011-of-00014.safetensors",
+      "bytes": 5368710464,
+      "sha256": "5b774025e5ed974256ce40498bfe4e1ad9ae8a4f13f9e9145666d24ea7404cae"
+    },
+    {
+      "file": "model.safetensors-00012-of-00014.safetensors",
+      "bytes": 5368710456,
+      "sha256": "d0f0bd7a5f09e6e05aee9a6ef5ba97fe678b0e19b891a81969682b0bdc9bb5c7"
+    },
+    {
+      "file": "model.safetensors-00013-of-00014.safetensors",
+      "bytes": 5367839544,
+      "sha256": "da8cc27a2a99eeba5674bfef03c80b3c4f08edfd839ad319a7702fcaedfd874f"
+    },
+    {
+      "file": "model.safetensors-00014-of-00014.safetensors",
+      "bytes": 2224764664,
+      "sha256": "d5e08a7dd670d7ef8da38e7af29cb8cdf42ecded5dfb2d9fcaf06cae79dfaa41"
+    },
+    {
+      "file": "model.safetensors.index.json",
+      "bytes": 187463,
+      "sha256": "d8d0b7ca4e61ae107e3e87a3ff21136b3ac7c789e64bb24267227ca804e04205",
+      "publisher_git_blob_sha1": "fa29b65f5f81aebcebed6335ba54df57b67b22bb"
+    },
+    {
+      "file": "preprocessor_config.json",
+      "bytes": 390,
+      "sha256": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+      "publisher_git_blob_sha1": "2ea84a437d448ff71b08df68fdd949d5cc4ebb64"
+    },
+    {
+      "file": "tokenizer.json",
+      "bytes": 12807982,
+      "sha256": "5f9e4d4901a92b997e463c1f46055088b6cca5ca61a6522d1b9f64c4bb81cb42"
+    },
+    {
+      "file": "tokenizer_config.json",
+      "bytes": 16710,
+      "sha256": "316230d6a809701f4db5ea8f8fc862bc3a6f3229c937c174e674ff3ca0a64ac8",
+      "publisher_git_blob_sha1": "eda48d3e75a8e59a8479ee4ec8b37f76e711d9c1"
+    },
+    {
+      "file": "video_preprocessor_config.json",
+      "bytes": 385,
+      "sha256": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13",
+      "publisher_git_blob_sha1": "3ba673a5ad7d4d13f54155ecd38b2a94a6dac8fe"
+    },
+    {
+      "file": "vocab.json",
+      "bytes": 6722759,
+      "sha256": "ce99b4cb2983d118806ce0a8b777a35b093e2000a503ebde25853284c9dfa003",
+      "publisher_git_blob_sha1": "0aa0ce0658d60ac4a5d609f4eadb0e8e43514176"
     }
   ],
-  "deployment": {
-    "qwen3_8b": {
-      "model_repo": "Qwen/Qwen3-8B",
-      "dtype": "bfloat16",
-      "gpu_count": 1,
-      "local_files_only": true,
-      "trust_remote_code": false,
-      "uvicorn_workers": 1
-    },
-    "kimi_k26": {
-      "model_repo": "moonshotai/Kimi-K2.6",
-      "gpu_count": 7,
-      "tensor_parallel_size": 1,
-      "pipeline_parallel_size": 7,
-      "max_model_len": 32768,
-      "max_num_seqs": 2,
-      "max_num_batched_tokens": 512,
-      "gpu_memory_utilization": 0.92,
-      "enforce_eager": true
-    },
-    "qwen35_fp8": {
-      "model_repo": "Qwen/Qwen3.5-35B-A3B-FP8",
-      "gpu_count": 1,
-      "dtype": "bfloat16",
-      "max_model_len": 32768,
-      "max_num_seqs": 1,
-      "max_num_batched_tokens": 2048,
-      "gpu_memory_utilization": 0.5651634330042863,
-      "enforce_eager": true
-    },
-    "qwen35_fp8_decode_graph": {
-      "model_repo": "Qwen/Qwen3.5-35B-A3B-FP8",
-      "gpu_count": 1,
-      "weight_format": "publisher_fp8_block128",
-      "activation_quantization": "dynamic_fp8",
-      "dtype": "bfloat16",
-      "max_model_len": 32768
-    }
+  "publisher_file_count": 26,
+  "publisher_total_bytes": 71927083212,
+  "model_lock_sha256": "922b07c49ea65f7deabd0844e6fd2a431da11ae220f9e67c181b3b17ab633d9f",
+  "checkpoint_restore": {
+    "required_base_model_revision": "59d61f3ce65a6d9863b86d2e96597125219dc754",
+    "saved_components": [
+      "Drafter adapter",
+      "role heads",
+      "tokenizer",
+      "model configuration",
+      "training configuration",
+      "optimizer state",
+      "optimizer step count",
+      "Torch CPU RNG state",
+      "fixed SFT actor reference for GVO"
+    ],
+    "base_weights_reduplicated": false
+  },
+  "external_api_backbones": {
+    "relation_to_reference": "The API-backed backbone comparisons are separate from local reference-role training; this configuration does not imply weight access or local fine-tuning of external API models."
+  },
+  "architecture_details": {
+    "hidden_size": 2048,
+    "feature_dim": 8,
+    "state_dim": 2056,
+    "option_dim": 12,
+    "node_dim": 12,
+    "node_text_dim": 2048,
+    "directed_relation_types": 11,
+    "scorer_and_policy_separately_parameterized": true,
+    "full_attention_layers": 10,
+    "gated_deltanet_layers": 30,
+    "frozen_additional_components": [
+      "shared expert",
+      "embedding",
+      "lm_head"
+    ],
+    "lora_bias": "none"
   }
 }
