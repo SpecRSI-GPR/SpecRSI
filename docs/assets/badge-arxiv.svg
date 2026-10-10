@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="117" height="28" viewBox="0 0 117 28" role="img" aria-label="arXiv Paper">
+  <title>arXiv Paper</title>
+  <defs><clipPath id="round"><rect width="117" height="28" rx="5"/></clipPath></defs>
+  <g clip-path="url(#round)">
+    <rect width="117" height="28" fill="#F6F8FA"/>
+    <rect width="33" height="28" fill="#B31B1B"/>
+    <rect x="33" width="84" height="28" fill="#EAEFF4"/>
+  </g>
+  <g transform="translate(8 6)" fill="none" stroke="white" stroke-width="1.4" stroke-linejoin="round"><path d="M1 1h9l4 4v11H1z"/><path d="M10 1v4h4M4 8h7M4 11h7M4 14h5"/></g>
+  <text x="75.0" y="18.7" fill="#243247" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle">arXiv Paper</text>
+</svg>
