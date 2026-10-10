@@ -193,7 +193,7 @@ SpecRSI 在中间版本尚未完成全部评估时，就为智能体起草可执
 | MBPP 工作流 | EMAS | 54.6 → **59.4** | 任务推理 token 数 11,720 → **11,020** |
 | Game24 工作流 | EMAS | 51.2 → **54.7** | 任务推理 token 数 12,830 → **12,080** |
 
-代码基线还包括 DGM、SICA、Beam-Spec，以及 FlashEvolve 的异步模式和可选推测模式，两种模式分别比较。提示词对照包括 MIPROv2、无示例的 MIPROv2、Trace、TextGrad 和 GEPA。工作流对照包括 Genesis、Genesis+SOP、AFlow 和 ADAS。提示词与工作流各行未报告 SD。
+代码基线还包括 DGM、SICA、Beam-Spec，以及 FlashEvolve 的异步模式和可选推测模式，两种模式分别比较。提示词对照包括 MIPROv2、无示例的 MIPROv2、Trace、TextGrad 和 GEPA。工作流对照包括 Genesis、Genesis+SOP、AFlow 和 ADAS。
 
 SWE-Pro 代码结果采用的实验配置，不同于匹配权限系统表中得到 21.7% 的配置。执行完成率是另一个指标：SpecRSI 报告 94.7%，FlashEvolve 两种模式分别为 91.2% 和 92.8%。独立的冻结后继版本审计在其声明的未触碰数据划分上报告 **69.4 ± 1.3%**，以及 **23/25 次达到目标**。
 
@@ -233,7 +233,6 @@ python -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.[test]'
 python -m specrsi.cli doctor
-python -m specrsi.cli demo
 ```
 
 基础依赖为 NumPy、SciPy、PyYAML 和 HTTPX。可选依赖组为 `test`、`models`、`data` 和 `solver`。学习角色的执行与完整测试套件需要模型依赖：
@@ -245,7 +244,7 @@ python -m pytest -q
 
 `models` 依赖组指定 PyTorch >=2.6、Transformers 4.57.6、Hugging Face Hub 0.36.2、PEFT 0.18.1、Accelerate >=1.2、FastAPI >=0.115 和 Uvicorn >=0.30。`data` 依赖组包含 Datasets 3.6.0；`solver` 依赖组固定 Pyomo 6.9.5 和 highspy 1.12.0。可使用 `python -m pip install -e '.[models,data,solver,test]'` 安装集成所需的依赖组。
 
-内置验证补全求解器使用 SciPy MILP，无需可选 Pyomo/HiGHS 依赖组。`doctor` 报告已安装版本，仅在显式配置后联系模型端点。`demo` 是使用旧版启发式搜索的内存整数表达式冒烟测试，标记为 `demo_only: true`。它不是论文的 VATS 基准运行器。
+内置验证补全求解器使用 SciPy MILP，无需可选 Pyomo/HiGHS 依赖组。`doctor` 报告已安装版本，仅在显式配置后联系模型端点。可选命令 `python -m specrsi.cli demo` 使用小型 CPU 示例检查候选创建、证据记录、预算核算与接受流程，无需数据集或 API 调用。基准实验使用下述 VATS 入口。
 
 **发布验证：** 已在 Python 3.13 下检查可编辑安装、doctor、demo 及以下不依赖模型的测试集合；**267 项测试通过**。
 
@@ -263,24 +262,19 @@ python -m pytest -q \
 
 ## 🚀 运行实验与训练
 
-入口接受**调用者提供的配置**。下列路径是占位示例，不是随代码提供的预设。
+文本、代码和工作流任务通过 `run_experiment.py` 执行 VATS，原生科学任务通过 `run_paper_science.py` 执行。每个命令读取完整的 YAML 配置；将下列路径替换为实验配置及训练检查点的位置。
 
 ```sh
-python scripts/run_experiment.py run --config path/to/run.yaml
+python scripts/run_experiment.py --config path/to/run.yaml
 python scripts/run_paper_science.py --config path/to/science.yaml
 python scripts/run_paper_science_comparison.py --config path/to/comparison.yaml --stage all
 python scripts/train.py --config path/to/train.yaml --stage warmup
 python scripts/train.py --config path/to/train.yaml --stage gvo --resume path/to/warmup
 ```
 
-显式选择论文使用的搜索算法：
+在完整运行配置中，`search.algorithm: vats_pdf` 选择 `VATSEngine`，`search.controller: learned` 加载训练后的 Drafter、Scorer 和 Policy。同时配置固定版本的模型端点、数据集或仿真器注册、不重叠的选择与审计案例、随机种子、预算及输出目录。科学实验需要已注册契约、案例清单、选择/审计 ID，以及兼容的角色检查点；`heuristic_bootstrap` 用于显式选择启发式控制器。[训练配置目录](docs/reproducibility-training-configs.json)与[复现指南](docs/REPRODUCIBILITY.md)记录参考参数和实验设置。
 
-```yaml
-search:
-  algorithm: vats_pdf
-```
-
-这只是配置片段，并非完整运行预设。默认的旧版算法不能被误认为 VATS。科学实验执行需要已注册契约、案例清单、选择/审计 ID、预算，以及兼容的学习检查点，或显式选择的 `heuristic_bootstrap`。比较运行器在相同的冻结留出场景下评估 `initial`、`best_of_n`、`random_search` 和 `specrsi`，并不是可直接运行的 Janus/表 1 复现。
+科学比较运行器在相同的冻结留出场景下评估 `initial`、`best_of_n`、`random_search` 和 `specrsi`，并在审计评估前固定选中的智能体。
 
 训练配置通过 `collection.algorithm: vats_pdf` 选择 VATS 数据采集器；`search.algorithm` 适用于上述实验运行器。
 
