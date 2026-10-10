@@ -42,9 +42,9 @@ The paper evaluates several distinct profiles. Their initial agents, edit permis
 | Workflow optimization | PlanBench, Math, MBPP, Game24 | Success (%) and task-inference token counts, excluding search and training |
 | Mechanism studies | Information/scope, planning, evidence, learning, resource controls | Verified gains, completion, prediction diagnostics, and separately defined cost indices |
 
-**Qwen3.5-35B-A3B** is the reference backbone for mechanism studies and the primary matched system comparison. Validation normally uses **five training seeds with three nested searches per seed**. Scientific backbone evaluation covers ten backbones and five domains, totaling 50 pairs. Figure 2 compares four-task macro-average scores and target-cost indices across the same ten backbone labels.
+**Qwen3.5-35B-A3B** is the reference backbone for mechanism studies and the primary matched system comparison. Validation normally uses **five training seeds with three nested searches per seed**. Scientific backbone evaluation covers ten backbones and five domains, totaling 50 pairs. Figure 2 compares four-task macro-average scores and target-cost indices across ten additional system backbones.
 
-The ten scientific backbone labels are GPT-6-Astra, Claude-Opus-5, Gemini-3.5-Flash, DeepSeek-V4-Pro, GLM-5.3, Kimi-K3, MiniMax-M3, GPT-5.6-Sol, Claude-Sonnet-5-1M, and GPT-5.5.
+The ten additional system backbone labels are GPT-6-Astra, Claude-Opus-5, Gemini-3.5-Flash, DeepSeek-V4-Pro, GLM-5.3, Kimi-K3, MiniMax-M3, GPT-5.6-Sol, Claude-Sonnet-5-1M, and GPT-5.5.
 
 ### Implementation configuration
 
@@ -72,7 +72,7 @@ The ten scientific backbone labels are GPT-6-Astra, Claude-Opus-5, Gemini-3.5-Fl
 
 - **Data and splits:** 14 versioned data pools and 42 splits, containing **139,865 exact member IDs**. The [dataset specifications](docs/reproducibility-datasets.json) include upstream revisions, URLs and SHA-256 fingerprints; the [member lists](docs/reproducibility-splits.json) preserve source order and ID-list hashes. The default content/group-hash split uses seed `20260916` and 20%/40%/40% probability intervals; MATH, PlanBench and the AIME extension retain their specified split rules.
 - **Scientific settings:** [168 scenario registrations](docs/reproducibility-science.json) cover 56 cases: PyBaMM 12, AQM 11, FDTD 12, Reactor 10 and IRP 11, each with development/selection/audit configurations, simulator seeds, tolerances, constraints and evaluator identities.
-- **Open-model training:** frozen BF16 Qwen3-8B representations, Drafter LoRA rank/alpha/dropout **16/32/0**, and separate width-256 Scorer/Policy branches. SFT uses AdamW, learning rate **`2e-5`**, weight decay **`1e-4`**, and component batch size **1**. [Effective training profiles](docs/reproducibility-training.json) provide 16 effective stages, seeds, collection sizes and actual update counts.
+- **Open-model training:** frozen BF16 Qwen3.5-35B-A3B representations, Drafter LoRA rank/alpha/dropout **16/32/0**, and separate width-256 Scorer/Policy branches. SFT uses AdamW, learning rate **`2e-5`**, weight decay **`1e-4`**, and component batch size **1**. [Effective training profiles](docs/reproducibility-training.json) provide 16 effective stages, seeds, collection sizes and actual update counts.
 
 | GVO profile | Optimizer and learning rates | Stage rounds / updates |
 |---|---|---|
@@ -82,7 +82,7 @@ The ten scientific backbone labels are GPT-6-Astra, Claude-Opus-5, Gemini-3.5-Fl
 
 Frozen-collection updates accumulate gradients before at most one optimizer step per collection. The SGD profile uses PPO clipping **0.2**, KL weight **0.02**, and zero momentum/weight decay; supervised component batches and groups of complete searches remain distinct.
 
-[Model snapshots and deployment settings](docs/reproducibility-models.json) pin **Qwen3-8B, Kimi-K2.6 and Qwen3.5-35B-A3B-FP8** to full immutable revisions and file hashes, including precision, context and serving limits. [Hardware/software specifications](docs/reproducibility-environment.json) describe the **eight-H20 host** (97,871 MiB per GPU; dual 96-core AMD EPYC 9K84), with open-model training on one H20: Python **3.11.6**, PyTorch **2.6.0+cu124**, Transformers **4.57.6**, PEFT **0.18.1**. Serving uses vLLM **0.19.1** and PyTorch **2.10.0+cu128**; scientific dependencies include PyBaMM **25.12.2**, ns-3 **3.44.post0**, NumPy **1.26.4** and SciPy **1.17.1**.
+[Model snapshots and deployment settings](docs/reproducibility-models.json) pin **Kimi-K2.6 and Qwen3.5-35B-A3B-FP8** to full immutable revisions and file hashes, including precision, context and serving limits. [Hardware/software specifications](docs/reproducibility-environment.json) describe the **eight-H20 host** (97,871 MiB per GPU; dual 96-core AMD EPYC 9K84), with open-model training on one H20: Python **3.11.6**, PyTorch **2.6.0+cu124**, Transformers **4.57.6**, PEFT **0.18.1**. Serving uses vLLM **0.19.1** and PyTorch **2.10.0+cu128**; scientific dependencies include PyBaMM **25.12.2**, ns-3 **3.44.post0**, NumPy **1.26.4** and SciPy **1.17.1**.
 
 ## Main reported results
 
