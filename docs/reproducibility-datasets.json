@@ -24,8 +24,7 @@
             "filename": "LICENSE",
             "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b"
           }
-        ],
-        "blockers": []
+        ]
       },
       "split_policy": {
         "algorithm": "sha256-group-or-normalized-input-v2",
@@ -75,19 +74,34 @@
       ],
       "processed_files": [
         {
-          "path": "data/processed/aime25/audit.jsonl",
-          "bytes": 4025,
-          "sha256": "796f3b8514aefddf1e1188679312e4acbbfcb90fbc00f3980d361d9947207237"
-        },
-        {
+          "dataset": "aime25",
+          "split": "development",
           "path": "data/processed/aime25/development.jsonl",
           "bytes": 7186,
-          "sha256": "51e1fe3c1b831c5b4d92af444c7e20f2986641ca245b16a6ad3f6c918a19d7b6"
+          "sha256": "51e1fe3c1b831c5b4d92af444c7e20f2986641ca245b16a6ad3f6c918a19d7b6",
+          "count": 13,
+          "id_list_sha256": "5b93ce4e3718625807a1a8a37a1691cf01f029c04ccb1814649206d720cbace3",
+          "physical_lines": 13
         },
         {
+          "dataset": "aime25",
+          "split": "selection",
           "path": "data/processed/aime25/selection.jsonl",
           "bytes": 7414,
-          "sha256": "a74204d2af9dc24389375602bb71f92c3f6d4b85d8cb94b605a2fe93b694fc3c"
+          "sha256": "a74204d2af9dc24389375602bb71f92c3f6d4b85d8cb94b605a2fe93b694fc3c",
+          "count": 11,
+          "id_list_sha256": "a8d5f22658ed49eb71840c01a54366bc2e69c0b124c97ccdb4d316f703bff78e",
+          "physical_lines": 11
+        },
+        {
+          "dataset": "aime25",
+          "split": "audit",
+          "path": "data/processed/aime25/audit.jsonl",
+          "bytes": 4025,
+          "sha256": "796f3b8514aefddf1e1188679312e4acbbfcb90fbc00f3980d361d9947207237",
+          "count": 6,
+          "id_list_sha256": "ade46739076043e2e0850ed9f3bcd9928955ec715dedae2814283b5434378dca",
+          "physical_lines": 6
         }
       ]
     },
@@ -104,8 +118,7 @@
             "filename": "24.csv",
             "revision": "8050e67d0e3a0fddc424d7fa5801538722a4c4cc"
           }
-        ],
-        "blockers": []
+        ]
       },
       "split_policy": {
         "algorithm": "sha256-group-or-normalized-input-v2",
@@ -141,19 +154,34 @@
       ],
       "processed_files": [
         {
-          "path": "data/processed/game24/audit.jsonl",
-          "bytes": 139180,
-          "sha256": "473b7936437eb3fddcd5021c5d092e9087829ddac9cfcebec547d45dfd01006d"
-        },
-        {
+          "dataset": "game24",
+          "split": "development",
           "path": "data/processed/game24/development.jsonl",
           "bytes": 67711,
-          "sha256": "2edb2af9462edca8f48f8153be15dfba3f72e1eb1edb873f9c7e624edc519fe3"
+          "sha256": "2edb2af9462edca8f48f8153be15dfba3f72e1eb1edb873f9c7e624edc519fe3",
+          "count": 254,
+          "id_list_sha256": "5cee97f654585125fb507b827d68c11d1fa13ce97f12346587646e2b76d1d10e",
+          "physical_lines": 254
         },
         {
+          "dataset": "game24",
+          "split": "selection",
           "path": "data/processed/game24/selection.jsonl",
           "bytes": 151904,
-          "sha256": "ee1009575a19eccfdbcaaf5477d10ae964627d11cce7b99c238f8e95b217b61e"
+          "sha256": "ee1009575a19eccfdbcaaf5477d10ae964627d11cce7b99c238f8e95b217b61e",
+          "count": 574,
+          "id_list_sha256": "9a12121ed11078cd51849c16e00195998c94cc081a15769767f8e447345daa58",
+          "physical_lines": 574
+        },
+        {
+          "dataset": "game24",
+          "split": "audit",
+          "path": "data/processed/game24/audit.jsonl",
+          "bytes": 139180,
+          "sha256": "473b7936437eb3fddcd5021c5d092e9087829ddac9cfcebec547d45dfd01006d",
+          "count": 534,
+          "id_list_sha256": "5a1eb0787ce06fb7fad5811400c51a761b51b6b2018182cfa4f271530410c8ae",
+          "physical_lines": 534
         }
       ]
     },
@@ -185,9 +213,6 @@
             "filename": "README.md",
             "revision": "1908d6afbbead072334abe2965f91bd2709910ab"
           }
-        ],
-        "blockers": [
-          "Distractor context supplied. SpecRSI retrieval variant, retriever/index and exact split unspecified."
         ],
         "source_note": "Official CMU HTTPS endpoint timed out after three attempts; use publisher-namespaced Hugging Face Parquet distribution, preserving native IDs and all distractor train/validation rows."
       },
@@ -248,19 +273,34 @@
       ],
       "processed_files": [
         {
-          "path": "data/processed/hotpotqa/audit.jsonl",
-          "bytes": 244504845,
-          "sha256": "69dcad44840983a8b0d6836c2f4f43b47f92fd5c785b813bf25292ff98eee252"
-        },
-        {
+          "dataset": "hotpotqa",
+          "split": "development",
           "path": "data/processed/hotpotqa/development.jsonl",
           "bytes": 123012048,
-          "sha256": "fb39e4c587d26067525e0fbca3f40dfcd5ea5098bb69aefb4236200e22660d2e"
+          "sha256": "fb39e4c587d26067525e0fbca3f40dfcd5ea5098bb69aefb4236200e22660d2e",
+          "count": 19622,
+          "id_list_sha256": "98fa6946bcb3236a28c54c25e7c3c201f390204d802ee1bc3d2a73396859b12e",
+          "physical_lines": 19622
         },
         {
+          "dataset": "hotpotqa",
+          "split": "selection",
           "path": "data/processed/hotpotqa/selection.jsonl",
           "bytes": 246988198,
-          "sha256": "436e03445ddaa11d45a5549e44da4a61e690b07e1b4b26fca8908f731ea9f4a1"
+          "sha256": "436e03445ddaa11d45a5549e44da4a61e690b07e1b4b26fca8908f731ea9f4a1",
+          "count": 39351,
+          "id_list_sha256": "f0d0cd975fd6b0368c1470e4befc08cf25519e3888ce1fb6865a33db72ad92df",
+          "physical_lines": 39351
+        },
+        {
+          "dataset": "hotpotqa",
+          "split": "audit",
+          "path": "data/processed/hotpotqa/audit.jsonl",
+          "bytes": 244504845,
+          "sha256": "69dcad44840983a8b0d6836c2f4f43b47f92fd5c785b813bf25292ff98eee252",
+          "count": 38879,
+          "id_list_sha256": "9bdb0d35487662c82af606049c2d74825da664b0dc9f8e9d7d4b7f165dd181d8",
+          "physical_lines": 38879
         }
       ]
     },
@@ -282,9 +322,6 @@
             "filename": "hover_dev_release_v1.1.json",
             "revision": "39b84697f196308f398a251a7aea9b82ae0f0562"
           }
-        ],
-        "blockers": [
-          "Original retrieval corpus/index and retriever configuration are not identified in SpecRSI paper. Claim labels alone do not reconstruct its retrieval pipeline."
         ]
       },
       "split_policy": {
@@ -329,19 +366,34 @@
       ],
       "processed_files": [
         {
-          "path": "data/processed/hover/audit.jsonl",
-          "bytes": 6281059,
-          "sha256": "1d699d280785b02d54fa232bad611a82e25b6b2311bac13bc066b82188c874ac"
-        },
-        {
+          "dataset": "hover",
+          "split": "development",
           "path": "data/processed/hover/development.jsonl",
           "bytes": 3179097,
-          "sha256": "3780450572efbd4ae01bb0e97aa37ec3cb22e46f1ee47dc45bc9e7171ed7a3fc"
+          "sha256": "3780450572efbd4ae01bb0e97aa37ec3cb22e46f1ee47dc45bc9e7171ed7a3fc",
+          "count": 4421,
+          "id_list_sha256": "60bcb58baaa8bab9c1cc5169e62d294bdcf42b31e2b410ba69d6e5e8eef04552",
+          "physical_lines": 4421
         },
         {
+          "dataset": "hover",
+          "split": "selection",
           "path": "data/processed/hover/selection.jsonl",
           "bytes": 6349499,
-          "sha256": "d85e257e323190d7179f10bcca5e1540e257068c46c4d20fdad83a7ce2037bb8"
+          "sha256": "d85e257e323190d7179f10bcca5e1540e257068c46c4d20fdad83a7ce2037bb8",
+          "count": 8898,
+          "id_list_sha256": "1068ac8ac864b4f70c04c239c584ce7dd6fd1555bb279f942753a9dc041ac094",
+          "physical_lines": 8898
+        },
+        {
+          "dataset": "hover",
+          "split": "audit",
+          "path": "data/processed/hover/audit.jsonl",
+          "bytes": 6281059,
+          "sha256": "1d699d280785b02d54fa232bad611a82e25b6b2311bac13bc066b82188c874ac",
+          "count": 8852,
+          "id_list_sha256": "d803988d4e64100329a1ba4855449ad4d7a4e6b0fddc6d31a36a3744d749fc09",
+          "physical_lines": 8852
         }
       ]
     },
@@ -365,7 +417,6 @@
             "extract": true
           }
         ],
-        "blockers": [],
         "runtime": "Install locked official source and local NLTK resources"
       },
       "split_policy": {
@@ -409,19 +460,34 @@
       ],
       "processed_files": [
         {
-          "path": "data/processed/ifbench/audit.jsonl",
-          "bytes": 260234,
-          "sha256": "375f6f8130175c9273394cec265c0e14d1aabdfec10fe933c553ad44e9ef30ce"
-        },
-        {
+          "dataset": "ifbench",
+          "split": "development",
           "path": "data/processed/ifbench/development.jsonl",
           "bytes": 89329,
-          "sha256": "ea49891546db2f6a0fb7e3281a814304c64d8720755b2ffca819ddebe5805fff"
+          "sha256": "ea49891546db2f6a0fb7e3281a814304c64d8720755b2ffca819ddebe5805fff",
+          "count": 48,
+          "id_list_sha256": "2373a40261ae28b92c0a0a32943e537fe08c23fb67844b2b43be97b9c253ad56",
+          "physical_lines": 48
         },
         {
+          "dataset": "ifbench",
+          "split": "selection",
           "path": "data/processed/ifbench/selection.jsonl",
           "bytes": 187870,
-          "sha256": "1b729820c8803e8ee4587a386906e7f90e4ef2add43d23b25b3627a18c2b9a89"
+          "sha256": "1b729820c8803e8ee4587a386906e7f90e4ef2add43d23b25b3627a18c2b9a89",
+          "count": 110,
+          "id_list_sha256": "757ec7b1851cb6320ab8cc4d661c22dc120b0566d7a2d1cc652019b4cf1cbdc1",
+          "physical_lines": 110
+        },
+        {
+          "dataset": "ifbench",
+          "split": "audit",
+          "path": "data/processed/ifbench/audit.jsonl",
+          "bytes": 260234,
+          "sha256": "375f6f8130175c9273394cec265c0e14d1aabdfec10fe933c553ad44e9ef30ce",
+          "count": 142,
+          "id_list_sha256": "c9462a830aa92570eb658abfcb920fceb73e549ca551f36452106dbc67500aa0",
+          "physical_lines": 142
         }
       ]
     },
@@ -443,9 +509,6 @@
             "filename": "README.md",
             "revision": "bb66571c8ccf32d3df9e6f48b920d3770ff4aacb"
           }
-        ],
-        "blockers": [
-          "SpecRSI release date is absent; this public version is prospective. AMPS cases requiring the native gpt-5-mini fallback are incomplete until an explicit judge is registered; automatic external calls disabled."
         ]
       },
       "split_policy": {
@@ -495,19 +558,34 @@
       ],
       "processed_files": [
         {
-          "path": "data/processed/livebench_math/audit.jsonl",
-          "bytes": 417959,
-          "sha256": "527fdbf9c9b907639c5731639f60399eede54f412287f478c2889137e4454cd5"
-        },
-        {
+          "dataset": "livebench_math",
+          "split": "development",
           "path": "data/processed/livebench_math/development.jsonl",
           "bytes": 243323,
-          "sha256": "9f41a854143c352dc3375b3df8310ab8a6255dcf2d1286b8f5cf5703d5799601"
+          "sha256": "9f41a854143c352dc3375b3df8310ab8a6255dcf2d1286b8f5cf5703d5799601",
+          "count": 91,
+          "id_list_sha256": "cc301137308a9611fc79812ebc1363c734a4be0b100b565b3fe6ce00ef7b7e30",
+          "physical_lines": 91
         },
         {
+          "dataset": "livebench_math",
+          "split": "selection",
           "path": "data/processed/livebench_math/selection.jsonl",
           "bytes": 488505,
-          "sha256": "da5f58a2be133ff744eece793ded980c44beb5f0b2762f9fef7b26702aadd375"
+          "sha256": "da5f58a2be133ff744eece793ded980c44beb5f0b2762f9fef7b26702aadd375",
+          "count": 140,
+          "id_list_sha256": "e195dc89c1bbfbca5025e1d7bea3fa743c7a3d43e1b71973ecc33e6d8d028324",
+          "physical_lines": 140
+        },
+        {
+          "dataset": "livebench_math",
+          "split": "audit",
+          "path": "data/processed/livebench_math/audit.jsonl",
+          "bytes": 417959,
+          "sha256": "527fdbf9c9b907639c5731639f60399eede54f412287f478c2889137e4454cd5",
+          "count": 137,
+          "id_list_sha256": "f49a983c0ad3c3bd9a9b255d3e7612ce544bcc196717981bf310a0eee89e9756",
+          "physical_lines": 137
         }
       ]
     },
@@ -595,7 +673,6 @@
             "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
           }
         ],
-        "blockers": [],
         "variant": "prospective_complete_MATH_7500_train_5000_heldout_test; SpecRSI original Math identity unspecified"
       },
       "split_policy": {
@@ -758,19 +835,34 @@
       ],
       "processed_files": [
         {
-          "path": "data/processed/math/audit.jsonl",
-          "bytes": 6168263,
-          "sha256": "87ee89efc3aa6493cb4a0d4f0adb2a1a500f1d5d1477900c258dee241df3ad0c"
-        },
-        {
+          "dataset": "math",
+          "split": "development",
           "path": "data/processed/math/development.jsonl",
           "bytes": 4964839,
-          "sha256": "fd0eaf1874963946f508872b140645664ba7f5b6586e598ee97fa1dd00e3b948"
+          "sha256": "fd0eaf1874963946f508872b140645664ba7f5b6586e598ee97fa1dd00e3b948",
+          "count": 3750,
+          "id_list_sha256": "8569fcf1ec89d5eb320e538a60e5dfc41aec43067e7a92fafc45ae9c361e85e3",
+          "physical_lines": 3750
         },
         {
+          "dataset": "math",
+          "split": "selection",
           "path": "data/processed/math/selection.jsonl",
           "bytes": 4892301,
-          "sha256": "61c114b14891cc0e90bad4e89277a644915c45c187746ec61429e0aa2cbfc601"
+          "sha256": "61c114b14891cc0e90bad4e89277a644915c45c187746ec61429e0aa2cbfc601",
+          "count": 3749,
+          "id_list_sha256": "8d0e30aefb6d8e9580c485a818de97d64697e7736eeaeb7f856a69dfd4a526cf",
+          "physical_lines": 3749
+        },
+        {
+          "dataset": "math",
+          "split": "audit",
+          "path": "data/processed/math/audit.jsonl",
+          "bytes": 6168263,
+          "sha256": "87ee89efc3aa6493cb4a0d4f0adb2a1a500f1d5d1477900c258dee241df3ad0c",
+          "count": 5000,
+          "id_list_sha256": "4fbe87d465bf0a41dab69f215a9f506b3da78d590332219fa5f7610549b181bd",
+          "physical_lines": 5000
         }
       ]
     },
@@ -793,7 +885,6 @@
             "revision": "8025cf1351da4d3cb8c289afe2d11247623fbdfb"
           }
         ],
-        "blockers": [],
         "runtime": "bubblewrap sandbox or digest-pinned Docker image"
       },
       "split_policy": {
@@ -837,19 +928,34 @@
       ],
       "processed_files": [
         {
-          "path": "data/processed/mbpp/audit.jsonl",
-          "bytes": 326660,
-          "sha256": "3a04c16b46130d4a1ffb8bfa91104fe09e403574c06a3871a737d3db6514f568"
-        },
-        {
+          "dataset": "mbpp",
+          "split": "development",
           "path": "data/processed/mbpp/development.jsonl",
           "bytes": 146334,
-          "sha256": "0e3d349158655cd9439117343896991cda73879adb5a22e3562d3879bc800752"
+          "sha256": "0e3d349158655cd9439117343896991cda73879adb5a22e3562d3879bc800752",
+          "count": 186,
+          "id_list_sha256": "189da17b7897fde0a02c260114dbac6cc737d46d057f2a68cb055332c9930e3b",
+          "physical_lines": 186
         },
         {
+          "dataset": "mbpp",
+          "split": "selection",
           "path": "data/processed/mbpp/selection.jsonl",
           "bytes": 303009,
-          "sha256": "82e6946148e6f27b7aab6543f5fc24c14aec073146cdbc76a4b153a8eb90f32e"
+          "sha256": "82e6946148e6f27b7aab6543f5fc24c14aec073146cdbc76a4b153a8eb90f32e",
+          "count": 375,
+          "id_list_sha256": "7cb9bc7bcb126a528d799f42128855e81e1712a28ea710d6232e0b326c4a18dc",
+          "physical_lines": 375
+        },
+        {
+          "dataset": "mbpp",
+          "split": "audit",
+          "path": "data/processed/mbpp/audit.jsonl",
+          "bytes": 326660,
+          "sha256": "3a04c16b46130d4a1ffb8bfa91104fe09e403574c06a3871a737d3db6514f568",
+          "count": 413,
+          "id_list_sha256": "45888f11e6cfba53f5da9566e35743d311320ba1f03f09adaa79cc3356e0a3b6",
+          "physical_lines": 413
         }
       ]
     },
@@ -867,9 +973,6 @@
             "revision": "1f4d600f4806bedbefebbbe44b168372aaf5060d",
             "extract": true
           }
-        ],
-        "blockers": [
-          "SpecRSI original task/subset is not identified. Normalized track is prospective zero-shot task_1 plan_generation with demonstrations removed and grouped instance splits; all other tasks retained only in raw source."
         ]
       },
       "split_policy": {
@@ -933,19 +1036,34 @@
       ],
       "processed_files": [
         {
-          "path": "data/processed/planbench/audit.jsonl",
-          "bytes": 5433564,
-          "sha256": "8d5322b7e3874443238dbbb9d790590073015f35d029a1c2b2d4c5bab40a6435"
-        },
-        {
+          "dataset": "planbench",
+          "split": "development",
           "path": "data/processed/planbench/development.jsonl",
           "bytes": 3296435,
-          "sha256": "f4596168b1a9092fec580a9eb462f785c9fe4e65324c8649f86c99642c4208a5"
+          "sha256": "f4596168b1a9092fec580a9eb462f785c9fe4e65324c8649f86c99642c4208a5",
+          "count": 479,
+          "id_list_sha256": "d6d67ad90335aad03dede2556e31f18847f02b7f7c04a7e6fedcf3483e7464c9",
+          "physical_lines": 479
         },
         {
+          "dataset": "planbench",
+          "split": "selection",
           "path": "data/processed/planbench/selection.jsonl",
           "bytes": 6796364,
-          "sha256": "0468808047b2478b67a0bd5c1c2db92e11a72ccc7aa422e1733caf5eb4fa60b3"
+          "sha256": "0468808047b2478b67a0bd5c1c2db92e11a72ccc7aa422e1733caf5eb4fa60b3",
+          "count": 993,
+          "id_list_sha256": "f1c8fca563733fb72577f509ff232b3793351b3538f217706d22b6db575a1d7b",
+          "physical_lines": 993
+        },
+        {
+          "dataset": "planbench",
+          "split": "audit",
+          "path": "data/processed/planbench/audit.jsonl",
+          "bytes": 5433564,
+          "sha256": "8d5322b7e3874443238dbbb9d790590073015f35d029a1c2b2d4c5bab40a6435",
+          "count": 798,
+          "id_list_sha256": "de2f66c78732a687046829003d4fbb06a59e4f7755fa5c03b842cf3989735994",
+          "physical_lines": 798
         }
       ]
     },
@@ -963,9 +1081,6 @@
             "revision": "7e0611e77b54e2dea774cdc0aa00cf9f7ed6144f",
             "extract": true
           }
-        ],
-        "blockers": [
-          "Official Aider language toolchain harness and SpecRSI adaptation configuration required."
         ]
       },
       "split_policy": {
@@ -1022,19 +1137,34 @@
       ],
       "processed_files": [
         {
-          "path": "data/processed/polyglot/audit.jsonl",
-          "bytes": 194606,
-          "sha256": "5e0a799ad8183960a6f78e594385eb7f8d46b8fca901302c2da855d5f39001ff"
-        },
-        {
+          "dataset": "polyglot",
+          "split": "development",
           "path": "data/processed/polyglot/development.jsonl",
           "bytes": 87445,
-          "sha256": "6cb7f36151ff7962862129e9490a5ef85d8a844be1c3436675c4945841847710"
+          "sha256": "6cb7f36151ff7962862129e9490a5ef85d8a844be1c3436675c4945841847710",
+          "count": 50,
+          "id_list_sha256": "8d3122ed2fa31e00eed65ffdf157911084729469e167f8298508f1acb1177546",
+          "physical_lines": 50
         },
         {
+          "dataset": "polyglot",
+          "split": "selection",
           "path": "data/processed/polyglot/selection.jsonl",
           "bytes": 177126,
-          "sha256": "8298ad45a95e290daaa0ea76415b55dededec56962de555822f626edc958cc15"
+          "sha256": "8298ad45a95e290daaa0ea76415b55dededec56962de555822f626edc958cc15",
+          "count": 80,
+          "id_list_sha256": "6f1c4ab7a40285461853134e10fd01a045fdbebbd67f13e209e9ffe2f5afc170",
+          "physical_lines": 80
+        },
+        {
+          "dataset": "polyglot",
+          "split": "audit",
+          "path": "data/processed/polyglot/audit.jsonl",
+          "bytes": 194606,
+          "sha256": "5e0a799ad8183960a6f78e594385eb7f8d46b8fca901302c2da855d5f39001ff",
+          "count": 95,
+          "id_list_sha256": "29666b657bffa2fdb2d3ed8f998219f85badc774e3820cbb8c0c2b85488588aa",
+          "physical_lines": 95
         }
       ]
     },
@@ -1061,9 +1191,6 @@
             "filename": "README.md",
             "revision": "9981b49b6ced0033988a224b6712895ebf119294"
           }
-        ],
-        "blockers": [
-          "PAPILLON quality/leakage native judge is gpt-4.1-mini in GEPA artifact; SpecRSI judge identity and query pipeline are absent."
         ]
       },
       "split_policy": {
@@ -1115,19 +1242,34 @@
       ],
       "processed_files": [
         {
-          "path": "data/processed/pupa/audit.jsonl",
-          "bytes": 1998978,
-          "sha256": "d71db54494e112075245d4d40b18cd2379ddd1400bdca070d0fb29904689769b"
-        },
-        {
+          "dataset": "pupa",
+          "split": "development",
           "path": "data/processed/pupa/development.jsonl",
           "bytes": 1057209,
-          "sha256": "99a80600caedbbd3044492c7d1d2ecb25b1f81645d8130d21e435c3e2ddb7b03"
+          "sha256": "99a80600caedbbd3044492c7d1d2ecb25b1f81645d8130d21e435c3e2ddb7b03",
+          "count": 171,
+          "id_list_sha256": "342408a9e6d04cf5bbc9b0233c87475e61d1dad95f978339f2569339080f8f34",
+          "physical_lines": 171
         },
         {
+          "dataset": "pupa",
+          "split": "selection",
           "path": "data/processed/pupa/selection.jsonl",
           "bytes": 2062639,
-          "sha256": "6ba0513a0c941b1b96245308983215d5ce857cda3d20454c23abae776b3775f6"
+          "sha256": "6ba0513a0c941b1b96245308983215d5ce857cda3d20454c23abae776b3775f6",
+          "count": 386,
+          "id_list_sha256": "4046fbfc9deb0f1e498feae71f2e3c666c64304cb37ff15aa14e96545e40911d",
+          "physical_lines": 386
+        },
+        {
+          "dataset": "pupa",
+          "split": "audit",
+          "path": "data/processed/pupa/audit.jsonl",
+          "bytes": 1998978,
+          "sha256": "d71db54494e112075245d4d40b18cd2379ddd1400bdca070d0fb29904689769b",
+          "count": 344,
+          "id_list_sha256": "5b82967a413eb41032e6ec450902dad79130c9a5f9b3c26f66a13c59451bae54",
+          "physical_lines": 344
         }
       ]
     },
@@ -1154,9 +1296,6 @@
             "filename": "README.md",
             "revision": "6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2"
           }
-        ],
-        "blockers": [
-          "Exact Lite-filtered audit IDs absent; filter overlap against frozen selection IDs before use. Official Docker harness/images required."
         ]
       },
       "split_policy": {
@@ -1208,19 +1347,34 @@
       ],
       "processed_files": [
         {
-          "path": "data/processed/swe_lite/audit.jsonl",
-          "bytes": 1790830,
-          "sha256": "c408b5abd2631ae8ca28ec2b50581c611221290de6b3c98ee9fece1cfc99e2ec"
-        },
-        {
+          "dataset": "swe_lite",
+          "split": "development",
           "path": "data/processed/swe_lite/development.jsonl",
           "bytes": 766570,
-          "sha256": "b48f524bbfd822c47dccd8c859612efdbafc3ff6e0e9eb72f78ed478ec32c963"
+          "sha256": "b48f524bbfd822c47dccd8c859612efdbafc3ff6e0e9eb72f78ed478ec32c963",
+          "count": 60,
+          "id_list_sha256": "cf2723f2519be00e769369a3aaabe43342e416ad3fdd77739498f1bb8fa2a9a3",
+          "physical_lines": 60
         },
         {
+          "dataset": "swe_lite",
+          "split": "selection",
           "path": "data/processed/swe_lite/selection.jsonl",
           "bytes": 2020649,
-          "sha256": "716772c4e0096bccf38bff8d33b13a782024bf92b4ae5328cbcdd0280874b6e7"
+          "sha256": "716772c4e0096bccf38bff8d33b13a782024bf92b4ae5328cbcdd0280874b6e7",
+          "count": 141,
+          "id_list_sha256": "052eed807e029926a8c9880eb040637d906d687e85734cb3f7d37ca9e6da8dbc",
+          "physical_lines": 141
+        },
+        {
+          "dataset": "swe_lite",
+          "split": "audit",
+          "path": "data/processed/swe_lite/audit.jsonl",
+          "bytes": 1790830,
+          "sha256": "c408b5abd2631ae8ca28ec2b50581c611221290de6b3c98ee9fece1cfc99e2ec",
+          "count": 122,
+          "id_list_sha256": "290a8f372077ba898dd8249592372548be28753e64f3aa9947d46c6bc2d10304",
+          "physical_lines": 122
         }
       ]
     },
@@ -1242,9 +1396,6 @@
             "filename": "README.md",
             "revision": "c104f840cc67f8b6eec6f759ebc8b2693d585d4a"
           }
-        ],
-        "blockers": [
-          "SWE-V-60 IDs absent; SWE-V-500 checkpoint/split protocol absent; official Docker harness and task images required."
         ]
       },
       "split_policy": {
@@ -1288,19 +1439,34 @@
       ],
       "processed_files": [
         {
-          "path": "data/processed/swe_verified/audit.jsonl",
-          "bytes": 3270051,
-          "sha256": "ab4c91e5057d4fc62375379003342b7778d280281bce002110a4a7abbbd858eb"
-        },
-        {
+          "dataset": "swe_verified",
+          "split": "development",
           "path": "data/processed/swe_verified/development.jsonl",
           "bytes": 2191169,
-          "sha256": "ef041a5904f4042cb54dea60d409a1c51765d114cda0a180a1846e7e99461aa1"
+          "sha256": "ef041a5904f4042cb54dea60d409a1c51765d114cda0a180a1846e7e99461aa1",
+          "count": 103,
+          "id_list_sha256": "7499dc998572029a43067ed9a69d08ffd5191c823301d54960d41eb6e41261c9",
+          "physical_lines": 103
         },
         {
+          "dataset": "swe_verified",
+          "split": "selection",
           "path": "data/processed/swe_verified/selection.jsonl",
           "bytes": 3658548,
-          "sha256": "e2952a824d989f3a759021d47a7378ebe47227b14f6c7f75a997041a7521ff6e"
+          "sha256": "e2952a824d989f3a759021d47a7378ebe47227b14f6c7f75a997041a7521ff6e",
+          "count": 190,
+          "id_list_sha256": "cd906eaf5cca97abc1d20f282eb1454a1b4d5fe39f200062f69ac0db8d97a4c5",
+          "physical_lines": 190
+        },
+        {
+          "dataset": "swe_verified",
+          "split": "audit",
+          "path": "data/processed/swe_verified/audit.jsonl",
+          "bytes": 3270051,
+          "sha256": "ab4c91e5057d4fc62375379003342b7778d280281bce002110a4a7abbbd858eb",
+          "count": 207,
+          "id_list_sha256": "ac040e5424d2ad712da43165b55c079d5ea4ccc7dba6a383e17d9e1fddeb0544",
+          "physical_lines": 207
         }
       ]
     },
@@ -1331,44 +1497,63 @@
           "bytes": 11183,
           "sha256": "2602156eb2a0ab64393dc46617a3bfee3451ae3c985a7ea6ac2b55436e094a38",
           "url": "https://huggingface.co/datasets/math-ai/aime24/resolve/83a7f387baaa524a8bda0022eac0541582297103/test-00000-of-00001.parquet",
-          "revision": "83a7f387baaa524a8bda0022eac0541582297103"
+          "revision": "83a7f387baaa524a8bda0022eac0541582297103",
+          "resolved_workspace_path": "data/performance_extension/raw/aime_2025_2026/2024-test-00000-of-00001.parquet"
         },
         {
           "path": "performance_extension/raw/aime_2025_2026/2025-test.jsonl",
           "bytes": 15813,
           "sha256": "b4e273c02d3e7fe1b74b59eae768fc8230bfb0f79539890cb56f4361caac0331",
           "url": "https://huggingface.co/datasets/math-ai/aime25/resolve/563bb8404243c5f09de6ec262f2db674fe5bce9b/test.jsonl",
-          "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b"
+          "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b",
+          "resolved_workspace_path": "data/performance_extension/raw/aime_2025_2026/2025-test.jsonl"
         },
         {
           "path": "performance_extension/raw/aime_2025_2026/2026-aime2026.jsonl",
           "bytes": 13101,
           "sha256": "52822957957a3f577d1e9706c36a66a8108a3f99b6aff424cfb72dff0094a9ee",
           "url": "https://huggingface.co/datasets/math-ai/aime26/resolve/79037aebdb6580008fb960d17cb21fd3099083e3/aime2026.jsonl",
-          "revision": "79037aebdb6580008fb960d17cb21fd3099083e3"
+          "revision": "79037aebdb6580008fb960d17cb21fd3099083e3",
+          "resolved_workspace_path": "data/performance_extension/raw/aime_2025_2026/2026-aime2026.jsonl"
         }
       ],
       "processed_files": [
         {
-          "path": "data/performance_extension/processed/aime_2025_2026/audit.jsonl",
-          "bytes": 42855,
-          "sha256": "722a8490a351d2c1a4b4bbf6976e58abeec7e69d3ea3d6c9c02d2b97ad5891a0"
-        },
-        {
+          "dataset": "aime_2025_2026",
+          "split": "development",
           "path": "data/performance_extension/processed/aime_2025_2026/development.jsonl",
           "bytes": 9239,
-          "sha256": "01af4c68cd84b3c0f7ad165c360f807bbdf7f327e5b5c64b2f4ae1ee9b405b89"
+          "sha256": "01af4c68cd84b3c0f7ad165c360f807bbdf7f327e5b5c64b2f4ae1ee9b405b89",
+          "count": 15,
+          "id_list_sha256": "8cafda43557e335c9d080deac6b280705f6da6f29c3107d3d2b6b4c37916311c",
+          "physical_lines": 15
         },
         {
+          "dataset": "aime_2025_2026",
+          "split": "selection",
           "path": "data/performance_extension/processed/aime_2025_2026/selection.jsonl",
           "bytes": 9380,
-          "sha256": "ae425fd9883a3ae0bcf04adb9fac1b13c1947a4ad48a8c01c9b670212e505f5d"
+          "sha256": "ae425fd9883a3ae0bcf04adb9fac1b13c1947a4ad48a8c01c9b670212e505f5d",
+          "count": 15,
+          "id_list_sha256": "093adec23e85207e4f41e47cfb439692832f51e28fb6af6de0553fb366d88970",
+          "physical_lines": 15
+        },
+        {
+          "dataset": "aime_2025_2026",
+          "split": "audit",
+          "path": "data/performance_extension/processed/aime_2025_2026/audit.jsonl",
+          "bytes": 42855,
+          "sha256": "722a8490a351d2c1a4b4bbf6976e58abeec7e69d3ea3d6c9c02d2b97ad5891a0",
+          "count": 60,
+          "id_list_sha256": "2a332eb05414a500ebaf481d89d66a3e32859910ebcc8c6716dd4c81a3acd751",
+          "physical_lines": 60
         }
       ]
     }
   ],
   "retrieval": {
     "schema_version": 1,
+    "status": "prepared",
     "revision": "ef6a5e72a98b47cef31574a400fea8fe149559a3",
     "url": "https://huggingface.co/dspy/cache/resolve/ef6a5e72a98b47cef31574a400fea8fe149559a3/wiki.abstracts.2017.tar.gz",
     "implementation": "bm25s==0.2.14; PyStemmer==3.0.0",
@@ -1376,13 +1561,7 @@
       "k1": 0.9,
       "b": 0.4,
       "stopwords": "en",
-      "stemmer": "english",
-      "delta": 0.5,
-      "method": "lucene",
-      "idf_method": "lucene",
-      "dtype": "float32",
-      "int_dtype": "int32",
-      "backend": "numpy"
+      "stemmer": "english"
     },
     "source": "GEPA artifact hover_program.py",
     "files": [
@@ -1432,36 +1611,63 @@
     "hops": 3
   },
   "scorer_resources": {
-    "nltk_archives": [
-      {
-        "path": "data/raw/nltk/punkt.zip",
-        "sha256": "51c3078994aeaf650bfc8e028be4fb42b4a0d177d41c012b6a983979653660ec",
-        "bytes": 13905355,
-        "url": "https://raw.githubusercontent.com/nltk/nltk_data/550b6625bcef1f2abff2ff770a5a0d272c9c6b2a/packages/tokenizers/punkt.zip",
-        "revision": "550b6625bcef1f2abff2ff770a5a0d272c9c6b2a"
-      },
-      {
-        "path": "data/raw/nltk/punkt_tab.zip",
-        "sha256": "e57f64187974277726a3417ca6f181ec5403676c717672eef6a748a7b20e0106",
-        "bytes": 4319076,
-        "url": "https://raw.githubusercontent.com/nltk/nltk_data/550b6625bcef1f2abff2ff770a5a0d272c9c6b2a/packages/tokenizers/punkt_tab.zip",
-        "revision": "550b6625bcef1f2abff2ff770a5a0d272c9c6b2a"
-      },
-      {
-        "path": "data/raw/nltk/stopwords.zip",
-        "sha256": "48c0e52d8b52546e827f53761fb30300c0ab94f70660d28bd65ba0a86270946b",
-        "bytes": 37733,
-        "url": "https://raw.githubusercontent.com/nltk/nltk_data/550b6625bcef1f2abff2ff770a5a0d272c9c6b2a/packages/corpora/stopwords.zip",
-        "revision": "550b6625bcef1f2abff2ff770a5a0d272c9c6b2a"
-      },
-      {
-        "path": "data/raw/nltk/averaged_perceptron_tagger_eng.zip",
-        "sha256": "6025f530624335c67d6547d44757b357b4e79bae030a0383e9887a92c1718f0b",
-        "bytes": 1539115,
-        "url": "https://raw.githubusercontent.com/nltk/nltk_data/550b6625bcef1f2abff2ff770a5a0d272c9c6b2a/packages/taggers/averaged_perceptron_tagger_eng.zip",
-        "revision": "550b6625bcef1f2abff2ff770a5a0d272c9c6b2a"
-      }
-    ]
+    "nltk": {
+      "dataset": "nltk",
+      "files": [
+        {
+          "path": "data/raw/nltk/punkt.zip",
+          "sha256": "51c3078994aeaf650bfc8e028be4fb42b4a0d177d41c012b6a983979653660ec",
+          "bytes": 13905355,
+          "url": "https://raw.githubusercontent.com/nltk/nltk_data/550b6625bcef1f2abff2ff770a5a0d272c9c6b2a/packages/tokenizers/punkt.zip",
+          "revision": "550b6625bcef1f2abff2ff770a5a0d272c9c6b2a"
+        },
+        {
+          "path": "data/raw/nltk/punkt_tab.zip",
+          "sha256": "e57f64187974277726a3417ca6f181ec5403676c717672eef6a748a7b20e0106",
+          "bytes": 4319076,
+          "url": "https://raw.githubusercontent.com/nltk/nltk_data/550b6625bcef1f2abff2ff770a5a0d272c9c6b2a/packages/tokenizers/punkt_tab.zip",
+          "revision": "550b6625bcef1f2abff2ff770a5a0d272c9c6b2a"
+        },
+        {
+          "path": "data/raw/nltk/stopwords.zip",
+          "sha256": "48c0e52d8b52546e827f53761fb30300c0ab94f70660d28bd65ba0a86270946b",
+          "bytes": 37733,
+          "url": "https://raw.githubusercontent.com/nltk/nltk_data/550b6625bcef1f2abff2ff770a5a0d272c9c6b2a/packages/corpora/stopwords.zip",
+          "revision": "550b6625bcef1f2abff2ff770a5a0d272c9c6b2a"
+        },
+        {
+          "path": "data/raw/nltk/averaged_perceptron_tagger_eng.zip",
+          "sha256": "6025f530624335c67d6547d44757b357b4e79bae030a0383e9887a92c1718f0b",
+          "bytes": 1539115,
+          "url": "https://raw.githubusercontent.com/nltk/nltk_data/550b6625bcef1f2abff2ff770a5a0d272c9c6b2a/packages/taggers/averaged_perceptron_tagger_eng.zip",
+          "revision": "550b6625bcef1f2abff2ff770a5a0d272c9c6b2a"
+        }
+      ]
+    },
+    "livebench_harness": {
+      "dataset": "livebench_harness",
+      "files": [
+        {
+          "path": "data/raw/livebench_harness/source.zip",
+          "sha256": "9f0fd4372134121606ca143385faf5cddf7f00a53443845990dec3044307247d",
+          "bytes": 7406001,
+          "url": "https://codeload.github.com/LiveBench/LiveBench/zip/0edef1710338da97d78e071e3c3ac06426a937a8",
+          "revision": "0edef1710338da97d78e071e3c3ac06426a937a8"
+        }
+      ]
+    },
+    "gepa_artifact": {
+      "dataset": "gepa_artifact",
+      "files": [
+        {
+          "path": "data/raw/gepa_artifact/source.zip",
+          "sha256": "168ae714bbd8046b3ba2c4f369f84a682a8697b2999dc1f00381fac53b4fdc3b",
+          "bytes": 7334636,
+          "url": "https://codeload.github.com/gepa-ai/gepa-artifact/zip/cbefbc1aa0f43dd39874ec4bf42211365dbda42e",
+          "revision": "cbefbc1aa0f43dd39874ec4bf42211365dbda42e"
+        }
+      ]
+    }
   },
   "split_exceptions": {
     "math": {
@@ -1494,5 +1700,424 @@
     "normalization": "\" \".join(prompt.split()).casefold()",
     "hash": "sha256(normalized_prompt.encode(\"utf-8\"))"
   },
-  "audit_overlap_filter": "Exclude audit IDs or normalized input hashes present in the frozen selection set"
+  "audit_overlap_filter": "Exclude audit IDs or normalized input hashes present in the frozen selection set",
+  "source_preparation_configuration": {
+    "schema_version": 1,
+    "split_seed": 20260916,
+    "datasets": {
+      "game24": {
+        "family": "workflows",
+        "format": "game24",
+        "source_page": "https://github.com/princeton-nlp/tree-of-thought-llm",
+        "files": [
+          {
+            "url": "https://raw.githubusercontent.com/princeton-nlp/tree-of-thought-llm/8050e67d0e3a0fddc424d7fa5801538722a4c4cc/src/tot/data/24/24.csv",
+            "filename": "24.csv",
+            "revision": "8050e67d0e3a0fddc424d7fa5801538722a4c4cc"
+          }
+        ]
+      },
+      "mbpp": {
+        "family": "workflows",
+        "format": "mbpp",
+        "source_page": "https://github.com/google-research/google-research/tree/master/mbpp",
+        "files": [
+          {
+            "url": "https://raw.githubusercontent.com/google-research/google-research/8025cf1351da4d3cb8c289afe2d11247623fbdfb/mbpp/mbpp.jsonl",
+            "filename": "mbpp.jsonl",
+            "revision": "8025cf1351da4d3cb8c289afe2d11247623fbdfb"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/google-research/google-research/8025cf1351da4d3cb8c289afe2d11247623fbdfb/mbpp/README.md",
+            "filename": "README.md",
+            "revision": "8025cf1351da4d3cb8c289afe2d11247623fbdfb"
+          }
+        ],
+        "runtime": "bubblewrap sandbox or digest-pinned Docker image"
+      },
+      "ifbench": {
+        "family": "prompts",
+        "format": "ifbench",
+        "source_page": "https://github.com/allenai/IFBench",
+        "files": [
+          {
+            "url": "https://raw.githubusercontent.com/allenai/IFBench/1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d/data/IFBench_test.jsonl",
+            "filename": "IFBench_test.jsonl",
+            "revision": "1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d"
+          },
+          {
+            "url": "https://codeload.github.com/allenai/IFBench/zip/1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d",
+            "filename": "source.zip",
+            "revision": "1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d",
+            "extract": true
+          }
+        ],
+        "runtime": "Install locked official source and local NLTK resources"
+      },
+      "hover": {
+        "family": "prompts",
+        "format": "hover",
+        "source_page": "https://github.com/hover-nlp/hover",
+        "files": [
+          {
+            "url": "https://raw.githubusercontent.com/hover-nlp/hover/39b84697f196308f398a251a7aea9b82ae0f0562/data/hover/hover_train_release_v1.1.json",
+            "filename": "hover_train_release_v1.1.json",
+            "revision": "39b84697f196308f398a251a7aea9b82ae0f0562"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/hover-nlp/hover/39b84697f196308f398a251a7aea9b82ae0f0562/data/hover/hover_dev_release_v1.1.json",
+            "filename": "hover_dev_release_v1.1.json",
+            "revision": "39b84697f196308f398a251a7aea9b82ae0f0562"
+          }
+        ]
+      },
+      "pupa": {
+        "family": "prompts",
+        "format": "pupa",
+        "source_page": "https://huggingface.co/datasets/Columbia-NLP/PUPA",
+        "files": [
+          {
+            "url": "https://huggingface.co/datasets/Columbia-NLP/PUPA/resolve/9981b49b6ced0033988a224b6712895ebf119294/PUPA_New.csv",
+            "filename": "PUPA_New.csv",
+            "revision": "9981b49b6ced0033988a224b6712895ebf119294"
+          },
+          {
+            "url": "https://huggingface.co/datasets/Columbia-NLP/PUPA/resolve/9981b49b6ced0033988a224b6712895ebf119294/PUPA_TNB.csv",
+            "filename": "PUPA_TNB.csv",
+            "revision": "9981b49b6ced0033988a224b6712895ebf119294"
+          },
+          {
+            "url": "https://huggingface.co/datasets/Columbia-NLP/PUPA/resolve/9981b49b6ced0033988a224b6712895ebf119294/README.md",
+            "filename": "README.md",
+            "revision": "9981b49b6ced0033988a224b6712895ebf119294"
+          }
+        ]
+      },
+      "aime25": {
+        "family": "prompts",
+        "format": "aime25",
+        "source_page": "https://math-ai-org.github.io/aime25/",
+        "files": [
+          {
+            "url": "https://huggingface.co/datasets/math-ai/aime25/resolve/563bb8404243c5f09de6ec262f2db674fe5bce9b/test.jsonl",
+            "filename": "test.jsonl",
+            "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b"
+          },
+          {
+            "url": "https://huggingface.co/datasets/math-ai/aime25/resolve/563bb8404243c5f09de6ec262f2db674fe5bce9b/README.md",
+            "filename": "README.md",
+            "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b"
+          },
+          {
+            "url": "https://huggingface.co/datasets/math-ai/aime25/resolve/563bb8404243c5f09de6ec262f2db674fe5bce9b/LICENSE",
+            "filename": "LICENSE",
+            "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b"
+          }
+        ]
+      },
+      "livebench_math": {
+        "family": "prompts",
+        "format": "livebench_math",
+        "source_page": "https://huggingface.co/datasets/livebench/math",
+        "files": [
+          {
+            "url": "https://huggingface.co/datasets/livebench/math/resolve/bb66571c8ccf32d3df9e6f48b920d3770ff4aacb/data/test-00000-of-00001.parquet",
+            "filename": "test-00000-of-00001.parquet",
+            "revision": "bb66571c8ccf32d3df9e6f48b920d3770ff4aacb"
+          },
+          {
+            "url": "https://huggingface.co/datasets/livebench/math/resolve/bb66571c8ccf32d3df9e6f48b920d3770ff4aacb/README.md",
+            "filename": "README.md",
+            "revision": "bb66571c8ccf32d3df9e6f48b920d3770ff4aacb"
+          }
+        ]
+      },
+      "swe_verified": {
+        "family": "coding",
+        "format": "swe",
+        "source_page": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
+        "files": [
+          {
+            "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified/resolve/c104f840cc67f8b6eec6f759ebc8b2693d585d4a/data/test-00000-of-00001.parquet",
+            "filename": "test-00000-of-00001.parquet",
+            "revision": "c104f840cc67f8b6eec6f759ebc8b2693d585d4a"
+          },
+          {
+            "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified/resolve/c104f840cc67f8b6eec6f759ebc8b2693d585d4a/README.md",
+            "filename": "README.md",
+            "revision": "c104f840cc67f8b6eec6f759ebc8b2693d585d4a"
+          }
+        ]
+      },
+      "swe_lite": {
+        "family": "coding",
+        "format": "swe",
+        "source_page": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Lite",
+        "files": [
+          {
+            "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Lite/resolve/6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2/data/dev-00000-of-00001.parquet",
+            "filename": "dev-00000-of-00001.parquet",
+            "revision": "6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2"
+          },
+          {
+            "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Lite/resolve/6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2/data/test-00000-of-00001.parquet",
+            "filename": "test-00000-of-00001.parquet",
+            "revision": "6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2"
+          },
+          {
+            "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Lite/resolve/6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2/README.md",
+            "filename": "README.md",
+            "revision": "6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2"
+          }
+        ]
+      },
+      "polyglot": {
+        "family": "coding",
+        "format": "polyglot",
+        "source_page": "https://github.com/aider-ai/polyglot-benchmark",
+        "files": [
+          {
+            "url": "https://codeload.github.com/aider-ai/polyglot-benchmark/zip/7e0611e77b54e2dea774cdc0aa00cf9f7ed6144f",
+            "filename": "source.zip",
+            "revision": "7e0611e77b54e2dea774cdc0aa00cf9f7ed6144f",
+            "extract": true
+          }
+        ]
+      },
+      "planbench": {
+        "family": "workflows",
+        "format": "planbench",
+        "source_page": "https://github.com/harshakokel/PlanBench",
+        "files": [
+          {
+            "url": "https://codeload.github.com/harshakokel/PlanBench/zip/1f4d600f4806bedbefebbbe44b168372aaf5060d",
+            "filename": "source.zip",
+            "revision": "1f4d600f4806bedbefebbbe44b168372aaf5060d",
+            "extract": true
+          }
+        ]
+      },
+      "gepa_artifact": {
+        "family": "reference_artifact",
+        "format": "archive",
+        "source_page": "https://github.com/gepa-ai/gepa-artifact",
+        "files": [
+          {
+            "url": "https://codeload.github.com/gepa-ai/gepa-artifact/zip/cbefbc1aa0f43dd39874ec4bf42211365dbda42e",
+            "filename": "source.zip",
+            "revision": "cbefbc1aa0f43dd39874ec4bf42211365dbda42e",
+            "extract": true
+          }
+        ]
+      },
+      "livebench_harness": {
+        "family": "reference_artifact",
+        "format": "archive",
+        "source_page": "https://github.com/LiveBench/LiveBench",
+        "files": [
+          {
+            "url": "https://codeload.github.com/LiveBench/LiveBench/zip/0edef1710338da97d78e071e3c3ac06426a937a8",
+            "filename": "source.zip",
+            "revision": "0edef1710338da97d78e071e3c3ac06426a937a8",
+            "extract": true
+          }
+        ]
+      },
+      "hotpotqa": {
+        "family": "prompts",
+        "format": "hotpotqa",
+        "source_page": "https://huggingface.co/datasets/hotpotqa/hotpot_qa",
+        "files": [
+          {
+            "url": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/resolve/1908d6afbbead072334abe2965f91bd2709910ab/distractor/train-00000-of-00002.parquet",
+            "filename": "train-00000-of-00002.parquet",
+            "revision": "1908d6afbbead072334abe2965f91bd2709910ab"
+          },
+          {
+            "url": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/resolve/1908d6afbbead072334abe2965f91bd2709910ab/distractor/train-00001-of-00002.parquet",
+            "filename": "train-00001-of-00002.parquet",
+            "revision": "1908d6afbbead072334abe2965f91bd2709910ab"
+          },
+          {
+            "url": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/resolve/1908d6afbbead072334abe2965f91bd2709910ab/distractor/validation-00000-of-00001.parquet",
+            "filename": "validation-00000-of-00001.parquet",
+            "revision": "1908d6afbbead072334abe2965f91bd2709910ab"
+          },
+          {
+            "url": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/resolve/1908d6afbbead072334abe2965f91bd2709910ab/README.md",
+            "filename": "README.md",
+            "revision": "1908d6afbbead072334abe2965f91bd2709910ab"
+          }
+        ],
+        "source_note": "Official CMU HTTPS endpoint timed out after three attempts; use publisher-namespaced Hugging Face Parquet distribution, preserving native IDs and all distractor train/validation rows."
+      },
+      "math": {
+        "family": "workflows",
+        "format": "math",
+        "source_page": "https://huggingface.co/datasets/EleutherAI/hendrycks_math",
+        "files": [
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/algebra/train-00000-of-00001.parquet",
+            "filename": "algebra_train.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/algebra/test-00000-of-00001.parquet",
+            "filename": "algebra_test.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/counting_and_probability/train-00000-of-00001.parquet",
+            "filename": "counting_and_probability_train.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/counting_and_probability/test-00000-of-00001.parquet",
+            "filename": "counting_and_probability_test.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/geometry/train-00000-of-00001.parquet",
+            "filename": "geometry_train.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/geometry/test-00000-of-00001.parquet",
+            "filename": "geometry_test.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/intermediate_algebra/train-00000-of-00001.parquet",
+            "filename": "intermediate_algebra_train.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/intermediate_algebra/test-00000-of-00001.parquet",
+            "filename": "intermediate_algebra_test.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/number_theory/train-00000-of-00001.parquet",
+            "filename": "number_theory_train.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/number_theory/test-00000-of-00001.parquet",
+            "filename": "number_theory_test.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/prealgebra/train-00000-of-00001.parquet",
+            "filename": "prealgebra_train.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/prealgebra/test-00000-of-00001.parquet",
+            "filename": "prealgebra_test.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/precalculus/train-00000-of-00001.parquet",
+            "filename": "precalculus_train.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/precalculus/test-00000-of-00001.parquet",
+            "filename": "precalculus_test.parquet",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          },
+          {
+            "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/README.md",
+            "filename": "README.md",
+            "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+          }
+        ],
+        "variant": "prospective_complete_MATH_7500_train_5000_heldout_test; SpecRSI original Math identity unspecified"
+      },
+      "pybamm": {
+        "family": "science",
+        "format": "unavailable",
+        "files": [],
+        "source_page": "paper_source/appendices/B_setup.tex"
+      },
+      "aqm": {
+        "family": "science",
+        "format": "unavailable",
+        "files": [],
+        "source_page": "paper_source/appendices/B_setup.tex"
+      },
+      "fdtd": {
+        "family": "science",
+        "format": "unavailable",
+        "files": [],
+        "source_page": "paper_source/appendices/B_setup.tex"
+      },
+      "reactor": {
+        "family": "science",
+        "format": "unavailable",
+        "files": [],
+        "source_page": "paper_source/appendices/B_setup.tex"
+      },
+      "irp": {
+        "family": "science",
+        "format": "unavailable",
+        "files": [],
+        "source_page": "paper_source/appendices/B_setup.tex"
+      },
+      "nltk": {
+        "family": "scorer_resource",
+        "format": "archive",
+        "source_page": "https://github.com/nltk/nltk_data",
+        "files": [
+          {
+            "url": "https://raw.githubusercontent.com/nltk/nltk_data/550b6625bcef1f2abff2ff770a5a0d272c9c6b2a/packages/tokenizers/punkt.zip",
+            "filename": "punkt.zip",
+            "revision": "550b6625bcef1f2abff2ff770a5a0d272c9c6b2a",
+            "extract": true,
+            "extract_to": "source/tokenizers"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/nltk/nltk_data/550b6625bcef1f2abff2ff770a5a0d272c9c6b2a/packages/tokenizers/punkt_tab.zip",
+            "filename": "punkt_tab.zip",
+            "revision": "550b6625bcef1f2abff2ff770a5a0d272c9c6b2a",
+            "extract": true,
+            "extract_to": "source/tokenizers"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/nltk/nltk_data/550b6625bcef1f2abff2ff770a5a0d272c9c6b2a/packages/corpora/stopwords.zip",
+            "filename": "stopwords.zip",
+            "revision": "550b6625bcef1f2abff2ff770a5a0d272c9c6b2a",
+            "extract": true,
+            "extract_to": "source/corpora"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/nltk/nltk_data/550b6625bcef1f2abff2ff770a5a0d272c9c6b2a/packages/taggers/averaged_perceptron_tagger_eng.zip",
+            "filename": "averaged_perceptron_tagger_eng.zip",
+            "revision": "550b6625bcef1f2abff2ff770a5a0d272c9c6b2a",
+            "extract": true,
+            "extract_to": "source/taggers"
+          }
+        ]
+      }
+    }
+  },
+  "cross_pool_overlap": {
+    "swe_lite_verified": {
+      "same_normalized_inputs": 93,
+      "by_role": {
+        "development": 15,
+        "selection": 38,
+        "audit": 40
+      }
+    },
+    "aime25_in_extension_audit": {
+      "members": 30,
+      "aime25_source_roles": {
+        "development": 13,
+        "selection": 11,
+        "audit": 6
+      },
+      "scope": "The extension is held out relative to its own 2024 development and selection members"
+    }
+  }
 }

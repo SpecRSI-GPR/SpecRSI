@@ -1,0 +1,1320 @@
+{
+  "schema_version": 1,
+  "scope": "Registered scientific comparison protocol and separately identified callable benchmark templates",
+  "registered_science": {
+    "configuration_type": "registered_science_protocol",
+    "domains": [
+      "reactor",
+      "irp",
+      "aqm",
+      "fdtd",
+      "pybamm"
+    ],
+    "training_seeds": [
+      2026101001,
+      2026101002,
+      2026101003,
+      2026101004,
+      2026101005
+    ],
+    "nested_search_labels": [
+      0,
+      1,
+      2
+    ],
+    "seed_derivation": "int(sha256(json.dumps([training_seed,nested_search_seed],separators=(\",\",\":\")).encode()).hexdigest()[:8],16)",
+    "methods": [
+      "initial",
+      "best_of_n",
+      "random_search",
+      "specrsi",
+      "janus_science",
+      "hgm_science",
+      "aflow_science"
+    ],
+    "budgets": {
+      "cost_ms": 3000000,
+      "search_wall_seconds": 1200,
+      "primitive_attempts": 24,
+      "native_workers": 2,
+      "max_actions": 6,
+      "max_candidates_including_root": 4,
+      "max_children": 2,
+      "execution_cap_ms": 120000,
+      "draft_cap_ms": 180000,
+      "q_cap_ms": 120000,
+      "policy_cap_ms": 60000,
+      "max_q_queries_per_state": 4
+    },
+    "menu": {
+      "max_expansions": 4,
+      "cap": 8,
+      "completion_targets": 2,
+      "pair_targets": 2,
+      "singletons": 2,
+      "draft_depth": 1,
+      "draft_parents": 1
+    },
+    "drafter": {
+      "max_generation_tokens": 64,
+      "top_k": 32,
+      "temperature": 1.0,
+      "enable_thinking": false,
+      "proposal_space": "numeric_catalog",
+      "catalog_size": 8
+    },
+    "comparison_exploration": 0,
+    "training_collection_exploration": 0.1,
+    "cost_lambda": 0,
+    "time_mu": 0,
+    "execution_mode": "all-U",
+    "candidate_freezing": "Freeze all same-domain candidates before selection evaluation",
+    "statistical_unit": "training seed after averaging the three nested search runs",
+    "inferential_statistics_enabled": false,
+    "initialization_accounting": "Root evaluation and role-model loading are recorded separately",
+    "cost_endpoints": [
+      "input+output tokens",
+      "cumulative native and role milliseconds",
+      "allocated GPU seconds",
+      "parallel wall time"
+    ]
+  },
+  "metrics": {
+    "hotpotqa": {
+      "metric": "answer_f1",
+      "additional_fields": [
+        "answer_em",
+        "supporting_facts_em",
+        "supporting_facts_f1",
+        "joint_em",
+        "joint_f1"
+      ],
+      "normalization": "Lowercase; remove punctuation and articles; token-frequency overlap for precision and recall"
+    },
+    "hover": {
+      "metric": "gold_supporting_document_coverage",
+      "retrieval_top_k": [
+        7,
+        7,
+        10
+      ],
+      "pipeline_model_calls": {
+        "summary": 2,
+        "query": 2
+      }
+    },
+    "ifbench": {
+      "metric": "prompt_loose",
+      "levels": [
+        "prompt",
+        "instruction"
+      ],
+      "variants": [
+        "strict",
+        "loose"
+      ],
+      "revision": "1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d"
+    },
+    "pupa": {
+      "metric": "(quality + 1 - leakage) / 2",
+      "model_calls": 6,
+      "stages": [
+        "redact",
+        "untrusted_answer",
+        "private_answer",
+        "quality_judge_order_1",
+        "quality_judge_order_2",
+        "leakage_judge"
+      ]
+    },
+    "aime": {
+      "metric": "integer_exact_match",
+      "answer_range": [
+        0,
+        999
+      ],
+      "extraction": "Last balanced boxed/fbox, explicit answer line, or complete-text integer answer"
+    },
+    "livebench_math": {
+      "metric": "native task-specific scorer",
+      "harness_revision": "0edef1710338da97d78e071e3c3ac06426a937a8",
+      "tasks": [
+        "AMC/AIME",
+        "proof rearrangement",
+        "AMPS"
+      ],
+      "fallback_metric": "Separately named local-judge metric"
+    },
+    "math": {
+      "metric": "AFlow native numeric/symbolic equivalence",
+      "sandbox_timeout_seconds": 20,
+      "sandbox_memory_mib": 2048
+    },
+    "game24": {
+      "metric": "exact rational arithmetic equals 24",
+      "input_use": "Each input number exactly once, preserving multiplicity",
+      "operators": [
+        "+",
+        "-",
+        "*",
+        "/",
+        "parentheses"
+      ]
+    },
+    "mbpp": {
+      "metric": "complete test_list execution"
+    },
+    "planbench": {
+      "track": "prospective_zero_shot_plan_generation",
+      "metric": "Complete plan satisfies PDDL transitions, preconditions and goals"
+    },
+    "polyglot": {
+      "metric": "native language-specific tests",
+      "runtimes": [
+        "pytest",
+        "Jest",
+        "Go",
+        "Cargo",
+        "CMake+Catch",
+        "JUnit"
+      ]
+    },
+    "swe": {
+      "metric": "official harness per-instance resolved",
+      "instance_identity": [
+        "base_commit",
+        "OCI image digest",
+        "test commands",
+        "timeout"
+      ]
+    }
+  },
+  "initial_instructions": {
+    "hotpotqa": {
+      "instruction": "Answer the question using the supplied context. Reply with only the concise answer.",
+      "configuration": "configs/experiments/prospective/hotpotqa.yaml"
+    },
+    "ifbench": {
+      "instruction": "Follow every instruction in the user request exactly.",
+      "configuration": "configs/experiments/prospective/ifbench.yaml"
+    },
+    "hover": {
+      "instruction": "Find all Wikipedia evidence needed to verify the claim. Preserve names and relationships accurately.",
+      "configuration": "configs/experiments/prospective/hover_retrieval.yaml"
+    },
+    "pupa": {
+      "instruction": "Protect private information while retaining enough useful information to answer the query.",
+      "configuration": "configs/experiments/prospective/pupa.yaml"
+    },
+    "aime25": {
+      "instruction": "Solve the mathematics problem carefully. Put the final three-digit integer answer in \\boxed{}.",
+      "configuration": "configs/experiments/prospective/aime25.yaml"
+    },
+    "livebench_math": {
+      "instruction": "Solve the problem and give the final answer in the requested format.",
+      "configuration": "configs/experiments/prospective/livebench_math.yaml"
+    },
+    "math": {
+      "instruction": "Solve the mathematics problem carefully. Put the final answer in \\boxed{}.",
+      "configuration": "configs/experiments/prospective/math.yaml"
+    },
+    "mbpp": {
+      "instruction": "Write Python code implementing the requested function. Return only the code without markdown.",
+      "configuration": "configs/experiments/prospective/mbpp.yaml"
+    },
+    "planbench": {
+      "instruction": "Return a complete valid plan using only the exact action names and objects in the task. Put one action on each line; do not include explanations.",
+      "configuration": "configs/experiments/prospective/planbench.yaml"
+    },
+    "game24": {
+      "instruction": "Find an arithmetic expression equal to 24 using each given number exactly once. You may use +, -, *, / and parentheses. Output only the expression, without explanation or '= 24'.",
+      "configuration": "configs/experiments/prospective/game24.yaml"
+    },
+    "polyglot": {
+      "instruction": "Implement the requested behavior completely and handle edge cases.",
+      "configuration": "configs/experiments/prospective/polyglot.yaml"
+    }
+  },
+  "baseline_sources": [
+    {
+      "method": "GEPA / GEPA+Merge",
+      "upstream": "https://github.com/gepa-ai/gepa",
+      "commit": "15ee314f9c7d34ec153b809d401f42f55c4dcd76",
+      "lock": "configs/baselines/gepa.lock.json"
+    },
+    {
+      "method": "MIPROv2",
+      "upstream": "https://github.com/stanfordnlp/dspy",
+      "commit": "6ca54f8492f70afe978e1e1b961e13d6ace788ee",
+      "lock": "configs/baselines/dspy.lock.json"
+    },
+    {
+      "method": "HGM",
+      "upstream": "https://github.com/metauto-ai/HGM",
+      "commit": "013872d95da978483f5b540e531db063d23890da",
+      "lock": "configs/baselines/hgm.lock.json"
+    },
+    {
+      "method": "AFlow",
+      "upstream": "https://github.com/FoundationAgents/AFlow",
+      "commit": "3f457218fc716093fe53f6df8a5d5e6379d66346",
+      "lock": "configs/baselines/aflow.lock.json"
+    },
+    {
+      "method": "FlashEvolve",
+      "upstream": "https://github.com/Leo9660/FlashEvolve",
+      "commit": "27ee26fc0f5b938aca225ce148f1d736d0ef3fa3",
+      "lock": "configs/baselines/flash_evolve.lock.json"
+    },
+    {
+      "method": "TextGrad",
+      "upstream": "https://github.com/zou-group/textgrad",
+      "commit": "75e912e210864b61999781778cdf756d4468120f",
+      "lock": "configs/baselines/secondary_textgrad.lock.json"
+    },
+    {
+      "method": "Trace / OptoPrime",
+      "upstream": "https://github.com/microsoft/Trace",
+      "commit": "8190d032e43ffe18943a8cad9ea9ee99e43d6773",
+      "lock": "configs/baselines/secondary_trace.lock.json"
+    }
+  ],
+  "source_fingerprints": {
+    "configs/baselines/aflow.lock.json": {
+      "sha256": "9d3f9299c371c0015c49a209e2a92721f43c01a30f7b666dbd8967e788f18484"
+    },
+    "configs/baselines/dspy.lock.json": {
+      "sha256": "2748b0b54df99535d52ed10b48d51c72b9f75e7c00bce227c587355a7034837c"
+    },
+    "configs/baselines/flash_evolve.lock.json": {
+      "sha256": "11dd00a1e9ebfd566ac9730a21a359debb0de5442b8814fac9ed74b3d66b5f64"
+    },
+    "configs/baselines/flash_evolve_hotpotqa_dev_smoke.yaml": {
+      "sha256": "8e325864f4c092e12d8e0c697486eba50965b63cc1ca35b73a8c87e266d8f054"
+    },
+    "configs/baselines/gepa.lock.json": {
+      "sha256": "6344e6334aaf7e3adcf8dcf4f8b151b7492921bca360cfb17e80960c6b4afa9e"
+    },
+    "configs/baselines/hgm.lock.json": {
+      "sha256": "1984d9f19064fb7faaab7ec0ee03c52301081991cb81ab44d4da577a5a7557b7"
+    },
+    "configs/baselines/prospective_aflow.yaml": {
+      "sha256": "c7172620377a794817db8e0c299d1551a250131600d5a7af3455c1de30a6755c"
+    },
+    "configs/baselines/prospective_emas.yaml": {
+      "sha256": "b427bdc8b2cd017d7039a7c81dee9c0bace6b2c185c13d917161213b90c7103a"
+    },
+    "configs/baselines/prospective_hgm.yaml": {
+      "sha256": "e1ec924a172941f7d65200df97d3c55228ae76b7b69400a8920cd40d3c92fe91"
+    },
+    "configs/baselines/prospective_janus.yaml": {
+      "sha256": "481ceb78cd97a92ed2450faee0455e6a2c9b2efd933a99bc87b17638d7e365f4"
+    },
+    "configs/baselines/prospective_native_aflow_polyglot.yaml": {
+      "sha256": "fbca55545a87fb0279751335231e3168ed89fdd13b6cf2ed3cc551f9622945da"
+    },
+    "configs/baselines/prospective_native_aflow_swe.yaml": {
+      "sha256": "30de811b1d1cf571dc5e209232c9b4198dbb49947a5aa0589c6707c18dd37af0"
+    },
+    "configs/baselines/prospective_native_emas_polyglot.yaml": {
+      "sha256": "69e6a9b184c846e3b1711dee83be8d9de5951434a8fc4e2edbd1fd05d3a4f92f"
+    },
+    "configs/baselines/prospective_native_emas_swe.yaml": {
+      "sha256": "4c8f937a8879ac4f01505f7be32083e40091f263b11046fa0b5432c63f0119a1"
+    },
+    "configs/baselines/prospective_native_hgm_polyglot.yaml": {
+      "sha256": "fb96a991a84164dd0d0f1cf92fde3fc02466b6b8fbbdc3658734a0f710841a50"
+    },
+    "configs/baselines/prospective_native_hgm_swe.yaml": {
+      "sha256": "211bfcbdcf8502c8e3a51c66e432f2f8b764a61121fb867bbeb2181869113207"
+    },
+    "configs/baselines/prospective_native_janus_polyglot.yaml": {
+      "sha256": "3492ece223f9e1bebe5802cabc59c31a7597657eb9017f3b1e1cd4935adfd170"
+    },
+    "configs/baselines/prospective_native_janus_swe.yaml": {
+      "sha256": "a91b3b39d06137117dcb647195384b298664990354a5adfbcf76e2b8b32589ae"
+    },
+    "configs/baselines/secondary_mipro_demos.yaml": {
+      "sha256": "2a423d3ceb2a4df3fc53961e410f89e844a6fe98a69f88dd5fa6fe26efffe047"
+    },
+    "configs/baselines/secondary_requirements.txt": {
+      "sha256": "51a1007beb64aa0256c3139da10f117580590b3d2914009576b14274c9981195"
+    },
+    "configs/baselines/secondary_textgrad.lock.json": {
+      "sha256": "f72a11be2c4d633c32f74b05b8e8f0051f3d4fff8c354f03bc887fb987a900bc"
+    },
+    "configs/baselines/secondary_textgrad.yaml": {
+      "sha256": "94d4032d0d22565028140a148c8922195c42bf928eb9dcaac15572488134ebc2"
+    },
+    "configs/baselines/secondary_trace.lock.json": {
+      "sha256": "4d51346da88b7b1de8dbb76ca165c90abbf9d16f7c1bb54c8e6660b276a57e42"
+    },
+    "configs/baselines/secondary_trace_optoprime.yaml": {
+      "sha256": "7e01d9f08ef0615de66d6d1244de47dcb001ac5778cadfd799e9603ac3867649"
+    },
+    "configs/coding/harness-environment.lock.txt": {
+      "sha256": "ca3723ac02b3c169261fd6f2b7c58f942fa409917c0c3541d5a322b934852882"
+    },
+    "configs/coding/requirements-harness.txt": {
+      "sha256": "a922127cbe6c1860fb794ee19955834eacc8b85e327d1479f3eb4386f500e882"
+    },
+    "configs/datasets/polyglot_java.lock.json": {
+      "sha256": "7f1e98a2df3b7bbedb2be370c5f3edc43c6fb10048324aa4c30424840a132ccd"
+    },
+    "configs/experiments/prospective/aime25.yaml": {
+      "sha256": "6c554f166831daa063b355e4bb2dbe3d85d085f8fddf2eaf3d6030c9f5aa586b"
+    },
+    "configs/experiments/prospective/game24.yaml": {
+      "sha256": "382863c28f6dcfcd1f6a1bc0583a9d69fc313543c1c8ab9c328dfd44c6d636db"
+    },
+    "configs/experiments/prospective/game24_workflow.yaml": {
+      "sha256": "7df1c3b7b7e51bf8eed5c0c615a625b81aec993bc69b970c90280d1db8a5ef8f"
+    },
+    "configs/experiments/prospective/hotpotqa.yaml": {
+      "sha256": "337f4e4959d44751d473fc295fd8693014a9d7495b89f81a94bd545b5b4e1f08"
+    },
+    "configs/experiments/prospective/hover_retrieval.yaml": {
+      "sha256": "25aaf7d715aefb6dd2473d04c102fd3a1dad87c36232f15dbd631fbeb0ce42f6"
+    },
+    "configs/experiments/prospective/ifbench.yaml": {
+      "sha256": "61c2113337b8b0d5114da559e511f62b98420b9f163d3975ac83f069967411e2"
+    },
+    "configs/experiments/prospective/livebench_math.yaml": {
+      "sha256": "59e83df2e234b5f0b9341b4852e70a19a92ea95a9108b34e9d458a0ccbb23fa2"
+    },
+    "configs/experiments/prospective/math.yaml": {
+      "sha256": "f9cf8ccee771e9df82f704c1850e316a520489906e06b02855bf166aaa9541f3"
+    },
+    "configs/experiments/prospective/mbpp.yaml": {
+      "sha256": "75a164cf84de5b5a2d25ebc79daeb0ac964b3b6f6ee5565154cab67b0662af2a"
+    },
+    "configs/experiments/prospective/mbpp_workflow.yaml": {
+      "sha256": "d6949f5742e6964a911e17df54b99a2c468a9c9c830481431764394addc3c1b7"
+    },
+    "configs/experiments/prospective/planbench.yaml": {
+      "sha256": "0d3582407086469e79357d41064d4535568d2ea3049a15e9d44dae9e461a0ecc"
+    },
+    "configs/experiments/prospective/polyglot.yaml": {
+      "sha256": "515e1d693a2d33ca7857adf82b2fea80a3c8da8227c2ba18217d552f8bae3183"
+    },
+    "configs/experiments/prospective/pupa.yaml": {
+      "sha256": "6e915d0886962fb05cadd2482191d22be3160a608bf294d4cc1785cb1ec3103d"
+    },
+    "configs/models/qwen35_35b_a3b_bf16.lock.json": {
+      "sha256": "922b07c49ea65f7deabd0844e6fd2a431da11ae220f9e67c181b3b17ab633d9f"
+    },
+    "configs/runtimes/math.requirements.txt": {
+      "sha256": "7e57d4786ca8081fa9de309af871e96cce06b463544a7edbd6da726c0ba75ffd"
+    },
+    "configs/runtimes/polyglot/package-lock.json": {
+      "sha256": "966fff7e61db6f22cfd3efe00e78318be7630df7a46f98d64bf5fb5d371e8b3f"
+    },
+    "configs/science/requirements.txt": {
+      "sha256": "afda5f0008a5957ddcf689a986cf7484f5d05be34f25f55f9cd58bf3c58bb923"
+    },
+    "data/manifests/ifbench.json": {
+      "sha256": "c256e92262254520fed1f153275a7b83084eec1512b82ae4989b7525665ee868"
+    },
+    "data/manifests/livebench_harness.json": {
+      "sha256": "5cbccb87dcf642010997e5ec34ebb32113b9f4f982148c2438c15ddde3382dc0"
+    },
+    "data/manifests/nltk.json": {
+      "sha256": "13e0ca4f2b04cac48425cda4e2b5ac811ff96f8c413ab3ce66ce63e10d42aa88"
+    },
+    "scripts/run_baseline.py": {
+      "sha256": "c0b784382ef0d15c99262849d30564e344ec02a432223feb40931c250ee7a737"
+    },
+    "scripts/run_extended_baselines.py": {
+      "sha256": "8b4e6418ca4134a2fe0aac212c98151afbc67a662d2654720de860d08082602e"
+    },
+    "scripts/run_flash_evolve.py": {
+      "sha256": "1837bc94ba3e75769b62e2f7d973419e08896e930c1e97d8583d113684e28068"
+    },
+    "scripts/run_secondary_baselines.py": {
+      "sha256": "7a1e1edf2021a1820adf7dc9aa80f8c6c20a93c1a2362c37cca873c1463886f6"
+    },
+    "scripts/serve_budget_gateway.py": {
+      "sha256": "912932a520e01f19e2045f5f2d79fa94ef54fd87a8279f7c8de658fa499e82fe"
+    },
+    "src/specrsi/answer_strategies.py": {
+      "sha256": "078e95fffa3f854da80ddc9f932ea20c1b480f7bef4cd83fcd6ed2b5e6ecb9e7"
+    },
+    "src/specrsi/baselines/aflow.py": {
+      "sha256": "9fa630a524de883a5df8fdfe6092177fc89d5d011acb63c566b14f23c165fc2b"
+    },
+    "src/specrsi/baselines/emas.py": {
+      "sha256": "43249d30a8e8cf6d95396049bdf3f589a7a5d8174d45603d4c4a2c2e6fd261df"
+    },
+    "src/specrsi/baselines/flash_evolve.py": {
+      "sha256": "9ff6a8a41d993326d144ad449a134d21940d264159fabcbceb594e3a8464cf56"
+    },
+    "src/specrsi/baselines/gepa.py": {
+      "sha256": "16c4c38c209e9a33c8874a64c24abbe43097359b947a8f4474d25649f8bc5d0b"
+    },
+    "src/specrsi/baselines/hgm.py": {
+      "sha256": "afaa232d37009a4909fa66ac568d586620e45e93035765ccc111bc21dea39f9a"
+    },
+    "src/specrsi/baselines/janus.py": {
+      "sha256": "da00639968debbb2ffb603cb5375e0fe96c6f182cec75d2067e6f57340fb982c"
+    },
+    "src/specrsi/baselines/mipro.py": {
+      "sha256": "f990e9de7cf9b6b1b41b0924ebe69979961b302ce610bd35b79ddd57165ce6e0"
+    },
+    "src/specrsi/baselines/native_backend.py": {
+      "sha256": "cc61aefcb6f090d6ec9e0430d86217010e3ad56b99a4818c1038af0395da5ab0"
+    },
+    "src/specrsi/baselines/secondary_common.py": {
+      "sha256": "5412d2fb90c1edb529c3915c15cf5c5bd7796fea313d272076387e79889eb774"
+    },
+    "src/specrsi/baselines/secondary_gradients.py": {
+      "sha256": "13adc22c4156860c2dd207b881a459c6c40f3045cc33a9e2ef8c5b3df50eb5d6"
+    },
+    "src/specrsi/baselines/secondary_mipro.py": {
+      "sha256": "936877a5bc30958209f1c6fb368902084f18d2e892c6e28b7c7369dfceffbf76"
+    },
+    "src/specrsi/baselines/workflow_backend.py": {
+      "sha256": "d785d2842ac3702b26f20600ef1fe116ee51553218f26d22795f957cbcabd281"
+    },
+    "src/specrsi/benchmarks/coding.py": {
+      "sha256": "5a922040b52678eeb2017a53d9b672b996ab91541b42e400d33f07bd23d3d9f7"
+    },
+    "src/specrsi/benchmarks/livebench.py": {
+      "sha256": "bc51a03d96800242c90bc5a8af784e131da459091faecdd9a92c682a6b46d9a9"
+    },
+    "src/specrsi/benchmarks/math_native.py": {
+      "sha256": "579c7e703ac535c48ffe8993f58f94d930aa569670be4993785ec75965a79ba1"
+    },
+    "src/specrsi/benchmarks/planning.py": {
+      "sha256": "5860b47156d4e72a8405bf8475365535e35da59b938127ce193988564698d568"
+    },
+    "src/specrsi/benchmarks/retrieval.py": {
+      "sha256": "f6cdde30d03a91eac31f10a0033c20a2fc0c44feb0976a3d2e50444198235117"
+    },
+    "src/specrsi/benchmarks/sandbox.py": {
+      "sha256": "3dcd8b8c1f587931f195ff6a55e0972f5e06a6caee1010531340b2c2bf5a1780"
+    },
+    "src/specrsi/benchmarks/science.py": {
+      "sha256": "a8efc3bb66b0a3faf9c1e8fcf51614815532018bc658bd0a93423c557734581e"
+    },
+    "src/specrsi/benchmarks/scorers.py": {
+      "sha256": "9e43e9dcc1a01146600d04f130f07ef2b5dad64e8d7011e3931831cdaa8685d8"
+    },
+    "src/specrsi/benchmarks/swe_native.py": {
+      "sha256": "b24cc9b350e76d385c307f8b4b682ea7862f41b0d793e89f38450fad660e4210"
+    },
+    "src/specrsi/coding_agent.py": {
+      "sha256": "adeab5602f3f9ce933f1abc0d090a5940fab18224b915cf6344895a778c30185"
+    },
+    "src/specrsi/experiments.py": {
+      "sha256": "048230d497d32bce40d95ba260cc8b7530bb01e89a9dd6343565eb6e3029d102"
+    },
+    "src/specrsi/learning/draft_context.py": {
+      "sha256": "5c34d73904709d7b33041846fb0928a07094dd01f89c60a215fce40954bea029"
+    },
+    "src/specrsi/learning/objectives.py": {
+      "sha256": "608b160e5db6f381d17510983e4d18c0e7ac301f7ab7c3312f36e9c5ef9d4123"
+    },
+    "src/specrsi/learning/science_bridge.py": {
+      "sha256": "1e141302fee7300a6510701aa8fc69b9a39610b344e11e896d63d9b0a46de656"
+    },
+    "src/specrsi/learning/task_grpo.py": {
+      "sha256": "03c6960c8c08fbebdb9dedf5185bce39d851281f3480352a0181da3481177dff"
+    },
+    "src/specrsi/models/client.py": {
+      "sha256": "2d145352c7a24bc8a6d7c053fe68806d2ebe694ae3ac62cf12649fef05ebb4d7"
+    },
+    "src/specrsi/output_contracts.py": {
+      "sha256": "7612c1ae8d0090cf26be0c977c3595c1a9b5888a8c483b611b7b5c8c81715839"
+    },
+    "src/specrsi/science/baselines.py": {
+      "sha256": "d2914cd7d05b4be9d390e8db9d7b92d11b16944744748aa0e6f4bb2f2cf1468a"
+    },
+    "src/specrsi/science/executor.py": {
+      "sha256": "25f2abe58353d014af25c811f1fad47c3f8f716d6cf8b0a2b2b85e4591053b2b"
+    },
+    "src/specrsi/science/named_comparison.py": {
+      "sha256": "3b0267988b83dd3372634830dbac281b3cf43f682e58311950684c42dce9767a"
+    },
+    "src/specrsi/science/proposals.py": {
+      "sha256": "560a1171713cccd84b0149bd416785f2cd6be719e1b04019aaab04888fd04dec"
+    },
+    "src/specrsi/science/registry.py": {
+      "sha256": "cd4200b5e9b95463847100761a4544d0d0989a028ee910e31363045e527e414a"
+    },
+    "src/specrsi/science_comparison.py": {
+      "sha256": "b575a0ee758e7110bf9ae8d4fa5154875459be111b6eaa3a91e64d1ace861149"
+    },
+    "src/specrsi/statistics.py": {
+      "sha256": "da3428de8742173c9870f08e9c4fec5fe75e75b1d0abdebecdf26bb81e1db00e"
+    },
+    "src/specrsi/task_pipelines.py": {
+      "sha256": "1ddfb138ac307b48355faea0bd073f6a1aba36f72456e87afa45f7007d85416a"
+    },
+    "src/specrsi/tokenization.py": {
+      "sha256": "c4a34d3e65e221c3cfe6e70c275996ede52cb44d29afbe7d9d8221af839da269"
+    }
+  },
+  "separate_callable_algorithm_templates": {
+    "hgm": {
+      "configuration": "configs/baselines/prospective_hgm.yaml",
+      "max_steps": 30,
+      "expansion_power": 0.5,
+      "pseudo_descendant_evaluations": 10,
+      "cool_down": true,
+      "cooling_power": 0.5,
+      "allow_zero_seed_expansion": true,
+      "use_descendants": true
+    },
+    "aflow": {
+      "configuration": "configs/baselines/prospective_aflow.yaml",
+      "rounds": 6,
+      "top_k": 4,
+      "validation_repeats": 2,
+      "uniform_mixture": 0.3,
+      "score_temperature_scale": 0.2,
+      "duplicate_retries": 3,
+      "convergence_rounds": 5,
+      "convergence_top_k": 3
+    },
+    "janus": {
+      "configuration": "configs/baselines/prospective_janus.yaml",
+      "real_evaluations": 12,
+      "islands": 2,
+      "proposals_per_promotion": 3,
+      "minimum_archive": 3,
+      "archive_limit": 64,
+      "pool_limit": 32,
+      "evaluator_evolution_period": 2,
+      "refresh_batch": 2,
+      "evaluator_population": 8,
+      "portfolio_size": 3,
+      "regions": 2,
+      "direct_exploration_period": 5,
+      "online_credit_kappa": 4.0,
+      "quality_weight": 1.0,
+      "uncertainty_weight": 0.3,
+      "novelty_weight": 0.2,
+      "validity_gate": 0.2,
+      "evolve_evaluators": true,
+      "proxy_guidance": true
+    },
+    "emas": {
+      "configuration": "configs/baselines/prospective_emas.yaml",
+      "epochs": 2,
+      "max_revisions": 6,
+      "thresholds": {
+        "add-node": 4,
+        "split-node": 4,
+        "add-edge": 4,
+        "prompt-only": 6,
+        "remove-edge": 10,
+        "remove-node": 10
+      },
+      "recurrence": true,
+      "paired_validation": true
+    }
+  },
+  "callable_configuration_templates": [
+    {
+      "id": "registered-science-named-baselines",
+      "parameters": {
+        "janus_science": {
+          "real_evaluations": 6,
+          "islands": 2,
+          "proposals_per_promotion": 3,
+          "minimum_archive": 3,
+          "archive_limit": 64,
+          "pool_limit": 32,
+          "evaluator_evolution_period": 2,
+          "refresh_batch": 2,
+          "evaluator_population": 8,
+          "portfolio_size": 3,
+          "regions": 2,
+          "direct_exploration_period": 5,
+          "online_credit_kappa": 4.0,
+          "quality_weight": 1.0,
+          "uncertainty_weight": 0.3,
+          "novelty_weight": 0.2,
+          "validity_gate": 0.2,
+          "evolve_evaluators": true,
+          "proxy_guidance": true
+        },
+        "hgm_science": {
+          "max_steps": 6,
+          "expansion_power": 0.5,
+          "pseudo_descendant_evaluations": 10,
+          "cool_down": true,
+          "cooling_power": 0.5,
+          "allow_zero_seed_expansion": true,
+          "use_descendants": true
+        },
+        "aflow_science": {
+          "rounds": 6,
+          "top_k": 4,
+          "validation_repeats": 3,
+          "uniform_mixture": 0.3,
+          "score_temperature_scale": 0.2,
+          "duplicate_retries": 3,
+          "convergence_rounds": 5,
+          "convergence_top_k": 3
+        },
+        "resource_overrides": {
+          "token_cap": 1000000,
+          "request_token_cap": 16384,
+          "max_real_items": 26,
+          "max_generation_tokens": 64,
+          "temperature": 1.0,
+          "top_p": 0.8,
+          "top_k": "not_explicitly_sent_backend_default",
+          "enable_thinking": false,
+          "proposal_space": "global_and_case_routes"
+        }
+      }
+    },
+    {
+      "id": "callable-game24-workflow-template",
+      "parameters": {
+        "dataset": "game24",
+        "seed": 0,
+        "audit_seed": 10000,
+        "data": {
+          "root": "data",
+          "development": 8,
+          "selection": 4,
+          "audit": 4
+        },
+        "budget": {
+          "max_tokens": 300000,
+          "max_real_items": 100
+        },
+        "audit_token_cap": 50000,
+        "model": {
+          "base_url": "http://127.0.0.1:18085",
+          "lock": "configs/models/qwen35_35b_a3b_bf16.lock.json",
+          "max_tokens": 128,
+          "proposal_max_tokens": 512,
+          "temperature": 0.0,
+          "proposal_temperature": 0.7,
+          "execution_cap": 4096,
+          "max_seconds": 120
+        },
+        "initial_workflow": {
+          "nodes": [
+            {
+              "id": "solve",
+              "instruction": "Use the four supplied numbers exactly once and arithmetic operators to make 24. Return only the expression.",
+              "dependencies": []
+            }
+          ],
+          "output_node": "solve"
+        }
+      }
+    },
+    {
+      "id": "configs/baselines/prospective_native_hgm_swe.yaml",
+      "parameters": {
+        "dataset": "swe_verified",
+        "seed": 20260916,
+        "audit_seed": 10000,
+        "data": {
+          "root": "data",
+          "development": 23,
+          "selection": 60,
+          "audit": 291
+        },
+        "budget": {
+          "max_tokens": 12000000,
+          "max_real_items": 1200
+        },
+        "audit_token_cap": 24000000,
+        "model": {
+          "base_url": "http://127.0.0.1:18085",
+          "lock": "configs/models/qwen35_35b_a3b_bf16.lock.json",
+          "max_tokens": 1536,
+          "proposal_max_tokens": 512,
+          "temperature": 0.1,
+          "proposal_temperature": 0.7,
+          "execution_cap": 60000,
+          "max_seconds": 120,
+          "test_timeout_seconds": 1800,
+          "actor_max_steps": 16,
+          "tool_timeout": 90,
+          "harness_python": ".envs/swe/bin/python"
+        },
+        "algorithm": {
+          "max_steps": 30,
+          "expansion_power": 0.5,
+          "pseudo_descendant_evaluations": 10,
+          "use_descendants": true
+        }
+      }
+    },
+    {
+      "id": "configs/baselines/prospective_native_hgm_polyglot.yaml",
+      "parameters": {
+        "dataset": "polyglot",
+        "seed": 20260916,
+        "audit_seed": 10000,
+        "data": {
+          "root": "data",
+          "development": 30,
+          "selection": 45,
+          "audit": 45
+        },
+        "budget": {
+          "max_tokens": 12000000,
+          "max_real_items": 1200
+        },
+        "audit_token_cap": 24000000,
+        "model": {
+          "base_url": "http://127.0.0.1:18085",
+          "lock": "configs/models/qwen35_35b_a3b_bf16.lock.json",
+          "max_tokens": 2048,
+          "proposal_max_tokens": 512,
+          "temperature": 0.1,
+          "proposal_temperature": 0.7,
+          "execution_cap": 32768,
+          "max_seconds": 120,
+          "test_timeout_seconds": 180
+        },
+        "algorithm": {
+          "max_steps": 30,
+          "expansion_power": 0.5,
+          "pseudo_descendant_evaluations": 10,
+          "use_descendants": true
+        }
+      }
+    },
+    {
+      "id": "configs/baselines/prospective_native_aflow_swe.yaml",
+      "parameters": {
+        "dataset": "swe_verified",
+        "seed": 20260916,
+        "audit_seed": 10000,
+        "data": {
+          "root": "data",
+          "development": 23,
+          "selection": 60,
+          "audit": 291
+        },
+        "budget": {
+          "max_tokens": 12000000,
+          "max_real_items": 1200
+        },
+        "audit_token_cap": 24000000,
+        "model": {
+          "base_url": "http://127.0.0.1:18085",
+          "lock": "configs/models/qwen35_35b_a3b_bf16.lock.json",
+          "max_tokens": 1536,
+          "proposal_max_tokens": 512,
+          "temperature": 0.1,
+          "proposal_temperature": 0.7,
+          "execution_cap": 60000,
+          "max_seconds": 120,
+          "test_timeout_seconds": 1800,
+          "actor_max_steps": 16,
+          "tool_timeout": 90,
+          "harness_python": ".envs/swe/bin/python"
+        },
+        "algorithm": {
+          "rounds": 20,
+          "validation_repeats": 3
+        }
+      }
+    },
+    {
+      "id": "configs/baselines/prospective_native_aflow_polyglot.yaml",
+      "parameters": {
+        "dataset": "polyglot",
+        "seed": 20260916,
+        "audit_seed": 10000,
+        "data": {
+          "root": "data",
+          "development": 30,
+          "selection": 45,
+          "audit": 45
+        },
+        "budget": {
+          "max_tokens": 12000000,
+          "max_real_items": 1200
+        },
+        "audit_token_cap": 24000000,
+        "model": {
+          "base_url": "http://127.0.0.1:18085",
+          "lock": "configs/models/qwen35_35b_a3b_bf16.lock.json",
+          "max_tokens": 2048,
+          "proposal_max_tokens": 512,
+          "temperature": 0.1,
+          "proposal_temperature": 0.7,
+          "execution_cap": 32768,
+          "max_seconds": 120,
+          "test_timeout_seconds": 180
+        },
+        "algorithm": {
+          "rounds": 20,
+          "validation_repeats": 3
+        }
+      }
+    },
+    {
+      "id": "configs/baselines/prospective_native_janus_swe.yaml",
+      "parameters": {
+        "dataset": "swe_verified",
+        "seed": 20260916,
+        "audit_seed": 10000,
+        "data": {
+          "root": "data",
+          "development": 23,
+          "selection": 60,
+          "audit": 291
+        },
+        "budget": {
+          "max_tokens": 12000000,
+          "max_real_items": 1200
+        },
+        "audit_token_cap": 24000000,
+        "model": {
+          "base_url": "http://127.0.0.1:18085",
+          "lock": "configs/models/qwen35_35b_a3b_bf16.lock.json",
+          "max_tokens": 1536,
+          "proposal_max_tokens": 512,
+          "temperature": 0.1,
+          "proposal_temperature": 0.7,
+          "execution_cap": 60000,
+          "max_seconds": 120,
+          "test_timeout_seconds": 1800,
+          "actor_max_steps": 16,
+          "tool_timeout": 90,
+          "harness_python": ".envs/swe/bin/python"
+        },
+        "algorithm": {
+          "real_evaluations": 30,
+          "islands": 3,
+          "minimum_archive": 6,
+          "evaluator_evolution_period": 3
+        }
+      }
+    },
+    {
+      "id": "configs/baselines/prospective_native_janus_polyglot.yaml",
+      "parameters": {
+        "dataset": "polyglot",
+        "seed": 20260916,
+        "audit_seed": 10000,
+        "data": {
+          "root": "data",
+          "development": 30,
+          "selection": 45,
+          "audit": 45
+        },
+        "budget": {
+          "max_tokens": 12000000,
+          "max_real_items": 1200
+        },
+        "audit_token_cap": 24000000,
+        "model": {
+          "base_url": "http://127.0.0.1:18085",
+          "lock": "configs/models/qwen35_35b_a3b_bf16.lock.json",
+          "max_tokens": 2048,
+          "proposal_max_tokens": 512,
+          "temperature": 0.1,
+          "proposal_temperature": 0.7,
+          "execution_cap": 32768,
+          "max_seconds": 120,
+          "test_timeout_seconds": 180
+        },
+        "algorithm": {
+          "real_evaluations": 30,
+          "islands": 3,
+          "minimum_archive": 6,
+          "evaluator_evolution_period": 3
+        }
+      }
+    },
+    {
+      "id": "configs/baselines/prospective_native_emas_swe.yaml",
+      "parameters": {
+        "dataset": "swe_verified",
+        "seed": 20260916,
+        "audit_seed": 10000,
+        "data": {
+          "root": "data",
+          "development": 23,
+          "selection": 60,
+          "audit": 291
+        },
+        "budget": {
+          "max_tokens": 12000000,
+          "max_real_items": 1200
+        },
+        "audit_token_cap": 24000000,
+        "model": {
+          "base_url": "http://127.0.0.1:18085",
+          "lock": "configs/models/qwen35_35b_a3b_bf16.lock.json",
+          "max_tokens": 1536,
+          "proposal_max_tokens": 512,
+          "temperature": 0.1,
+          "proposal_temperature": 0.7,
+          "execution_cap": 60000,
+          "max_seconds": 120,
+          "test_timeout_seconds": 1800,
+          "actor_max_steps": 16,
+          "tool_timeout": 90,
+          "harness_python": ".envs/swe/bin/python"
+        },
+        "algorithm": {
+          "epochs": 2,
+          "max_revisions": 20
+        }
+      }
+    },
+    {
+      "id": "configs/baselines/prospective_native_emas_polyglot.yaml",
+      "parameters": {
+        "dataset": "polyglot",
+        "seed": 20260916,
+        "audit_seed": 10000,
+        "data": {
+          "root": "data",
+          "development": 30,
+          "selection": 45,
+          "audit": 45
+        },
+        "budget": {
+          "max_tokens": 12000000,
+          "max_real_items": 1200
+        },
+        "audit_token_cap": 24000000,
+        "model": {
+          "base_url": "http://127.0.0.1:18085",
+          "lock": "configs/models/qwen35_35b_a3b_bf16.lock.json",
+          "max_tokens": 2048,
+          "proposal_max_tokens": 512,
+          "temperature": 0.1,
+          "proposal_temperature": 0.7,
+          "execution_cap": 32768,
+          "max_seconds": 120,
+          "test_timeout_seconds": 180
+        },
+        "algorithm": {
+          "epochs": 2,
+          "max_revisions": 20
+        }
+      }
+    },
+    {
+      "id": "configs/baselines/secondary_textgrad.yaml",
+      "parameters": {
+        "method": "textgrad",
+        "dataset": "game24",
+        "seed": 20260916,
+        "data": {
+          "root": "data",
+          "development": 32,
+          "selection": 64,
+          "audit": 128
+        },
+        "model": {
+          "base_url": "http://127.0.0.1:18085",
+          "lock": "configs/models/qwen35_35b_a3b_bf16.lock.json",
+          "max_tokens": 1024,
+          "temperature": 0.0,
+          "execution_cap": 131072
+        },
+        "budget": {
+          "search_tokens": 3000000,
+          "audit_tokens": 1000000
+        },
+        "algorithm": {
+          "steps": 10,
+          "batch_size": 2,
+          "num_candidates": 6,
+          "num_trials": 20,
+          "max_bootstrapped_demos": 4,
+          "max_labeled_demos": 4
+        },
+        "seed_prompt": "Find an arithmetic expression equal to 24 using each given number exactly once. Use +, -, *, / and parentheses. Output only the expression."
+      }
+    },
+    {
+      "id": "configs/baselines/secondary_trace_optoprime.yaml",
+      "parameters": {
+        "method": "trace-optoprime",
+        "dataset": "game24",
+        "seed": 20260916,
+        "data": {
+          "root": "data",
+          "development": 32,
+          "selection": 64,
+          "audit": 128
+        },
+        "model": {
+          "base_url": "http://127.0.0.1:18085",
+          "lock": "configs/models/qwen35_35b_a3b_bf16.lock.json",
+          "max_tokens": 1024,
+          "temperature": 0.0,
+          "execution_cap": 131072
+        },
+        "budget": {
+          "search_tokens": 3000000,
+          "audit_tokens": 1000000
+        },
+        "algorithm": {
+          "steps": 10,
+          "batch_size": 2,
+          "num_candidates": 6,
+          "num_trials": 20,
+          "max_bootstrapped_demos": 4,
+          "max_labeled_demos": 4
+        },
+        "seed_prompt": "Find an arithmetic expression equal to 24 using each given number exactly once. Use +, -, *, / and parentheses. Output only the expression."
+      }
+    },
+    {
+      "id": "configs/baselines/secondary_mipro_demos.yaml",
+      "parameters": {
+        "method": "mipro-demos",
+        "dataset": "game24",
+        "seed": 20260916,
+        "data": {
+          "root": "data",
+          "development": 32,
+          "selection": 64,
+          "audit": 128
+        },
+        "model": {
+          "base_url": "http://127.0.0.1:18085",
+          "lock": "configs/models/qwen35_35b_a3b_bf16.lock.json",
+          "max_tokens": 1024,
+          "temperature": 0.0,
+          "execution_cap": 131072
+        },
+        "budget": {
+          "search_tokens": 3000000,
+          "audit_tokens": 1000000
+        },
+        "algorithm": {
+          "steps": 10,
+          "batch_size": 2,
+          "num_candidates": 6,
+          "num_trials": 20,
+          "max_bootstrapped_demos": 4,
+          "max_labeled_demos": 4
+        },
+        "seed_prompt": "Find an arithmetic expression equal to 24 using each given number exactly once. Use +, -, *, / and parentheses. Output only the expression."
+      }
+    },
+    {
+      "id": "callable-flashevolve-template",
+      "parameters": {
+        "schema": "flash_evolve_local_v1",
+        "dataset": "hotpotqa",
+        "seed": 20260929,
+        "seed_prompt": "Answer the question using the supplied context. Return only the short answer.",
+        "data_root": "data",
+        "data": {
+          "mode": "development_smoke",
+          "development": {
+            "offset": 1000,
+            "count": 1
+          },
+          "selection": {
+            "offset": 1001,
+            "count": 1
+          },
+          "audit": {
+            "offset": 1002,
+            "count": 1
+          }
+        },
+        "model": {
+          "lock": "configs/models/qwen35_35b_a3b_bf16.lock.json",
+          "base_url": "http://127.0.0.1:18085",
+          "served_model_name": "Qwen3.5-35B-A3B"
+        },
+        "generation": {
+          "task": {
+            "max_tokens": 64,
+            "temperature": 0.0,
+            "top_p": 1.0
+          },
+          "proposal": {
+            "max_tokens": 384,
+            "temperature": 0.7,
+            "top_p": 0.8
+          }
+        },
+        "budget": {
+          "initial": {
+            "tokens": 8192,
+            "calls": 1
+          },
+          "search": {
+            "tokens": 65536,
+            "calls": 8
+          },
+          "audit": {
+            "tokens": 8192,
+            "calls": 1
+          }
+        },
+        "algorithm": {
+          "runtime": "async_gepa",
+          "staleness_mode": "none",
+          "proposal_budget": 1,
+          "minibatch": 1,
+          "pipeline_depth": 2,
+          "eval_workers": 1,
+          "rollout_workers": 1,
+          "propose_workers": 1,
+          "repair_workers": 1,
+          "meta_stale_n": 4,
+          "meta_mode": "serial",
+          "selection_strategy": "pareto_front"
+        }
+      }
+    },
+    {
+      "id": "registered-science-randomness-and-statistics",
+      "parameters": {
+        "training_seeds": [
+          2026101001,
+          2026101002,
+          2026101003,
+          2026101004,
+          2026101005
+        ],
+        "nested_search_labels": [
+          0,
+          1,
+          2
+        ],
+        "statistical_protocol": {
+          "inference_enabled": false,
+          "cohort_alpha": 0.01,
+          "independent_unit": "training seed; nested search means"
+        },
+        "candidate": "specrsi",
+        "methods": [
+          "initial",
+          "best_of_n",
+          "random_search",
+          "specrsi",
+          "janus_science",
+          "hgm_science",
+          "aflow_science"
+        ]
+      }
+    },
+    {
+      "id": "configs/experiments/prospective/game24_workflow.yaml",
+      "parameters": {
+        "nodes": [
+          {
+            "id": "solve",
+            "instruction": "Find an arithmetic expression equal to 24 using each given number exactly once. You may use +, -, *, / and parentheses. Output only the expression, without explanation or '= 24'.",
+            "dependencies": []
+          },
+          {
+            "id": "review",
+            "instruction": "Check the previous solution carefully and return a corrected final answer. Find an arithmetic expression equal to 24 using each given number exactly once. You may use +, -, *, / and parentheses. Output only the expression, without explanation or '= 24'.",
+            "dependencies": [
+              "solve"
+            ]
+          }
+        ],
+        "output_node": "review"
+      }
+    },
+    {
+      "id": "configs/experiments/prospective/mbpp_workflow.yaml",
+      "parameters": {
+        "nodes": [
+          {
+            "id": "solve",
+            "instruction": "Write Python code implementing the requested function. Return only the code without markdown.",
+            "dependencies": []
+          },
+          {
+            "id": "review",
+            "instruction": "Check the previous solution carefully and return a corrected final answer. Write Python code implementing the requested function. Return only the code without markdown.",
+            "dependencies": [
+              "solve"
+            ]
+          }
+        ],
+        "output_node": "review"
+      }
+    }
+  ],
+  "environment_requirements": [
+    {
+      "configuration": "configs/runtimes/math.requirements.txt",
+      "packages": [
+        "antlr4-python3-runtime==4.11.1",
+        "mpmath==1.3.0",
+        "regex==2024.11.6",
+        "sympy==1.13.1"
+      ]
+    },
+    {
+      "configuration": "configs/science/requirements.txt",
+      "packages": [
+        "pybamm==25.12.2",
+        "ns3==3.44.post0",
+        "numpy==1.26.4",
+        "scipy==1.17.1",
+        "numba==0.66.0"
+      ]
+    },
+    {
+      "configuration": "configs/coding/requirements-harness.txt",
+      "packages": [
+        "swebench==4.1.0",
+        "docker==7.1.0"
+      ]
+    },
+    {
+      "configuration": "configs/baselines/secondary_requirements.txt",
+      "packages": [
+        "graphviz==0.21",
+        "black==26.5.1",
+        "scikit-learn==1.9.0",
+        "xgboost==3.2.0",
+        "litellm==1.101.0",
+        "diskcache==5.6.3",
+        "python-dotenv==1.2.3",
+        "platformdirs==3.11.0",
+        "tenacity==9.1.4",
+        "gdown==5.2.0",
+        "beautifulsoup4==4.15.0",
+        "soupsieve==2.9.2",
+        "PySocks==1.7.1"
+      ]
+    }
+  ],
+  "sandbox": {
+    "default_timeout_seconds": 180,
+    "memory_mib": 8192,
+    "file_size_mib": 64,
+    "nofile": 2048,
+    "nproc": 256,
+    "core": 0,
+    "network_isolation": true,
+    "read_only_reference_tests": true
+  },
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3.5-35B-A3B",
+    "revision": "59d61f3ce65a6d9863b86d2e96597125219dc754",
+    "chat_token_ids": {
+      "tokenize": true,
+      "return_dict": false
+    },
+    "tensor_service": {
+      "return_dict": true,
+      "return_tensors": "pt"
+    },
+    "training_max_length": 2048,
+    "service_context_length": 32768
+  }
+}

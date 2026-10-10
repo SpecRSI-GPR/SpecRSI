@@ -1,0 +1,468 @@
+{
+  "schema": "specrsi_reference_checkpoint_fingerprints_v2",
+  "model_id": "Qwen/Qwen3.5-35B-A3B",
+  "required_base_revision": "59d61f3ce65a6d9863b86d2e96597125219dc754",
+  "scope": "Recorded formal-trial checkpoint identities and optimizer-iteration metadata",
+  "tensor_precision": {
+    "base": "BF16",
+    "Drafter_adapter": "FP32",
+    "Scorer_and_Policy_heads": "FP32"
+  },
+  "checkpoint_restore_components": [
+    "Drafter adapter",
+    "role heads",
+    "tokenizer",
+    "model/training configuration",
+    "optimizer state",
+    "cumulative optimizer-step count",
+    "Torch CPU RNG state",
+    "fixed SFT actor reference when a GVO checkpoint is saved"
+  ],
+  "optimizer_step_semantics": "Counts are saved optimizer iterations, not token, group-member, role-specific, or benchmark-quality counts. Main warmup step counts depend on effective supervised batches. GVO adds at most one joint step per complete frozen collection.",
+  "file_hash_semantics": "Fingerprints identify recorded checkpoint files; the base-weight files are supplied by the pinned publisher snapshot. Legacy adapter storage does not imply that every stored compatibility module is trainable.",
+  "checkpoint_count": 5,
+  "checkpoints": [
+    {
+      "trial": "reactor-seed-2026101001",
+      "domain": "reactor",
+      "stage": "warmup",
+      "model_revision": "59d61f3ce65a6d9863b86d2e96597125219dc754",
+      "optimizer_rule": "adamw_legacy_v1",
+      "metadata": {
+        "training_seed": 2026101001,
+        "device": "cuda:1",
+        "cumulative_optimizer_steps": 22,
+        "stage_optimizer_steps": 22,
+        "total_bytes": 348716863,
+        "file_count": 13
+      },
+      "files": [
+        {
+          "file": "adapters/README.md",
+          "bytes": 5354,
+          "sha256": "901bc213d48383b15057b451abb3cecc5f8d8ea33668e32ae9973743126f13f6"
+        },
+        {
+          "file": "adapters/draft/adapter_config.json",
+          "bytes": 1213,
+          "sha256": "9bb0fdfc8a8ba0cdace4703245d61e65479bd83ddbb4d53d8b7ce7c046f8b575"
+        },
+        {
+          "file": "adapters/draft/adapter_model.safetensors",
+          "bytes": 65056056,
+          "sha256": "14dfa88d3531fc86681a08825bd4f102794ac18f6182eefc54134a8a1063dfc0"
+        },
+        {
+          "file": "adapters/verify/adapter_config.json",
+          "bytes": 1213,
+          "sha256": "9bb0fdfc8a8ba0cdace4703245d61e65479bd83ddbb4d53d8b7ce7c046f8b575"
+        },
+        {
+          "file": "adapters/verify/adapter_model.safetensors",
+          "bytes": 65056056,
+          "sha256": "959fe820d1a35ea21b5849d496c4e3396f6ed8470c3a3c17441772163f8633dd"
+        },
+        {
+          "file": "heads.pt",
+          "bytes": 36575044,
+          "sha256": "7e70a6afecb44867ab26cf8716be2fc8c932e2790c59249c1e4cdf12d7b8936e"
+        },
+        {
+          "file": "model_config.json",
+          "bytes": 9543,
+          "sha256": "5be2ee1d5fd31c1b0453e26a656cfd9e61036790284ad5b710fad8e11c362b3f"
+        },
+        {
+          "file": "tokenizer/chat_template.jinja",
+          "bytes": 7756,
+          "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715"
+        },
+        {
+          "file": "tokenizer/tokenizer.json",
+          "bytes": 19989325,
+          "sha256": "06b9509352d2af50381ab2247e083b80d32d5c0aba91c272ca9ff729b6a0e523"
+        },
+        {
+          "file": "tokenizer/tokenizer_config.json",
+          "bytes": 1123,
+          "sha256": "bee8eba30f0eb4af73c0fe2cd06d0f89b657d7819941c438157ec42f7c80ea87"
+        },
+        {
+          "file": "trainer.pt",
+          "bytes": 162004479,
+          "sha256": "046108deef2405d706f41960119f09832fe05090473e259e6c5b09543f064c83"
+        },
+        {
+          "file": "training_config.json",
+          "bytes": 683,
+          "sha256": "4433b725b3c94b35a82afd9eb840ea04a0740ec3536c3e17df323e30eb3a062a"
+        },
+        {
+          "file": "training_evidence.json",
+          "bytes": 9018,
+          "sha256": "ca5f691b4d3a0e3a3de98305407dddd72313186672e5a490794b1c028d3066c5"
+        }
+      ]
+    },
+    {
+      "trial": "irp-seed-2026101001",
+      "domain": "irp",
+      "stage": "warmup",
+      "model_revision": "59d61f3ce65a6d9863b86d2e96597125219dc754",
+      "optimizer_rule": "adamw_legacy_v1",
+      "metadata": {
+        "training_seed": 2026101001,
+        "device": "cuda:2",
+        "cumulative_optimizer_steps": 19,
+        "stage_optimizer_steps": 19,
+        "total_bytes": 348716863,
+        "file_count": 13
+      },
+      "files": [
+        {
+          "file": "adapters/README.md",
+          "bytes": 5354,
+          "sha256": "901bc213d48383b15057b451abb3cecc5f8d8ea33668e32ae9973743126f13f6"
+        },
+        {
+          "file": "adapters/draft/adapter_config.json",
+          "bytes": 1213,
+          "sha256": "1030094eebb8d363a155b14ed63c245ec81070034b2b47dfc2b9d831917d348f"
+        },
+        {
+          "file": "adapters/draft/adapter_model.safetensors",
+          "bytes": 65056056,
+          "sha256": "4947d8cf61d05eb11ed813f9629711b25e9868ca7f3ddcb21cdfe83401018884"
+        },
+        {
+          "file": "adapters/verify/adapter_config.json",
+          "bytes": 1213,
+          "sha256": "1030094eebb8d363a155b14ed63c245ec81070034b2b47dfc2b9d831917d348f"
+        },
+        {
+          "file": "adapters/verify/adapter_model.safetensors",
+          "bytes": 65056056,
+          "sha256": "959fe820d1a35ea21b5849d496c4e3396f6ed8470c3a3c17441772163f8633dd"
+        },
+        {
+          "file": "heads.pt",
+          "bytes": 36575044,
+          "sha256": "2b0ce77dc75de84401f21204d6fe9c60bfb0fabe2ee2d8adfdda411dbaf08a6e"
+        },
+        {
+          "file": "model_config.json",
+          "bytes": 9543,
+          "sha256": "804708a342ea91a4b5b290ce2924fc568370ec1119076f4eea3d4c145fca261f"
+        },
+        {
+          "file": "tokenizer/chat_template.jinja",
+          "bytes": 7756,
+          "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715"
+        },
+        {
+          "file": "tokenizer/tokenizer.json",
+          "bytes": 19989325,
+          "sha256": "06b9509352d2af50381ab2247e083b80d32d5c0aba91c272ca9ff729b6a0e523"
+        },
+        {
+          "file": "tokenizer/tokenizer_config.json",
+          "bytes": 1123,
+          "sha256": "bee8eba30f0eb4af73c0fe2cd06d0f89b657d7819941c438157ec42f7c80ea87"
+        },
+        {
+          "file": "trainer.pt",
+          "bytes": 162004479,
+          "sha256": "5d3144add821cdcc0b5a9e32be1e07876badc0238e4d545f1b5ac68986e7d475"
+        },
+        {
+          "file": "training_config.json",
+          "bytes": 683,
+          "sha256": "4433b725b3c94b35a82afd9eb840ea04a0740ec3536c3e17df323e30eb3a062a"
+        },
+        {
+          "file": "training_evidence.json",
+          "bytes": 9018,
+          "sha256": "06e2b34ff6e12e678f77e98d7819278ea62bf1cf4d215ff158d5a9f30bc3c3be"
+        }
+      ]
+    },
+    {
+      "trial": "aqm-seed-2026101001",
+      "domain": "aqm",
+      "stage": "warmup",
+      "model_revision": "59d61f3ce65a6d9863b86d2e96597125219dc754",
+      "optimizer_rule": "adamw_legacy_v1",
+      "metadata": {
+        "training_seed": 2026101001,
+        "device": "cuda:3",
+        "cumulative_optimizer_steps": 14,
+        "stage_optimizer_steps": 14,
+        "total_bytes": 348716863,
+        "file_count": 13
+      },
+      "files": [
+        {
+          "file": "adapters/README.md",
+          "bytes": 5354,
+          "sha256": "901bc213d48383b15057b451abb3cecc5f8d8ea33668e32ae9973743126f13f6"
+        },
+        {
+          "file": "adapters/draft/adapter_config.json",
+          "bytes": 1213,
+          "sha256": "d3887dbc2adce3e5e1b2765b74528f3169594d02ec440fff1791ee85549bdbc2"
+        },
+        {
+          "file": "adapters/draft/adapter_model.safetensors",
+          "bytes": 65056056,
+          "sha256": "7a658587f4a5635bae12d3823303c73827069b975c1ba3b05a82e4be8ffabb21"
+        },
+        {
+          "file": "adapters/verify/adapter_config.json",
+          "bytes": 1213,
+          "sha256": "d3887dbc2adce3e5e1b2765b74528f3169594d02ec440fff1791ee85549bdbc2"
+        },
+        {
+          "file": "adapters/verify/adapter_model.safetensors",
+          "bytes": 65056056,
+          "sha256": "959fe820d1a35ea21b5849d496c4e3396f6ed8470c3a3c17441772163f8633dd"
+        },
+        {
+          "file": "heads.pt",
+          "bytes": 36575044,
+          "sha256": "f2418f40b5604139e4cbd7b2a5c790d3f410d560d9f1bc62f1fa020f738ce419"
+        },
+        {
+          "file": "model_config.json",
+          "bytes": 9543,
+          "sha256": "c24f5f5bb98a007101462e8ea92e133ee59b8ba1370b361190e925acbccee8bc"
+        },
+        {
+          "file": "tokenizer/chat_template.jinja",
+          "bytes": 7756,
+          "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715"
+        },
+        {
+          "file": "tokenizer/tokenizer.json",
+          "bytes": 19989325,
+          "sha256": "06b9509352d2af50381ab2247e083b80d32d5c0aba91c272ca9ff729b6a0e523"
+        },
+        {
+          "file": "tokenizer/tokenizer_config.json",
+          "bytes": 1123,
+          "sha256": "bee8eba30f0eb4af73c0fe2cd06d0f89b657d7819941c438157ec42f7c80ea87"
+        },
+        {
+          "file": "trainer.pt",
+          "bytes": 162004479,
+          "sha256": "a8cdfbc282f504c7f504e66ed652f2b5e2cb27279a644d33809c1f5df25034bb"
+        },
+        {
+          "file": "training_config.json",
+          "bytes": 683,
+          "sha256": "4433b725b3c94b35a82afd9eb840ea04a0740ec3536c3e17df323e30eb3a062a"
+        },
+        {
+          "file": "training_evidence.json",
+          "bytes": 9018,
+          "sha256": "dff2e1b0111626611f585e04c46cd52898a5b87bb3994c32098c31f4154abbfe"
+        }
+      ]
+    },
+    {
+      "trial": "fdtd-seed-2026101001",
+      "domain": "fdtd",
+      "stage": "warmup",
+      "model_revision": "59d61f3ce65a6d9863b86d2e96597125219dc754",
+      "optimizer_rule": "adamw_legacy_v1",
+      "metadata": {
+        "training_seed": 2026101001,
+        "device": "cuda:4",
+        "cumulative_optimizer_steps": 24,
+        "stage_optimizer_steps": 24,
+        "total_bytes": 348716869,
+        "file_count": 13
+      },
+      "files": [
+        {
+          "file": "adapters/README.md",
+          "bytes": 5354,
+          "sha256": "901bc213d48383b15057b451abb3cecc5f8d8ea33668e32ae9973743126f13f6"
+        },
+        {
+          "file": "adapters/draft/adapter_config.json",
+          "bytes": 1213,
+          "sha256": "55eda38e10dbc88bf6355306d6a6aa5f014132649eb3aa4b99c2fe2647e4c007"
+        },
+        {
+          "file": "adapters/draft/adapter_model.safetensors",
+          "bytes": 65056056,
+          "sha256": "cab2bda0f8ce5256eecdb319e971243db7c90509decf523bb252edf515700e80"
+        },
+        {
+          "file": "adapters/verify/adapter_config.json",
+          "bytes": 1213,
+          "sha256": "55eda38e10dbc88bf6355306d6a6aa5f014132649eb3aa4b99c2fe2647e4c007"
+        },
+        {
+          "file": "adapters/verify/adapter_model.safetensors",
+          "bytes": 65056056,
+          "sha256": "959fe820d1a35ea21b5849d496c4e3396f6ed8470c3a3c17441772163f8633dd"
+        },
+        {
+          "file": "heads.pt",
+          "bytes": 36575044,
+          "sha256": "bb84d28eb3a9d5135a1d7943084a479aa63ceb4a548b3c07e61a56d7f6a290d9"
+        },
+        {
+          "file": "model_config.json",
+          "bytes": 9543,
+          "sha256": "5b6938c10728bb748c0e9200cb1e89192194696a8141f080e2d7d3908c4087a0"
+        },
+        {
+          "file": "tokenizer/chat_template.jinja",
+          "bytes": 7756,
+          "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715"
+        },
+        {
+          "file": "tokenizer/tokenizer.json",
+          "bytes": 19989325,
+          "sha256": "06b9509352d2af50381ab2247e083b80d32d5c0aba91c272ca9ff729b6a0e523"
+        },
+        {
+          "file": "tokenizer/tokenizer_config.json",
+          "bytes": 1123,
+          "sha256": "bee8eba30f0eb4af73c0fe2cd06d0f89b657d7819941c438157ec42f7c80ea87"
+        },
+        {
+          "file": "trainer.pt",
+          "bytes": 162004479,
+          "sha256": "04a83b9d7c2222626bd3f693a9a1de9e321cba8b001acb231ba0526ee43dbdf5"
+        },
+        {
+          "file": "training_config.json",
+          "bytes": 683,
+          "sha256": "4433b725b3c94b35a82afd9eb840ea04a0740ec3536c3e17df323e30eb3a062a"
+        },
+        {
+          "file": "training_evidence.json",
+          "bytes": 9024,
+          "sha256": "eb823a6e0362581b91aeb91460fe8c49ec17a20ca9bcc8b87210ab0fceef3f04"
+        }
+      ]
+    },
+    {
+      "trial": "pybamm-seed-2026101001",
+      "domain": "pybamm",
+      "stage": "warmup",
+      "model_revision": "59d61f3ce65a6d9863b86d2e96597125219dc754",
+      "optimizer_rule": "adamw_legacy_v1",
+      "metadata": {
+        "training_seed": 2026101001,
+        "device": "cuda:5",
+        "cumulative_optimizer_steps": 27,
+        "stage_optimizer_steps": 27,
+        "total_bytes": 348716887,
+        "file_count": 13
+      },
+      "files": [
+        {
+          "file": "adapters/README.md",
+          "bytes": 5354,
+          "sha256": "901bc213d48383b15057b451abb3cecc5f8d8ea33668e32ae9973743126f13f6"
+        },
+        {
+          "file": "adapters/draft/adapter_config.json",
+          "bytes": 1213,
+          "sha256": "0b75ef6aadd3a5f4dd8130601527e5a431a0b0fcbe8a6fe48af02fd88a4f971d"
+        },
+        {
+          "file": "adapters/draft/adapter_model.safetensors",
+          "bytes": 65056056,
+          "sha256": "4683cba596515d8752db4606e8bd5bd23e56a81a7c1a7995063a5754b95a32b0"
+        },
+        {
+          "file": "adapters/verify/adapter_config.json",
+          "bytes": 1213,
+          "sha256": "0b75ef6aadd3a5f4dd8130601527e5a431a0b0fcbe8a6fe48af02fd88a4f971d"
+        },
+        {
+          "file": "adapters/verify/adapter_model.safetensors",
+          "bytes": 65056056,
+          "sha256": "959fe820d1a35ea21b5849d496c4e3396f6ed8470c3a3c17441772163f8633dd"
+        },
+        {
+          "file": "heads.pt",
+          "bytes": 36575044,
+          "sha256": "438e6ec4336efff21ff14a97b91f45d7b9bd53be061b273884235bc9aa2b6884"
+        },
+        {
+          "file": "model_config.json",
+          "bytes": 9543,
+          "sha256": "320e4ea843bb72d0c9bcf5ccf7ed9836e2c953d38a78f5e2c75a5df3e44e9c8f"
+        },
+        {
+          "file": "tokenizer/chat_template.jinja",
+          "bytes": 7756,
+          "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715"
+        },
+        {
+          "file": "tokenizer/tokenizer.json",
+          "bytes": 19989325,
+          "sha256": "06b9509352d2af50381ab2247e083b80d32d5c0aba91c272ca9ff729b6a0e523"
+        },
+        {
+          "file": "tokenizer/tokenizer_config.json",
+          "bytes": 1123,
+          "sha256": "bee8eba30f0eb4af73c0fe2cd06d0f89b657d7819941c438157ec42f7c80ea87"
+        },
+        {
+          "file": "trainer.pt",
+          "bytes": 162004479,
+          "sha256": "fe8800ba4eafbbbec6409303c2e985a269f9aeac744f0fdbc14c593743c126f2"
+        },
+        {
+          "file": "training_config.json",
+          "bytes": 683,
+          "sha256": "4433b725b3c94b35a82afd9eb840ea04a0740ec3536c3e17df323e30eb3a062a"
+        },
+        {
+          "file": "training_evidence.json",
+          "bytes": 9042,
+          "sha256": "9edaf088034bf5a0ad9e118c123705cd02f5758619c31a3dfae1ad5d38cbdb6b"
+        }
+      ]
+    }
+  ],
+  "resolved_stage_configuration_fingerprints": [
+    {
+      "file": "campaigns/000001/trials/reactor-seed-2026101001/training/attempt-0001/warmup/resolved_config.json",
+      "bytes": 4360,
+      "sha256": "2e792ebfccb975cb24702fadf7ba56961b312c559ab1d04ca71c2fd2d185ced4"
+    },
+    {
+      "file": "campaigns/000002/trials/irp-seed-2026101001/training/attempt-0001/warmup/resolved_config.json",
+      "bytes": 4348,
+      "sha256": "a5b1cea96f4d70223e11201f1a96786bd32bf2496cbba9a92daed8628f0b24e6"
+    },
+    {
+      "file": "campaigns/000003/trials/aqm-seed-2026101001/training/attempt-0001/gvo/resolved_config.json",
+      "bytes": 4395,
+      "sha256": "ddc39a8e8ca4726cb837a05886c957f8b57143334e9dcbdb437ec6a9ad2f4cc3"
+    },
+    {
+      "file": "campaigns/000003/trials/aqm-seed-2026101001/training/attempt-0001/warmup/resolved_config.json",
+      "bytes": 4348,
+      "sha256": "8d0675a59ef5c66f52eb0b008cde977d3e46126d457c78c7033ae160bb8f297d"
+    },
+    {
+      "file": "campaigns/000004/trials/fdtd-seed-2026101001/training/attempt-0001/warmup/resolved_config.json",
+      "bytes": 4351,
+      "sha256": "d05d76d7b31454cb05af80d78cf959ed398096975e0fb455cfb9c531e919ec8a"
+    },
+    {
+      "file": "campaigns/000005/trials/pybamm-seed-2026101001/training/attempt-0001/warmup/resolved_config.json",
+      "bytes": 4357,
+      "sha256": "8d67e838b6e6cdff9a15cdc8618451837033c161522efbd4710cc6b83ef1fe88"
+    }
+  ]
+}
