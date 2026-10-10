@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "hardware": {
+    "gpu_model": "NVIDIA H20",
+    "gpu_count": 8,
+    "gpu_memory_mib_each": 97871,
+    "driver": "575.57.08",
+    "cpu_model": "AMD EPYC 9K84",
+    "cpu_sockets": 2,
+    "cores_per_socket": 96,
+    "threads_per_core": 2,
+    "logical_cpus": 384,
+    "ram_kb": 2375288992,
+    "swap_kb": 0
+  },
+  "hf_training": {
+    "python": "3.11.6",
+    "torch": "2.6.0+cu124",
+    "transformers": "4.57.6",
+    "peft": "0.18.1",
+    "huggingface-hub": "0.36.2",
+    "tokenizers": "0.22.2",
+    "accelerate": "1.14.0",
+    "safetensors": "0.8.0",
+    "cuda_runtime": "12.8",
+    "cudnn": "9.16.0"
+  },
+  "inference": {
+    "vllm": "0.19.1",
+    "torch": "2.10.0+cu128",
+    "transformers": "4.57.6",
+    "cuda_runtime": "12.8",
+    "cudnn": "9.10.2"
+  },
+  "science": {
+    "numpy": "1.26.4",
+    "scipy": "1.17.1",
+    "numba": "0.66.0",
+    "pybamm": "25.12.2",
+    "pybammsolvers": "0.3.3",
+    "casadi": "3.6.7",
+    "ns3": "3.44.post0",
+    "cppyy": "3.5.0"
+  }
+}
