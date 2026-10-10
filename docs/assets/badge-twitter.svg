@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="121" height="28" viewBox="0 0 121 28" role="img" aria-label="Twitter / X">
+  <title>Twitter / X</title>
+  <defs><clipPath id="round"><rect width="121" height="28" rx="5"/></clipPath></defs>
+  <g clip-path="url(#round)">
+    <rect width="121" height="28" fill="#F6F8FA"/>
+    <rect width="33" height="28" fill="#111111"/>
+    <rect x="33" width="88" height="28" fill="#EAEFF4"/>
+  </g>
+  <g transform="translate(8 6)" fill="white"><path d="M1 0h4.3l4.1 5.7L14.1 0H16L10.2 7l6.5 9H12.4L7.7 9.5 2.3 16H.4l6.5-7.8zM3.5 1.5l9.7 13h1L4.5 1.5z"/></g>
+  <text x="77.0" y="18.7" fill="#243247" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Twitter / X</text>
+</svg>
