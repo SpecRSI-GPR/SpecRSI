@@ -106,21 +106,24 @@ The ten backbones shared by Figure 2 and Figure S2(a) are GPT-6-Astra, Claude-Op
 
 ### Reproducibility specifications
 
-[Complete specifications](docs/REPRODUCIBILITY.md) provide version-pinned inputs, exact split members, scientific scenarios, local deployment settings, and profile-specific improver training configurations. **Qwen3.5-35B-A3B is self-hosted; all other evaluated backbones use provider APIs.** Local improver optimizer settings apply to the released training profiles; API calls provide task-model inference without local gradient updates to provider weights. Fixed verification contracts and separate development, selection, and audit roles make the evaluation conditions explicit while retaining SpecRSI's adaptive allocation of edits and checks.
+The [complete reference configuration](docs/REPRODUCIBILITY.md) fixes data, model, simulator, and execution identities while retaining SpecRSI's adaptive allocation of edits and checks under a shared verification contract. **Qwen3.5-35B-A3B is self-hosted in native BF16; the other evaluated backbones use provider APIs.** The local optimization settings below apply to the reference improver, without local gradient updates to provider weights.
 
-- **Data and splits:** 14 versioned data pools and 42 splits, containing **139,865 exact member IDs**. The [dataset specifications](docs/reproducibility-datasets.json) include upstream revisions, URLs and SHA-256 fingerprints; the [member lists](docs/reproducibility-splits.json) preserve source order and ID-list hashes. The default content/group-hash split uses seed `20260916` and 20%/40%/40% probability intervals; MATH, PlanBench and the AIME extension retain their specified split rules.
-- **Scientific settings:** [168 scenario registrations](docs/reproducibility-science.json) cover 56 cases: PyBaMM 12, AQM 11, FDTD 12, Reactor 10 and IRP 11, each with development/selection/audit configurations, simulator seeds, tolerances, constraints and evaluator identities.
-- **Trainable improver implementation:** the [released training profiles](docs/reproducibility-training.json) specify model identities, frozen BF16 representations, Drafter LoRA rank/alpha/dropout **16/32/0**, and separate width-256 Scorer/Policy branches. Their SFT configuration uses AdamW, learning rate **`2e-5`**, weight decay **`1e-4`**, and component batch size **1**. The profiles cover 16 effective stages with seeds, collection sizes and update counts; the table below summarizes their GVO configurations.
+- **Data and splits:** [14 versioned data pools](docs/reproducibility-datasets.json), [42 complete ordered split lists](docs/reproducibility-splits.json), and **139,865 member IDs**, with upstream revisions and SHA-256 fingerprints. Content/group hashing uses seed `20260916` and 20%/40%/40% intervals, with the specified MATH, PlanBench, and AIME-extension rules. [Subset manifests](docs/reproducibility-subsets.json) fix campaign sampling and exclusions; [SWE instance records](docs/reproducibility-swe-images.json) pin 730 base commits and container digests.
+- **Scientific scenarios:** [56 cases and 168 role-specific configurations](docs/reproducibility-science.json): PyBaMM 12, AQM 11, FDTD 12, Reactor 10, and IRP 11. Simulator parameters, seeds, tolerances, feasibility constraints, and [evaluation protocols](docs/reproducibility-evaluation.json) keep comparison conditions explicit.
 
-| GVO profile | Optimizer and learning rates | Stage rounds / updates |
-|---|---|---|
-| Component batches | AdamW `2e-5` | 1–2 rounds; profile-specific component updates |
-| Frozen collections, AdamW | AdamW `2e-5` | 3 rounds / 3 updates; 8 contexts × 8 tasks, group 3 |
-| Frozen collections, SGD | Actor `1e-3`, Scorer `5e-4` | 3 rounds / 3 updates; 8 contexts × 4 tasks, group 3 |
+| Item | Reference configuration |
+|---|---|
+| Model | `Qwen/Qwen3.5-35B-A3B`, revision `59d61f3ce65a6d9863b86d2e96597125219dc754`; unquantized BF16 base; matching tokenizer/chat template; frozen text backbone, router, and experts |
+| Learned roles | Drafter LoRA rank/alpha/dropout **16/32/0**, including attention and Gated DeltaNet projections; separate Scorer/Policy heads, width **256**, **4** heads; trainable adapters/heads in FP32 |
+| SFT | AdamW, **1 epoch**, component minibatch **1**, learning rate **`2e-5`**, weight decay **`1e-4`**, joint gradient-norm cap **1** |
+| GVO | **2** frozen collection/update rounds, **3** independent complete searches/group; at most **1 joint SGD update per complete collection**; actor/Scorer learning rates **`1e-3` / `5e-4`**, zero momentum/weight decay; PPO clip **0.2**, KL weight **0.02** to the fixed SFT actor |
+| Seeds | **`2026101001`–`2026101005`** per domain, nested search labels **0–2**; matched methods share SHA-256-derived search seeds |
+| Inputs | Training sequence cap **2,048** tokens; frozen semantic encoding allocation **8,192** tokens across nodes; inference context **32,768** tokens |
+| Hardware | Eight-H20 host; **1 H20 per scientific domain plus a separate H20 for serving**, each 97,871 MiB; two AMD EPYC 9K84 96-core CPUs; no cross-device gradient synchronization |
+| Training stack | Python **3.11.6**, PyTorch **2.6.0+cu124**, Transformers **5.17.0**, PEFT **0.19.1**, Accelerate **1.14.0**, FLA Core **0.3.2** |
+| Serving stack | PyTorch **2.10.0**, vLLM **0.19.1**, Transformers **4.57.6**; BF16, text-only/eager, one concurrent sequence, 2,048 batched tokens |
 
-Frozen-collection updates accumulate gradients before at most one optimizer step per collection. The SGD profile uses PPO clipping **0.2**, KL weight **0.02**, and zero momentum/weight decay; supervised component batches and groups of complete searches remain distinct.
-
-[Reference deployment settings](docs/reproducibility-models.json) pin **Qwen3.5-35B-A3B-FP8** to an immutable revision and file hashes: FP8 weights, a **32,768-token** context limit, and **one H20** for inference. Serving uses vLLM **0.19.1** and PyTorch **2.10.0+cu128**. [Hardware/software specifications](docs/reproducibility-environment.json) separately identify the local training environment and scientific dependencies, including PyBaMM **25.12.2**, ns-3 **3.44.post0**, NumPy **1.26.4** and SciPy **1.17.1**. Provider-API backbones use hosted inference; the H20 and optimizer settings describe local execution.
+[Model/file identities](docs/reproducibility-models.json), [training parameters](docs/reproducibility-training.json), [complete configuration registry](docs/reproducibility-training-configs.json), [checkpoint fingerprints](docs/reproducibility-checkpoints.json), and [hardware/software versions](docs/reproducibility-environment.json) provide the remaining settings. Training and serving use their respective pinned environments. Scientific dependencies include PyBaMM **25.12.2**, ns-3 **3.44.post0**, NumPy **1.26.4**, SciPy **1.17.1**, Pyomo **6.9.5**, and HiGHS **1.12.0**.
 
 ## 📊 Main reported results
 

@@ -106,21 +106,24 @@ SpecRSI 在中间版本尚未完成全部评估时，就为智能体起草可执
 
 ### 复现规格
 
-[完整复现规格](docs/REPRODUCIBILITY.md)提供固定版本的数据、精确划分成员、科学场景、本地部署参数与各 improver 训练配置。**Qwen3.5-35B-A3B 为自部署模型，其余受测骨干均通过提供商 API 调用。**本地 improver 的优化器设置适用于已发布的训练配置；API 调用提供任务模型推理，不对提供商权重进行本地梯度更新。固定验证合同以及独立的开发、选择和审计角色明确了评估条件，同时保留 SpecRSI 自适应分配编辑与验证工作的机制。
+[完整参考配置](docs/REPRODUCIBILITY.md)固定数据、模型、模拟器与执行环境，同时保留 SpecRSI 在共同验证契约下自适应分配编辑和验证工作的机制。**Qwen3.5-35B-A3B 采用原生 BF16 自部署；其余受测骨干通过提供商 API 调用。**下述本地优化设置适用于参考 improver，不对提供商模型权重进行本地梯度更新。
 
-- **数据与划分：**14 个固定版本的数据池、42 个划分，共 **139,865 条精确成员 ID**。[数据规格](docs/reproducibility-datasets.json)提供上游 revision、下载地址和 SHA-256；[完整成员列表](docs/reproducibility-splits.json)保留原始顺序及 ID 列表哈希。默认内容／分组哈希划分使用种子 `20260916`，概率区间为 20%／40%／40%；MATH、PlanBench 与 AIME 扩展保留各自规定的划分规则。
-- **科学配置：**[168 份场景注册](docs/reproducibility-science.json)覆盖 56 个案例：PyBaMM 12、AQM 11、FDTD 12、Reactor 10、IRP 11。每个案例均提供开发／选择／审计配置、模拟种子、数值容差、约束与评估器身份。
-- **可训练 improver 实现：**[已发布的训练配置](docs/reproducibility-training.json)分别指定模型身份、冻结 BF16 表示、Drafter LoRA 的 rank／alpha／dropout **16／32／0**及独立的宽度 256 Scorer／Policy 分支。其 SFT 配置使用 AdamW，学习率 **`2e-5`**、权重衰减 **`1e-4`**、监督组件批大小 **1**。这些配置覆盖 16 个有效阶段，分别定义种子、采集规模与更新次数；下表汇总对应的 GVO 设置。
+- **数据与划分：**[14 个固定版本的数据池](docs/reproducibility-datasets.json)、[42 份完整有序划分](docs/reproducibility-splits.json)，共 **139,865 条成员 ID**，提供上游 revision 和 SHA-256 指纹。内容／分组哈希使用种子 `20260916` 和 20%／40%／40% 区间，MATH、PlanBench 和 AIME 扩展采用各自规定的划分规则。[子集清单](docs/reproducibility-subsets.json)固定研究抽样及排除规则；[SWE 实例规格](docs/reproducibility-swe-images.json)提供 730 个基础 commit 和容器摘要。
+- **科学场景：**[56 个案例、168 份角色配置](docs/reproducibility-science.json)：PyBaMM 12、AQM 11、FDTD 12、Reactor 10、IRP 11。模拟器参数、随机种子、容差、可行性约束与[评价协议](docs/reproducibility-evaluation.json)明确了共同比较条件。
 
-| GVO 配置 | 优化器与学习率 | 阶段轮数／更新次数 |
-|---|---|---|
-| 组件批次 | AdamW `2e-5` | 1–2 轮；按配置进行组件更新 |
-| 冻结采集，AdamW | AdamW `2e-5` | 3 轮／3 次更新；8 个上下文 × 8 个任务，组大小 3 |
-| 冻结采集，SGD | Actor `1e-3`、Scorer `5e-4` | 3 轮／3 次更新；8 个上下文 × 4 个任务，组大小 3 |
+| 项目 | 参考配置 |
+|---|---|
+| 模型 | `Qwen/Qwen3.5-35B-A3B`，revision `59d61f3ce65a6d9863b86d2e96597125219dc754`；未量化 BF16 基础权重；匹配 tokenizer／chat template；冻结文本骨干、router 与 experts |
+| 学习组件 | Drafter LoRA rank／alpha／dropout **16／32／0**，覆盖 attention 和 Gated DeltaNet 投影；独立 Scorer／Policy 分支，宽度 **256**、**4** 个注意力头；可训练适配器与分支使用 FP32 |
+| SFT | AdamW，**1 epoch**，监督组件批大小 **1**，学习率 **`2e-5`**，权重衰减 **`1e-4`**，联合梯度范数上限 **1** |
+| GVO | **2 轮**冻结采集／更新，每组 **3 次独立完整搜索**；每次完整采集最多 **1 次联合 SGD 更新**；actor／Scorer 学习率 **`1e-3`／`5e-4`**，零动量／权重衰减；PPO 裁剪 **0.2**，相对于固定 SFT actor 的 KL 权重 **0.02** |
+| 随机种子 | 各域 **`2026101001`–`2026101005`**，内嵌搜索标签 **0–2**；匹配方法共享 SHA-256 派生搜索种子 |
+| 输入长度 | 训练序列上限 **2,048** token；冻结语义编码在各节点间分配 **8,192** token；推理上下文 **32,768** token |
+| 硬件 | 八卡 H20 主机；**每个科学域 1 张 H20，另用 1 张 H20 提供推理服务**，每卡 97,871 MiB；两颗 AMD EPYC 9K84 96 核 CPU；无跨卡梯度同步 |
+| 训练环境 | Python **3.11.6**、PyTorch **2.6.0+cu124**、Transformers **5.17.0**、PEFT **0.19.1**、Accelerate **1.14.0**、FLA Core **0.3.2** |
+| 推理环境 | PyTorch **2.10.0**、vLLM **0.19.1**、Transformers **4.57.6**；BF16，纯文本／eager，单并发序列，批处理 token 上限 2,048 |
 
-冻结采集配置先累积梯度，每次采集最多进行一次优化器更新。SGD 配置使用 PPO 裁剪 **0.2**、KL 权重 **0.02**，动量与权重衰减均为零；监督组件批次与完整搜索组分别定义。
-
-[参考模型部署参数](docs/reproducibility-models.json)将 **Qwen3.5-35B-A3B-FP8** 固定到完整 revision 与文件哈希：FP8 权重、**32,768 token** 上下文限制、**单张 H20** 推理。推理服务使用 vLLM **0.19.1** 与 PyTorch **2.10.0+cu128**。[软硬件规格](docs/reproducibility-environment.json)另行列出本地训练环境与科学依赖，包括 PyBaMM **25.12.2**、ns-3 **3.44.post0**、NumPy **1.26.4** 与 SciPy **1.17.1**。其他骨干通过托管 API 推理；H20 和优化器设置描述本地执行配置。
+[模型／文件身份](docs/reproducibility-models.json)、[训练参数](docs/reproducibility-training.json)、[完整配置目录](docs/reproducibility-training-configs.json)、[checkpoint 指纹](docs/reproducibility-checkpoints.json)及[软硬件版本](docs/reproducibility-environment.json)提供其余细节。训练与推理分别使用各自固定的环境。科学依赖包括 PyBaMM **25.12.2**、ns-3 **3.44.post0**、NumPy **1.26.4**、SciPy **1.17.1**、Pyomo **6.9.5** 和 HiGHS **1.12.0**。
 
 ## 📊 主要报告结果
 
