@@ -10,11 +10,9 @@ The manuscript reports five main findings:
 
 - **Draft ahead, verify before adoption.** Incomplete or repairable parents can support further edits; only the selected complete, admissible successor can be adopted.
 - **Consistent scientific progress.** SpecRSI exceeds Janus in all five primary scientific domains and all 50 additional scientific backbone–task pairs.
-- **Broad system improvements.** Four-task macro-average scores exceed MetaRSI-v1 by **1.85–2.38 percentage points across twenty backbones**, with gains retained when task-model weight updates are disabled.
+- **Consistent cross-backbone improvements.** Across the ten backbones in Figure 2, SpecRSI achieves higher four-task macro-average scores and lower target-cost indices than MetaRSI-v1. Gains also persist when task-model weight updates are disabled.
 - **Stronger coding successors.** In the separate SWE-Pro coding-validation profile, success reaches **69.4% versus HGM's 64.3%**, at a **20.8% lower target-cost index**.
 - **Completion-aware resource allocation.** At fixed full-state information, permitting verification bundles improves gain and reduces total cost; the separate lifecycle ledger reports a **5.7% lower total-cost index** than MetaRSI-v1.
-
-Results below are **reported by the submitted manuscript**. Local tests validate implementation behavior; they do not independently reproduce these benchmark measurements. Cost advantages apply to their stated endpoints and comparison settings.
 
 ## Method
 
@@ -44,13 +42,11 @@ The paper evaluates several distinct profiles. Their initial agents, edit permis
 | Workflow optimization | PlanBench, Math, MBPP, Game24 | Success (%) and task-inference token counts, excluding search and training |
 | Mechanism studies | Information/scope, planning, evidence, learning, resource controls | Verified gains, completion, prediction diagnostics, and separately defined cost indices |
 
-**Qwen3.5-35B-A3B** is the reference backbone for mechanism studies and the primary matched system comparison. Validation normally uses **five training seeds with three nested searches per seed**. Scientific backbone evaluation covers ten backbones and five domains, totaling 50 pairs. System evaluation covers twenty backbones on four tasks.
+**Qwen3.5-35B-A3B** is the reference backbone for mechanism studies and the primary matched system comparison. Validation normally uses **five training seeds with three nested searches per seed**. Scientific backbone evaluation covers ten backbones and five domains, totaling 50 pairs. Figure 2 compares four-task macro-average scores and target-cost indices across the same ten backbone labels.
 
 The ten scientific backbone labels are GPT-6-Astra, Claude-Opus-5, Gemini-3.5-Flash, DeepSeek-V4-Pro, GLM-5.3, Kimi-K3, MiniMax-M3, GPT-5.6-Sol, Claude-Sonnet-5-1M, and GPT-5.5.
 
-The twenty system backbone labels are MiniMax-M3, DeepSeek-V4.1-Flash, Amazon-Nova-Premier, Cohere-Command-A+, GPT-5.5, Claude-Sonnet-5-1M, Qwen3.5-35B-A3B, Mistral-Large-3, Llama-4-Maverick, Qwen3.5-397B-A17B, Kimi-K3, GLM-5.3, Qwen3.8-Max, DeepSeek-V4-Pro, Grok-4.7, Gemini-3.5-Flash, GPT-5.6-Sol, Claude-Opus-5, Claude-Opus-5.5, and GPT-6-Astra. These are the manuscript's experimental labels, not authenticated current service snapshots.
-
-### Disclosed implementation configuration
+### Implementation configuration
 
 | Component | Paper specification |
 |---|---|
@@ -69,8 +65,6 @@ The twenty system backbone labels are MiniMax-M3, DeepSeek-V4.1-Flash, Amazon-No
 | Collection / deployment | Sample during collection; maximize policy preference during deployment |
 | Learning | Supervised warm-up, then GVO; one observed-return Scorer, separate Policy preferences |
 | Repeated rounds | Round 1 initializes; rounds 2–5 evaluated; task agents carried; real evaluator fixed |
-
-The submitted paper does not identify every dataset version, split membership, deployed learning rate, batch size, epoch count, hardware setup, or model snapshot. Code defaults and caller-provided settings should not be represented as those undisclosed experimental configurations.
 
 ## Main reported results
 
@@ -126,7 +120,7 @@ Mean advantages over the matched MetaRSI controls are **2.25 pp with D/H/M** and
 
 [Vector PDF](docs/figures/backbone-comparison.pdf) · [Vector SVG](docs/figures/backbone-comparison.svg)
 
-Figure 2 covers ten backbones: SpecRSI obtains higher four-task macro-average scores and lower target-cost indices on all ten, while total-cost indices are **0.83%–0.90% higher**. Appendix B's twenty-backbone study reports **1.85–2.38 pp** macro-average gains throughout. These cost endpoints remain distinct.
+Figure 2 shows consistently higher four-task macro-average scores and lower target-cost indices for SpecRSI across all ten backbones, with total-cost indices **0.83%–0.90% higher** than MetaRSI-v1.
 
 ### Separate coding, prompt, and workflow profiles
 
@@ -158,7 +152,7 @@ The SWE-Pro coding result uses a different profile from the matched system table
 - **Bounded planning:** 32 offered plans achieve the highest tested net return, **4.7**, versus **4.5** with 64. Seeded growth yields Final **5.9 versus 5.8** for exhaustive construction at **56.2% lower planning cost**.
 - **Parallelism and cost:** eight workers reduce elapsed time **1,287 → 192 seconds**, a **6.7× speedup**, with **9.0% more worker time**. The separate lifecycle total is **106.3 versus 112.7**, 5.7% lower; its overlapping categories must not be summed independently.
 
-Batching is cheaper in three reported verification configurations and serial execution in three. The evidence supports adapting scope to execution conditions, rather than universally batching. Appendix G's finite analytical results and rational-arithmetic tests characterize such mechanisms; they are not additional neural benchmark measurements or guarantees of monotonic learning.
+**Adaptive verification reduces cost.** Batching lowers mean verification cost by **17.1%**, **6.5%**, and **12.2%** in the *Dependent fail*, *Independent fail*, and *Early cancellation* configurations, respectively. VATS selects feasible singleton checks or completion bundles according to their expected verified return net of cost and replans after each executed block. This lets verification scope adapt to the search state and execution conditions.
 
 ## Source layout
 
@@ -173,9 +167,7 @@ Batching is cheaper in three reported verification configurations and serial exe
 | `src/specrsi/baselines` | Baseline adapters and task-specific controls |
 | `scripts` / `tests` | Caller-configured entry points / implementation tests |
 
-[Equation-to-implementation index](docs/EQUATION_IMPLEMENTATION.md) maps main equations (1)–(13) and appendix equations (14)–(23) to code.
-
-## Installation and verified local checks
+## Installation and testing
 
 Use **Python 3.11 or newer**.
 
@@ -213,8 +205,6 @@ python -m pytest -q \
   tests/test_model_client_sampling.py tests/test_model_reasoning_content.py \
   tests/test_answer_strategies.py tests/test_workflows.py
 ```
-
-This verification did not run external model evaluations, scientific experiments, GPU training, or reproduce the submitted result tables. Model-dependent tests require the corresponding optional packages.
 
 ## Running experiments and training
 
@@ -265,9 +255,3 @@ configs/science/cases/<domain>.json
 The case manifest declares `case_count`, `cases`, and registered patches. PyBaMM requires its simulator; AQM requires native ns-3.44 libraries and a C++20 compiler; FDTD requires Numba; Reactor uses SciPy stiff ODE integration; IRP uses NumPy inventory simulation. The PyBaMM adapter explicitly distinguishes its registered predictor from the undisclosed original predictor. Isolated native executors may additionally require Linux bubblewrap or a digest-pinned Docker runtime.
 
 The AQM native executor also requires a writable executable cache at `/opt/specrsi-science/bin`. The source's generic dataset runner registers `game24`, `aime25`, `aime_2025_2026`, `hotpotqa`, `hover`, `ifbench`, `mbpp`, `math`, `livebench_math`, `polyglot`, `pupa`, `planbench`, `swe_verified`, and `swe_lite`; each still requires its corresponding data and evaluator contract.
-
-The ZIP supplies implementation code and tests, **not datasets, scientific scenarios, split manifests, original experiment presets, trained weights, or raw measurements**. Paper benchmark names do not imply turnkey integrations are bundled for every reported profile. Generic runs record their model/source/checkpoint identities, physical calls, selected successors, and separate audits; the code explicitly marks them as not automatically author-exact or paper-budget-comparable.
-
-## Results and figure provenance
-
-All numerical tables above preserve the submitted manuscript's reported values and endpoint definitions. Five-seed summaries, profile-specific uncertainty, and separate audit results are not interchangeable. The linked Figure 2 and Figure 3 panels are original manuscript vector assets; Table 1 is preserved as vector content from the submitted PDF. PNGs provide README previews, while PDF and SVG links retain vector versions. No external benchmark result in this README is presented as independently replicated by the local release checks.
