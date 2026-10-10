@@ -1,8 +1,46 @@
-# SpecRSI：面向智能体系统的推测式递归自改进
+<p align="center">
+  <img src="docs/assets/tencent_gpr_logo.svg" width="420" alt="Tencent | GPR">
+</p>
+
+<h1 align="center">Drafting Agents, Not Just Tokens:<br>Speculative Recursive Self-Improvement for Agentic Systems</h1>
+
+<p align="center"><strong>SpecRSI</strong></p>
+
+<p align="center">
+  <img src="docs/assets/badge-arxiv.svg" alt="arXiv Paper">
+  <img src="docs/assets/badge-twitter.svg" alt="Twitter / X">
+  <img src="docs/assets/badge-xiaohongshu.svg" alt="Xiaohongshu">
+  <a href="https://github.com/xuxinthuad/SpecRSI"><img src="docs/assets/badge-github.svg" alt="GitHub"></a>
+  <a href="LICENSE"><img src="docs/assets/badge-license.svg" alt="License: MIT"></a>
+</p>
 
 [English](README.md) | **简体中文**
 
-**论文《Drafting Agents, Not Just Tokens: Speculative Recursive Self-Improvement for Agentic Systems》的代码与实验指南。**
+---
+
+## 🔥 最新动态
+
+- **2026 年 10 月 10 日** — 发布 **SpecRSI v1**，包含代码、实验指南与复现规格。
+
+## 📌 引用
+
+如果您在研究中使用 SpecRSI，请引用：
+
+```bibtex
+@misc{xu2026specrsi,
+  title        = {Drafting Agents, Not Just Tokens: Speculative Recursive Self-Improvement for Agentic Systems},
+  author       = {Xin Xu and Ke Cheng and Hao Wang and Yangru Huang and
+                  Yanghao Xiao and Zhichao Chen and Zhisheng Zhong and
+                  Xun Liu and Yi Li and Qian Li and Haibin Lv and
+                  Jun Zhang and Jie Jiang and Zhouchen Lin},
+  year         = {2026},
+  url          = {https://github.com/xuxinthuad/SpecRSI}
+}
+```
+
+---
+
+## 🔎 概览
 
 SpecRSI 在中间版本尚未完成全部评估时，就为智能体起草可执行的后继版本；正式采用后继版本之前，仍要求完成验证。Verification-Aware Tree Search（VATS，验证感知树搜索）在有限预算内分配进一步编辑与尚未完成的检查。Group Verification Optimization（GVO，组验证优化）利用完整搜索学习改进器，同时保持真实评估契约不变。
 
@@ -14,7 +52,7 @@ SpecRSI 在中间版本尚未完成全部评估时，就为智能体起草可执
 - **更强的代码后继版本。** 在单独的 SWE-Pro 代码验证实验中，成功率达到 **69.4%，高于 HGM 的 64.3%**，同时**目标成本指数降低 20.8%**。
 - **考虑验证完成的资源分配。** 在完整状态信息固定时，允许组合验证检查可提高收益并降低总成本；单独的生命周期账本报告，相比 MetaRSI-v1，**总成本指数降低 5.7%**。
 
-## 方法
+## 🧩 方法
 
 ![SpecRSI 方法概览](docs/figures/method-overview.png)
 
@@ -29,7 +67,7 @@ SpecRSI 在中间版本尚未完成全部评估时，就为智能体起草可执
 
 预测不能替代观测证据。有效的结果记录也可以表明失败；缺失证据与未满足要求具有不同含义。只有被采用的版本需要完整、可接纳的证据。所有准备、未成功的编辑、失败检查、复制和未完成工作仍计入成本。付费的强制续行仅提供 Scorer 监督标签，不参与 actor 更新。
 
-## 基准与实验协议
+## 🧪 基准与实验协议
 
 论文评估了若干独立实验配置。初始智能体、编辑权限、分数与成本定义应在各自配置内比较。
 
@@ -84,7 +122,7 @@ SpecRSI 在中间版本尚未完成全部评估时，就为智能体起草可执
 
 [参考模型部署参数](docs/reproducibility-models.json)将 **Qwen3.5-35B-A3B-FP8** 固定到完整 revision 与文件哈希：FP8 权重、**32,768 token** 上下文限制、**单张 H20** 推理。推理服务使用 vLLM **0.19.1** 与 PyTorch **2.10.0+cu128**。[软硬件规格](docs/reproducibility-environment.json)另行列出本地训练环境与科学依赖，包括 PyBaMM **25.12.2**、ns-3 **3.44.post0**、NumPy **1.26.4** 与 SciPy **1.17.1**。其他骨干通过托管 API 推理；H20 和优化器设置描述本地执行配置。
 
-## 主要报告结果
+## 📊 主要报告结果
 
 ![主要科学与系统实验结果](docs/figures/main-results.png)
 
@@ -160,7 +198,7 @@ SpecRSI 在中间版本尚未完成全部评估时，就为智能体起草可执
 
 SWE-Pro 代码结果采用的实验配置，不同于匹配权限系统表中得到 21.7% 的配置。执行完成率是另一个指标：SpecRSI 报告 94.7%，FlashEvolve 两种模式分别为 91.2% 和 92.8%。独立的冻结后继版本审计在其声明的未触碰数据划分上报告 **69.4 ± 1.3%**，以及 **23/25 次达到目标**。
 
-## 消融研究说明了什么
+## 🔬 消融研究说明了什么
 
 - **验证范围：** 完整状态信息固定时，从单检查改为组合检查，收益由 **4.8 提高至 6.3 个百分点**，总成本由 **63.1 降至 59.2**，完成失败率由 **9.8% 降至 6.5%**，目标命中率由 **84% 提高至 92%**。这一区分了工作范围的效果与仅提供更丰富输入的效果。
 - **规划：** 在从 10% 到 150% 的全部八个预算上限下，完整 SpecRSI 在七种条件中均获得最高的报告平均收益和最低的总成本指数。在 70% 预算下，完整规划与加性规划的收益分别为 **5.99 和 4.73 个百分点**；规划时间分别为 **201 和 141 ms**，总成本分别为 **58.9 和 65.1**。
@@ -172,7 +210,7 @@ SWE-Pro 代码结果采用的实验配置，不同于匹配权限系统表中得
 
 在 Dependent fail、Independent fail 和 Early cancellation 配置中，批量验证分别将平均验证成本降低 **17.1%、6.5% 和 12.2%**。VATS 根据扣除成本后的预期验证回报选择单检查与验证补全组合，并在每个执行块更新状态后重新规划，从而根据执行条件分配验证工作。
 
-## 代码结构
+## 🗂️ 代码结构
 
 | 路径 | 内容 |
 |---|---|
@@ -185,7 +223,7 @@ SWE-Pro 代码结果采用的实验配置，不同于匹配权限系统表中得
 | `src/specrsi/baselines` | 基线适配器与任务专用对照 |
 | `scripts` / `tests` | 由调用者配置的入口 / 实现测试 |
 
-## 安装与测试
+## ⚙️ 安装与测试
 
 使用 **Python 3.11 或更新版本**。
 
@@ -224,7 +262,7 @@ python -m pytest -q \
   tests/test_answer_strategies.py tests/test_workflows.py
 ```
 
-## 运行实验与训练
+## 🚀 运行实验与训练
 
 入口接受**调用者提供的配置**。下列路径是占位示例，不是随代码提供的预设。
 
@@ -273,3 +311,9 @@ configs/science/cases/<domain>.json
 案例清单声明 `case_count`、`cases` 与已注册补丁。PyBaMM 需要对应模拟器；AQM 需要原生 ns-3.44 库和 C++20 编译器；FDTD 需要 Numba；Reactor 使用 SciPy 刚性 ODE 积分；IRP 使用 NumPy 库存模拟。PyBaMM 适配器明确区分了其已注册预测器与尚未披露的原始预测器。隔离的原生执行器还可能需要 Linux bubblewrap，或通过摘要固定镜像的 Docker 运行时。
 
 AQM 原生执行器还需要在 `/opt/specrsi-science/bin` 下提供可写的可执行文件缓存。源代码的通用数据集运行器注册了 `game24`、`aime25`、`aime_2025_2026`、`hotpotqa`、`hover`、`ifbench`、`mbpp`、`math`、`livebench_math`、`polyglot`、`pupa`、`planbench`、`swe_verified` 和 `swe_lite`；每项仍需对应数据及评估器契约。
+
+---
+
+## ⚖️ License
+
+SpecRSI 代码采用 [MIT License](LICENSE) 发布。第三方库、数据集与模型仍遵循各自的许可条款。

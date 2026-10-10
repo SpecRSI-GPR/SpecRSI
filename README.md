@@ -1,8 +1,46 @@
-# SpecRSI: Speculative Recursive Self-Improvement for Agentic Systems
+<p align="center">
+  <img src="docs/assets/tencent_gpr_logo.svg" width="420" alt="Tencent | GPR">
+</p>
+
+<h1 align="center">Drafting Agents, Not Just Tokens:<br>Speculative Recursive Self-Improvement for Agentic Systems</h1>
+
+<p align="center"><strong>SpecRSI</strong></p>
+
+<p align="center">
+  <img src="docs/assets/badge-arxiv.svg" alt="arXiv Paper">
+  <img src="docs/assets/badge-twitter.svg" alt="Twitter / X">
+  <img src="docs/assets/badge-xiaohongshu.svg" alt="Xiaohongshu">
+  <a href="https://github.com/xuxinthuad/SpecRSI"><img src="docs/assets/badge-github.svg" alt="GitHub"></a>
+  <a href="LICENSE"><img src="docs/assets/badge-license.svg" alt="License: MIT"></a>
+</p>
 
 **English** | [简体中文](README.zh-CN.md)
 
-**Code and experimental guide for “Drafting Agents, Not Just Tokens: Speculative Recursive Self-Improvement for Agentic Systems.”**
+---
+
+## 🔥 What's New
+
+- **October 10, 2026** — We released **SpecRSI v1**, including the code, experimental guide, and reproducibility specifications.
+
+## 📌 Citation
+
+If you use SpecRSI in your work, please cite:
+
+```bibtex
+@misc{xu2026specrsi,
+  title        = {Drafting Agents, Not Just Tokens: Speculative Recursive Self-Improvement for Agentic Systems},
+  author       = {Xin Xu and Ke Cheng and Hao Wang and Yangru Huang and
+                  Yanghao Xiao and Zhichao Chen and Zhisheng Zhong and
+                  Xun Liu and Yi Li and Qian Li and Haibin Lv and
+                  Jun Zhang and Jie Jiang and Zhouchen Lin},
+  year         = {2026},
+  url          = {https://github.com/xuxinthuad/SpecRSI}
+}
+```
+
+---
+
+## 🔎 Overview
 
 SpecRSI improves agents by drafting executable successors before every intermediate version has been fully evaluated, while requiring complete verification before adoption. Verification-Aware Tree Search (VATS) allocates a limited budget between further edits and outstanding checks. Group Verification Optimization (GVO) learns the improver from completed searches while keeping the real evaluation contract fixed.
 
@@ -14,7 +52,7 @@ The manuscript reports five main findings:
 - **Stronger coding successors.** In the separate SWE-Pro coding-validation profile, success reaches **69.4% versus HGM's 64.3%**, at a **20.8% lower target-cost index**.
 - **Completion-aware resource allocation.** At fixed full-state information, permitting verification bundles improves gain and reduces total cost; the separate lifecycle ledger reports a **5.7% lower total-cost index** than MetaRSI-v1.
 
-## Method
+## 🧩 Method
 
 ![SpecRSI method overview](docs/figures/method-overview.png)
 
@@ -29,7 +67,7 @@ Within VATS, the **Solver** constructs feasible completion bundles, including de
 
 Predictions never replace observed evidence. A valid outcome may report failure; missing evidence and failed requirements have different meanings. Only the adopted version needs complete admissible evidence. All preparation, unsuccessful edits, failed checks, copies, and unfinished work remain charged. Paid forced continuations supply Scorer labels only and are excluded from actor updates.
 
-## Benchmarks and experimental protocol
+## 🧪 Benchmarks and experimental protocol
 
 The paper evaluates several distinct profiles. Their initial agents, edit permissions, scores, and cost definitions should be compared within each profile.
 
@@ -84,7 +122,7 @@ Frozen-collection updates accumulate gradients before at most one optimizer step
 
 [Reference deployment settings](docs/reproducibility-models.json) pin **Qwen3.5-35B-A3B-FP8** to an immutable revision and file hashes: FP8 weights, a **32,768-token** context limit, and **one H20** for inference. Serving uses vLLM **0.19.1** and PyTorch **2.10.0+cu128**. [Hardware/software specifications](docs/reproducibility-environment.json) separately identify the local training environment and scientific dependencies, including PyBaMM **25.12.2**, ns-3 **3.44.post0**, NumPy **1.26.4** and SciPy **1.17.1**. Provider-API backbones use hosted inference; the H20 and optimizer settings describe local execution.
 
-## Main reported results
+## 📊 Main reported results
 
 ![Main scientific and system results](docs/figures/main-results.png)
 
@@ -160,7 +198,7 @@ Coding baselines also include DGM, SICA, Beam-Spec, and distinct FlashEvolve asy
 
 The SWE-Pro coding result uses a different profile from the matched system table's 21.7% result. Execution completion is another endpoint: SpecRSI reports 94.7%, versus 91.2% and 92.8% for the two FlashEvolve modes. The separate frozen-successor audit reports **69.4 ± 1.3%** and **23/25 target hits** on its declared untouched split.
 
-## What the ablations establish
+## 🔬 What the ablations establish
 
 - **Verification scope:** with full-state information fixed, singleton → bundle gain is **4.8 → 6.3 pp**, total cost **63.1 → 59.2**, completion failure **9.8% → 6.5%**, and hit rate **84% → 92%**. This isolates work scope beyond simply providing richer inputs.
 - **Planning:** full SpecRSI has the highest reported mean gain and lowest total-cost index among seven conditions at all eight budget caps from 10% to 150%. At 70%, full versus additive planning gives **5.99 versus 4.73 pp**, with **201 versus 141 ms** planning but **58.9 versus 65.1** total cost.
@@ -172,7 +210,7 @@ The SWE-Pro coding result uses a different profile from the matched system table
 
 **Adaptive verification reduces cost.** Batching lowers mean verification cost by **17.1%**, **6.5%**, and **12.2%** in the *Dependent fail*, *Independent fail*, and *Early cancellation* configurations, respectively. VATS selects feasible singleton checks or completion bundles according to their expected verified return net of cost and replans after each executed block. This lets verification scope adapt to the search state and execution conditions.
 
-## Source layout
+## 🗂️ Source layout
 
 | Path | Contents |
 |---|---|
@@ -185,7 +223,7 @@ The SWE-Pro coding result uses a different profile from the matched system table
 | `src/specrsi/baselines` | Baseline adapters and task-specific controls |
 | `scripts` / `tests` | Caller-configured entry points / implementation tests |
 
-## Installation and testing
+## ⚙️ Installation and testing
 
 Use **Python 3.11 or newer**.
 
@@ -224,7 +262,7 @@ python -m pytest -q \
   tests/test_answer_strategies.py tests/test_workflows.py
 ```
 
-## Running experiments and training
+## 🚀 Running experiments and training
 
 Entry points accept **caller-provided configurations**. Paths below are placeholders, not bundled presets.
 
@@ -273,3 +311,9 @@ configs/science/cases/<domain>.json
 The case manifest declares `case_count`, `cases`, and registered patches. PyBaMM requires its simulator; AQM requires native ns-3.44 libraries and a C++20 compiler; FDTD requires Numba; Reactor uses SciPy stiff ODE integration; IRP uses NumPy inventory simulation. The PyBaMM adapter explicitly distinguishes its registered predictor from the undisclosed original predictor. Isolated native executors may additionally require Linux bubblewrap or a digest-pinned Docker runtime.
 
 The AQM native executor also requires a writable executable cache at `/opt/specrsi-science/bin`. The source's generic dataset runner registers `game24`, `aime25`, `aime_2025_2026`, `hotpotqa`, `hover`, `ifbench`, `mbpp`, `math`, `livebench_math`, `polyglot`, `pupa`, `planbench`, `swe_verified`, and `swe_lite`; each still requires its corresponding data and evaluator contract.
+
+---
+
+## ⚖️ License
+
+The SpecRSI code is released under the [MIT License](LICENSE). Third-party libraries, datasets, and models remain subject to their respective licenses.
