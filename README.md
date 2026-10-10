@@ -193,7 +193,7 @@ Across the full twenty-backbone system comparison in Appendix B, SpecRSI improve
 | MBPP workflow | EMAS | 54.6 → **59.4** | Task-inference tokens 11,720 → **11,020** |
 | Game24 workflow | EMAS | 51.2 → **54.7** | Task-inference tokens 12,830 → **12,080** |
 
-Coding baselines also include DGM, SICA, Beam-Spec, and distinct FlashEvolve asynchronous/optional modes. Prompt controls include MIPROv2, MIPROv2 without demonstrations, Trace, TextGrad, and GEPA. Workflow controls include Genesis, Genesis+SOP, AFlow, and ADAS. Prompt/workflow rows do not report SDs.
+Coding baselines also include DGM, SICA, Beam-Spec, and distinct FlashEvolve asynchronous/optional modes. Prompt controls include MIPROv2, MIPROv2 without demonstrations, Trace, TextGrad, and GEPA. Workflow controls include Genesis, Genesis+SOP, AFlow, and ADAS.
 
 The SWE-Pro coding result uses a different profile from the matched system table's 21.7% result. Execution completion is another endpoint: SpecRSI reports 94.7%, versus 91.2% and 92.8% for the two FlashEvolve modes. The separate frozen-successor audit reports **69.4 ± 1.3%** and **23/25 target hits** on its declared untouched split.
 
@@ -233,7 +233,6 @@ python -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.[test]'
 python -m specrsi.cli doctor
-python -m specrsi.cli demo
 ```
 
 Base dependencies are NumPy, SciPy, PyYAML, and HTTPX. Optional extras are `test`, `models`, `data`, and `solver`. Learned-role execution and the full test suite require model dependencies:
@@ -245,7 +244,7 @@ python -m pytest -q
 
 The model extra specifies PyTorch >=2.6, Transformers 4.57.6, Hugging Face Hub 0.36.2, PEFT 0.18.1, Accelerate >=1.2, FastAPI >=0.115, and Uvicorn >=0.30. The data extra includes Datasets 3.6.0; the solver extra pins Pyomo 6.9.5 and highspy 1.12.0. Install the extras needed by your integration with `python -m pip install -e '.[models,data,solver,test]'`.
 
-The built-in completion solver uses SciPy MILP; it does not require the optional Pyomo/HiGHS extra. `doctor` reports installed versions and contacts a model endpoint only when explicitly configured. `demo` is an in-memory integer-expression smoke test, labeled `demo_only: true`, using a legacy heuristic search. It is not the paper's VATS benchmark runner.
+The built-in completion solver uses SciPy MILP; it does not require the optional Pyomo/HiGHS extra. `doctor` reports installed versions and contacts a model endpoint only when explicitly configured. Optional `python -m specrsi.cli demo` checks candidate creation, evidence bookkeeping, budget accounting, and acceptance on a small CPU-only example, without datasets or API calls. Use the VATS entry points below for benchmark experiments.
 
 **Release verification:** editable installation, doctor, demo, and the following no-model suite were checked under Python 3.13; **267 tests passed**.
 
@@ -263,24 +262,19 @@ python -m pytest -q \
 
 ## 🚀 Running experiments and training
 
-Entry points accept **caller-provided configurations**. Paths below are placeholders, not bundled presets.
+Run VATS on text/code/workflow tasks with `run_experiment.py`, or on native scientific tasks with `run_paper_science.py`. Each command loads a complete YAML configuration; replace the paths below with your experiment configuration and trained checkpoint locations.
 
 ```sh
-python scripts/run_experiment.py run --config path/to/run.yaml
+python scripts/run_experiment.py --config path/to/run.yaml
 python scripts/run_paper_science.py --config path/to/science.yaml
 python scripts/run_paper_science_comparison.py --config path/to/comparison.yaml --stage all
 python scripts/train.py --config path/to/train.yaml --stage warmup
 python scripts/train.py --config path/to/train.yaml --stage gvo --resume path/to/warmup
 ```
 
-Set the paper-style search algorithm explicitly:
+In the full run configuration, `search.algorithm: vats_pdf` selects `VATSEngine`, and `search.controller: learned` loads the trained Drafter, Scorer, and Policy. Configure the pinned model endpoint, dataset or simulator registrations, disjoint selection/audit cases, seed, budget, and output directory. Scientific runs require registered contracts, case manifests, selection/audit IDs, and a compatible role checkpoint; `heuristic_bootstrap` selects an explicit heuristic controller. The [training configuration catalog](docs/reproducibility-training-configs.json) and [reproducibility guide](docs/REPRODUCIBILITY.md) record the reference parameters and experiment settings.
 
-```yaml
-search:
-  algorithm: vats_pdf
-```
-
-This is a configuration fragment, not a complete run preset. The default legacy algorithm must not be mistaken for VATS. Science execution requires registered contracts, case manifests, selection/audit IDs, budgets, and a compatible learned checkpoint or explicitly selected `heuristic_bootstrap`. The comparison runner evaluates `initial`, `best_of_n`, `random_search`, and `specrsi` with common frozen held-out scenarios; it is not a ready-made Janus/Table 1 reproduction.
+The science comparison runner evaluates `initial`, `best_of_n`, `random_search`, and `specrsi` on common frozen held-out scenarios, with the selected agents fixed before audit evaluation.
 
 Training configurations select the VATS collector through `collection.algorithm: vats_pdf`; `search.algorithm` applies to the experiment runners above.
 
