@@ -127,10 +127,6 @@ The [complete reference configuration](docs/REPRODUCIBILITY.md) fixes data, mode
 
 ## 📊 Main reported results
 
-![Main scientific and system results](docs/figures/main-results.png)
-
-[Vector PDF](docs/figures/main-results.pdf) · [Vector SVG](docs/figures/main-results.svg)
-
 ### Scientific discovery: Table 1A
 
 Entries show mean ± reported SD. Higher terminal gain and AUBC are preferred within each domain.

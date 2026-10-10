@@ -127,10 +127,6 @@ SpecRSI 在中间版本尚未完成全部评估时，就为智能体起草可执
 
 ## 📊 主要报告结果
 
-![主要科学与系统实验结果](docs/figures/main-results.png)
-
-[矢量 PDF](docs/figures/main-results.pdf) · [矢量 SVG](docs/figures/main-results.svg)
-
 ### 科学发现：表 1A
 
 各项为均值 ± 报告的标准差（SD）。在同一领域内，终端收益与 AUBC 越高越好。
