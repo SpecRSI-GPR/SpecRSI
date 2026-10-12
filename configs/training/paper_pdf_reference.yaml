@@ -1,0 +1,54 @@
+# Executable CPU integration of the supplied PDF; synthetic tasks, not benchmark evidence.
+stage: two_stage
+data_provenance: synthetic_integer_tasks_actual_vats_searches
+collector: specrsi.learning.paper_bridge:collect_reference_vats
+output: artifacts/training/paper_pdf_reference
+epochs: 3
+device: cpu
+cpu_threads: 2
+model:
+  backend: tiny
+  feature_dim: 8
+  option_dim: 12
+  hidden_dim: 32
+  lora_rank: 4
+  lora_alpha: 8
+  seed: 20260926
+training:
+  learning_rate: 0.0002
+  weight_decay: 0.0001
+  cost_coefficient: 0.001
+  time_coefficient: 0
+  clip_epsilon: 0.2
+  value_weight: 1
+  surface_weight: 0
+  pair_weight: 1
+  estimator: gvo
+  batch_size: 8
+  seed: 20260926
+collection:
+  algorithm: vats_pdf
+  contexts: 2
+  group_size: 4
+  budget: 1500
+  max_actions: 12
+  max_candidates: 8
+  forced_repetitions: 2
+  vats:
+    max_attempts: 48
+    max_draft_depth: 2
+    max_draft_parents: 2
+    max_queries: 96
+    max_extensions: 4
+    max_menu_options: 32
+    max_completion_targets: 4
+    max_pair_targets: 4
+    max_singletons: 4
+warmup:
+  epochs: 1
+  collection:
+    group_size: 2
+    max_actions: 7
+    max_candidates: 3
+gvo:
+  epochs: 3
