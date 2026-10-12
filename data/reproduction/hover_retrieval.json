@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "revision": "ef6a5e72a98b47cef31574a400fea8fe149559a3",
+  "url": "https://huggingface.co/dspy/cache/resolve/ef6a5e72a98b47cef31574a400fea8fe149559a3/wiki.abstracts.2017.tar.gz",
+  "parameters": {
+    "k1": 0.9,
+    "b": 0.4,
+    "stopwords": "en",
+    "stemmer": "english"
+  },
+  "source": "GEPA artifact hover_program.py",
+  "files": [
+    {
+      "path": "data/retrieval/hover/wiki.abstracts.2017.tar.gz",
+      "sha256": "744183e61af986bde9b25c880b59c1502618a8b673671e189cbc0ee684fceb42",
+      "bytes": 608448121,
+      "current_file_check": {
+        "exists": true,
+        "bytes_match": true,
+        "sha256_recomputed": false
+      }
+    },
+    {
+      "path": "data/retrieval/hover/wiki.abstracts.2017.jsonl",
+      "sha256": "c006527c7c600f85ed594afa36d2a34d0598996405f560474227738342463724",
+      "bytes": 1780742620,
+      "current_file_check": {
+        "exists": true,
+        "bytes_match": true,
+        "sha256_recomputed": false
+      }
+    },
+    {
+      "path": "data/retrieval/hover/passages.jsonl",
+      "sha256": "55d9b89a1776ab56b7abf7699a9b5f3c3880cc319cddc5b7351c79fb9d89fdee",
+      "bytes": 1561686696,
+      "current_file_check": {
+        "exists": true,
+        "bytes_match": true,
+        "sha256_recomputed": false
+      }
+    },
+    {
+      "path": "data/retrieval/hover/bm25s/data.csc.index.npy",
+      "sha256": "35144c2e96cd12c1038954f0c652502cb1ec60e1cc250945f0d99c6537099bca",
+      "bytes": 527253192,
+      "current_file_check": {
+        "exists": true,
+        "bytes_match": true,
+        "sha256_recomputed": false
+      }
+    },
+    {
+      "path": "data/retrieval/hover/bm25s/indices.csc.index.npy",
+      "sha256": "a4622ca13d369f4c507d5207ee17415fd9aa4f577181c5a208c92320a6e1463c",
+      "bytes": 527253192,
+      "current_file_check": {
+        "exists": true,
+        "bytes_match": true,
+        "sha256_recomputed": false
+      }
+    },
+    {
+      "path": "data/retrieval/hover/bm25s/indptr.csc.index.npy",
+      "sha256": "e7fe09a99ace818d1daa3e163af2795964bac894503519d335334ae747e37770",
+      "bytes": 10196768,
+      "current_file_check": {
+        "exists": true,
+        "bytes_match": true,
+        "sha256_recomputed": true,
+        "sha256_match": true
+      }
+    },
+    {
+      "path": "data/retrieval/hover/bm25s/params.index.json",
+      "sha256": "aa3e8b61aa4bd3ca8b285df0e794773655c0e2738e156673600cb19a51dc1948",
+      "bytes": 225,
+      "current_file_check": {
+        "exists": true,
+        "bytes_match": true,
+        "sha256_recomputed": true,
+        "sha256_match": true
+      }
+    },
+    {
+      "path": "data/retrieval/hover/bm25s/vocab.index.json",
+      "sha256": "42ce5cc2cae0fb5b0d11d516f0ce039111a1613ecacc0716c4fb0d21aa2017cb",
+      "bytes": 49044376,
+      "current_file_check": {
+        "exists": true,
+        "bytes_match": true,
+        "sha256_recomputed": false
+      }
+    }
+  ]
+}
