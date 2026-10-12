@@ -1,5 +1,17 @@
 # Equations and executable operations
 
+Reference identity for `ft_local/SpecRSI (33).pdf`: **Qwen3.5-35B-A3B**,
+publisher BF16 revision `59d61f3ce65a6d9863b86d2e96597125219dc754`.
+`learning/hf.py` implements Appendix F.5 with the native MoE text tower,
+rank-16 LoRA on both full-attention and Gated DeltaNet projections, and
+independent single-Q and policy relation heads (width 256, four heads).
+Experts and routing weights remain frozen. `paper_profile.py` validates
+this identity before a reference run. The exact executable configuration is
+[`qwen35_paper33_science.yaml`](../configs/training/qwen35_paper33_science.yaml).
+SFT projects only supervised hidden positions to the vocabulary; its edit
+log-likelihood is still the **sum over all supervised tokens**, including EOS,
+as required by Eq. (18). Native adapter reload checks every tensor name/shape.
+
 The search state is `S = (T, E, H, B, N, w)`: an immutable version tree,
 admitted observations, observed history, remaining expense, remaining primitive
 attempts, and worker count. `theta` generates edits, `psi` selects work, and
