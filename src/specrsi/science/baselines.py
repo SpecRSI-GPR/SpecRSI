@@ -1,8 +1,8 @@
 """Real-simulator backend for the shared HGM/AFlow/Janus/EMAS runner.
 
-The default proposer uses seeded parameter mutation. An explicitly supplied
-local model enables JSON parameter proposals through the same metered interface.
-Each evaluator call runs the registered native simulator for the requested cases.
+The default proposer is a seeded parameter-mutation control, explicitly without
+LLM generation. It is useful for end-to-end numerical controls and Janus proxy
+experiments; it is not advertised as an author-equivalent LLM baseline.
 """
 from __future__ import annotations
 import random
@@ -43,10 +43,10 @@ class ScienceBackend:
         self.case_ids=tuple(case_ids);self.proposal_space=proposal_space
         if model:
             from specrsi.models.client import LocalModelClient
-            url=model.get("base_url","http://127.0.0.1:8000")
+            url=model.get("base_url","http://127.0.0.1:18085")
             if urlsplit(url).hostname not in {"127.0.0.1","localhost","::1"}:
                 raise ValueError("Science generation requires an explicit loopback local model server")
-            self.client=LocalModelClient(url,model.get("name","local-model"))
+            self.client=LocalModelClient(url,model.get("name","Qwen3.5-35B-A3B"))
             self.health=self.client.health()
 
     def _generate_json(self,prompt,seed,token_cap):

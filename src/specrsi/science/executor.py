@@ -113,6 +113,13 @@ class ScienceExecutor:
         env={"PATH":"/usr/local/bin:/usr/bin:/bin","HOME":"/tmp","PYTHONPATH":str(ROOT/"src"),
              "OPENBLAS_NUM_THREADS":"1","OMP_NUM_THREADS":"1","MKL_NUM_THREADS":"1","NUMBA_NUM_THREADS":"1",
              "PYBAMM_DISABLE_TELEMETRY":"true","CUDA_VISIBLE_DEVICES":"","NUMBA_CACHE_DIR":"/opt/specrsi-science/numba-cache"}
+        # The worker owns a new session, so the campaign keeper needs these two
+        # exact supervision tags to recover it after its parent exits. They are
+        # process-ownership metadata, never evaluator inputs or score fields.
+        # Keep the remaining environment whitelist closed to inherited values.
+        for key in ("SPECRSI_JOB_DIR","SPECRSI_JOB_TOKEN"):
+            if key in os.environ:
+                env[key]=os.environ[key]
         started=time.monotonic()
         process=subprocess.Popen([sys.executable,"-m","specrsi.science.worker"],stdin=subprocess.PIPE,stdout=subprocess.PIPE,
                                  stderr=subprocess.PIPE,text=True,env=env,start_new_session=True,cwd=ROOT)
