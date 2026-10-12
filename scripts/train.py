@@ -83,6 +83,11 @@ def parse_records(records):
 
 
 def create_model(config, resume):
+    # Appendix F.5 fixes the reference backbone and role architecture. In
+    # particular, a directory named after Qwen3.5 is not a model identity:
+    # validate publisher metadata and the immutable revision before loading.
+    from specrsi.paper_profile import validate_reference_backbone
+    validate_reference_backbone(config)
     raw = dict(config.get("model", {}))
     backend = raw.pop("backend", "tiny")
     if resume:
@@ -90,6 +95,12 @@ def create_model(config, resume):
         if "architecture_version" in raw and raw["architecture_version"] != saved.get("architecture_version"):
             raise ValueError("Explicit model architecture_version differs from the resumed checkpoint; train a new version instead")
         saved_backend = saved["backend"]
+        if config.get("require_reference_backbone"):
+            validate_reference_backbone({**config, "model": saved})
+            for field in ("model_path", "revision", "dtype", "lora_target_profile",
+                          "language_model_only", "require_unquantized_backbone"):
+                if raw.get(field) != saved.get(field):
+                    raise ValueError(f"Reference backbone resume mismatch: {field}; collect fresh Qwen3.5 traces")
         if "backend" in config.get("model", {}) and backend != saved_backend:
             raise ValueError("Explicit model backend differs from the resumed checkpoint")
         from specrsi.learning.frozen_text import SEMANTIC_BUDGET_FIELDS, semantic_budget
@@ -114,18 +125,18 @@ def create_model(config, resume):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--config", required=True)
+    parser.add_argument("--config", default="configs/training/qwen35_paper33_science.yaml")
     parser.add_argument("--stage", choices=["demo", "warmup", "gvo", "two_stage"])
-    parser.add_argument("--data", help="Verified training records in caller-provided JSONL")
+    parser.add_argument("--data", help="Actual verified/audited/collected training JSONL; no author data is inferred")
     parser.add_argument("--output")
     parser.add_argument("--epochs", type=int)
     parser.add_argument("--resume")
     parser.add_argument("--collector", help="module:function(model, round_index, config) -> isolated complete-search groups")
     args = parser.parse_args()
     config = yaml.safe_load(Path(args.config).read_text())
-    from specrsi.paper_profile import algorithm_name, algorithm_metadata
+    from specrsi.paper_profile import algorithm_name, paper_provenance
     algorithm = algorithm_name(config.get("collection", {}))
-    paper = algorithm_metadata(config) if algorithm == "vats_pdf" else None
+    paper = paper_provenance(config) if algorithm == "vats_pdf" else None
     if algorithm == "vats_pdf":
         training = config.get("training", {})
         if training.get("estimator", "gvo") != "gvo" or training.get("reward_mode", "complete_search") != "complete_search":
@@ -147,7 +158,7 @@ def main():
     data_path = args.data or config.get("data")
     collector_path = args.collector or config.get("collector")
     if stage != "demo" and not data_path and not collector_path:
-        parser.error("A caller-provided --data JSONL or --collector is required.")
+        parser.error("Provide executed training records with --data JSONL or an actual --collector.")
     initial_source_hashes = source_hashes()
     torch.manual_seed(config.get("training", {}).get("seed", 0))
     torch.set_num_threads(config.get("cpu_threads", 2))
@@ -175,7 +186,7 @@ def main():
     config["output"] = str(output)
     config["stage"] = stage
     (output / "resolved_config.json").write_text(json.dumps({**config, "training": asdict(trainer.config), "stage": stage, "data": data_path,
-        "epochs": epochs, "output": str(output), "synthetic_demo": stage == "demo", "algorithm_profile": paper}, indent=2))
+        "epochs": epochs, "output": str(output), "synthetic_demo": stage == "demo", "paper_reference": paper}, indent=2))
     history = []
     started = time.monotonic()
     if stage == "demo":
@@ -313,7 +324,7 @@ def main():
         raise RuntimeError("Source changed during PDF role training; refusing to publish a frozen checkpoint")
     trainer.save(output / "checkpoint")
     summary = {"synthetic_demo": stage == "demo", "elapsed_seconds": time.monotonic() - started,
-               "algorithm": algorithm, "algorithm_profile": paper, "source_hashes": initial_source_hashes,
+               "algorithm": algorithm, "paper_reference": paper, "source_hashes": initial_source_hashes,
                "source_changed_during_run": source_changed,
                "initial_optimizer_steps": initial_optimizer_steps,
                "optimizer_updates": trainer.steps - initial_optimizer_steps,

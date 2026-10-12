@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""VATS VATS on native scientific cases, followed by a frozen audit."""
+"""Supplied-PDF VATS on native scientific cases, followed by a frozen audit."""
 from __future__ import annotations
 
 import argparse
@@ -18,7 +18,7 @@ import yaml
 from specrsi.core import BudgetLedger, SearchConfig
 from specrsi.core.vats import VATSEngine
 from specrsi.core.models import thaw
-from specrsi.paper_profile import (algorithm_name, algorithm_metadata, require_role_checkpoint, vats_config,
+from specrsi.paper_profile import (algorithm_name, paper_provenance, require_role_checkpoint, vats_config,
                                    vats_cost_accounting, objective_coefficients, realized_search_return)
 from specrsi.science.executor import (ParameterDrafter, ScienceExecutor, make_candidate,
                                      make_science_ledger, make_scope)
@@ -28,7 +28,7 @@ def run(config):
     search = config['search']
     if algorithm_name(search) != 'vats_pdf':
         raise ValueError('This runner requires the supplied-PDF VATS profile')
-    paper = algorithm_metadata(config)
+    paper = paper_provenance(config)
     checkpoint = require_role_checkpoint(search)
     objective_coefficients(search)
     cap = search.get('execution_cap_ms', 120000)
@@ -100,7 +100,7 @@ def run(config):
     started = time.monotonic()
     result = engine.run()
     report = result.to_dict()
-    report.update({'config': config, 'algorithm_profile': paper, 'scope': scope.manifest(),
+    report.update({'config': config, 'paper_reference': paper, 'scope': scope.manifest(),
         'role_checkpoint_hashes': checkpoint_hashes, 'source_hashes': sources,
         'native_utility': True, 'initial_acquisition_ms': initial_cost, 'initial_acquisition': initial_results,
         'author_checkpoint_used': False, 'paper_budget_comparable': False,
