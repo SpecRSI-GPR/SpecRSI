@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "dataset": "aime25",
+  "split": "development",
+  "processed_path": "data/processed/aime25/development.jsonl",
+  "sha256": "51e1fe3c1b831c5b4d92af444c7e20f2986641ca245b16a6ad3f6c918a19d7b6",
+  "bytes": 7186,
+  "count": 13,
+  "ids": [
+    "0",
+    "3",
+    "4",
+    "5",
+    "8",
+    "9",
+    "14",
+    "16",
+    "18",
+    "20",
+    "21",
+    "25",
+    "27"
+  ],
+  "id_list_sha256": "d7469e28289d4cc6cfd4cff0329580e86ac9dbbfeb599681136e7fcc55bd5ee8"
+}
