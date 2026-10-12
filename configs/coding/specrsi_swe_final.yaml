@@ -1,0 +1,33 @@
+dataset: swe_verified
+task_pipeline: swe_native
+selection_ids:
+- astropy__astropy-12907
+audit_ids: []
+selection_limit: 1
+audit_limit: 0
+seed: 0
+output: results/qwen35/coding/specrsi_swe_final
+model:
+  base_url: http://127.0.0.1:18085
+  lock: configs/models/qwen35_35b_a3b_bf16.lock.json
+  max_tokens: 1536
+  temperature: 0.1
+  max_seconds: 120
+  actor_max_steps: 10
+  tool_timeout: 60
+  test_timeout_seconds: 600
+  harness_python: .venv-swe/bin/python
+search:
+  controller: heuristic_bootstrap
+  reuse: all_U
+  initial_prompt: Inspect the relevant implementation and tests. Diagnose the root
+    cause, apply a minimal correct source fix, and test it. Produce an actual repository
+    diff.
+  budget_tokens: 65000
+  initial_cap_tokens: 60000
+  execution_cap_tokens: 60000
+  draft_cap_tokens: 2048
+  max_actions: 2
+  max_candidates: 2
+  eta: 0.0
+  cost_lambda: 1.0e-06

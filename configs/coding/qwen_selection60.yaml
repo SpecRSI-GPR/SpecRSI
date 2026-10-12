@@ -1,0 +1,77 @@
+instance_ids:
+- pytest-dev__pytest-5631
+- django__django-15103
+- django__django-15572
+- astropy__astropy-14508
+- pydata__xarray-6461
+- django__django-16661
+- django__django-15127
+- sympy__sympy-22914
+- sympy__sympy-13852
+- sphinx-doc__sphinx-7910
+- sphinx-doc__sphinx-7757
+- matplotlib__matplotlib-22719
+- sympy__sympy-19040
+- django__django-11749
+- pylint-dev__pylint-8898
+- sympy__sympy-15809
+- django__django-16938
+- sympy__sympy-16450
+- django__django-10914
+- django__django-13346
+- scikit-learn__scikit-learn-13135
+- sympy__sympy-13878
+- pytest-dev__pytest-7521
+- django__django-13512
+- django__django-14765
+- sympy__sympy-15599
+- scikit-learn__scikit-learn-14496
+- django__django-15128
+- pytest-dev__pytest-10051
+- pytest-dev__pytest-7324
+- django__django-12663
+- django__django-14017
+- sympy__sympy-14711
+- django__django-15104
+- django__django-12965
+- sphinx-doc__sphinx-8475
+- django__django-13344
+- psf__requests-1766
+- django__django-13933
+- django__django-15930
+- pydata__xarray-3305
+- django__django-15252
+- pytest-dev__pytest-10081
+- django__django-11790
+- sphinx-doc__sphinx-7590
+- sympy__sympy-17318
+- django__django-11179
+- django__django-13670
+- django__django-16263
+- sympy__sympy-22080
+- django__django-11951
+- django__django-16429
+- sympy__sympy-13798
+- sympy__sympy-24539
+- django__django-14351
+- django__django-13925
+- django__django-16819
+- matplotlib__matplotlib-26113
+- pydata__xarray-3677
+- django__django-13158
+seed: 0
+run_id: specrsi-qwen-selection60-v1
+output: results/qwen35/coding/qwen_selection60
+docker_host: unix:///var/run/docker.sock
+test_timeout: 1800
+model:
+  base_url: http://127.0.0.1:18085
+  lock: configs/models/qwen35_35b_a3b_bf16.lock.json
+  max_tokens: 2048
+  temperature: 0.1
+  max_seconds: 120
+agent:
+  max_steps: 24
+  max_tokens: 100000
+  tool_timeout: 60
+  max_observation_chars: 12000
