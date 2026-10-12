@@ -1,0 +1,28 @@
+audit_limit: 1
+data_root: data
+dataset: hover
+model:
+  base_url: http://127.0.0.1:18085
+  enable_thinking: false
+  lock: configs/models/qwen35_35b_a3b_bf16.lock.json
+  max_tokens: 512
+  temperature: 0.7
+output: results/qwen35/experiments/smoke/hover_retrieval
+schema_version: 1
+search:
+  budget_tokens: 131072
+  controller: heuristic_bootstrap
+  cost_lambda: 1.0e-06
+  eta: 0.005
+  initial_prompt: Find all Wikipedia evidence needed to verify the claim. Preserve
+    names and relationships accurately.
+  max_actions: 2
+  max_candidates: 2
+  reuse: all_U
+  execution_cap_tokens: 32768
+  initial_cap_tokens: 65536
+  draft_cap_tokens: 8192
+seed: 20260916
+selection_limit: 1
+metric_variant: GEPA_all_supporting_documents
+task_pipeline: hover_three_hop
