@@ -1,0 +1,30 @@
+study: supplied_development_training_schedule_with_paired_task_agent_carry
+output: results/transfer/learned_recursion_training
+rounds: 3
+seeds: [0]
+modes: [reset, retain]
+initial_role_checkpoint: artifacts/training/qwen35/qwen_prompt_gvo/checkpoint
+training_schedule:
+- before_round: 1
+  config: configs/training/qwen_prompt_gvo.yaml
+  resume_from_previous: true
+  overrides:
+    model:
+      device: cuda:1
+- before_round: 2
+  config: configs/training/qwen_prompt_gvo.yaml
+  resume_from_previous: true
+  overrides:
+    model:
+      device: cuda:1
+stages:
+- config: configs/experiments/qwen_smoke.yaml
+  overrides:
+    selection_limit: 3
+    audit_limit: 3
+    search:
+      role_device: cuda:1
+      controller: learned
+      budget_tokens: 20000
+      max_actions: 3
+      max_candidates: 2

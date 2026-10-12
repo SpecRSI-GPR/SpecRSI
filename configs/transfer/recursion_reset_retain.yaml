@@ -1,0 +1,14 @@
+study: recursion_reset_vs_retained_task_agent
+output: results/transfer/recursion_reset_retain
+rounds: 3
+seeds: [0, 1, 2]
+modes: [reset, retain]
+stages:
+- config: configs/experiments/qwen_smoke.yaml
+  overrides:
+    selection_limit: 10
+    audit_limit: 10
+    search:
+      budget_tokens: 20000
+      max_actions: 6
+      max_candidates: 4
