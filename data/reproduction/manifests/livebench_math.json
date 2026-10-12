@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "dataset": "livebench_math",
+  "family": "prompts",
+  "source_page": "https://huggingface.co/datasets/livebench/math",
+  "split_policy": {
+    "algorithm": "sha256-group-or-normalized-input-v2",
+    "seed": 20260916,
+    "fractions": [
+      0.2,
+      0.4,
+      0.4
+    ],
+    "group_metadata_field": "split_group"
+  },
+  "files": [
+    {
+      "path": "data/raw/livebench_math/test-00000-of-00001.parquet",
+      "sha256": "3d365cad1f9b8d7c5416d63866653d6854b270d9c93b51323d405ed5fd51df54",
+      "bytes": 185605,
+      "url": "https://huggingface.co/datasets/livebench/math/resolve/bb66571c8ccf32d3df9e6f48b920d3770ff4aacb/data/test-00000-of-00001.parquet",
+      "revision": "bb66571c8ccf32d3df9e6f48b920d3770ff4aacb"
+    },
+    {
+      "path": "data/raw/livebench_math/README.md",
+      "sha256": "8d63de322edb4c0f5fb3964189aab445b8e471d72e659104986ae34359923d9b",
+      "bytes": 1652,
+      "url": "https://huggingface.co/datasets/livebench/math/resolve/bb66571c8ccf32d3df9e6f48b920d3770ff4aacb/README.md",
+      "revision": "bb66571c8ccf32d3df9e6f48b920d3770ff4aacb"
+    },
+    {
+      "path": "data/processed/livebench_math/development.jsonl",
+      "bytes": 243323,
+      "sha256": "9f41a854143c352dc3375b3df8310ab8a6255dcf2d1286b8f5cf5703d5799601"
+    },
+    {
+      "path": "data/processed/livebench_math/selection.jsonl",
+      "bytes": 488505,
+      "sha256": "da5f58a2be133ff744eece793ded980c44beb5f0b2762f9fef7b26702aadd375"
+    },
+    {
+      "path": "data/processed/livebench_math/audit.jsonl",
+      "bytes": 417959,
+      "sha256": "527fdbf9c9b907639c5731639f60399eede54f412287f478c2889137e4454cd5"
+    }
+  ],
+  "counts": {
+    "development": 91,
+    "selection": 140,
+    "audit": 137
+  }
+}

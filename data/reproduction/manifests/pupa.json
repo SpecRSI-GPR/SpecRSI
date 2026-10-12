@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "dataset": "pupa",
+  "family": "prompts",
+  "source_page": "https://huggingface.co/datasets/Columbia-NLP/PUPA",
+  "split_policy": {
+    "algorithm": "sha256-group-or-normalized-input-v2",
+    "seed": 20260916,
+    "fractions": [
+      0.2,
+      0.4,
+      0.4
+    ],
+    "group_metadata_field": "split_group"
+  },
+  "files": [
+    {
+      "path": "data/raw/pupa/PUPA_New.csv",
+      "sha256": "72d7659c717706bc987f0d296d9714f63db5e75c6645376ec75380e6638b8f91",
+      "bytes": 2854027,
+      "url": "https://huggingface.co/datasets/Columbia-NLP/PUPA/resolve/9981b49b6ced0033988a224b6712895ebf119294/PUPA_New.csv",
+      "revision": "9981b49b6ced0033988a224b6712895ebf119294"
+    },
+    {
+      "path": "data/raw/pupa/PUPA_TNB.csv",
+      "sha256": "237985b507c05f796a5011c80e312c8262b94529d23293988d5abd31fdbbb47a",
+      "bytes": 896538,
+      "url": "https://huggingface.co/datasets/Columbia-NLP/PUPA/resolve/9981b49b6ced0033988a224b6712895ebf119294/PUPA_TNB.csv",
+      "revision": "9981b49b6ced0033988a224b6712895ebf119294"
+    },
+    {
+      "path": "data/raw/pupa/README.md",
+      "sha256": "63abef05c891751fe13786e80e0494dbd19d710fb03701f434b311c41ee9eed3",
+      "bytes": 403,
+      "url": "https://huggingface.co/datasets/Columbia-NLP/PUPA/resolve/9981b49b6ced0033988a224b6712895ebf119294/README.md",
+      "revision": "9981b49b6ced0033988a224b6712895ebf119294"
+    },
+    {
+      "path": "data/processed/pupa/development.jsonl",
+      "bytes": 1057209,
+      "sha256": "99a80600caedbbd3044492c7d1d2ecb25b1f81645d8130d21e435c3e2ddb7b03"
+    },
+    {
+      "path": "data/processed/pupa/selection.jsonl",
+      "bytes": 2062639,
+      "sha256": "6ba0513a0c941b1b96245308983215d5ce857cda3d20454c23abae776b3775f6"
+    },
+    {
+      "path": "data/processed/pupa/audit.jsonl",
+      "bytes": 1998978,
+      "sha256": "d71db54494e112075245d4d40b18cd2379ddd1400bdca070d0fb29904689769b"
+    }
+  ],
+  "counts": {
+    "development": 171,
+    "selection": 386,
+    "audit": 344
+  }
+}

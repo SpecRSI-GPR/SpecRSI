@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "dataset": "swe_lite",
+  "family": "coding",
+  "source_page": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Lite",
+  "split_policy": {
+    "algorithm": "sha256-group-or-normalized-input-v2",
+    "seed": 20260916,
+    "fractions": [
+      0.2,
+      0.4,
+      0.4
+    ],
+    "group_metadata_field": "split_group"
+  },
+  "files": [
+    {
+      "path": "data/raw/swe_lite/dev-00000-of-00001.parquet",
+      "sha256": "8312f321838051849d2fa7c6ca071244733a3e90bb517ff6ca8186f722199b5c",
+      "bytes": 119551,
+      "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Lite/resolve/6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2/data/dev-00000-of-00001.parquet",
+      "revision": "6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2"
+    },
+    {
+      "path": "data/raw/swe_lite/test-00000-of-00001.parquet",
+      "sha256": "7a21f37b8bc179c7db5beeb14e88ac538ba283455c776e6b2535bbfb6e3551b4",
+      "bytes": 1119540,
+      "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Lite/resolve/6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2/data/test-00000-of-00001.parquet",
+      "revision": "6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2"
+    },
+    {
+      "path": "data/raw/swe_lite/README.md",
+      "sha256": "01d69da06269ac911e8d716a868838d53c9bf0a16b9b2fee9097cb5c84bff3d3",
+      "bytes": 3674,
+      "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Lite/resolve/6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2/README.md",
+      "revision": "6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2"
+    },
+    {
+      "path": "data/processed/swe_lite/development.jsonl",
+      "bytes": 766570,
+      "sha256": "b48f524bbfd822c47dccd8c859612efdbafc3ff6e0e9eb72f78ed478ec32c963"
+    },
+    {
+      "path": "data/processed/swe_lite/selection.jsonl",
+      "bytes": 2020649,
+      "sha256": "716772c4e0096bccf38bff8d33b13a782024bf92b4ae5328cbcdd0280874b6e7"
+    },
+    {
+      "path": "data/processed/swe_lite/audit.jsonl",
+      "bytes": 1790830,
+      "sha256": "c408b5abd2631ae8ca28ec2b50581c611221290de6b3c98ee9fece1cfc99e2ec"
+    }
+  ],
+  "counts": {
+    "development": 60,
+    "selection": 141,
+    "audit": 122
+  }
+}

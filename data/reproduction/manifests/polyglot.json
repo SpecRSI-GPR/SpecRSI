@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "dataset": "polyglot",
+  "family": "coding",
+  "source_page": "https://github.com/aider-ai/polyglot-benchmark",
+  "split_policy": {
+    "algorithm": "sha256-group-or-normalized-input-v2",
+    "seed": 20260916,
+    "fractions": [
+      0.2,
+      0.4,
+      0.4
+    ],
+    "group_metadata_field": "split_group"
+  },
+  "files": [
+    {
+      "path": "data/raw/polyglot/source.zip",
+      "sha256": "98c528e991135c82ff309d297e140dd3f648b9e466785f58d251cf2ef8496203",
+      "bytes": 7603731,
+      "url": "https://codeload.github.com/aider-ai/polyglot-benchmark/zip/7e0611e77b54e2dea774cdc0aa00cf9f7ed6144f",
+      "revision": "7e0611e77b54e2dea774cdc0aa00cf9f7ed6144f"
+    },
+    {
+      "path": "data/processed/polyglot/development.jsonl",
+      "bytes": 87445,
+      "sha256": "6cb7f36151ff7962862129e9490a5ef85d8a844be1c3436675c4945841847710"
+    },
+    {
+      "path": "data/processed/polyglot/selection.jsonl",
+      "bytes": 177126,
+      "sha256": "8298ad45a95e290daaa0ea76415b55dededec56962de555822f626edc958cc15"
+    },
+    {
+      "path": "data/processed/polyglot/audit.jsonl",
+      "bytes": 194606,
+      "sha256": "5e0a799ad8183960a6f78e594385eb7f8d46b8fca901302c2da855d5f39001ff"
+    }
+  ],
+  "counts": {
+    "development": 50,
+    "selection": 80,
+    "audit": 95
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "dataset": "hotpotqa",
+  "family": "prompts",
+  "source_page": "https://huggingface.co/datasets/hotpotqa/hotpot_qa",
+  "split_policy": {
+    "algorithm": "sha256-group-or-normalized-input-v2",
+    "seed": 20260916,
+    "fractions": [
+      0.2,
+      0.4,
+      0.4
+    ],
+    "group_metadata_field": "split_group"
+  },
+  "files": [
+    {
+      "path": "data/raw/hotpotqa/train-00000-of-00002.parquet",
+      "sha256": "76d3bb3048a7cc73c1958107c0c5872a00d7e7d00c105b81e92f6769e7822e68",
+      "bytes": 165624177,
+      "url": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/resolve/1908d6afbbead072334abe2965f91bd2709910ab/distractor/train-00000-of-00002.parquet",
+      "revision": "1908d6afbbead072334abe2965f91bd2709910ab"
+    },
+    {
+      "path": "data/raw/hotpotqa/train-00001-of-00002.parquet",
+      "sha256": "713661628434fbb19fff7392e2e321e4ed107e3c7c7784d0690946e5f722763f",
+      "bytes": 166162479,
+      "url": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/resolve/1908d6afbbead072334abe2965f91bd2709910ab/distractor/train-00001-of-00002.parquet",
+      "revision": "1908d6afbbead072334abe2965f91bd2709910ab"
+    },
+    {
+      "path": "data/raw/hotpotqa/validation-00000-of-00001.parquet",
+      "sha256": "c20b638ca82b21d04fe12e14ff417ad05153d4d215a65de54497fca4e972f7c6",
+      "bytes": 27452575,
+      "url": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/resolve/1908d6afbbead072334abe2965f91bd2709910ab/distractor/validation-00000-of-00001.parquet",
+      "revision": "1908d6afbbead072334abe2965f91bd2709910ab"
+    },
+    {
+      "path": "data/raw/hotpotqa/README.md",
+      "sha256": "3cfab003a856275d3198b031c6b2ac46c63178fb462a4123705f652b71b22813",
+      "bytes": 9522,
+      "url": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/resolve/1908d6afbbead072334abe2965f91bd2709910ab/README.md",
+      "revision": "1908d6afbbead072334abe2965f91bd2709910ab"
+    },
+    {
+      "path": "data/processed/hotpotqa/development.jsonl",
+      "bytes": 123012048,
+      "sha256": "fb39e4c587d26067525e0fbca3f40dfcd5ea5098bb69aefb4236200e22660d2e"
+    },
+    {
+      "path": "data/processed/hotpotqa/selection.jsonl",
+      "bytes": 246988198,
+      "sha256": "436e03445ddaa11d45a5549e44da4a61e690b07e1b4b26fca8908f731ea9f4a1"
+    },
+    {
+      "path": "data/processed/hotpotqa/audit.jsonl",
+      "bytes": 244504845,
+      "sha256": "69dcad44840983a8b0d6836c2f4f43b47f92fd5c785b813bf25292ff98eee252"
+    }
+  ],
+  "counts": {
+    "development": 19622,
+    "selection": 39351,
+    "audit": 38879
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "dataset": "ifbench",
+  "family": "prompts",
+  "source_page": "https://github.com/allenai/IFBench",
+  "split_policy": {
+    "algorithm": "sha256-group-or-normalized-input-v2",
+    "seed": 20260916,
+    "fractions": [
+      0.2,
+      0.4,
+      0.4
+    ],
+    "group_metadata_field": "split_group"
+  },
+  "files": [
+    {
+      "path": "data/raw/ifbench/IFBench_test.jsonl",
+      "sha256": "d2ada7da94a38cfe406351614c4e686846ed2da6d1b339db95fa5ead19554a4a",
+      "bytes": 421499,
+      "url": "https://raw.githubusercontent.com/allenai/IFBench/1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d/data/IFBench_test.jsonl",
+      "revision": "1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d"
+    },
+    {
+      "path": "data/raw/ifbench/source.zip",
+      "sha256": "255dfa1d6d0594d2248f9bdba56af90e492cbccd2a018328022cb3808d31b12b",
+      "bytes": 3183401,
+      "url": "https://codeload.github.com/allenai/IFBench/zip/1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d",
+      "revision": "1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d"
+    },
+    {
+      "path": "data/processed/ifbench/development.jsonl",
+      "bytes": 89329,
+      "sha256": "ea49891546db2f6a0fb7e3281a814304c64d8720755b2ffca819ddebe5805fff"
+    },
+    {
+      "path": "data/processed/ifbench/selection.jsonl",
+      "bytes": 187870,
+      "sha256": "1b729820c8803e8ee4587a386906e7f90e4ef2add43d23b25b3627a18c2b9a89"
+    },
+    {
+      "path": "data/processed/ifbench/audit.jsonl",
+      "bytes": 260234,
+      "sha256": "375f6f8130175c9273394cec265c0e14d1aabdfec10fe933c553ad44e9ef30ce"
+    }
+  ],
+  "counts": {
+    "development": 48,
+    "selection": 110,
+    "audit": 142
+  }
+}

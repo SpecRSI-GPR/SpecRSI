@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "dataset": "game24",
+  "family": "workflows",
+  "source_page": "https://github.com/princeton-nlp/tree-of-thought-llm",
+  "split_policy": {
+    "algorithm": "sha256-group-or-normalized-input-v2",
+    "seed": 20260916,
+    "fractions": [
+      0.2,
+      0.4,
+      0.4
+    ],
+    "group_metadata_field": "split_group"
+  },
+  "files": [
+    {
+      "path": "data/raw/game24/24.csv",
+      "sha256": "b9f12b3e36d987a3c714c4cef17d89a137d7c59da26532fcfb93b4821d8111b5",
+      "bytes": 48235,
+      "url": "https://raw.githubusercontent.com/princeton-nlp/tree-of-thought-llm/8050e67d0e3a0fddc424d7fa5801538722a4c4cc/src/tot/data/24/24.csv",
+      "revision": "8050e67d0e3a0fddc424d7fa5801538722a4c4cc"
+    },
+    {
+      "path": "data/processed/game24/development.jsonl",
+      "bytes": 67711,
+      "sha256": "2edb2af9462edca8f48f8153be15dfba3f72e1eb1edb873f9c7e624edc519fe3"
+    },
+    {
+      "path": "data/processed/game24/selection.jsonl",
+      "bytes": 151904,
+      "sha256": "ee1009575a19eccfdbcaaf5477d10ae964627d11cce7b99c238f8e95b217b61e"
+    },
+    {
+      "path": "data/processed/game24/audit.jsonl",
+      "bytes": 139180,
+      "sha256": "473b7936437eb3fddcd5021c5d092e9087829ddac9cfcebec547d45dfd01006d"
+    }
+  ],
+  "counts": {
+    "development": 254,
+    "selection": 574,
+    "audit": 534
+  }
+}

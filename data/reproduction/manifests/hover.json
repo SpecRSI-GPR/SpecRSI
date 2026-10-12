@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "dataset": "hover",
+  "family": "prompts",
+  "source_page": "https://github.com/hover-nlp/hover",
+  "split_policy": {
+    "algorithm": "sha256-group-or-normalized-input-v2",
+    "seed": 20260916,
+    "fractions": [
+      0.2,
+      0.4,
+      0.4
+    ],
+    "group_metadata_field": "split_group"
+  },
+  "files": [
+    {
+      "path": "data/raw/hover/hover_train_release_v1.1.json",
+      "sha256": "1f1cd57abd616fa00c70bdc575ce77c16fc6cf1a6cffd5ff87c208030a336bb6",
+      "bytes": 9205582,
+      "url": "https://raw.githubusercontent.com/hover-nlp/hover/39b84697f196308f398a251a7aea9b82ae0f0562/data/hover/hover_train_release_v1.1.json",
+      "revision": "39b84697f196308f398a251a7aea9b82ae0f0562"
+    },
+    {
+      "path": "data/raw/hover/hover_dev_release_v1.1.json",
+      "sha256": "67c14858f2d7fcdb96b6fe3d538ffcd6f76e3ba594aa2c0cd4359f601101e89d",
+      "bytes": 2153439,
+      "url": "https://raw.githubusercontent.com/hover-nlp/hover/39b84697f196308f398a251a7aea9b82ae0f0562/data/hover/hover_dev_release_v1.1.json",
+      "revision": "39b84697f196308f398a251a7aea9b82ae0f0562"
+    },
+    {
+      "path": "data/processed/hover/development.jsonl",
+      "bytes": 3179097,
+      "sha256": "3780450572efbd4ae01bb0e97aa37ec3cb22e46f1ee47dc45bc9e7171ed7a3fc"
+    },
+    {
+      "path": "data/processed/hover/selection.jsonl",
+      "bytes": 6349499,
+      "sha256": "d85e257e323190d7179f10bcca5e1540e257068c46c4d20fdad83a7ce2037bb8"
+    },
+    {
+      "path": "data/processed/hover/audit.jsonl",
+      "bytes": 6281059,
+      "sha256": "1d699d280785b02d54fa232bad611a82e25b6b2311bac13bc066b82188c874ac"
+    }
+  ],
+  "counts": {
+    "development": 4421,
+    "selection": 8898,
+    "audit": 8852
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "dataset": "aime_2025_2026",
+  "split_policy": "2024 normalized input hash first15 development/rest15 selection; all2025+2026 audit",
+  "files": [
+    {
+      "path": "data/performance_extension/raw/aime_2025_2026/2024-test-00000-of-00001.parquet",
+      "bytes": 11183,
+      "sha256": "2602156eb2a0ab64393dc46617a3bfee3451ae3c985a7ea6ac2b55436e094a38",
+      "url": "https://huggingface.co/datasets/math-ai/aime24/resolve/83a7f387baaa524a8bda0022eac0541582297103/test-00000-of-00001.parquet",
+      "revision": "83a7f387baaa524a8bda0022eac0541582297103"
+    },
+    {
+      "path": "data/performance_extension/raw/aime_2025_2026/2025-test.jsonl",
+      "bytes": 15813,
+      "sha256": "b4e273c02d3e7fe1b74b59eae768fc8230bfb0f79539890cb56f4361caac0331",
+      "url": "https://huggingface.co/datasets/math-ai/aime25/resolve/563bb8404243c5f09de6ec262f2db674fe5bce9b/test.jsonl",
+      "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b"
+    },
+    {
+      "path": "data/performance_extension/raw/aime_2025_2026/2026-aime2026.jsonl",
+      "bytes": 13101,
+      "sha256": "52822957957a3f577d1e9706c36a66a8108a3f99b6aff424cfb72dff0094a9ee",
+      "url": "https://huggingface.co/datasets/math-ai/aime26/resolve/79037aebdb6580008fb960d17cb21fd3099083e3/aime2026.jsonl",
+      "revision": "79037aebdb6580008fb960d17cb21fd3099083e3"
+    },
+    {
+      "path": "data/performance_extension/processed/aime_2025_2026/development.jsonl",
+      "bytes": 9239,
+      "sha256": "01af4c68cd84b3c0f7ad165c360f807bbdf7f327e5b5c64b2f4ae1ee9b405b89"
+    },
+    {
+      "path": "data/performance_extension/processed/aime_2025_2026/selection.jsonl",
+      "bytes": 9380,
+      "sha256": "ae425fd9883a3ae0bcf04adb9fac1b13c1947a4ad48a8c01c9b670212e505f5d"
+    },
+    {
+      "path": "data/performance_extension/processed/aime_2025_2026/audit.jsonl",
+      "bytes": 42855,
+      "sha256": "722a8490a351d2c1a4b4bbf6976e58abeec7e69d3ea3d6c9c02d2b97ad5891a0"
+    }
+  ],
+  "counts": {
+    "development": 15,
+    "selection": 15,
+    "audit": 60
+  },
+  "source_page": "https://huggingface.co/datasets/math-ai/aime26"
+}

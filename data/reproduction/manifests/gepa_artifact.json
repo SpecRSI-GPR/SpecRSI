@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "dataset": "gepa_artifact",
+  "family": "reference_artifact",
+  "source_page": "https://github.com/gepa-ai/gepa-artifact",
+  "split_policy": {
+    "algorithm": "sha256-group-or-normalized-input-v2",
+    "seed": 20260916,
+    "fractions": [
+      0.2,
+      0.4,
+      0.4
+    ],
+    "group_metadata_field": "split_group"
+  },
+  "files": [
+    {
+      "path": "data/raw/gepa_artifact/source.zip",
+      "sha256": "168ae714bbd8046b3ba2c4f369f84a682a8697b2999dc1f00381fac53b4fdc3b",
+      "bytes": 7334636,
+      "url": "https://codeload.github.com/gepa-ai/gepa-artifact/zip/cbefbc1aa0f43dd39874ec4bf42211365dbda42e",
+      "revision": "cbefbc1aa0f43dd39874ec4bf42211365dbda42e"
+    }
+  ],
+  "counts": {}
+}
