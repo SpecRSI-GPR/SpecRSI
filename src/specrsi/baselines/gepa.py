@@ -1,7 +1,9 @@
-"""GEPA optimization with metered local model calls and native task scores.
+"""Pinned upstream GEPA optimization with metered model calls and native scores.
 
-The adapter supplies task execution, scorer feedback and explicit token budgets
-to the GEPA optimizer.
+The task adapter exposes development feedback to reflection, uses selection
+scores to freeze a candidate, and evaluates that candidate on the disjoint audit
+split. Optimizer settings and native metric-call budgets are registered for each
+run; reuse identities remain specific to the declared task adapter.
 """
 from __future__ import annotations
 

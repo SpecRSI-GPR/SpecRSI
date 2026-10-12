@@ -11,6 +11,7 @@ import time
 from specrsi.benchmarks.data import validate_disjoint_splits
 from specrsi.core.budget import BudgetLedger, BudgetExceeded
 from specrsi.models import LocalModelClient
+from specrsi.tokenization import chat_token_ids
 from .gepa import MeteredLocalModel
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -44,7 +45,7 @@ class CappedClient:
     def generate(self, messages, **kwargs):
         ledger = self.ledgers[self.phase]
         thinking = kwargs.get('enable_thinking', False)
-        count = len(self.tokenizer.apply_chat_template(messages, tokenize=True, add_generation_prompt=True,
+        count = len(chat_token_ids(self.tokenizer,messages, tokenize=True, add_generation_prompt=True,
                     enable_thinking=thinking, thinking=thinking, return_dict=False))
         cap = min(ledger.available, kwargs.get('total_token_cap') or self.context_length, self.context_length)
         maximum = kwargs.get('max_tokens', 512)
@@ -81,7 +82,7 @@ def create_model(config):
     from transformers import AutoTokenizer
     settings = config['model']
     lock = json.loads((ROOT / settings['lock']).read_text())
-    native = LocalModelClient(settings['base_url'], lock.get('served_model_name', 'local-model'))
+    native = LocalModelClient(settings['base_url'], lock.get('served_model_name', 'Qwen3.5-35B-A3B'))
     health = native.health()
     if (health.get('revision') != lock['revision'] or health.get('protocol_version') != 2
             or not health.get('server_enforces_total_token_cap')):

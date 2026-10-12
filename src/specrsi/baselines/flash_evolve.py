@@ -1,9 +1,11 @@
 """Pinned official FlashEvolve GEPA runtime with a metered local task adapter.
 
 The scheduler, minibatch gate, Pareto pool, reflection formatter, proposal
-template/parser and optional stale-repair stages are imported from FlashEvolve.
-The adapter connects this runtime to HotpotQA execution, native task scoring and
-explicit generation budgets.
+template/parser and optional stale-repair stages are imported unmodified from
+the pinned upstream repository. This HotpotQA adapter provides native answer-F1
+feedback, separate task/proposal randomness, and enforced token/call budgets.
+The supported runtimes are the upstream synchronous and asynchronous GEPA
+schedulers; the configuration validator explicitly rejects optional-spec mode.
 """
 from __future__ import annotations
 
@@ -22,6 +24,7 @@ from specrsi.benchmarks.base import BenchmarkExample
 from specrsi.benchmarks.data import load_examples, validate_disjoint_splits
 from specrsi.benchmarks.scorers import hotpotqa_score
 from specrsi.core.budget import BudgetLedger
+from specrsi.tokenization import chat_token_ids
 from specrsi.output_contracts import generation_messages, output_contract_instruction, draft_interface_guidance
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -317,7 +320,7 @@ class FlashMeter:
         self.search_closed = True
 
     def token_count(self, messages):
-        return len(self.tokenizer.apply_chat_template(messages, tokenize=True, add_generation_prompt=True,
+        return len(chat_token_ids(self.tokenizer,messages, tokenize=True, add_generation_prompt=True,
             enable_thinking=False, thinking=False, return_dict=False))
 
     async def chat(self, request, *, role, generation_seed=None):

@@ -7,6 +7,7 @@ from pathlib import Path
 from specrsi.core.models import Candidate,EvaluationScope,Task,thaw
 from specrsi.experiments import QwenExecutor
 from specrsi.models import LocalModelClient
+from specrsi.tokenization import chat_token_ids
 from specrsi.workflows import Workflow
 from .extended_common import Design,Evaluation,Generated,ItemResult
 
@@ -15,9 +16,9 @@ class WorkflowBackend:
     def __init__(self,config):
         from transformers import AutoTokenizer
         self.config=dict(config)
-        self.lock=json.loads(Path(config.get("lock","configs/models/model.lock.json")).read_text())
-        self.client=LocalModelClient(config.get("base_url","http://127.0.0.1:8000"),
-            model=self.lock.get("served_model_name",self.lock.get("model_name","local-model")))
+        self.lock=json.loads(Path(config.get("lock","configs/models/qwen35_35b_a3b_bf16.lock.json")).read_text())
+        self.client=LocalModelClient(config.get("base_url","http://127.0.0.1:18085"),
+            model=self.lock.get("served_model_name",self.lock.get("model_name","Qwen3.5-35B-A3B")))
         self.health=self.client.health()
         if self.health.get("protocol_version",0)<2 or not self.health.get("server_enforces_total_token_cap"):
             raise ValueError("Workflow baselines require protocol v2 enforcing total token caps")
@@ -32,7 +33,7 @@ class WorkflowBackend:
 
     def _json_call(self,system,payload,seed,token_cap,category):
         messages=[{"role":"system","content":system},{"role":"user","content":json.dumps(payload,ensure_ascii=False,default=lambda x:vars(x))}]
-        count=len(self.tokenizer.apply_chat_template(messages,tokenize=True,add_generation_prompt=True,enable_thinking=False,thinking=False))
+        count=len(chat_token_ids(self.tokenizer,messages,tokenize=True,add_generation_prompt=True,enable_thinking=False,thinking=False))
         output=int(self.config.get("proposal_max_tokens",512))
         if count+output>min(token_cap,32768):
             return Generated(None,0,"Entire configured proposal input/output cap does not fit")
