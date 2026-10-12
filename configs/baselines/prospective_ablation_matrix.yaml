@@ -1,0 +1,20 @@
+# Prospectively declared baseline controls.
+output_root: results/extended_baseline_matrix
+seeds: [0, 1, 2]
+jobs:
+  - config: configs/baselines/prospective_hgm.yaml
+  - config: configs/baselines/prospective_hgm.yaml
+    ablation: hgm_no_descendants
+  - config: configs/baselines/prospective_aflow.yaml
+  - config: configs/baselines/prospective_aflow.yaml
+    ablation: aflow_uniform
+  - config: configs/baselines/prospective_janus.yaml
+  - config: configs/baselines/prospective_janus.yaml
+    ablation: janus_fixed_proxy
+  - config: configs/baselines/prospective_janus.yaml
+    ablation: janus_no_proxy
+  - config: configs/baselines/prospective_emas.yaml
+  - config: configs/baselines/prospective_emas.yaml
+    ablation: emas_no_recurrence
+  - config: configs/baselines/prospective_emas.yaml
+    ablation: emas_no_validation

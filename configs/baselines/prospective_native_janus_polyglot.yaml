@@ -1,0 +1,32 @@
+backend_factory: specrsi.baselines.native_backend:make_backend
+dataset: polyglot
+method: janus
+seed: 20260916
+audit_seed: 10000
+algorithm:
+  real_evaluations: 30
+  islands: 3
+  minimum_archive: 6
+  evaluator_evolution_period: 3
+data:
+  root: data
+  development: 30
+  selection: 45
+  audit: 45
+initial_prompt: Inspect the relevant implementation and tests. Implement the requested
+  behavior completely, handle edge cases, and validate with the native tools.
+budget:
+  max_tokens: 12000000
+  max_real_items: 1200
+audit_token_cap: 24000000
+model:
+  base_url: http://127.0.0.1:18085
+  lock: configs/models/qwen35_35b_a3b_bf16.lock.json
+  max_tokens: 2048
+  proposal_max_tokens: 512
+  temperature: 0.1
+  proposal_temperature: 0.7
+  execution_cap: 32768
+  max_seconds: 120
+  test_timeout_seconds: 180
+output: results/qwen35/baselines/prospective_native_janus_polyglot

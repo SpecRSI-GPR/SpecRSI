@@ -1,0 +1,28 @@
+schema_version: 1
+dataset: game24
+seed: 20260916
+data:
+  root: data
+  development: 32
+  selection: 64
+  audit: 128
+model:
+  base_url: http://127.0.0.1:18085
+  lock: configs/models/qwen35_35b_a3b_bf16.lock.json
+  max_tokens: 1024
+  temperature: 0.0
+  execution_cap: 131072
+budget:
+  search_tokens: 3000000
+  audit_tokens: 1000000
+seed_prompt: Find an arithmetic expression equal to 24 using each given number exactly
+  once. Use +, -, *, / and parentheses. Output only the expression.
+algorithm:
+  steps: 10
+  batch_size: 2
+  num_candidates: 6
+  num_trials: 20
+  max_bootstrapped_demos: 4
+  max_labeled_demos: 4
+method: textgrad
+output: results/qwen35/baselines/secondary_textgrad

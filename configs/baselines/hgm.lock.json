@@ -1,0 +1,9 @@
+{
+  "name": "hgm",
+  "repository": "https://github.com/metauto-ai/HGM",
+  "commit": "013872d95da978483f5b540e531db063d23890da",
+  "archive_sha256": "dc13de410b77835a07cbf00550b573c6b112c47b27c8dbe36bb4338fc57037bf",
+  "source_downloaded": true,
+  "specrsi_matched_adaptation_validated": false,
+  "path": "third_party/hgm"
+}
