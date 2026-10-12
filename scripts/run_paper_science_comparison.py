@@ -23,7 +23,7 @@ def main():
         expected_freeze_digest=args.expected_freeze_digest, freeze_barrier=args.freeze_barrier,
         freeze_barrier_sha256=args.freeze_barrier_sha256)
     print(json.dumps({key: result[key] for key in ('output', 'status', 'domain', 'seed',
-        'frozen_candidates_digest', 'equal_budget_comparison', 'sota_established')}, indent=2))
+        'frozen_candidates_digest', 'equal_budget_comparison', 'sota_established', 'paper_named_baselines_missing')}, indent=2))
     if result['status'] not in {'complete', 'search_complete'}:
         raise SystemExit(2)
 
