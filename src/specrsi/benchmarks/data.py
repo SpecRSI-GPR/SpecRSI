@@ -37,16 +37,16 @@ def verify_manifest(path: str | Path, *, root: str | Path = ".") -> dict:
     return manifest
 
 
-def assign_split(content_hash: str, seed: int, *, development_fraction: float,
-                 selection_fraction: float) -> str:
-    """Assign a stable split using caller-supplied seed and partition fractions."""
-    import math
-    fractions = (development_fraction, selection_fraction)
-    if any(not math.isfinite(x) or x < 0 for x in fractions) or sum(fractions) > 1:
-        raise ValueError("Split fractions must be finite, nonnegative, and sum to at most one")
+def assign_split(content_hash: str, seed: int = 20260916) -> str:
+    """Assign a deterministic grouped split using the registered SHA-256 rule.
+
+    The first 64 digest bits of ``seed:content_hash`` map to development (20%),
+    selection (40%), or audit (40%) intervals. These proportions describe hash
+    intervals; exact finite-dataset membership is stored in split manifests.
+    A caller can supply a shared group hash to keep related examples together.
+    """
     value = int(hashlib.sha256(f"{seed}:{content_hash}".encode()).hexdigest()[:16], 16) / 2**64
-    return ("development" if value < development_fraction else "selection"
-            if value < development_fraction + selection_fraction else "audit")
+    return "development" if value < 0.2 else "selection" if value < 0.6 else "audit"
 
 
 def validate_disjoint_splits(splits: Mapping[str, Iterable[BenchmarkExample]]) -> dict[str, int]:
@@ -81,7 +81,7 @@ def load_examples(dataset: str, split: str, *, data_root: str | Path = "data", v
     root = Path(data_root)
     manifest_path = root / "manifests" / f"{dataset}.json"
     if not manifest_path.exists():
-        raise MissingArtifactError(f"Provide a dataset manifest and local examples for {dataset}")
+        raise MissingArtifactError(f"Run python scripts/prepare_data.py --datasets {dataset}")
     if verify:
         verify_manifest(manifest_path, root=root.parent)
     path = root / "processed" / dataset / f"{split}.jsonl"
