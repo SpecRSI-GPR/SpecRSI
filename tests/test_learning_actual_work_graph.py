@@ -48,6 +48,12 @@ def actual_hf(tmp_path, **overrides):
     return HFRoleModel(config, tokenizer=old.tokenizer).eval()
 
 
+def runner():
+    p = Path(__file__).resolve().parents[1] / "scripts/run_registered_comparison.py"
+    spec = importlib.util.spec_from_file_location("actual_work_graph_registered_runner", p)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def test_equal_coverage_and_cost_plans_have_distinct_actual_work_inputs_and_gradients():
@@ -160,8 +166,52 @@ def test_catalog_reaches_both_conservative_queries_and_paid_policy_then_snapshot
     assert fork.state.job_catalog is saved.problem
 
 
+def test_hf_graph_forward_admission_fixed_token_cap_actual_receipts_and_replay(tmp_path, monkeypatch):
+    model = actual_hf(tmp_path)
+    state, plans = fixture(); bridge = VATSSearchBridge(model, cost_unit="tokens")
+    api = runner(); cap, call_cap = api.role_admission(bridge, state)
+    assert cap == semantic_input_cap(model.config) == 1024
+    assert call_cap == bridge.semantic_forward_cap(state)
+    assert not bridge.physical_inferences  # Preflight cannot launch encodings.
+    meter = api.PhysicalMeter({"initial": {"tokens": 2048, "calls": 64}}, tmp_path / "calls.jsonl")
+    api.measured_role(bridge, meter, lambda: bridge.scorer(state, plans[0]), cap, "scorer", calls=call_cap)
+    cold = list(bridge.physical_inferences)
+    assert len(cold) <= call_cap and sum(row["prompt_tokens"] for row in cold) <= cap
+    assert meter.spent["initial"] == {"tokens": sum(row["prompt_tokens"] for row in cold), "calls": len(cold)}
+    assert not meter.unknown_reservations and meter.pending is None
+    logits = bridge.policy_menu(state, plans)
+    captured = bridge.captured[(state.version, "plan", plans[0].uid)]
+    assert captured.graph_schema == ACTUAL_GRAPH_SCHEMA
+    assert len(captured.graph_node_input_ids) == len(captured.graph_nodes)
+    count = len(bridge.physical_inferences)
+    bridge.scorer(state, plans[0])
+    assert len(bridge.physical_inferences) == count + 1
+    assert api.role_admission(bridge, state) == (cap, call_cap)
+    replay = bridge._record(state, plans)
+    assert torch.equal(torch.tensor(logits), model.decision_logits(replay).detach())
+    model.save(tmp_path / "actual")
+    from specrsi.learning.hf import HFRoleModel
+    loaded = HFRoleModel.load(tmp_path / "actual", device="cpu").eval()
+    assert torch.equal(model.decision_values(replay), loaded.decision_values(replay))
+    incompatible = replace(replay, graph_schema=LEGACY_GRAPH_SCHEMA, graph_edges=())
+    monkeypatch.setattr(model, "encode", lambda *a, **kw: pytest.fail("no paid forward before schema rejection"))
+    for method in (model.decision_values, model.decision_logits):
+        with pytest.raises(ValueError, match="graph_schema differs"):
+            method(incompatible)
 
 
+def test_unfittable_graph_minimum_rejected_before_paid_admission_or_forward(tmp_path):
+    model = actual_hf(tmp_path)
+    model.config.semantic_node_min_tokens = 128
+    model.config.semantic_node_max_tokens = 128
+    model.config.semantic_total_tokens = 129
+    state, plans = fixture(); bridge = VATSSearchBridge(model, cost_unit="tokens")
+    with pytest.raises(ValueError, match="every unique node"):
+        runner().role_admission(bridge, state)
+    assert not bridge.physical_inferences
+    with pytest.raises(ValueError, match="every unique node"):
+        bridge._record(state, plans)
+    assert not bridge.physical_inferences
 
 
 def test_explicit_resume_graph_schema_mismatch_fails_before_model_load(tmp_path, monkeypatch):

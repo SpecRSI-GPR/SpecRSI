@@ -6,7 +6,7 @@ import pytest
 from specrsi.core import Candidate, EvaluationScope, Outcome, Task
 from specrsi.core.execution import ExecutionResult
 from specrsi.core.search import DraftResult
-from test_runner_integration import FakeRoles
+from test_paper_integration import FakeRoles
 
 
 @pytest.fixture

@@ -4,7 +4,7 @@ import json
 import pytest
 
 from test_learning_continuations import prompt_config
-from test_runner_integration import FakeRoles
+from test_paper_integration import FakeRoles
 
 
 @pytest.mark.parametrize("unknown_state", ["pending", "conservative_bound"])
