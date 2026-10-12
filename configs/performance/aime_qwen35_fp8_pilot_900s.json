@@ -1,0 +1,99 @@
+{
+  "schema": "inference_performance_v1",
+  "dataset": "aime_2025_2026",
+  "data_root": "data/performance_extension",
+  "model_lock": "configs/models/qwen35_35b_a3b_fp8.lock.json",
+  "base_url": "http://127.0.0.1:18083",
+  "served_model": "Qwen3.5-35B-A3B-FP8",
+  "sample_seed": 2026092808,
+  "decode_seed": 20260928,
+  "counts": {
+    "development": 3,
+    "selection": 3,
+    "audit": 12
+  },
+  "execution_cap": 24000,
+  "total_token_budget": 900000,
+  "finalists": 2,
+  "baseline": "initial_512",
+  "audit_controls": [
+    "thinking_8192"
+  ],
+  "candidates": [
+    {
+      "name": "initial_512",
+      "artifacts": {
+        "system_prompt": "Solve the mathematical problem accurately. Return only the final integer from 0 to 999."
+      },
+      "generation": {
+        "max_tokens": 512,
+        "temperature": 0.0,
+        "top_p": 0.95,
+        "enable_thinking": false,
+        "max_seconds": 900
+      }
+    },
+    {
+      "name": "thinking_8192",
+      "artifacts": {
+        "system_prompt": "Solve the mathematical problem step by step with a concise, rigorous derivation. Translate all constraints before calculating. Choose a representation that makes the structure explicit, such as equations, a counting argument, or a geometric invariant. Keep arithmetic exact, justify each case, and check for omitted or double-counted solutions. Allocate enough space to complete the computation. End with exactly one final answer in \\boxed{N}, where N is an integer from 0 to 999. Do not reduce modulo 1000 unless the problem explicitly requests it."
+      },
+      "generation": {
+        "max_tokens": 8192,
+        "temperature": 0.6,
+        "top_p": 0.95,
+        "enable_thinking": true,
+        "max_seconds": 900
+      }
+    },
+    {
+      "name": "derive_extract_3072",
+      "artifacts": {
+        "system_prompt": "Derive a solution to the mathematical problem, then verify it before committing to the answer. Substitute proposed roots into the original conditions, check domains and extraneous roots, and confirm boundary cases and counting factors. Recompute the final arithmetic independently. Repair any failed check rather than reporting the first plausible result. Give a concise derivation and the verified result. End with exactly one final answer in \\boxed{N}, where N is an integer from 0 to 999. Do not reduce modulo 1000 unless the problem explicitly requests it.",
+        "answer_strategy": {
+          "version": "reasoning_extract_v1",
+          "mode": "reasoning_extract",
+          "samples": 1,
+          "reasoning_tokens": 3072,
+          "answer_tokens": 96,
+          "arbiter_tokens": 96,
+          "temperature": 0.3,
+          "agreement": "unanimous",
+          "answer_format": "boxed_integer"
+        }
+      },
+      "generation": {
+        "max_tokens": 3072,
+        "temperature": 0.0,
+        "top_p": 0.95,
+        "enable_thinking": false,
+        "max_seconds": 900
+      }
+    },
+    {
+      "name": "consensus_2x2048",
+      "artifacts": {
+        "system_prompt": "Solve the mathematical problem step by step with a concise, rigorous derivation. Translate all constraints before calculating. Choose a representation that makes the structure explicit, such as equations, a counting argument, or a geometric invariant. Keep arithmetic exact, justify each case, and check for omitted or double-counted solutions. Allocate enough space to complete the computation. End with exactly one final answer in \\boxed{N}, where N is an integer from 0 to 999. Do not reduce modulo 1000 unless the problem explicitly requests it.",
+        "answer_strategy": {
+          "version": "reasoning_extract_v1",
+          "mode": "independent_consensus",
+          "samples": 2,
+          "reasoning_tokens": 2048,
+          "answer_tokens": 96,
+          "arbiter_tokens": 768,
+          "temperature": 0.6,
+          "agreement": "unanimous",
+          "answer_format": "boxed_integer"
+        }
+      },
+      "generation": {
+        "max_tokens": 2048,
+        "temperature": 0.6,
+        "top_p": 0.95,
+        "enable_thinking": false,
+        "max_seconds": 900
+      }
+    }
+  ],
+  "output": "reports/performance_extension_20260928/aime_qwen35_fp8_pilot_900s"
+}
