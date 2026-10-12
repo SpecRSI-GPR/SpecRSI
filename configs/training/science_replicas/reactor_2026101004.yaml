@@ -1,0 +1,130 @@
+# Official BF16 Qwen3.5-35B-A3B reference backbone.
+# Each domain uses a separate single-GPU training process.
+collection:
+  algorithm: vats_pdf
+  all_u: true
+  budget_ms: 3000000
+  case_ids:
+  - 0
+  - 1
+  catalog_size: 8
+  demonstration_quality:
+    edit_rule: verified
+    min_gain: 0.0
+    plan_rule: executed
+    require_changed_artifacts: true
+  domain: reactor
+  draft_cap_ms: 180000
+  draft_max_tokens: 64
+  draft_top_k: 32
+  execution_cap_ms: 120000
+  exploration: 0.1
+  forced_arm_count: 2
+  forced_arm_rule: non_accept_first
+  forced_repetitions: 2
+  forced_state_indices:
+  - 0
+  group_size: 3
+  head_cap_ms: 120000
+  max_actions: 6
+  max_candidates: 4
+  max_children: 2
+  proposal_mode: numeric_catalog
+  scenario_set: development
+  temperature: 1.0
+  vats:
+    max_attempts: 24
+    max_completion_targets: 2
+    max_draft_depth: 1
+    max_draft_parents: 1
+    max_extensions: 4
+    max_menu_options: 8
+    max_pair_targets: 2
+    max_queries: 4
+    max_singletons: 2
+    policy_call_cost: 60000
+    workers: 2
+collector: specrsi.learning.science_bridge:collect_science_specrsi
+cpu_threads: 4
+data_provenance: registered_development_cases_only
+epochs: 1
+gvo:
+  collection:
+    case_ids:
+    - 0
+    - 1
+    domain: reactor
+    scenario_set: development
+  epochs: 2
+  training:
+    actor_learning_rate: 0.001
+    actor_max_grad_norm: 0.0
+    kl_reference: frozen_sft_actor
+    kl_weight: 0.02
+    learning_rate: 0.001
+    optimizer_rule: pdf_gradient_v1
+    value_learning_rate: 0.0005
+    value_max_grad_norm: 0.0
+    weight_decay: 0.0
+model:
+  architecture_version: 3
+  backend: hf
+  device: cuda:1
+  disable_mmap: true
+  dtype: bfloat16
+  experts_implementation: eager
+  feature_dim: 8
+  frozen_global_cache: true
+  gradient_checkpointing: true
+  graph_schema: actual_jobs_v2
+  head_hidden_dim: 256
+  language_model_only: true
+  lora_alpha: 32
+  lora_dropout: 0
+  lora_rank: 16
+  lora_target_profile: qwen35_hybrid_attention
+  max_length: 2048
+  model_path: models/Qwen3.5-35B-A3B
+  option_dim: 12
+  require_unquantized_backbone: true
+  revision: 59d61f3ce65a6d9863b86d2e96597125219dc754
+  role_observation_version: observed_results_v2
+  semantic_budget_mode: redistribute
+  semantic_global_tokens: 512
+  semantic_node_max_tokens: 1024
+  semantic_node_min_tokens: 32
+  semantic_total_tokens: 8192
+output: artifacts/training/science_replicas/reactor_2026101004
+require_reference_backbone: true
+stage: two_stage
+training:
+  batch_size: 1
+  clip_epsilon: 0.2
+  cost_coefficient: 0.0
+  estimator: gvo
+  gvo_update_schedule: frozen_collection_v1
+  kl_reference: behavior_snapshot
+  kl_weight: 0.0
+  learning_rate: 2.0e-05
+  optimizer_rule: adamw_legacy_v1
+  pair_weight: 1
+  seed: 2026101004
+  surface_weight: 0
+  time_coefficient: 0.0
+  value_weight: 1
+  weight_decay: 0.0001
+validation_fraction: 0.0
+warmup:
+  collection:
+    case_ids:
+    - 0
+    - 1
+    demonstration_policy: observed_plateau
+    demonstration_stopping:
+      min_completed_edits: 1
+      min_gain: 0.0
+      patience: 1
+    domain: reactor
+    group_size: 2
+    scenario_set: development
+  epochs: 1
