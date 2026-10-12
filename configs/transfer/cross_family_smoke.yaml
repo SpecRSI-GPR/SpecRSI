@@ -1,0 +1,36 @@
+study: actual_local_cross_family_artifact_transfer_integration
+output: results/transfer/cross_family_final
+rounds: 2
+seeds:
+- 0
+modes:
+- reset
+- retain
+stages:
+- config: configs/experiments/qwen_smoke.yaml
+  overrides:
+    selection_limit: 1
+    audit_limit: 1
+    model: &id001
+      max_tokens: 32
+    search:
+      budget_tokens: 2048
+      execution_cap_tokens: 512
+      draft_cap_tokens: 1024
+      initial_cap_tokens: 512
+      max_actions: 2
+      max_candidates: 2
+- config: configs/experiments/qwen_smoke.yaml
+  overrides:
+    selection_limit: 1
+    audit_limit: 1
+    model: *id001
+    search:
+      budget_tokens: 18000
+      execution_cap_tokens: 8192
+      draft_cap_tokens: 2048
+      initial_cap_tokens: 8192
+      max_actions: 2
+      max_candidates: 2
+      initial_prompt: Answer the question with a concise final answer only.
+    dataset: hotpotqa

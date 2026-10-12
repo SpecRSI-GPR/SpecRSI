@@ -1,0 +1,19 @@
+study: actual_local_qwen_paired_reset_retain_integration
+output: results/transfer/qwen_smoke
+rounds: 2
+seeds: [0]
+modes: [reset, retain]
+stages:
+- config: configs/experiments/qwen_smoke.yaml
+  overrides:
+    selection_limit: 1
+    audit_limit: 1
+    model:
+      max_tokens: 32
+    search:
+      budget_tokens: 2048
+      execution_cap_tokens: 512
+      draft_cap_tokens: 1024
+      initial_cap_tokens: 512
+      max_actions: 2
+      max_candidates: 2

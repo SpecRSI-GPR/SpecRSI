@@ -1,0 +1,41 @@
+study: arithmetic_to_question_answering_to_symbolic_planning
+output: results/transfer/cross_family
+rounds: 3
+seeds:
+- 0
+- 1
+- 2
+modes:
+- reset
+- retain
+stages:
+- config: configs/experiments/qwen_smoke.yaml
+  overrides:
+    selection_limit: 5
+    audit_limit: 5
+- config: configs/experiments/qwen_smoke.yaml
+  overrides:
+    dataset: hotpotqa
+    selection_limit: 5
+    audit_limit: 5
+    search:
+      initial_prompt: Answer the question with only the concise final answer.
+      execution_cap_tokens: 8192
+      initial_cap_tokens: 8192
+      budget_tokens: 120000
+      draft_cap_tokens: 2048
+- config: configs/experiments/qwen_smoke.yaml
+  overrides:
+    dataset: planbench
+    selection_limit: 5
+    audit_limit: 5
+    model:
+      max_tokens: 512
+    search:
+      initial_prompt: Solve the symbolic planning instance. Return an executable sequence
+        of grounded actions, one parenthesized action per line, using the exact object
+        names in the current instance.
+      execution_cap_tokens: 8192
+      initial_cap_tokens: 8192
+      budget_tokens: 120000
+      draft_cap_tokens: 2048
