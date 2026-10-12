@@ -1,0 +1,45 @@
+# Task-model GRPO baseline on the pinned publisher BF16 Qwen3.5-35B-A3B.
+# Optimize the task actor through its rank-16 hybrid-attention LoRA.
+# The pretrained text backbone, experts, router and improver heads are frozen.
+# Task-output groups supply rewards and clipped actor updates; the fixed
+# pretrained actor supplies the KL reference. Hyperparameters are explicit below.
+kind: task_model_GRPO_not_SpecRSI_roles
+dataset: hover
+model:
+  model_path: models/Qwen3.5-35B-A3B
+  device: cuda:1
+  dtype: bfloat16
+  lora_rank: 16
+  lora_alpha: 32
+  lora_dropout: 0
+  option_dim: 8
+  head_hidden_dim: 128
+  max_length: 32768
+  gradient_checkpointing: true
+  revision: 59d61f3ce65a6d9863b86d2e96597125219dc754
+  language_model_only: true
+  require_unquantized_backbone: true
+  lora_target_profile: qwen35_hybrid_attention
+  experts_implementation: eager
+  disable_mmap: true
+seed: 0
+cpu_threads: 4
+epochs: 3
+group_size: 4
+sizes:
+  development: 32
+  selection: 64
+  audit: 128
+generation:
+  max_tokens: 512
+  max_seconds: 180
+temperature: 1.0
+learning_rate: 2.0e-05
+weight_decay: 0.0001
+clip_epsilon: 0.2
+kl_weight: 0.01
+execution_cap_tokens: 131072
+instruction: Find all Wikipedia evidence needed to verify the claim. Preserve names
+  and relationships accurately.
+output: artifacts/training/qwen35/task_grpo/hover
+task_pipeline: hover_three_hop
