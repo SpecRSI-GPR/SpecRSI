@@ -11,6 +11,7 @@ import torch
 from torch.nn import functional as F
 from specrsi.models.client import ModelReply,LocalModelClient
 from specrsi.core.models import Candidate,Task,EvaluationScope,thaw
+from specrsi.tokenization import chat_token_ids
 from .objectives import group_advantages,clipped_surrogate
 
 
@@ -53,7 +54,7 @@ class HFTaskClient:
         # from a generic task executor cannot silently change behavior support.
         if temperature<=0:raise ValueError('Task GRPO requires positive sampling temperature')
         model=self.model;model.eval();model._activate('draft')
-        prompt=tuple(model.tokenizer.apply_chat_template(messages,tokenize=True,add_generation_prompt=True,
+        prompt=tuple(chat_token_ids(model.tokenizer,messages,tokenize=True,add_generation_prompt=True,
             enable_thinking=enable_thinking,thinking=enable_thinking))
         if len(prompt)+max_tokens>model.config.max_length or (total_token_cap is not None and len(prompt)+max_tokens>total_token_cap):
             raise ValueError('Frozen task prompt and output contract exceed actor context/token cap')
@@ -124,7 +125,7 @@ def make_task_executor(model,config):
     executor=(TaskPipelineExecutor if pipeline else QwenExecutor)(actor,model.tokenizer,generation)
     if config['dataset'] in {'pupa','livebench_math'}:
         judge_config=config['judge'];lock=json.loads(Path(judge_config['lock']).read_text())
-        judge=LocalModelClient(judge_config['base_url'],lock.get('served_model_name','local-model'))
+        judge=LocalModelClient(judge_config['base_url'],lock.get('served_model_name','Qwen3.5-35B-A3B'))
         if judge.health()['revision']!=lock['revision']:raise ValueError('Frozen task reward judge revision mismatch')
         from transformers import AutoTokenizer
         judge_tokenizer=AutoTokenizer.from_pretrained(lock['local_path'],local_files_only=True,trust_remote_code=lock.get('trust_remote_code',False))

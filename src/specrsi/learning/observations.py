@@ -1,7 +1,15 @@
 """Pure, recorded observation interventions; never edit the physical SpecRSI state.
 
-The vector schema contains NeuralSearchBridge's eight documented fields.
-Each intervention transforms a copied observation while preserving physical state.
+NeuralSearchBridge supplies its eight state features, structured visible task
+and candidate context, and action-specific option vectors. State positions are
+available-budget fraction, candidate count, complete-candidate count,
+normalized missing-evaluation count, pending-budget fraction, state version,
+normalized ledger-record count, and history length. The registered
+ablations mask evidence, retain coarse counts, blind outer or inner decisions,
+relabel identifiers, or substitute an explicitly frozen donor observation.
+Each view records its schema and intervention provenance for likelihood replay;
+the trusted ledger, remaining resources and executable search state are not
+modified by these observation transformations.
 """
 from __future__ import annotations
 
@@ -238,7 +246,7 @@ def views(features: Sequence[float], context, options: Sequence[Sequence[float]]
 
 def rule_values(qualities, completion_costs, kinds, *, rule, total_budget, spent, draft_spent,
                 initial_fraction=.05, draft_fraction=.35):
-    """Deterministic non-neural scores over an already legal ordered support.
+    """Prospective non-neural scores over an already legal ordered support.
 
     Initial fraction is a REAL-spending draft phase, never a training charge.
     Thereafter follow a draft-spending share when the corresponding legal action

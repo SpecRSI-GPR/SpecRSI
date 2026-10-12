@@ -1,6 +1,16 @@
-"""Local Hugging Face backbone with independently trainable draft/verify LoRA.
+"""Native Qwen3.5 text backbone with separate Draft, Policy and Q roles.
 
-Dependencies are imported lazily so CPU core tests need only PyTorch.
+Reference training loads the pinned BF16 Qwen3.5-35B-A3B text tower once. Its
+shared weights, MoE experts and routing gates stay frozen; Draft theta uses
+attention LoRA across both Gated DeltaNet and full-attention layers, while
+Policy psi and Q phi have independent relation branches. Version-3 training
+excludes the compatibility-only verify adapter and auxiliary heads from the
+optimizer. The registered model configuration records the precise loading and
+adapter contracts, and checkpoints retain their resolved native module paths.
+
+Dependencies are imported lazily so CPU core tests need only PyTorch. Injected
+tiny models exercise software contracts without downloading reference weights;
+version-2 roles remain available for explicitly configured compatibility tests.
 """
 from __future__ import annotations
 
@@ -9,6 +19,7 @@ from contextlib import contextmanager
 from functools import partial
 import inspect
 import json
+import re
 from pathlib import Path
 
 import torch
@@ -41,7 +52,7 @@ def _apply_layer_state(state):
         if module.disable_adapters != disabled:
             module.enable_adapters(not disabled)
     # PEFT adapter setters change these flags. Preserve the original graph's
-    # trainable parameters, including inactive adapters registered in AdamW.
+    # trainable parameters without thawing frozen legacy adapter parameters.
     for parameter, requires_grad in gradients:
         if parameter.requires_grad != requires_grad:
             parameter.requires_grad_(requires_grad)
@@ -89,7 +100,7 @@ class HFModelConfig:
     lora_dropout: float = 0.
     target_modules: tuple[str, ...] = ("q_proj", "k_proj", "v_proj", "o_proj")
     dtype: str = "bfloat16"
-    device: str = "cpu"
+    device: str = "cuda:1"
     max_length: int = 2048
     gradient_checkpointing: bool = True
     revision: str | None = None
@@ -102,6 +113,18 @@ class HFModelConfig:
     graph_schema: str = "candidate_items_v1"
     role_observation_version: str = "legacy_v1"
     frozen_global_cache: bool = False
+    # Explicit loading/adapter contracts are persisted with the learned roles.
+    # In particular, requesting BF16 must never silently dequantize an FP8 repo.
+    language_model_only: bool = False
+    require_unquantized_backbone: bool = False
+    lora_target_profile: str = "configured"
+    # Freeze the implementation choice as well as the weights. Transformers
+    # 5.17 can auto-select grouped_mm on a CUDA host even under Torch 2.6,
+    # whose fallback backward allocates unused full expert-weight gradients.
+    experts_implementation: str = "eager"
+    # Storage transport only: full reads avoid parallel mmap page-fault stalls
+    # on the project's shared filesystem. Tensor bytes/dtypes stay unchanged.
+    disable_mmap: bool = True
 
     def __post_init__(self):
         from .frozen_text import semantic_budget, role_observation_contract
@@ -109,9 +132,17 @@ class HFModelConfig:
         semantic_budget(self)
         graph_schema(self)
         role_observation_contract(self)
+        if self.lora_target_profile not in {"configured", "qwen35_hybrid_attention"}:
+            raise ValueError("Unknown registered LoRA target profile")
+        if type(self.language_model_only) is not bool or type(self.require_unquantized_backbone) is not bool:
+            raise ValueError("Backbone loading contracts must be booleans")
+        if type(self.disable_mmap) is not bool:
+            raise ValueError("disable_mmap loading contract must be boolean")
+        if self.experts_implementation != "eager":
+            raise ValueError("This frozen-MoE training profile requires the registered eager expert implementation")
 
 
-def _backbone_factory(model_type: str, transformers_module=None):
+def _backbone_factory(model_type: str, transformers_module=None, *, language_model_only=False):
     """Choose only registered local model classes; old text-only models keep AutoModel."""
     if transformers_module is None:
         import transformers as transformers_module
@@ -119,6 +150,11 @@ def _backbone_factory(model_type: str, transformers_module=None):
         "qwen3_5": "Qwen3_5ForConditionalGeneration",
         "qwen3_5_moe": "Qwen3_5MoeForConditionalGeneration",
     }
+    if language_model_only:
+        # The native causal classes load the publisher's text tower directly;
+        # no randomly initialized replacement decoder or second base is built.
+        conditional.update({"qwen3_5": "Qwen3_5ForCausalLM",
+                            "qwen3_5_moe": "Qwen3_5MoeForCausalLM"})
     if model_type not in conditional:
         return transformers_module.AutoModelForCausalLM
     class_name = conditional[model_type]
@@ -143,6 +179,44 @@ def _text_hidden_size(model_config):
     return hidden
 
 
+def _validate_unquantized_config(raw):
+    """Reject quantized source identities before any large tensor is loaded."""
+    for part in (raw, raw.get("text_config", {})):
+        if isinstance(part, dict) and part.get("quantization_config"):
+            raise ValueError("Unquantized backbone required: provision the official BF16 snapshot, not an FP8/INT4 checkpoint")
+
+
+def _lora_targets(base_model, config):
+    """Register language attention projections across both native layer types.
+
+    Appendix F.5 freezes the shared representation and trains a rank-16 Draft
+    adapter theta. In a Qwen3.5 hybrid decoder, q/k/v/o occur only in full-
+    attention blocks; the other blocks use Gated DeltaNet input/output/gate
+    projections. Selecting only the dense-model suffixes omits those layers.
+    Exact module paths keep vision projections, MoE experts, routing gates and
+    the vocabulary head frozen. This target set is an explicit implementation
+    contract, not a change to the Eq. (18)/(20) likelihood or an added router loss.
+    """
+    if config.lora_target_profile == "configured":
+        return list(config.target_modules)
+    model_type = getattr(base_model.config, "model_type", "")
+    if model_type not in {"qwen3_5", "qwen3_5_text", "qwen3_5_moe", "qwen3_5_moe_text"}:
+        raise ValueError("Qwen3.5 hybrid LoRA profile requires a native Qwen3.5 decoder")
+    pattern = re.compile(r"(?:.*\.)?layers\.(\d+)\.(self_attn|linear_attn)\.([^.]+)$")
+    targets, covered = [], set()
+    for name, module in base_model.named_modules():
+        match = pattern.fullmatch(name)
+        if (match and isinstance(module, nn.Linear)
+                and (match[3].endswith("_proj") or match[3].startswith("in_proj_"))):
+            targets.append(name)
+            covered.add(int(match[1]))
+    text_config = getattr(base_model.config, "text_config", base_model.config)
+    layer_count = getattr(text_config, "num_hidden_layers", None)
+    if not targets or type(layer_count) is not int or covered != set(range(layer_count)):
+        raise ValueError("Native hybrid LoRA targets must cover every language decoder layer")
+    return targets
+
+
 def _load_local_backbone(config, dtype):
     directory = Path(config.model_path)
     if not directory.exists():
@@ -150,9 +224,44 @@ def _load_local_backbone(config, dtype):
     # Read the local, pinned architecture descriptor before importing a concrete
     # conditional class. No remote architecture code or checkpoint rewrite.
     raw = json.loads((directory / "config.json").read_text())
-    factory = _backbone_factory(raw.get("model_type", ""))
+    if config.require_unquantized_backbone:
+        _validate_unquantized_config(raw)
+    factory = (_backbone_factory(raw.get("model_type", ""), language_model_only=True)
+               if config.language_model_only else _backbone_factory(raw.get("model_type", "")))
+    options = ({"experts_implementation": config.experts_implementation}
+               if raw.get("model_type") in {"qwen3_5_moe", "qwen3_5_moe_text"} else {})
     return factory.from_pretrained(config.model_path, local_files_only=True,
-        revision=config.revision, torch_dtype=dtype, trust_remote_code=False)
+        revision=config.revision, torch_dtype=dtype, trust_remote_code=False,
+        disable_mmap=config.disable_mmap, **options)
+
+
+def _restore_registered_adapter(backbone, weights, adapter):
+    """Restore only this implementation's exact native LoRA A/B tensor slots.
+
+    save_pretrained removes the named adapter segment (draft/verify) from
+    the keys. Insert that segment using the already registered parameter map;
+    validate the complete key set and shapes before modifying any tensor.
+    Our checkpoint already uses the loaded native decoder's module paths, so
+    no publisher-to-native expert stacking/fusion conversion is appropriate.
+    In particular this avoids PEFT 0.19.1's incompatible automatic MoE weight
+    converter on Transformers 5.17 while never monkeypatching either library.
+    """
+    pattern = re.compile(r"^(.*\.lora_[AB])\." + re.escape(adapter) + r"\.(.+)$")
+    slots = {}
+    for name, parameter in backbone.named_parameters():
+        match = pattern.fullmatch(name)
+        if match:
+            slots[match[1] + '.' + match[2]] = parameter
+    if not slots or set(weights) != set(slots):
+        raise ValueError(f"Checkpoint {adapter} must contain exactly the registered native LoRA tensors")
+    for name, parameter in slots.items():
+        if weights[name].shape != parameter.shape or weights[name].dtype != parameter.dtype:
+            raise ValueError(f"Checkpoint {adapter} LoRA tensor shape/dtype mismatch: {name}")
+        if not torch.isfinite(weights[name]).all():
+            raise ValueError(f"Checkpoint {adapter} contains nonfinite LoRA tensor: {name}")
+    with torch.no_grad():
+        for name, parameter in slots.items():
+            parameter.copy_(weights[name])
 
 
 class HFRoleModel(nn.Module):
@@ -164,7 +273,7 @@ class HFRoleModel(nn.Module):
             from peft import LoraConfig, TaskType, get_peft_model
             from transformers import AutoTokenizer
         except (ImportError, ModuleNotFoundError) as exc:
-            raise RuntimeError("Compatible transformers/peft/huggingface_hub are required; use the project .venv") from exc
+            raise RuntimeError("Compatible transformers/peft/huggingface_hub are required; install the pinned project model dependencies") from exc
         self.config = config
         if config.architecture_version not in {2, 3}:
             raise ValueError("PDF roles require architecture_version=2 or explicit semantic-node version 3")
@@ -173,11 +282,22 @@ class HFRoleModel(nn.Module):
         dtype = getattr(torch, config.dtype)
         if base_model is None:
             base_model = _load_local_backbone(config, dtype)
+        if getattr(base_model.config, 'model_type', '') in {'qwen3_5_moe', 'qwen3_5_moe_text'}:
+            # Also enforce the contract for explicitly injected native test
+            # models. No per-token expert-weight replication or unnecessary
+            # frozen grad_weight tensor is introduced by the eager loop.
+            base_model.set_experts_implementation(config.experts_implementation)
+        if config.require_unquantized_backbone:
+            _validate_unquantized_config(base_model.config.to_dict())
+            if getattr(base_model, "is_quantized", False):
+                raise ValueError("Unquantized backbone required; injected model is quantized")
         # Qwen projects requested output positions; other HF models fall back.
         self._supports_logit_positions = "logits_to_keep" in inspect.signature(base_model.forward).parameters
         base_model.requires_grad_(False)
+        targets = _lora_targets(base_model, config)
+        self.resolved_lora_targets = tuple(targets)
         lora = LoraConfig(task_type=TaskType.CAUSAL_LM, r=config.lora_rank, lora_alpha=config.lora_alpha,
-                          lora_dropout=config.lora_dropout, target_modules=list(config.target_modules), bias="none")
+                          lora_dropout=config.lora_dropout, target_modules=targets, bias="none")
         self.backbone = get_peft_model(base_model, lora, adapter_name="draft")
         self.backbone.add_adapter("verify", lora)
         if tokenizer is not None:
@@ -194,6 +314,13 @@ class HFRoleModel(nn.Module):
         self.value_head = RelationalPlanBranch(hidden + config.feature_dim, config.option_dim, config.head_hidden_dim, **semantic)
         self.policy_head = RelationalPlanBranch(hidden + config.feature_dim, config.option_dim, config.head_hidden_dim, **semantic)
         self.edit_head = ContinuationValueHead(hidden, config.option_dim, config.head_hidden_dim)
+        if config.architecture_version == 3:
+            # Paper F.5 / Eq. (23) train only Draft theta, Policy psi and Q phi.
+            # Retain historical modules and tensor names for checkpoint/output
+            # compatibility, but never register these unused auxiliaries with
+            # the optimizer or the frozen SFT actor reference.
+            self.surface_head.requires_grad_(False)
+            self.edit_head.requires_grad_(False)
         self.to(config.device)
         if config.gradient_checkpointing:
             self.backbone.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
@@ -210,10 +337,13 @@ class HFRoleModel(nn.Module):
 
     def _activate(self, adapter: str):
         self.backbone.set_adapter(adapter)
-        # PEFT set_adapter toggles requires_grad. Keep both registered in one
-        # optimizer; only the active adapter participates in this forward graph.
+        # PEFT set_adapter toggles requires_grad. Eq. (23)'s v3 reference has
+        # only the Draft adapter among trainable transformer parameters; reset
+        # flags after EVERY switch so invoking a legacy verify path cannot
+        # silently introduce another learned role. Preserve v2's old contract.
         for name, parameter in self.backbone.named_parameters():
-            parameter.requires_grad_("lora_" in name)
+            parameter.requires_grad_("lora_" in name and
+                (self.config.architecture_version != 3 or ".draft." in name))
 
     @contextmanager
     def _gradient_forward(self):
@@ -445,17 +575,25 @@ class HFRoleModel(nn.Module):
                 probabilities = mixture_probabilities(row, decision.temperature, decision.exploration, exploration)
                 losses.append(-probabilities[decision.selected_index].log())
             return torch.stack(losses).sum() if losses else logits.sum() * 0.
-        # Offline labels retain the original full-vocabulary CE objective.
-        with self._gradient_forward():
-            logits = self.backbone(**tokens, use_cache=False).logits[0, :-1].float()
+        # Eq. (18) still normalizes over the FULL vocabulary at every supervised
+        # continuation position. Prompt labels -100 have no NLL term, so avoid
+        # materializing their [prompt_length, vocab_size] logits. On the 35B
+        # checkpoint, vocab_size=248320: projecting an 8192-token prompt would
+        # otherwise allocate several GiB unrelated to the supervised objective.
+        # This selects positions, never a vocabulary subset or token-average.
         labels = torch.tensor(example.labels[1:], dtype=torch.long, device=self.device)
+        positions = tuple(torch.nonzero(labels != -100, as_tuple=False).flatten().tolist())
+        if not positions:
+            return self._token_position_logits(tokens, (len(example.input_ids) - 1,)).sum() * 0.
+        logits = self._token_position_logits(tokens, positions).float()
         # An edit's log probability sums supervised continuation token logs.
-        return F.cross_entropy(logits, labels, ignore_index=-100, reduction="sum")
+        return F.cross_entropy(logits, labels[list(positions)], reduction="sum")
 
     def save(self, directory: str | Path):
         directory = Path(directory)
         directory.mkdir(parents=True, exist_ok=True)
         manifest = {"backend": self.backend, **asdict(self.config)}
+        manifest["resolved_lora_targets"] = list(self.resolved_lora_targets)
         if self.config.architecture_version == 3:
             from .frozen_text import node_text_cache
             manifest["frozen_text_snapshot"] = node_text_cache(self).validate_identity()
@@ -467,10 +605,10 @@ class HFRoleModel(nn.Module):
 
     @classmethod
     def load(cls, directory: str | Path, device=None):
-        from peft import PeftModel
         directory = Path(directory)
         raw = json.loads((directory / "model_config.json").read_text())
         raw.pop("backend")
+        expected_targets = raw.pop("resolved_lora_targets", None)
         expected_text = raw.pop("frozen_text_snapshot", None)
         if raw.get("architecture_version") not in {2, 3}:
             raise ValueError("Legacy coupled-Q checkpoints require explicit migration and fresh policy training")
@@ -487,12 +625,14 @@ class HFRoleModel(nn.Module):
             model = cls(config, tokenizer=tokenizer)
         else:
             model = cls(config)
+        if expected_targets is not None and list(model.resolved_lora_targets) != expected_targets:
+            raise ValueError("Checkpoint LoRA target paths differ from the native backbone")
         # Load weights into existing named adapters without allocating a second
         # base model. load_peft_weights respects safetensors and local-only paths.
-        from peft.utils.save_and_load import load_peft_weights, set_peft_model_state_dict
+        from peft.utils.save_and_load import load_peft_weights
         for adapter in ("draft", "verify"):
             weights = load_peft_weights(str(directory / "adapters" / adapter), device=str(model.device))
-            set_peft_model_state_dict(model.backbone, weights, adapter_name=adapter)
+            _restore_registered_adapter(model.backbone, weights, adapter)
         heads = torch.load(directory / "heads.pt", map_location=model.device, weights_only=True)
         if config.architecture_version == 2 and any("node_text_projection" in key for key in heads):
             raise ValueError("v2 checkpoint cannot silently load v3 semantic-head parameters")

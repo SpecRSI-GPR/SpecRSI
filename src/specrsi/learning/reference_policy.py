@@ -1,8 +1,11 @@
 """Registered frozen actor for Eq. (21), sharing the immutable base backbone.
 
 Only trainable draft/policy tensors are copied. Stateless replay substitutes
-those tensors on the existing model; neither the critic nor an 8B base copy is
-created. The stored support and sampling transform belong to each decision.
+those tensors on the existing model; neither the critic nor another copy of
+the frozen 35B MoE backbone is created. The stored support and sampling
+transform belong to each decision. Eq. (21) differentiates the current actor
+only: p_ref is detached, includes the registered token/plan temperature and
+exploration transform, and is evaluated on the same recorded support Y_g,j.
 """
 from __future__ import annotations
 
