@@ -44,8 +44,8 @@ def safe_path(path):
 
 class RepositoryAgent:
     def __init__(self, model_config, *, max_steps=16,max_tokens=50000,tool_timeout=90,max_observation_chars=12000):
-        self.client=LocalModelClient(model_config.get('base_url','http://127.0.0.1:8000'),
-                                     model_config.get('served_model_name','local-model'))
+        self.client=LocalModelClient(model_config.get('base_url','http://127.0.0.1:18085'),
+                                     model_config.get('served_model_name','Qwen3.5-35B-A3B'))
         self.model=model_config;self.max_steps=max_steps;self.max_tokens=max_tokens
         self.tool_timeout=tool_timeout;self.max_observation_chars=max_observation_chars
 

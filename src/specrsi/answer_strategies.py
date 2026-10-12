@@ -1,4 +1,4 @@
-"""Metered answer-generation strategies with versioned reasoning interfaces.
+"""Frozen answer-generation extensions beyond the original SpecRSI PDF.
 
 These recipes change the deployed QA solver, not the search algorithm or scorer.
 The executor receives the public task prompt only. References and benchmark
@@ -6,9 +6,9 @@ feedback cannot be supplied through this API. Every attempted generation is
 recorded; missing server usage fails closed and reserves its enforced upper bound.
 
 reasoning_extract_v2 adds native thinking and extraction from separate backend
-reasoning when final content is empty. The v1 interface uses nonthinking,
-final-content-only responses. A timed-out response is never a successful
-reasoning stage.
+reasoning when final content is empty. It is a development-observed performance
+extension; v1 artifacts retain their original nonthinking, final-content-only
+behavior. A timed-out response is never a successful reasoning stage.
 
 native_completion_v3 preserves a syntactically complete stopped native integer
 answer. Otherwise it uses a separately budgeted completion of the actual prior
@@ -161,7 +161,7 @@ def evidence_messages(instruction: str, task_prompt: str, strategy: AnswerStrate
 def reasoning_enable_thinking(strategy: AnswerStrategy, generation: Mapping) -> bool:
     """Versioned reasoning-stage contract shared by preflight and execution.
 
-    The v1 interface uses nonthinking generation. Explicit v2/v3
+    The v1 artifacts retain their original nonthinking semantics. Explicit v2/v3
     recipes opt into native thinking and separate reasoning notes; extraction,
     completion and arbitration remain nonthinking under every version.
     """
