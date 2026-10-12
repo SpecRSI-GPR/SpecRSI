@@ -1,0 +1,41 @@
+schema_version: 1
+dataset: mbpp
+data_root: data
+selection_limit: 10
+audit_limit: 10
+seed: 20260916
+model:
+  lock: configs/models/kimi_k26.lock.json
+  base_url: http://127.0.0.1:18081
+  max_tokens: 512
+  temperature: 0.7
+  enable_thinking: false
+  served_model_name: Kimi-K2.6
+  max_seconds: 300
+search:
+  controller: heuristic_bootstrap
+  budget_tokens: 150000
+  max_actions: 20
+  max_candidates: 6
+  eta: 0.005
+  cost_lambda: 1.0e-06
+  reuse: all_U
+  initial_workflow:
+    nodes:
+    - id: solve
+      instruction: Write Python code implementing the requested function. Return only
+        the code without markdown.
+      dependencies: []
+    - id: review
+      instruction: Check the previous solution carefully and return a corrected final
+        answer. Write Python code implementing the requested function. Return only
+        the code without markdown.
+      dependencies:
+      - solve
+    output_node: review
+output: results/qwen35/experiments/prospective/kimi_mbpp_workflow
+drafter_model:
+  lock: configs/models/qwen35_35b_a3b_bf16.lock.json
+  base_url: http://127.0.0.1:18085
+  enable_thinking: false
+  max_seconds: 120
