@@ -1,0 +1,53 @@
+{
+  "schema": "inference_performance_v1",
+  "dataset": "aime_2025_2026",
+  "data_root": "data/performance_extension",
+  "model_lock": "configs/models/qwen35_35b_a3b_fp8_decode_graph.lock.json",
+  "base_url": "http://127.0.0.1:18083",
+  "served_model": "Qwen3.5-35B-A3B-FP8",
+  "sample_seed": 2026092812,
+  "decode_seed": 20260928,
+  "counts": {
+    "development": 1,
+    "selection": 1,
+    "audit": 12
+  },
+  "execution_cap": 60000,
+  "total_token_budget": 840000,
+  "finalists": 1,
+  "baseline": "legacy_complete_20480",
+  "audit_controls": [],
+  "candidates": [
+    {
+      "name": "legacy_complete_20480",
+      "artifacts": {
+        "system_prompt": "Solve the mathematical problem step by step with a concise, rigorous derivation. Translate all constraints before calculating. Choose a representation that makes the structure explicit, such as equations, a counting argument, or a geometric invariant. Keep arithmetic exact, justify each case, and check for omitted or double-counted solutions. Allocate enough space to complete the computation. End with exactly one final answer in \\boxed{N}, where N is an integer from 0 to 999. Do not reduce modulo 1000 unless the problem explicitly requests it.",
+        "answer_strategy": {
+          "version": "native_completion_v3",
+          "mode": "reasoning_extract",
+          "samples": 1,
+          "reasoning_tokens": 20480,
+          "answer_tokens": 2048,
+          "arbiter_tokens": 128,
+          "temperature": 0.6,
+          "agreement": "unanimous",
+          "answer_format": "boxed_integer"
+        }
+      },
+      "generation": {
+        "max_tokens": 20480,
+        "temperature": 0.6,
+        "top_p": 0.95,
+        "enable_thinking": true,
+        "max_seconds": 900
+      }
+    }
+  ],
+  "output": "reports/performance_round2_20260928/aime_qwen35_completion_probe",
+  "exclude_prior_campaigns": [
+    "reports/performance_extension_20260928/aime_qwen35_fp8_graph_long_control",
+    "reports/performance_extension_20260928/aime_qwen35_fp8_graph_pilot",
+    "reports/performance_extension_20260928/aime_qwen35_fp8_pilot",
+    "reports/performance_extension_20260928/aime_qwen35_bf16_pilot"
+  ]
+}
