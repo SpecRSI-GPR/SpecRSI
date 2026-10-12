@@ -62,30 +62,27 @@ def load_rows(root='data/raw'):
     return rows
 
 
-def registered_tracks(root, *, seed: int, selection_count: int, excluded_ids=()):
-    """Build disjoint selection and audit tracks from caller-provided local rows."""
+def registered_tracks(root='data/raw', seed=20260916):
     import pyarrow.parquet as pq
-    if type(seed) is not int or type(selection_count) is not int or selection_count < 0:
-        raise ValueError("An integer seed and nonnegative selection_count are required")
-    def read_rows(dataset, split):
-        return [row for path in sorted((Path(root) / dataset).glob(f"{split}-*.parquet"))
-                for row in pq.read_table(path).to_pylist()]
-    verified = read_rows("swe_verified", "test")
-    lite = read_rows("swe_lite", "test")
-    development = read_rows("swe_lite", "dev")
-    excluded = set(excluded_ids)
-    verified_ids = {row["instance_id"] for row in verified}
-    ordered = sorted(verified_ids - excluded,
-        key=lambda key: hashlib.sha256(f"{seed}:{key}".encode()).hexdigest())
-    if selection_count > len(ordered):
-        raise ValueError("selection_count exceeds the supplied eligible rows")
-    selected = ordered[:selection_count]
-    return {"seed": seed, "selection_count": selection_count,
-            "excluded_ids": sorted(excluded), "selection": selected,
-            "development": sorted({row["instance_id"] for row in development} - excluded),
-            "verified": sorted(verified_ids - excluded),
-            "audit": sorted({row["instance_id"] for row in lite} - set(selected) - excluded),
-            "audit_disjoint_verified": sorted({row["instance_id"] for row in lite} - verified_ids - excluded)}
+    verified = pq.read_table(Path(root)/'swe_verified/test-00000-of-00001.parquet').to_pylist()
+    lite = pq.read_table(Path(root)/'swe_lite/test-00000-of-00001.parquet').to_pylist()
+    development = pq.read_table(Path(root)/'swe_lite/dev-00000-of-00001.parquet').to_pylist()
+    control = {'psf__requests-2317', 'astropy__astropy-12907'}
+    ordered = sorted((r['instance_id'] for r in verified if r['instance_id'] not in control),
+                     key=lambda key: hashlib.sha256(f'swe60-prospective-v1:{seed}:{key}'.encode()).hexdigest())
+    sixty = ordered[:60]
+    verified_ids={r['instance_id'] for r in verified}
+    return {'implementation': 'prospective_registered_protocol_not_author_ids', 'seed': seed,
+        'algorithm': 'first60_sha256(swe60-prospective-v1:seed:instance_id)',
+        'calibration_exposed': sorted(control), 'selection60': sixty,
+        'development23': sorted(r['instance_id'] for r in development),
+        'verified500': sorted(r['instance_id'] for r in verified),
+        'lite_audit_filtered': sorted(r['instance_id'] for r in lite
+                                    if r['instance_id'] not in set(sixty) | control),
+        'lite_audit_disjoint_verified500': sorted(r['instance_id'] for r in lite
+                                    if r['instance_id'] not in verified_ids | control),
+        'full500_note': 'Full official evaluation track; includes selection60 and calibration. '
+                        'Report overlap separately; not an independent held-out audit.'}
 
 
 def public_problem(row):
@@ -107,8 +104,9 @@ def make_spec(row):
 def official_development_image(row):
     """Pin primary DockerHub manifest, fetch identical bytes via public mirror.
 
-    Resolve the primary publisher's manifest and use its immutable digest for
-    mirror retrieval. The OCI engine validates every content-addressed layer.
+The standard epoch mirror excludes official Lite development instances. The
+DockerHub blob CDN is unreachable on this host; digest-addressed mirror blobs
+are verified by the OCI engine against the primary publisher's manifest.
 """
     import requests
     repository='swebench/sweb.eval.x86_64.'+row['instance_id'].replace('__','_1776_').lower()
@@ -148,7 +146,7 @@ def ensure_image(row, docker_client=None, *, pull=True):
     if locked:
         if locked['base_commit']!=row['base_commit']:raise ValueError('Frozen image lock does not match task base commit')
         source=locked['source']
-    elif row['instance_id'] in json.loads(Path('configs/coding/swe_tracks.json').read_text()).get('development',[]):
+    elif row['instance_id'] in json.loads(Path('configs/coding/prospective_swe_tracks.json').read_text()).get('development23',[]):
         source=official_development_image(row)
     try:
         image = c.images.get(source)

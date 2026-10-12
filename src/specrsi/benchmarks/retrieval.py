@@ -8,7 +8,7 @@ class WikipediaRetriever:
     def __init__(self,directory:Path|None=None):
         import bm25s,Stemmer
         directory=directory or ROOT/'data/retrieval/hover'
-        if not (ROOT/'reports/hover_retrieval.json').is_file(): raise MissingArtifactError('Provide a validated retrieval index before loading retrieval tasks')
+        if not (ROOT/'reports/hover_retrieval.json').is_file(): raise MissingArtifactError('Run scripts/prepare_retrieval.py first')
         self.index=bm25s.BM25.load(str(directory/'bm25s'),mmap=True)
         self.stemmer=Stemmer.Stemmer('english')
         self.passages=[json.loads(line) for line in (directory/'passages.jsonl').open()]
