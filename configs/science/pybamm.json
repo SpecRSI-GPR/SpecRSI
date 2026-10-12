@@ -1,0 +1,68 @@
+{
+  "registration_version": "specrsi-prospective-science-v1",
+  "profile": "full",
+  "domain": "pybamm",
+  "cycles": 30,
+  "temperatures_c": [
+    15,
+    25,
+    35
+  ],
+  "parameter_set": "OKane2022",
+  "model": "SPM",
+  "options": {
+    "thermal": "lumped",
+    "SEI": "solvent-diffusion limited",
+    "lithium plating": "irreversible"
+  },
+  "initial_soc": 0.1,
+  "target_soc": 0.6,
+  "max_charge_seconds": 600,
+  "temperature_limit_c": 65,
+  "plating_overpotential_min_v": -0.25,
+  "current_bounds_c": [
+    0.1,
+    8.0
+  ],
+  "stage_count": 3,
+  "discharge_c": 1.0,
+  "rest_seconds": 60,
+  "voltage_upper_v": 4.3,
+  "voltage_lower_v": 2.5,
+  "predictor": {
+    "kind": "linear_reference_capacity_fade",
+    "end_of_life_fraction": 0.8,
+    "fit_start_cycle": 5,
+    "max_predicted_cycles": 20000,
+    "min_slope_ah_per_cycle": 1e-08
+  },
+  "solver": {
+    "rtol": 1e-06,
+    "atol": 1e-07,
+    "mesh_points": 20
+  },
+  "baseline": {
+    "currents_c": [
+      4.0,
+      3.5,
+      3.0
+    ],
+    "soc_breakpoints": [
+      0.25,
+      0.45,
+      0.6
+    ]
+  },
+  "invalid": {
+    "currents_c": [
+      0.2,
+      0.2,
+      0.2
+    ],
+    "soc_breakpoints": [
+      0.25,
+      0.45,
+      0.6
+    ]
+  }
+}

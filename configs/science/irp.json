@@ -1,0 +1,132 @@
+{
+  "registration_version": "specrsi-prospective-science-v1",
+  "profile": "full",
+  "domain": "irp",
+  "days": 180,
+  "episodes": 36,
+  "seeds": [
+    8100,
+    8101,
+    8102,
+    8103,
+    8104,
+    8105,
+    8106,
+    8107,
+    8108,
+    8109,
+    8110,
+    8111,
+    8112,
+    8113,
+    8114,
+    8115,
+    8116,
+    8117,
+    8118,
+    8119,
+    8120,
+    8121,
+    8122,
+    8123,
+    8124,
+    8125,
+    8126,
+    8127,
+    8128,
+    8129,
+    8130,
+    8131,
+    8132,
+    8133,
+    8134,
+    8135
+  ],
+  "retailers": 8,
+  "shelf_life_days": 4,
+  "forecast_days": 3,
+  "demand_means": [
+    12,
+    15,
+    10,
+    18,
+    13,
+    16,
+    11,
+    14
+  ],
+  "weekly_amplitude": 0.15,
+  "episode_demand_multipliers": [
+    0.85,
+    1.0,
+    1.15
+  ],
+  "store_capacities": [
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90
+  ],
+  "vehicle_capacity": 180,
+  "locations": [
+    [
+      3,
+      4
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      8,
+      3
+    ],
+    [
+      9,
+      8
+    ],
+    [
+      4,
+      9
+    ],
+    [
+      1,
+      7
+    ],
+    [
+      6,
+      6
+    ],
+    [
+      2,
+      2
+    ]
+  ],
+  "depot": [
+    0,
+    0
+  ],
+  "costs": {
+    "purchase": 2,
+    "holding": 0.08,
+    "waste": 1,
+    "lost_sale": 12,
+    "vehicle_fixed": 15,
+    "distance": 0.4
+  },
+  "std_ddof": 0,
+  "baseline": {
+    "target_days": 1.4,
+    "safety_stock": 2,
+    "forecast_blend": 0.8
+  },
+  "invalid": {
+    "target_days": -1,
+    "safety_stock": 2,
+    "forecast_blend": 0.8
+  }
+}
