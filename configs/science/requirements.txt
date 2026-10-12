@@ -1,0 +1,5 @@
+pybamm==25.12.2
+ns3==3.44.post0
+numpy==1.26.4
+scipy==1.17.1
+numba==0.66.0
