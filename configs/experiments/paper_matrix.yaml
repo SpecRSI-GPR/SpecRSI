@@ -1,0 +1,151 @@
+schema_version: 1
+common:
+  cost_lambda: 0.01
+  optimizer: AdamW
+  learning_rate: 2.0e-05
+  weight_decay: 0.0001
+  exploration: 0.1
+  temperature: 1.0
+  draft_model: Qwen/Qwen3.5-35B-A3B
+  lora_rank: 16
+  bootstrap_resamples: 10000
+  primary_family_size: 13
+  B_reference:
+    gpu_minutes: 1000
+    cpu_minutes: 32000
+  reported_hardware:
+    gpu: A100_80GB
+    cpu_cores: 32
+    workers: 4
+  current_hardware:
+    gpu: H20_96GB
+studies:
+- id: S01
+  family: science
+  dataset: pybamm
+  budget_B: 2.0
+  eta_native: 20
+  reported_n: 12
+- id: S02
+  family: science
+  dataset: aqm
+  budget_B: 2.0
+  eta_native: 0.3
+  reported_n: 11
+- id: S03
+  family: science
+  dataset: fdtd
+  budget_B: 2.0
+  eta_native: 50
+  reported_n: 12
+- id: S04
+  family: science
+  dataset: reactor
+  budget_B: 2.0
+  eta_native: 5
+  reported_n: 10
+- id: S05
+  family: science
+  dataset: irp
+  budget_B: 2.0
+  eta_native: 1.0
+  reported_n: 11
+- id: S06
+  family: coding
+  dataset: swe_verified_60
+  budget_B: 2.0
+  eta_fraction: 0.005
+  reported_n: 14
+  model: Qwen3.5-35B-A3B
+- id: S07
+  family: coding
+  dataset: polyglot
+  budget_B: 2.0
+  eta_fraction: 0.005
+  reported_n: 12
+  model: Qwen3.5-35B-A3B
+- id: S08
+  family: coding
+  dataset: swe_verified
+  budget_B: 2.0
+  eta_fraction: 0.005
+  reported_n: 14
+  model: Qwen3.5-35B-A3B
+- id: S09
+  family: audit
+  dataset: swe_lite_filtered
+  budget_B: 2.0
+  eta_fraction: 0.005
+  reported_n: 14
+  model: Qwen3.5-35B-A3B
+- id: S10
+  family: prompts
+  datasets:
+  - hotpotqa
+  - ifbench
+  - hover
+  - pupa
+  - aime25
+  - livebench_math
+  budget_B: 1.5
+  eta_fraction: 0.005
+  reported_n: 13
+  model: Qwen3.5-35B-A3B
+- id: S11
+  family: workflows
+  datasets:
+  - math
+  - mbpp
+  - planbench
+  - game24
+  budget_B: 2.0
+  eta_fraction: 0.005
+  reported_n: 11
+  model_label: Kimi
+- id: S12
+  family: workflows
+  datasets:
+  - math
+  - mbpp
+  - planbench
+  - game24
+  budget_B: 2.0
+  eta_fraction: 0.005
+  reported_n: 12
+  model: Qwen3.5-35B-A3B
+- id: S13
+  family: mechanisms
+  budget_B: 1.0
+  fixed_pool_pairs: 50
+  online_pairs: 30
+ablations:
+  reuse:
+  - supported_exact
+  - all_U
+  outer_observation:
+  - full_evidence
+  - evidence_blind
+  - quality_rule
+  - completion_cost_rule
+  batch_value:
+  - joint
+  - additive
+  training:
+  - warmup
+  - GVO
+  - RLOO
+  - GRPO
+  exploration:
+  - 0.0
+  - 0.1
+  recursion:
+  - reset_task_agent
+  - retained_task_agent
+  transfer:
+  - within_family
+  - cross_family
+baseline_sources:
+  GEPA: configs/baselines/gepa.lock.json
+  MIPROv2: configs/baselines/dspy.lock.json
+  HGM: configs/baselines/hgm.lock.json
+  AFlow: configs/baselines/aflow.lock.json

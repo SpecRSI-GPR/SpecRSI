@@ -1,0 +1,68 @@
+# Qwen3.5 reference backbone; fresh role checkpoints are required.
+profile_id: hotpotqa_local_qwen35_35b_a3b
+engineering_smoke_only: false
+dataset: hotpotqa
+metric_variant: distractor_answer_f1
+data_root: data
+selection_offset: 0
+selection_limit: 10
+audit_offset: 0
+audit_limit: 100
+initial_prompt: Answer the question using the supplied context. Reply with only the
+  concise answer.
+resource_profile: local_H20_same_task_server_and_role_device_sequential_arms
+model:
+  lock: configs/models/qwen35_35b_a3b_bf16.lock.json
+  base_url: http://127.0.0.1:18085
+  max_tokens: 512
+  temperature: 0.7
+  top_p: 0.8
+  enable_thinking: false
+role_device: cuda:1
+training_replicas:
+- seed: 0
+  checkpoint: artifacts/training/qwen35/paper_pdf_hotpotqa/replica-0/checkpoint
+- seed: 1
+  checkpoint: artifacts/training/qwen35/paper_pdf_hotpotqa/replica-1/checkpoint
+- seed: 2
+  checkpoint: artifacts/training/qwen35/paper_pdf_hotpotqa/replica-2/checkpoint
+- seed: 3
+  checkpoint: artifacts/training/qwen35/paper_pdf_hotpotqa/replica-3/checkpoint
+- seed: 4
+  checkpoint: artifacts/training/qwen35/paper_pdf_hotpotqa/replica-4/checkpoint
+search_seeds:
+- 0
+- 1
+- 2
+methods:
+- specrsi
+- initial
+- best_of_n
+- random_search
+order_seed: 20260926
+analysis_seed: 20260926
+bootstrap_resamples: 10000
+alpha: 0.05
+budget:
+  search_tokens: 2000000
+  search_calls: 400
+  execution_cap: 16384
+  draft_cap: 4096
+search:
+  max_actions: 12
+  max_candidates: 8
+  max_children: 2
+  draft_max_tokens: 256
+  draft_top_k: 32
+  draft_temperature: 1
+  draft_exploration: 0
+  vats:
+    max_attempts: 80
+    max_draft_depth: 2
+    max_draft_parents: 2
+    max_queries: 16
+    max_extensions: 2
+    max_menu_options: 32
+    max_completion_targets: 4
+    max_pair_targets: 4
+    max_singletons: 4

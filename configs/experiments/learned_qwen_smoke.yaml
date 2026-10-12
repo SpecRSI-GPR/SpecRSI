@@ -1,0 +1,28 @@
+# Qwen3.5 reference backbone; fresh role checkpoints are required.
+schema_version: 1
+dataset: game24
+data_root: data
+selection_limit: 1
+audit_limit: 1
+seed: 20260916
+model:
+  lock: configs/models/qwen35_35b_a3b_bf16.lock.json
+  base_url: http://127.0.0.1:18085
+  max_tokens: 192
+  temperature: 0.0
+  enable_thinking: false
+search:
+  controller: learned
+  budget_tokens: 50000
+  max_actions: 2
+  max_candidates: 2
+  eta: 0.005
+  cost_lambda: 1.0e-06
+  reuse: all_U
+  initial_prompt: Find an arithmetic expression equal to 24 using each given number
+    exactly once. You may use +, -, *, / and parentheses. Output only the expression,
+    without explanation or '= 24'.
+  role_checkpoint: artifacts/training/qwen35/qwen_prompt_gvo/checkpoint
+  role_device: cuda:1
+  draft_max_tokens: 32
+output: results/qwen35/experiments/learned_qwen_smoke

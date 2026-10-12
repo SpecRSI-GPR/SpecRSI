@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "scope": "prospective_Reactor_nested_training_comparison",
+  "study": "S04",
+  "task": "reactor",
+  "training_replicas": 8,
+  "searches_per_replica": 12,
+  "training_seed_base": 20260916,
+  "search_seed_base": 912026,
+  "methods": [
+    "sft",
+    "rloo",
+    "gvo",
+    "no_p",
+    "item_reward"
+  ],
+  "optional_methods": [
+    "grpo",
+    "outer_blind",
+    "inner_blind",
+    "evidence_blind",
+    "coarse_counts",
+    "additive",
+    "blind_additive",
+    "sham_relabel",
+    "quality_rule",
+    "completion_cost_rule",
+    "no_exploration",
+    "trained_outer_blind",
+    "trained_inner_blind",
+    "trained_evidence_blind",
+    "trained_additive",
+    "trained_blind_additive"
+  ],
+  "science_overrides": {
+    "case_ids": [
+      0,
+      1
+    ],
+    "budget_ms": 500000,
+    "execution_cap_ms": 30000,
+    "checker_cap_ms": 1000,
+    "max_candidates": 3,
+    "max_actions": 6,
+    "head_cap_ms": 5000,
+    "draft_cap_ms": 30000
+  },
+  "prompt_overrides": {
+    "selection_limit": 4,
+    "audit_limit": 4,
+    "search": {
+      "budget_tokens": 100000,
+      "max_candidates": 3,
+      "max_actions": 6
+    }
+  },
+  "output_root": "results/ablations/nested_training",
+  "plan_root": "artifacts/ablations/nested_training",
+  "paired_states": {
+    "pairs_per_stratum": 120,
+    "strata": [
+      "outer",
+      "batch"
+    ],
+    "inputs": [
+      "results/ablations/nested_training/**/search.json",
+      "results/science/learned_specrsi_reactor_smoke/search.json"
+    ],
+    "modes": [
+      "evidence_blind",
+      "coarse_counts",
+      "sham_relabel",
+      "mismatched_state"
+    ],
+    "output": "artifacts/ablations/paired_states",
+    "checkpoint": "artifacts/training/qwen_science_reactor_final/checkpoint",
+    "checkpoint_policy": "receiver_frozen_checkpoint",
+    "device": "cuda:1",
+    "endpoint": "frozen_legal_support_inference_choice_change_only"
+  }
+}

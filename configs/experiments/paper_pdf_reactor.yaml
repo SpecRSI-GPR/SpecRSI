@@ -1,0 +1,34 @@
+# Qwen3.5 reference backbone; fresh role checkpoints are required.
+domain: reactor
+selection_cases:
+- 0
+- 1
+audit_cases:
+- 0
+- 1
+seed: 20260926
+search:
+  algorithm: vats_pdf
+  controller: learned
+  role_checkpoint: artifacts/training/qwen35/paper_pdf_reactor/checkpoint
+  role_device: cuda:1
+  budget_ms: 10000000
+  execution_cap_ms: 120000
+  draft_cap_ms: 60000
+  head_cap_ms: 5000
+  max_actions: 12
+  max_candidates: 8
+  max_children: 2
+  cost_lambda: 1.0e-07
+  vats:
+    max_attempts: 64
+    max_draft_depth: 2
+    max_draft_parents: 2
+    policy_call_cost: 5000
+    max_queries: 96
+    max_extensions: 4
+    max_menu_options: 32
+    max_completion_targets: 4
+    max_pair_targets: 4
+    max_singletons: 4
+output: results/paper_pdf/reactor
