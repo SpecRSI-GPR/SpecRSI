@@ -1,0 +1,72 @@
+{
+  "domain": "aqm",
+  "case_count": 11,
+  "cases": [
+    {
+      "case_id": 0,
+      "patch": {
+        "seed_offset": 0
+      }
+    },
+    {
+      "case_id": 1,
+      "patch": {
+        "seed_offset": 1000
+      }
+    },
+    {
+      "case_id": 2,
+      "patch": {
+        "seed_offset": 2000
+      }
+    },
+    {
+      "case_id": 3,
+      "patch": {
+        "seed_offset": 3000
+      }
+    },
+    {
+      "case_id": 4,
+      "patch": {
+        "seed_offset": 4000
+      }
+    },
+    {
+      "case_id": 5,
+      "patch": {
+        "seed_offset": 5000
+      }
+    },
+    {
+      "case_id": 6,
+      "patch": {
+        "seed_offset": 6000
+      }
+    },
+    {
+      "case_id": 7,
+      "patch": {
+        "seed_offset": 7000
+      }
+    },
+    {
+      "case_id": 8,
+      "patch": {
+        "seed_offset": 8000
+      }
+    },
+    {
+      "case_id": 9,
+      "patch": {
+        "seed_offset": 9000
+      }
+    },
+    {
+      "case_id": 10,
+      "patch": {
+        "seed_offset": 10000
+      }
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "domain": "fdtd",
+  "case_count": 12,
+  "cases": [
+    {
+      "case_id": 0,
+      "patch": {
+        "output_offset_um_delta": 0.0,
+        "wavelength_um_delta": 0.0
+      }
+    },
+    {
+      "case_id": 1,
+      "patch": {
+        "output_offset_um_delta": 0.01,
+        "wavelength_um_delta": 0.005
+      }
+    },
+    {
+      "case_id": 2,
+      "patch": {
+        "output_offset_um_delta": 0.02,
+        "wavelength_um_delta": 0.01
+      }
+    },
+    {
+      "case_id": 3,
+      "patch": {
+        "output_offset_um_delta": 0.03,
+        "wavelength_um_delta": 0.015
+      }
+    },
+    {
+      "case_id": 4,
+      "patch": {
+        "output_offset_um_delta": 0.04,
+        "wavelength_um_delta": 0.02
+      }
+    },
+    {
+      "case_id": 5,
+      "patch": {
+        "output_offset_um_delta": 0.05,
+        "wavelength_um_delta": 0.025
+      }
+    },
+    {
+      "case_id": 6,
+      "patch": {
+        "output_offset_um_delta": 0.06,
+        "wavelength_um_delta": 0.03
+      }
+    },
+    {
+      "case_id": 7,
+      "patch": {
+        "output_offset_um_delta": 0.07,
+        "wavelength_um_delta": 0.035
+      }
+    },
+    {
+      "case_id": 8,
+      "patch": {
+        "output_offset_um_delta": 0.08,
+        "wavelength_um_delta": 0.04
+      }
+    },
+    {
+      "case_id": 9,
+      "patch": {
+        "output_offset_um_delta": 0.09,
+        "wavelength_um_delta": 0.045
+      }
+    },
+    {
+      "case_id": 10,
+      "patch": {
+        "output_offset_um_delta": 0.1,
+        "wavelength_um_delta": 0.05
+      }
+    },
+    {
+      "case_id": 11,
+      "patch": {
+        "output_offset_um_delta": 0.11,
+        "wavelength_um_delta": 0.055
+      }
+    }
+  ]
+}

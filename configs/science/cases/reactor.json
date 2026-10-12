@@ -1,0 +1,76 @@
+{
+  "domain": "reactor",
+  "case_count": 10,
+  "cases": [
+    {
+      "case_id": 0,
+      "patch": {
+        "initial_temperature_k_delta": 0.0,
+        "feed_temperature_k_delta": 0.0
+      }
+    },
+    {
+      "case_id": 1,
+      "patch": {
+        "initial_temperature_k_delta": 0.5,
+        "feed_temperature_k_delta": 0.25
+      }
+    },
+    {
+      "case_id": 2,
+      "patch": {
+        "initial_temperature_k_delta": 1.0,
+        "feed_temperature_k_delta": 0.5
+      }
+    },
+    {
+      "case_id": 3,
+      "patch": {
+        "initial_temperature_k_delta": 1.5,
+        "feed_temperature_k_delta": 0.75
+      }
+    },
+    {
+      "case_id": 4,
+      "patch": {
+        "initial_temperature_k_delta": 2.0,
+        "feed_temperature_k_delta": 1.0
+      }
+    },
+    {
+      "case_id": 5,
+      "patch": {
+        "initial_temperature_k_delta": 2.5,
+        "feed_temperature_k_delta": 1.25
+      }
+    },
+    {
+      "case_id": 6,
+      "patch": {
+        "initial_temperature_k_delta": 3.0,
+        "feed_temperature_k_delta": 1.5
+      }
+    },
+    {
+      "case_id": 7,
+      "patch": {
+        "initial_temperature_k_delta": 3.5,
+        "feed_temperature_k_delta": 1.75
+      }
+    },
+    {
+      "case_id": 8,
+      "patch": {
+        "initial_temperature_k_delta": 4.0,
+        "feed_temperature_k_delta": 2.0
+      }
+    },
+    {
+      "case_id": 9,
+      "patch": {
+        "initial_temperature_k_delta": 4.5,
+        "feed_temperature_k_delta": 2.25
+      }
+    }
+  ]
+}
