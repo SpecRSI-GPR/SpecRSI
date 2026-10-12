@@ -29,6 +29,11 @@ does not define a complete aggregate, even if every observed item passed.
 
 The VATS subclass reuses immutable drafts, acquisition, and result structures
 while providing its own unified work menu and separate preparation/work clock.
+``SearchEngine.run`` is the explicitly named legacy two-level implementation;
+its protected finalist completion, outer/batch ranking and optional margin are
+not Algorithms 1--2 of manuscript (33). The current paper profile constructs
+``VATSEngine`` and overrides that control loop; the shared ``_draft`` operation
+below implements the physical edit in Eq. (9) for both engines.
 """
 from __future__ import annotations
 
@@ -225,6 +230,12 @@ class SearchResult:
     def objective_elapsed_seconds(self) -> float:
         """Measured preparation/work time used by the recorded return targets.
 
+        Eq. (13) and Appendix F.5, Eq. (16), use
+            L_g = sum_t(ell_t^m + ell_t^w),
+        with one nonoverlapping search clock, including initial preparation and
+        failed/unfinished work. Parallel workers do not contribute an additional
+        sum of their durations: their block's elapsed interval is measured once.
+        Eq. (17)'s paid-state suffix instead excludes the current preparation.
         ACCEPT has zero continuation time. Initial state hashing, final result
         serialization and other host bookkeeping remain in overall elapsed time.
         """
@@ -279,6 +290,14 @@ def heuristic_batch_value(state: SearchState, candidate: Candidate, batch: Batch
 
 
 class SearchEngine:
+    """Legacy controller plus shared physical operations used by ``VATSEngine``.
+
+    Only the VATS control loop implements the current paper's single offered
+    menu Omega_t (Eq. (5)), independent policy logits (Eq. (8)), paid-state
+    preparation/work clock (Eq. (16)), and margin-free ACCEPT (Eq. (10)).
+    Keeping this distinction explicit prevents interpreting the legacy
+    ``outer_value``/``batch_value`` hooks as the paper's separate actor/critic.
+    """
     def __init__(self, scope: EvaluationScope, incumbent: Candidate, ledger: Ledger,
                  budget: BudgetLedger, executor: Executor, drafter: Drafter,
                  config: SearchConfig | None = None, *, outer_value: OuterValue | None = None,
@@ -471,6 +490,16 @@ class SearchEngine:
             raise
         s.children_drafted[parent.uid] = s.children_drafted.get(parent.uid, 0) + 1
         events = [{"event": "draft", "parent_id": parent.uid, "status": result.status, "cost": result.actual_cost, "error": result.error}]
+        # Eq. (19) records the actual sampled edit law, including tokens of an
+        # invalid edit and a sampled EOS when present. Its event has happened
+        # and its charge has settled; whether Apply/Freeze yields an admissible
+        # tree edge cannot retrospectively remove that likelihood observation.
+        # Preserve it even if an adapter subsequently fails structural checks
+        # below. Such contract errors still raise before candidate admission;
+        # retaining the trace does not certify a malformed child or fabricate a
+        # complete trajectory after an infrastructure exception.
+        if result.edit_decision is not None:
+            self.decisions.append(result.edit_decision)
         if result.candidate is not None:
             child = result.candidate
             if child.parent_id != parent.uid:
@@ -484,8 +513,6 @@ class SearchEngine:
                 s.ledger.register(child, s.scope)
                 s.forecasts[child.uid] = dict(result.forecasts)
                 events.append({"event": "freeze", "candidate_id": child.uid, "forecasts": dict(result.forecasts)})
-        if result.edit_decision is not None:
-            self.decisions.append(result.edit_decision)
         return events
 
     def _verify(self, action: Action) -> list[dict]:
