@@ -65,7 +65,7 @@ class ModelReply:
             raise ValueError("model server returned invalid token metering")
         if not math.isfinite(self.elapsed_seconds) or self.elapsed_seconds < 0:
             raise ValueError("model server returned invalid elapsed time")
-        if type(self.gpu_count) is not int or self.gpu_count < 0:
+        if type(self.gpu_count) is not int or self.gpu_count < 1:
             raise ValueError("model server returned invalid GPU allocation count")
         if self.finish_reason not in {"stop", "length", "timeout"} or not self.request_id or not self.model_revision:
             raise ValueError("model server returned incomplete runtime identity/status")
@@ -94,7 +94,7 @@ def _reasoning_content(message: dict[str, Any]) -> tuple[str | None, str | None]
 
 
 class LocalModelClient:
-    def __init__(self, base_url: str = "http://127.0.0.1:8000", model: str = "local-model"):
+    def __init__(self, base_url: str = "http://127.0.0.1:18085", model: str = "Qwen3.5-35B-A3B"):
         self.base_url = base_url.rstrip("/")
         self.model = model
         self._sampling_capabilities: frozenset[str] | None = None
