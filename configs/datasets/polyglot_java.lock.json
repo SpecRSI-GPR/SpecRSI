@@ -1,0 +1,27 @@
+[
+  {
+    "url": "https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-console-standalone/1.10.0/junit-platform-console-standalone-1.10.0.jar",
+    "path": "runtimes/polyglot/java-jars/junit-platform-console-standalone-1.10.0.jar",
+    "sha256": "8192d377bdb53969273ca3805af0eef3b864690f7818300c0d39ac7758da39a0"
+  },
+  {
+    "url": "https://repo.maven.apache.org/maven2/org/assertj/assertj-core/3.25.1/assertj-core-3.25.1.jar",
+    "path": "runtimes/polyglot/java-jars/assertj-core-3.25.1.jar",
+    "sha256": "620da4e4de03108c2f412ec17a7ed44b0112dc65e181bd0732dc96fa3b65356f"
+  },
+  {
+    "url": "https://repo.maven.apache.org/maven2/org/json/json/20190722/json-20190722.jar",
+    "path": "runtimes/polyglot/java-jars/json-20190722.jar",
+    "sha256": "e35b3830de02a8992ca8beb6936f52ee80e509753d64469c8f0dde93e17a880b"
+  },
+  {
+    "url": "https://repo.maven.apache.org/maven2/io/reactivex/rxjava2/rxjava/2.2.12/rxjava-2.2.12.jar",
+    "path": "runtimes/polyglot/java-jars/rxjava-2.2.12.jar",
+    "sha256": "f69f2bd31cbcdc94f05a4b5cf21532e4b76848eadc31f1e528df8c5dd48cd553"
+  },
+  {
+    "url": "https://repo.maven.apache.org/maven2/org/reactivestreams/reactive-streams/1.0.3/reactive-streams-1.0.3.jar",
+    "path": "runtimes/polyglot/java-jars/reactive-streams-1.0.3.jar",
+    "sha256": "1dee0481072d19c929b623e155e14d2f6085dc011529a0a0dbefc84cf571d865"
+  }
+]
