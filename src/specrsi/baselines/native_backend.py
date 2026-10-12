@@ -20,14 +20,14 @@ def native_splits(config):
     dataset=config['dataset'];limits=config.get('data',{});root=Path(limits.get('root',config.get('data_root','data')))
     if dataset in {'swe_verified','swe_lite'}:
         import pyarrow.parquet as pq
-        registry_path=Path(config.get('coding_registry','configs/coding/swe_tracks.json'))
+        registry_path=Path(config.get('coding_registry','configs/coding/prospective_swe_tracks.json'))
         registry=json.loads(registry_path.read_text())
         # Official Lite development 23 is disjoint from all 707 test instances.
         raw={row['instance_id']:row for name in ('swe_lite','swe_verified')
              for file in sorted((root/'raw'/name).glob('*.parquet')) for row in pq.read_table(file).to_pylist()}
-        ids={'development':config.get('development_ids',registry['development']),
-             'selection':config.get('selection_ids',registry[config.get('selection_track','selection')]),
-             'audit':config.get('audit_ids',registry[config.get('audit_track','audit')])}
+        ids={'development':config.get('development_ids',registry['development23']),
+             'selection':config.get('selection_ids',registry[config.get('selection_track','selection60')]),
+             'audit':config.get('audit_ids',registry[config.get('audit_track','lite_audit_filtered')])}
         parts={split:tuple(BenchmarkExample(key,dataset,split,
             raw[key]['problem_statement'],raw[key],{'source_dataset':'swe_lite' if split!='selection' else dataset,
                 'registry_sha256':hashlib.sha256(registry_path.read_bytes()).hexdigest()})
@@ -47,7 +47,7 @@ class NativeInstructionBackend(WorkflowBackend):
             raise ValueError('Native instruction backend needs a registered native pipeline')
         # Preserve actor/test/retrieval configuration in the frozen runtime.
         self.generation={**self.config,**self.generation}
-        self.generation.setdefault('served_model_name',self.lock.get('served_model_name','local-model'))
+        self.generation.setdefault('served_model_name',self.lock.get('served_model_name','Qwen3.5-35B-A3B'))
         self.generation.setdefault('revision',self.lock['revision'])
         from specrsi.coding_agent import SWERepositoryExecutor
         from specrsi.task_pipelines import TaskPipelineExecutor
@@ -120,7 +120,7 @@ def make_backend(config):
     parts=native_splits(config)
     return {'backend':NativeInstructionBackend(config),**parts,
         'initial':Design({'system_prompt':config.get('initial_prompt','Inspect the task, implement the requested behavior, and validate it with native tools.')},label='initial-strategy'),
-        'provenance':{'implementation':'native_instruction_search',
+        'provenance':{'implementation':'prospective_native_instruction_search_not_author_historical_agent_code',
             'editable_artifact':'system_prompt','reuse':'all_U_opaque_native_execution',
             'selection_policy':'frozen_complete_native_scores','audit_policy':'detached_after_selected_artifact_frozen',
             'split_ids':{split:[e.id for e in items] for split,items in parts.items()},

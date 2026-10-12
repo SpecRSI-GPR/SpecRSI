@@ -17,7 +17,7 @@ def make_dspy_lm(model: MeteredLocalModel, role: str, example_lookup: dict | Non
     class LocalDSPyLM(dspy.BaseLM):
         """DSPy's supported BaseLM callable protocol, without remote providers."""
         def __init__(self):
-            super().__init__(model="local/"+getattr(model.client,'model','local-model'), max_tokens=model.max_tokens,
+            super().__init__(model="local/"+getattr(model.client,'model','Qwen3.5-35B-A3B'), max_tokens=model.max_tokens,
                              temperature=model.temperature, cache=False)
 
         def __call__(self, prompt=None, *, messages=None, **kwargs):
