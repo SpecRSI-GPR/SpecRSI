@@ -1,0 +1,95 @@
+{
+  "registration_version": "specrsi-prospective-science-v1",
+  "profile": "full",
+  "domain": "reactor",
+  "duration_seconds": 3600,
+  "segments": 10,
+  "scenario_cooling_factors": [
+    0.95,
+    0.75,
+    0.55
+  ],
+  "initial_moles_A": 100,
+  "initial_volume_litres": 20,
+  "initial_temperature_k": 300,
+  "feed_concentration_mol_per_litre": 5,
+  "feed_temperature_k": 295,
+  "k1_ref_litre_mol_second": 0.018,
+  "k2_ref_per_second": 6e-05,
+  "reference_temperature_k": 320,
+  "activation_1_j_mol": 45000,
+  "activation_2_j_mol": 70000,
+  "reaction_enthalpy_1_j_mol": -55000,
+  "reaction_enthalpy_2_j_mol": -30000,
+  "heat_capacity_j_litre_k": 4180,
+  "cooling_ua_w_k": 70,
+  "temperature_limit_k": 335,
+  "total_feed_limit_mol": 85,
+  "feed_bounds_mol_second": [
+    0,
+    0.08
+  ],
+  "jacket_bounds_k": [
+    275,
+    330
+  ],
+  "solver": {
+    "method": "Radau",
+    "rtol": 1e-08,
+    "atol": 1e-09,
+    "max_step_seconds": 10
+  },
+  "baseline": {
+    "feed_mol_per_second": [
+      0.022,
+      0.022,
+      0.022,
+      0.022,
+      0.022,
+      0.022,
+      0.022,
+      0.022,
+      0.022,
+      0.022
+    ],
+    "jacket_temperature_k": [
+      295,
+      295,
+      295,
+      295,
+      295,
+      295,
+      295,
+      295,
+      295,
+      295
+    ]
+  },
+  "invalid": {
+    "feed_mol_per_second": [
+      0.08,
+      0.08,
+      0.08,
+      0.08,
+      0.08,
+      0.08,
+      0.08,
+      0.08,
+      0.08,
+      0.08
+    ],
+    "jacket_temperature_k": [
+      295,
+      295,
+      295,
+      295,
+      295,
+      295,
+      295,
+      295,
+      295,
+      295
+    ]
+  },
+  "scenario_set": "audit"
+}

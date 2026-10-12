@@ -1,0 +1,44 @@
+{
+  "registration_version": "specrsi-prospective-science-v1",
+  "profile": "full",
+  "domain": "aqm",
+  "duration_seconds": 8,
+  "control_interval_seconds": 0.25,
+  "bottleneck_mbps": 20,
+  "bottleneck_delay_ms": 10,
+  "access_mbps": 100,
+  "access_delay_ms": 2,
+  "seeds": [
+    151,
+    193
+  ],
+  "traffic_modes": [
+    "long",
+    "burst",
+    "mixed"
+  ],
+  "flows": 4,
+  "packet_bytes": 1000,
+  "application_start_seconds": 0.5,
+  "application_stop_seconds": 7.5,
+  "delay_histogram_bin_seconds": 0.0001,
+  "baseline": {
+    "min_threshold_packets": 10,
+    "max_threshold_packets": 40,
+    "max_probability": 0.1,
+    "queue_limit_packets": 120,
+    "ecn": true,
+    "delay_gain": 0.0,
+    "target_delay_seconds": 0.02
+  },
+  "invalid": {
+    "min_threshold_packets": 50,
+    "max_threshold_packets": 10,
+    "max_probability": 0.1,
+    "queue_limit_packets": 120,
+    "ecn": true,
+    "delay_gain": 0,
+    "target_delay_seconds": 0.02
+  },
+  "scenario_set": "audit"
+}
