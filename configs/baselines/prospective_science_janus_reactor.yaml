@@ -1,0 +1,20 @@
+# Real full reactor scenario evaluations, seeded numeric design/proxy proposals.
+# This tests scientific callback integration; it is not author LLM proposer data.
+method: janus
+backend_factory: specrsi.science.baselines:make_backend
+science_domain: reactor
+science_wall_cap_ms: 180000
+seed: 0
+audit_seed: 10000
+budget:
+  max_tokens: 100000
+  max_real_items: 30
+algorithm:
+  real_evaluations: 5
+  islands: 1
+  proposals_per_promotion: 2
+  minimum_archive: 3
+  evaluator_evolution_period: 1
+  refresh_batch: 1
+  direct_exploration_period: 3
+output: results/extended_baselines/janus_reactor_integration

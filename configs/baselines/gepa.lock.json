@@ -1,0 +1,9 @@
+{
+  "name": "gepa",
+  "repository": "https://github.com/gepa-ai/gepa",
+  "commit": "15ee314f9c7d34ec153b809d401f42f55c4dcd76",
+  "archive_sha256": "662c308e851d81fe62d97428555bac9ca40065e8387dca116f3b2421c6b1ff3d",
+  "source_downloaded": true,
+  "specrsi_matched_adaptation_validated": false,
+  "path": "third_party/gepa"
+}

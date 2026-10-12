@@ -1,0 +1,42 @@
+dataset: game24
+seed: 0
+audit_seed: 10000
+data:
+  root: data
+  development: 8
+  selection: 4
+  audit: 4
+budget:
+  max_tokens: 300000
+  max_real_items: 100
+audit_token_cap: 50000
+model:
+  base_url: http://127.0.0.1:18085
+  lock: configs/models/qwen35_35b_a3b_bf16.lock.json
+  max_tokens: 128
+  proposal_max_tokens: 512
+  temperature: 0.0
+  proposal_temperature: 0.7
+  execution_cap: 4096
+  max_seconds: 120
+initial_workflow:
+  nodes:
+  - id: solve
+    instruction: Use the four supplied numbers exactly once and arithmetic operators
+      to make 24. Return only the expression.
+    dependencies: []
+  output_node: solve
+method: emas
+algorithm:
+  epochs: 2
+  max_revisions: 6
+  thresholds:
+    add-node: 4
+    split-node: 4
+    add-edge: 4
+    prompt-only: 6
+    remove-edge: 10
+    remove-node: 10
+  recurrence: true
+  paired_validation: true
+output: results/qwen35/baselines/prospective_emas

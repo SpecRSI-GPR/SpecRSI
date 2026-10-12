@@ -1,0 +1,53 @@
+schema: flash_evolve_local_v1
+dataset: hotpotqa
+seed: 20260929
+seed_prompt: Answer the question using the supplied context. Return only the short
+  answer.
+data_root: data
+data:
+  mode: development_smoke
+  development:
+    offset: 1000
+    count: 1
+  selection:
+    offset: 1001
+    count: 1
+  audit:
+    offset: 1002
+    count: 1
+model:
+  lock: configs/models/qwen35_35b_a3b_bf16.lock.json
+  base_url: http://127.0.0.1:18085
+  served_model_name: Qwen3.5-35B-A3B
+generation:
+  task:
+    max_tokens: 64
+    temperature: 0.0
+    top_p: 1.0
+  proposal:
+    max_tokens: 384
+    temperature: 0.7
+    top_p: 0.8
+budget:
+  initial:
+    tokens: 8192
+    calls: 1
+  search:
+    tokens: 65536
+    calls: 8
+  audit:
+    tokens: 8192
+    calls: 1
+algorithm:
+  runtime: async_gepa
+  staleness_mode: none
+  proposal_budget: 1
+  minibatch: 1
+  pipeline_depth: 2
+  eval_workers: 1
+  rollout_workers: 1
+  propose_workers: 1
+  repair_workers: 1
+  meta_stale_n: 4
+  meta_mode: serial
+  selection_strategy: pareto_front

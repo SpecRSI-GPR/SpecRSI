@@ -1,0 +1,9 @@
+{
+  "name": "aflow",
+  "repository": "https://github.com/FoundationAgents/AFlow",
+  "commit": "3f457218fc716093fe53f6df8a5d5e6379d66346",
+  "archive_sha256": "afe3808e0ca41b78f7b684ce266d58e0e555f2d00425631175e3d5a5203e00f0",
+  "source_downloaded": true,
+  "specrsi_matched_adaptation_validated": false,
+  "path": "third_party/aflow"
+}

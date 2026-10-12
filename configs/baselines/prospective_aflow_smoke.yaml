@@ -1,0 +1,35 @@
+dataset: game24
+seed: 0
+audit_seed: 10000
+data:
+  root: data
+  development: 2
+  selection: 1
+  audit: 1
+budget:
+  max_tokens: 20000
+  max_real_items: 8
+audit_token_cap: 50000
+model:
+  base_url: http://127.0.0.1:18085
+  lock: configs/models/qwen35_35b_a3b_bf16.lock.json
+  max_tokens: 64
+  proposal_max_tokens: 384
+  temperature: 0.0
+  proposal_temperature: 0.7
+  execution_cap: 4096
+  max_seconds: 120
+initial_workflow:
+  nodes:
+  - id: solve
+    instruction: Use the four supplied numbers exactly once and arithmetic operators
+      to make 24. Return only the expression.
+    dependencies: []
+  output_node: solve
+method: aflow
+algorithm:
+  rounds: 2
+  top_k: 2
+  validation_repeats: 1
+  duplicate_retries: 2
+output: results/qwen35/baselines/prospective_aflow_smoke

@@ -1,0 +1,9 @@
+{
+  "name": "dspy",
+  "repository": "https://github.com/stanfordnlp/dspy",
+  "commit": "6ca54f8492f70afe978e1e1b961e13d6ace788ee",
+  "archive_sha256": "e6b35913136fb2f912f241ddc48b1daf47e4a88c4ee01d804298b0f56323c054",
+  "source_downloaded": true,
+  "specrsi_matched_adaptation_validated": false,
+  "path": "third_party/dspy"
+}
