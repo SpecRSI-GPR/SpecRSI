@@ -1,0 +1,52 @@
+{
+  "source_id": "AIME-SUBSET-04",
+  "source_file_sha256": "b1ccfe2114919d32f9ee6faf5bdf00c27f53feda03ff085e3c1ed2d8cac68af4",
+  "source_file_bytes": 18282,
+  "dataset": "aime_2025_2026",
+  "sample_seed": 2026092807,
+  "counts": {
+    "development": 2,
+    "selection": 2,
+    "audit": 4
+  },
+  "members": {
+    "development": [
+      {
+        "id": "aime2024:80",
+        "input_hash": "0843754e78289d98a20df70dfbe4b27b75fde16a3d197d7312a7f8f4ace27c62"
+      },
+      {
+        "id": "aime2024:65",
+        "input_hash": "3d45c2c747ce59ccb90b106fffba4bed6e697f87b86a0af85d4c40b95bcc2726"
+      }
+    ],
+    "selection": [
+      {
+        "id": "aime2024:60",
+        "input_hash": "d3a5aa0d9eacc79eb5578da77ca347cf8474ebd4d02290c66e189ebd31ec427a"
+      },
+      {
+        "id": "aime2024:78",
+        "input_hash": "9cb54731ef976ec2b88cbf97b51df34e39980e68518b78daef52557bcc58fbcc"
+      }
+    ],
+    "audit": [
+      {
+        "id": "aime2026:5",
+        "input_hash": "d9a5a7b8e8569f4a0a754c54f83682fa7d7c508a1a7fb682c8d15b995deb1d94"
+      },
+      {
+        "id": "aime2025:8",
+        "input_hash": "fb95a14cddd10c1f82afd308643c6efd38f130ce2a0fe6b4a131efe86ebb4007"
+      },
+      {
+        "id": "aime2026:24",
+        "input_hash": "781def60decdbcce2c24664804f2e6013cc815eefa662464a88dec0410da19fb"
+      },
+      {
+        "id": "aime2026:26",
+        "input_hash": "83ac7f4ee26c544530332d1694472808161710018a77df75532578f92fafa1d3"
+      }
+    ]
+  }
+}

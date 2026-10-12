@@ -1,0 +1,47 @@
+{
+  "source_id": "RESEARCH-MEMBERS-20",
+  "source_file_sha256": "e9efd0b7aa15c2998294d8855db997b63a3d9c31af1fff810d8b6040537600c5",
+  "source_file_bytes": 22695,
+  "members": [
+    {
+      "id": "5ae6038155429929b0807a55",
+      "dataset": "hotpotqa",
+      "split": "selection",
+      "input_sha256": "e70bd758edf3a345c87859de19e29ae3c74b45d2ab6d3e5e87b04efaf8e8055e",
+      "prompt_bytes_sha256": "4d0fdc51d3be75c8f06ed8318b37c1ecf893cae7e304dd9c71c76f409044c32a",
+      "source_file": "train-00000-of-00002.parquet",
+      "source_index": 61,
+      "source_split": "development"
+    },
+    {
+      "id": "5abd40585542993062266c3e",
+      "dataset": "hotpotqa",
+      "split": "selection",
+      "input_sha256": "aba38701e6e3910ee58dd846ced96e3c3a5d153e1e15da56f6e69ca8db053d38",
+      "prompt_bytes_sha256": "f05bdafa28d5b3c15e53c9b65b0764416d948ac8d4a33715f634f375140bad86",
+      "source_file": "train-00000-of-00002.parquet",
+      "source_index": 259,
+      "source_split": "development"
+    },
+    {
+      "id": "5a8fae775542992414482b3b",
+      "dataset": "hotpotqa",
+      "split": "selection",
+      "input_sha256": "1cc8274cc9e258ef6c3fdda7e0a8dc0d19952f1a79d560369e9d997efbbbb849",
+      "prompt_bytes_sha256": "a38cf3a138c230e3f94f848b4ad60edc882ecb4cadf8dcbcade9fd1bf0f95081",
+      "source_file": "train-00000-of-00002.parquet",
+      "source_index": 228,
+      "source_split": "development"
+    },
+    {
+      "id": "5ae0925e55429945ae9593c9",
+      "dataset": "hotpotqa",
+      "split": "selection",
+      "input_sha256": "2c9b5d9da21f18125ba6cb2d460c898489fcf0e1891e0f97ce0cde56a2049a6e",
+      "prompt_bytes_sha256": "58dc540cedc2acfd4390603852150433dcf3c2705245b28c6bb4cd2abd1b7737",
+      "source_file": "train-00000-of-00002.parquet",
+      "source_index": 256,
+      "source_split": "development"
+    }
+  ]
+}
