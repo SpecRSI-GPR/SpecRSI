@@ -1,0 +1,18 @@
+instance_ids:
+- psf__requests-2317
+seed: 0
+run_id: specrsi-qwen-swe-smoke-v1
+output: results/qwen35/coding/qwen_swe_smoke
+docker_host: unix:///var/run/docker.sock
+test_timeout: 600
+model:
+  base_url: http://127.0.0.1:18085
+  lock: configs/models/qwen35_35b_a3b_bf16.lock.json
+  max_tokens: 1024
+  temperature: 0.1
+  max_seconds: 120
+agent:
+  max_steps: 8
+  max_tokens: 60000
+  tool_timeout: 60
+  max_observation_chars: 12000
