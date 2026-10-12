@@ -1,6 +1,9 @@
 """Compare native-science searches on frozen, common heldout scenarios.
 
-Every search method uses the same trained HF drafter and native utility.
+The base controls share the trained HF drafter; explicitly named parameter
+adaptations use the pinned Qwen3.5 BF16 service and their actual search rules.
+Every method uses the same complete native utility, development root/cases,
+expense/attempt limits and (when registered) per-method elapsed-time limit.
 Completed stages resume unchanged. Interrupted stages retain their physical
 charges and receive distinct attempt records. Candidate selection completes
 for all methods before heldout evaluation starts.
@@ -23,14 +26,45 @@ import uuid
 from specrsi.core import BudgetLedger, SearchConfig
 from specrsi.core.acceptance import accept
 from specrsi.core.models import Candidate, digest, thaw
-from specrsi.core.vats import VATSEngine
+from specrsi.core.vats import VATSEngine, VATSPlan
+from specrsi.planning.completion import CompletionProblem
 from specrsi.paper_profile import (algorithm_name, objective_coefficients,
-    algorithm_metadata, require_role_checkpoint, realized_search_return, vats_config,
+    paper_provenance, require_role_checkpoint, realized_search_return, vats_config,
     vats_cost_accounting)
 from specrsi.science.executor import ScienceExecutor, make_candidate, make_scope, make_science_ledger
 from specrsi.science.registry import ROOT, case_count
+from specrsi.science.named_comparison import (NAMED_METHODS, UNAVAILABLE_METHODS,
+    SearchDeadline, run_named_method, validate_named_config)
 
 METHODS = ('initial', 'best_of_n', 'random_search', 'specrsi')
+SUPPORTED_METHODS = METHODS + NAMED_METHODS
+
+
+class ComparisonVATSEngine(VATSEngine):
+    """Deployment-only external wall admission, preserving measured bills.
+
+    A comparison's wall cap is separate from the paper's additive expense B.
+    If preparation or selected work cannot fit its entire declared slice, do
+    no new physical work and stop at the best already complete candidate. This
+    guard never fabricates an evaluator result or forces finalist completion.
+    """
+    deadline = None
+    wall_stopped = False
+
+    def _prepare(self):
+        if self.deadline is not None and (self.wall_stopped or not self.deadline.fits(self.config.prep_cap)):
+            self.wall_stopped = True
+            events = [{'event': 'comparison_wall_stop', 'phase': 'before_preparation', 'cost': 0}]
+            self.state.history.extend(events)
+            return VATSPlan('accept'), CompletionProblem((), {}, 0, 0), events
+        return super()._prepare()
+
+    def _execute_plan(self, plan, problem):
+        if plan.kind != 'accept' and self.deadline is not None and not self.deadline.fits(plan.work_cap):
+            self.wall_stopped = True
+            return [{'event': 'comparison_wall_stop', 'phase': 'before_selected_work',
+                     'selected_plan': plan.uid, 'executed': False, 'cost': 0}]
+        return super()._execute_plan(plan, problem)
 
 
 def _read(path):
@@ -158,7 +192,46 @@ def _options(config, snapshot):
     return replace(options, scorer_snapshot=snapshot, policy_snapshot=snapshot)
 
 
-def _control(method, engine, bridge, options, journal):
+def validate_comparison_resources(config, methods):
+    """Reject registered caps that make the initial nonempty work impossible.
+
+    This uses declared upper bounds and case counts only; no evaluator outcome
+    or heldout observation influences resource registration. For the complete
+    initial root, VATS's first productive menu option must be a DRAFT.
+    """
+    wall = config['search'].get('wall_limit_seconds')
+    SearchDeadline(wall)
+    if wall is None or set(methods) <= {'initial'}:
+        return {}
+    options = _options(config, 'resource-preflight-no-model-forward')
+    if (options.draft_cap <= 0 or options.max_attempts < 1 or options.max_actions < 1
+            or options.max_candidates < 2 or options.max_children < 1):
+        raise ValueError('Comparison registration leaves no initial nonempty search work')
+    required = len(config['search_cases'])
+    native_wall = math.ceil(required / options.workers) * options.execution_cap
+    receipt = {}
+    for method in methods:
+        expense, elapsed, attempts = 0, 0, 0
+        if method == 'specrsi':
+            expense = elapsed = options.prep_cap + options.draft_cap
+            attempts = 1
+        elif method in ('best_of_n', 'random_search'):
+            expense = options.draft_cap + required * options.execution_cap
+            elapsed = options.draft_cap + native_wall
+            attempts = 1 + required
+        elif method in NAMED_METHODS:
+            expense = elapsed = options.draft_cap
+            attempts = 1
+        if (expense > config['search']['budget_ms'] or elapsed > wall * 1000
+                or attempts > options.max_attempts):
+            raise ValueError(f'Comparison caps give {method} no initial nonempty work opportunity: '
+                             f'need expense_ms={expense}, wall_ms={elapsed}, attempts={attempts}')
+        receipt[method] = {'first_nonempty_expense_cap_ms': expense,
+                           'first_nonempty_wall_cap_ms': elapsed, 'primitive_attempts': attempts}
+    return receipt
+
+
+def _control(method, engine, bridge, options, journal, deadline=None):
     """Full native evaluations; no learned value/policy calls in these controls."""
     state, rng = engine.state, random.Random(options.seed)
     root, ledger, budget = state.incumbent, state.ledger, state.budget
@@ -179,7 +252,8 @@ def _control(method, engine, bridge, options, journal):
             break
         # Reserve a complete child before sampling it, like a full-evaluation control.
         cap = options.draft_cap + required * options.execution_cap
-        if cap > budget.available:
+        wall_cap = options.draft_cap + math.ceil(required / options.workers) * options.execution_cap
+        if cap > budget.available or (deadline is not None and not deadline.fits(wall_cap)):
             break
         parents = [c for c in state.candidates.values() if ledger.admissible(c, state.scope)]
         parent = root if method == 'best_of_n' else rng.choice(parents)
@@ -243,15 +317,20 @@ def _search_stage(method, config, scope, options, model, snapshot, journal):
             raise RuntimeError(f'Initial native acquisition failed: {result.error}')
         ledger.admit_direct(root, task, scope, result.outcome, result.receipt)
     initial = ledger.score(root, scope)
+    deadline = SearchDeadline(config['search'].get('wall_limit_seconds'))
     if method == 'initial':
         selected, report = root, {'method': method, 'initial_native_utility': initial,
             'selected_native_utility': initial, 'selection_native_gain': 0.,
             'search_budget_ms': config['search']['budget_ms'], 'search_cost_ms': 0,
             'search_elapsed_seconds': 0.}
+    elif method in NAMED_METHODS:
+        selected, report = run_named_method(method, config, scope, root, ledger,
+                                             executor, options, journal, deadline)
     else:
         bridge, drafter = _roles(model, config['search'], snapshot, journal)
-        engine = VATSEngine(scope, root, ledger, BudgetLedger(config['search']['budget_ms']),
+        engine = ComparisonVATSEngine(scope, root, ledger, BudgetLedger(config['search']['budget_ms']),
             executor, drafter, options, scorer=bridge.scorer, policy_menu=bridge.policy_menu)
+        engine.deadline = deadline
         bridge.initial_budget, bridge.workers, bridge.contract_id = engine.state.budget.total, options.workers, scope.uid
         if method == 'specrsi':
             started = time.monotonic()
@@ -266,10 +345,12 @@ def _search_stage(method, config, scope, options, model, snapshot, journal):
                 cost_accounting=vats_cost_accounting('wall-ms', options.policy_call_cost,
                     model.config.architecture_version))
         else:
-            selected, report = _control(method, engine, bridge, options, journal)
+            selected, report = _control(method, engine, bridge, options, journal, deadline)
+    report.update(deadline.report())
     report.update(initial_acquisition_ms=initial_cost, selected=selected.manifest(),
         selected_id=selected.uid, checkpoint_snapshot=snapshot,
-        algorithm='vats_pdf' if method == 'specrsi' else 'native_hf_reference_control')
+        algorithm=('vats_pdf' if method == 'specrsi' else
+                   'prospective_' + method if method in NAMED_METHODS else 'native_hf_reference_control'))
     return report
 
 
@@ -283,8 +364,12 @@ def _validate(config):
     if config.get('search_split', 'development') != 'development' or config.get('heldout_split', 'selection') != 'selection':
         raise ValueError('This development runner requires development search and selection holdout; audit is sealed')
     methods = tuple(config.get('methods', METHODS))
-    if not methods or len(set(methods)) != len(methods) or set(methods) - set(METHODS):
+    if not methods or len(set(methods)) != len(methods) or set(methods) - set(SUPPORTED_METHODS):
         raise ValueError('Unknown or duplicate comparison methods')
+    validate_named_config(config)
+    SearchDeadline(search.get('wall_limit_seconds'))
+    if search.get('wall_limit_seconds') is not None and search.get('mode', 'deploy') != 'deploy':
+        raise ValueError('Comparison wall admission is a deployment guard, not an actor-training collection profile')
     for key in ('search_cases', 'heldout_cases'):
         cases = config[key]
         if not cases or len(set(cases)) != len(cases) or any(type(c) is not int or not 0 <= c < case_count(config['domain']) for c in cases):
@@ -293,6 +378,7 @@ def _validate(config):
         raise ValueError('Training and development comparison case IDs must be disjoint')
     if type(config.get('max_stage_attempts', 2)) is not int or config.get('max_stage_attempts', 2) < 1:
         raise ValueError('max_stage_attempts must be a positive integer')
+    validate_comparison_resources(config, methods)
     return checkpoint, methods
 
 
@@ -455,17 +541,30 @@ def _run_locked(config, checkpoint, methods, output, stage, expected_freeze_dige
     scopes = {'search': make_scope(config['domain'], 'development', tuple(config['search_cases']), native_utility=True),
               'heldout': make_scope(config['domain'], 'selection', tuple(config['heldout_cases']), native_utility=True)}
     source_hashes = _source_hashes()
+    named_identity = validate_named_config(config)
     manifest = {'version': 'native-development-comparison-v1', 'config': config,
-        'algorithm_profile': algorithm_metadata(config), 'source_hashes': source_hashes,
+        'paper': paper_provenance(config), 'source_hashes': source_hashes,
         'checkpoint_hashes': checkpoint_hashes, 'checkpoint_snapshot': snapshot,
         'scopes': {key: scope.manifest() for key, scope in scopes.items()},
         'methods': list(methods), 'native_utility': True, 'author_exact': False,
         'official_audit_consumed': False, 'paper_budget_comparable': False,
+        'paper_named_baselines_missing': ['Alg.-Only', 'Direct-LLM', 'Embed-GP', 'Janus'],
+        'named_science_adaptations': [method for method in methods if method in NAMED_METHODS],
+        'named_model_identity': named_identity,
+        'unavailable_scientific_methods': UNAVAILABLE_METHODS,
         'control_definitions': {'initial': 'fixed initial policy, zero search budget spent',
             'best_of_n': 'independent root HF proposals; full native evaluation; best admissible child or root',
             'random_search': 'uniform admissible parent, shared HF edit law; full native evaluation; best admissible node',
-            'specrsi': 'learned VATS with the same HF drafter'},
+            'specrsi': 'learned supplied-PDF vats_pdf with the same HF drafter',
+            'janus_science': 'Actual Janus co-evolution, arithmetic proxy DSL and registered numeric catalog; prospective parameter-space adaptation',
+            'hgm_science': 'Actual HGM clade Thompson allocation with registered numeric catalog; prospective parameter-space adaptation',
+            'aflow_science': 'Actual AFlow mixed parent sampling, repeated validation and experience; numeric parameter space replaces workflow DAG editing'},
         'cost_contract': {'search_budget_ms_per_method': config['search']['budget_ms'],
+            'wall_limit_seconds_per_method': config['search'].get('wall_limit_seconds'),
+            'primitive_attempts_per_method': options.max_attempts,
+            'native_execution_cap_ms': options.execution_cap,
+            'generation_cap_ms': options.draft_cap,
+            'initial_nonempty_work_admission': validate_comparison_resources(config, methods),
             'initial_acquisition': 'paid independently for every method, outside search budget',
             'heldout': 'paid independently for every frozen method, outside search budget',
             'retries': 'separately retained; invalidate equal-budget comparison',
@@ -513,7 +612,7 @@ def _run_locked(config, checkpoint, methods, output, stage, expected_freeze_dige
         journal = Journal(attempt / 'physical_calls.jsonl', 'search:' + method)
         _write(attempt / 'started.json', {'method': method, 'registered_budget_ms': config['search']['budget_ms']})
         try:
-            if method != 'initial' and model is None:
+            if method in ('best_of_n', 'random_search', 'specrsi') and model is None:
                 started = time.monotonic()
                 model = _load_roles(checkpoint, config['search'])
                 journal.append({'event': 'model_load', 'elapsed_seconds': time.monotonic() - started})
@@ -541,7 +640,11 @@ def _run_locked(config, checkpoint, methods, output, stage, expected_freeze_dige
         result = {'output': str(output), 'domain': config['domain'], 'seed': config['seed'],
             'status': 'search_complete', 'frozen_candidates_digest': digest(frozen),
             'methods': list(methods), 'physical_bill': bill, 'sota_established': False,
-            'equal_budget_comparison': all(row.get('attempt_count', 1) == 1 for row in reports.values()) and bill['physical_bill_complete']}
+            'equal_budget_comparison': all(row.get('attempt_count', 1) == 1 and row.get('wall_limit_respected', True)
+                for row in reports.values()) and bill['physical_bill_complete'],
+            'named_science_adaptations': manifest['named_science_adaptations'],
+            'unavailable_scientific_methods': manifest['unavailable_scientific_methods'],
+            'paper_named_baselines_missing': manifest['paper_named_baselines_missing']}
         _write(output / 'search_summary.json', result)
         _write(output / 'physical_bill.json', bill)
         return result
@@ -559,8 +662,12 @@ def _run_locked(config, checkpoint, methods, output, stage, expected_freeze_dige
         'status': 'complete' if stable and all(x['complete'] for x in heldout.values()) else 'incomplete',
         'frozen_candidates_digest': digest(frozen), 'source_and_checkpoint_stable': stable,
         'heldout': heldout, 'search': reports, 'physical_bill': bill,
-        'equal_budget_comparison': all(row.get('attempt_count', 1) == 1 for row in reports.values()) and bill['physical_bill_complete'],
-        'sota_established': False}
+        'equal_budget_comparison': all(row.get('attempt_count', 1) == 1 and row.get('wall_limit_respected', True)
+            for row in reports.values()) and bill['physical_bill_complete'],
+        'named_science_adaptations': manifest['named_science_adaptations'],
+        'unavailable_scientific_methods': manifest['unavailable_scientific_methods'],
+        'sota_established': False, 'paper_named_baselines_missing': manifest['paper_named_baselines_missing'],
+        'limitation': 'Registered scientific parameter adaptations and frozen selection-split comparison; unavailable methods, author-exact replications and official benchmark audit remain outside this claim.'}
     _write(output / 'physical_bill.json', bill)
     _write(summary_path, summary)
     return _read(summary_path)

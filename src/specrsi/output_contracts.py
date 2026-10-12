@@ -1,4 +1,4 @@
-"""Opt-in, versioned task output interfaces for immutable candidate execution.
+"""Opt-in, frozen task output interfaces beyond the PDF reference recipe.
 
 Contracts change the actual model input, never a returned answer or its native
 score. The version belongs in candidate.runtime.generation, so it is included

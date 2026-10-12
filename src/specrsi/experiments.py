@@ -21,6 +21,7 @@ from .benchmarks import (BenchmarkExample, aime_score, game24_score, hotpotqa_sc
                          hover_score, ifbench_score, load_examples, validate_disjoint_splits)
 from .models import LocalModelClient
 from .models.client import sampling_options
+from .tokenization import chat_token_ids
 from .output_contracts import generation_messages, output_contract_instruction
 from .core.models import Candidate, EvaluationScope, Outcome, Task, thaw
 from .core.execution import ExecutionResult
@@ -94,7 +95,7 @@ class QwenExecutor:
 
     def prompt_tokens(self, messages, *, enable_thinking: bool | None = None):
         enabled = self.config.get("enable_thinking", False) if enable_thinking is None else enable_thinking
-        return len(self.tokenizer.apply_chat_template(messages, tokenize=True, add_generation_prompt=True,
+        return len(chat_token_ids(self.tokenizer,messages, tokenize=True, add_generation_prompt=True,
                    enable_thinking=enabled, thinking=enabled))
 
     @staticmethod
@@ -331,10 +332,10 @@ def carried_initial_artifacts(config, search):
 def run_local_experiment(config: dict):
     from transformers import AutoTokenizer
     from .core import BudgetLedger, Ledger, SearchConfig, SearchEngine
-    from .paper_profile import (algorithm_name, algorithm_metadata, require_role_checkpoint, vats_config,
+    from .paper_profile import (algorithm_name, paper_provenance, require_role_checkpoint, vats_config,
                                vats_cost_accounting, objective_coefficients, realized_search_return)
     algorithm = algorithm_name(config["search"])
-    paper = algorithm_metadata(config) if algorithm == "vats_pdf" else None
+    paper = paper_provenance(config) if algorithm == "vats_pdf" else None
     checkpoint_path = require_role_checkpoint(config["search"])
     search = config['search']
     objective_coefficients(search)
@@ -367,14 +368,14 @@ def run_local_experiment(config: dict):
     if dataset == "hover" and not structured_mode and config.get("metric_variant") != "label_accuracy_not_GEPA_multihop_retrieval":
         raise ValueError("Declare the prospective HoVer label-accuracy variant, or use the registered retrieval harness")
     if swe_mode:
-        registry=json.loads(Path(config.get('coding_registry','configs/coding/swe_tracks.json')).read_text())
+        registry=json.loads(Path(config.get('coding_registry','configs/coding/prospective_swe_tracks.json')).read_text())
         def pool_of(name):
             return {e.id:e for i,split in enumerate(('selection','development','audit'))
                     for e in load_examples(name,split,data_root=config.get('data_root','data'),verify=i==0)}
         selection_pool=pool_of(dataset)
         audit_pool=pool_of(config.get('audit_dataset','swe_lite'))
-        selection_ids=config.get('selection_ids',registry[config.get('selection_track','selection')])
-        audit_ids=config.get('audit_ids',registry[config.get('audit_track','audit')])
+        selection_ids=config.get('selection_ids',registry[config.get('selection_track','selection60')])
+        audit_ids=config.get('audit_ids',registry[config.get('audit_track','lite_audit_filtered')])
         from dataclasses import replace
         selection=[replace(selection_pool[key],split='selection') for key in selection_ids]
         audit=[replace(audit_pool[key],split='audit') for key in audit_ids]
@@ -394,7 +395,7 @@ def run_local_experiment(config: dict):
     if search.get("reuse", "all_U") != "all_U":
         raise ValueError("Opaque LLM generation supports direct U execution only in this runner")
     lock = json.loads(Path(model_config["lock"]).read_text())
-    client = LocalModelClient(model_config["base_url"], model_config.get("served_model_name", lock.get("served_model_name", "local-model")))
+    client = LocalModelClient(model_config["base_url"], model_config.get("served_model_name", lock.get("served_model_name", "Qwen3.5-35B-A3B")))
     health = client.health()
     if not health.get("server_enforces_total_token_cap") or health.get("protocol_version", 0) < 2:
         raise ValueError("Local model server needs protocol v2 with enforced total token caps; restart it from current source")
@@ -447,7 +448,7 @@ def run_local_experiment(config: dict):
     draft_executor, draft_revision = executor, lock['revision']
     if config.get('drafter_model'):
         draft_config=config['drafter_model']; draft_lock=json.loads(Path(draft_config['lock']).read_text())
-        draft_client=LocalModelClient(draft_config['base_url'],draft_config.get('served_model_name',draft_lock.get('served_model_name','local-model')))
+        draft_client=LocalModelClient(draft_config['base_url'],draft_config.get('served_model_name',draft_lock.get('served_model_name','Qwen3.5-35B-A3B')))
         draft_health=draft_client.health()
         if draft_health['revision']!=draft_lock['revision']: raise ValueError('Drafter revision differs from its frozen lock')
         draft_tokenizer=AutoTokenizer.from_pretrained(draft_lock['local_path'],local_files_only=True,trust_remote_code=draft_lock.get('trust_remote_code',False))
@@ -503,7 +504,7 @@ def run_local_experiment(config: dict):
     output.mkdir(parents=True, exist_ok=True)
     data = result.to_dict()
     data.update({"purpose": config["purpose"], "config": config, "model": health,
-                 "algorithm": algorithm, "algorithm_profile": paper,
+                 "algorithm": algorithm, "paper_reference": paper,
                  "cost_accounting": vats_cost_accounting("tokens", options.policy_call_cost,
                      role_model.config.architecture_version if bridge is not None else 2) if algorithm == "vats_pdf" else None,
                  "cost_unit": "tokens", "initial_acquisition_tokens": initial_cost,
