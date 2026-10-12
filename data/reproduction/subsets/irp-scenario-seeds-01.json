@@ -1,0 +1,413 @@
+{
+  "source_id": "IRP-SCENARIO-SEEDS-01",
+  "source_file_sha256": "db813a0cc5625fa8a77502b7c144c0cea37da68a545731258f5e7be5abfe1546",
+  "source_file_bytes": 26381,
+  "dataset": "irp",
+  "scenarios": {
+    "audit": {
+      "baseline": {
+        "forecast_blend": 0.8,
+        "safety_stock": 2,
+        "target_days": 1.4
+      },
+      "costs": {
+        "distance": 0.4,
+        "holding": 0.08,
+        "lost_sale": 12,
+        "purchase": 2,
+        "vehicle_fixed": 15,
+        "waste": 1
+      },
+      "days": 180,
+      "demand_means": [
+        12,
+        15,
+        10,
+        18,
+        13,
+        16,
+        11,
+        14
+      ],
+      "depot": [
+        0,
+        0
+      ],
+      "domain": "irp",
+      "episode_demand_multipliers": [
+        0.85,
+        1.0,
+        1.15
+      ],
+      "episodes": 36,
+      "forecast_days": 3,
+      "invalid": {
+        "forecast_blend": 0.8,
+        "safety_stock": 2,
+        "target_days": -1
+      },
+      "locations": [
+        [
+          3,
+          4
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "profile": "full",
+      "registration_version": "specrsi-prospective-science-v1",
+      "retailers": 8,
+      "scenario_set": "round2-prospective-audit",
+      "seeds": [
+        2309283000,
+        2309283001,
+        2309283002,
+        2309283003,
+        2309283004,
+        2309283005,
+        2309283006,
+        2309283007,
+        2309283008,
+        2309283009,
+        2309283010,
+        2309283011,
+        2309283012,
+        2309283013,
+        2309283014,
+        2309283015,
+        2309283016,
+        2309283017,
+        2309283018,
+        2309283019,
+        2309283020,
+        2309283021,
+        2309283022,
+        2309283023,
+        2309283024,
+        2309283025,
+        2309283026,
+        2309283027,
+        2309283028,
+        2309283029,
+        2309283030,
+        2309283031,
+        2309283032,
+        2309283033,
+        2309283034,
+        2309283035
+      ],
+      "shelf_life_days": 4,
+      "std_ddof": 0,
+      "store_capacities": [
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90
+      ],
+      "vehicle_capacity": 180,
+      "weekly_amplitude": 0.15
+    },
+    "development": {
+      "baseline": {
+        "forecast_blend": 0.8,
+        "safety_stock": 2,
+        "target_days": 1.4
+      },
+      "costs": {
+        "distance": 0.4,
+        "holding": 0.08,
+        "lost_sale": 12,
+        "purchase": 2,
+        "vehicle_fixed": 15,
+        "waste": 1
+      },
+      "days": 180,
+      "demand_means": [
+        12,
+        15,
+        10,
+        18,
+        13,
+        16,
+        11,
+        14
+      ],
+      "depot": [
+        0,
+        0
+      ],
+      "domain": "irp",
+      "episode_demand_multipliers": [
+        0.85,
+        1.0,
+        1.15
+      ],
+      "episodes": 36,
+      "forecast_days": 3,
+      "invalid": {
+        "forecast_blend": 0.8,
+        "safety_stock": 2,
+        "target_days": -1
+      },
+      "locations": [
+        [
+          3,
+          4
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "profile": "full",
+      "registration_version": "specrsi-prospective-science-v1",
+      "retailers": 8,
+      "scenario_set": "round2-prospective-development",
+      "seeds": [
+        2309281000,
+        2309281001,
+        2309281002,
+        2309281003,
+        2309281004,
+        2309281005,
+        2309281006,
+        2309281007,
+        2309281008,
+        2309281009,
+        2309281010,
+        2309281011,
+        2309281012,
+        2309281013,
+        2309281014,
+        2309281015,
+        2309281016,
+        2309281017,
+        2309281018,
+        2309281019,
+        2309281020,
+        2309281021,
+        2309281022,
+        2309281023,
+        2309281024,
+        2309281025,
+        2309281026,
+        2309281027,
+        2309281028,
+        2309281029,
+        2309281030,
+        2309281031,
+        2309281032,
+        2309281033,
+        2309281034,
+        2309281035
+      ],
+      "shelf_life_days": 4,
+      "std_ddof": 0,
+      "store_capacities": [
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90
+      ],
+      "vehicle_capacity": 180,
+      "weekly_amplitude": 0.15
+    },
+    "selection": {
+      "baseline": {
+        "forecast_blend": 0.8,
+        "safety_stock": 2,
+        "target_days": 1.4
+      },
+      "costs": {
+        "distance": 0.4,
+        "holding": 0.08,
+        "lost_sale": 12,
+        "purchase": 2,
+        "vehicle_fixed": 15,
+        "waste": 1
+      },
+      "days": 180,
+      "demand_means": [
+        12,
+        15,
+        10,
+        18,
+        13,
+        16,
+        11,
+        14
+      ],
+      "depot": [
+        0,
+        0
+      ],
+      "domain": "irp",
+      "episode_demand_multipliers": [
+        0.85,
+        1.0,
+        1.15
+      ],
+      "episodes": 36,
+      "forecast_days": 3,
+      "invalid": {
+        "forecast_blend": 0.8,
+        "safety_stock": 2,
+        "target_days": -1
+      },
+      "locations": [
+        [
+          3,
+          4
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "profile": "full",
+      "registration_version": "specrsi-prospective-science-v1",
+      "retailers": 8,
+      "scenario_set": "round2-prospective-selection",
+      "seeds": [
+        2309282000,
+        2309282001,
+        2309282002,
+        2309282003,
+        2309282004,
+        2309282005,
+        2309282006,
+        2309282007,
+        2309282008,
+        2309282009,
+        2309282010,
+        2309282011,
+        2309282012,
+        2309282013,
+        2309282014,
+        2309282015,
+        2309282016,
+        2309282017,
+        2309282018,
+        2309282019,
+        2309282020,
+        2309282021,
+        2309282022,
+        2309282023,
+        2309282024,
+        2309282025,
+        2309282026,
+        2309282027,
+        2309282028,
+        2309282029,
+        2309282030,
+        2309282031,
+        2309282032,
+        2309282033,
+        2309282034,
+        2309282035
+      ],
+      "shelf_life_days": 4,
+      "std_ddof": 0,
+      "store_capacities": [
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90
+      ],
+      "vehicle_capacity": 180,
+      "weekly_amplitude": 0.15
+    }
+  },
+  "seed_configuration": [
+    20260928,
+    20260929,
+    20260930
+  ],
+  "case_id": 0
+}

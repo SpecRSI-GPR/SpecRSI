@@ -1,0 +1,418 @@
+{
+  "source_id": "AIME-SUBSET-05",
+  "source_file_sha256": "87f70de8149e17fe0b6ad27b5b80e76ccb6c97890d200119b56a2d77041fdd66",
+  "source_file_bytes": 37091,
+  "dataset": "aime_2025_2026",
+  "sample_seed": 2026092812,
+  "counts": {
+    "development": 3,
+    "selection": 3,
+    "audit": 12
+  },
+  "members": {
+    "development": [
+      {
+        "id": "aime2024:71",
+        "input_hash": "41a4cf91ca8df560fefb349ed633d182884a101ffeaa8a1bd0e6492c1e3ced6f"
+      },
+      {
+        "id": "aime2024:72",
+        "input_hash": "154d6cde5a1ed42105d28eea4b6e10c7dd33507c6faacf88e66f5f3750fa435b"
+      },
+      {
+        "id": "aime2024:84",
+        "input_hash": "12f7caa1a71ef1f354cdc972e61183bf9f0f2f52b9ac18cfe6e0190c410df8f0"
+      }
+    ],
+    "selection": [
+      {
+        "id": "aime2024:85",
+        "input_hash": "c22d651debcd11eca5994889c5261ebef78c6e6c2bf6c79a7d0607adc0896613"
+      },
+      {
+        "id": "aime2024:78",
+        "input_hash": "9cb54731ef976ec2b88cbf97b51df34e39980e68518b78daef52557bcc58fbcc"
+      },
+      {
+        "id": "aime2024:77",
+        "input_hash": "f24d846d3c80743620e761f187d5e9177fc480206635bcf45cd660cdf24344e6"
+      }
+    ],
+    "audit": [
+      {
+        "id": "aime2025:17",
+        "input_hash": "633d1c0d1eb6433992ab6d55f9b58e3fdd404d95e6d27791b8d75a26cd6b3fc8"
+      },
+      {
+        "id": "aime2025:9",
+        "input_hash": "a480a79e0d391a9507719c7817997fe02153d1d454c34b4a8193297ec0b95f97"
+      },
+      {
+        "id": "aime2026:4",
+        "input_hash": "7212ee66c43460603f5f25de5db7b87673bc943867fb65f33731fce087ea4e23"
+      },
+      {
+        "id": "aime2025:11",
+        "input_hash": "9ca90691999d76e4ae17bb4d4747ca898aeef8df0b85fb94f47ccd764fe92567"
+      },
+      {
+        "id": "aime2025:10",
+        "input_hash": "0fcd5297e531d22325a56f6b5661fd15ff5ccef4d7597905dcaf1404355d50d7"
+      },
+      {
+        "id": "aime2026:9",
+        "input_hash": "c3aeb981e56a0f772d98c48b43d30c1c45811d205ebef7ef30710e0da9c3fc71"
+      },
+      {
+        "id": "aime2026:10",
+        "input_hash": "d8b62db3d69bc042392cc25258cafcfe3ac9ab0a98129d352306d1a82e55687d"
+      },
+      {
+        "id": "aime2025:15",
+        "input_hash": "17aad2cb309e59b46025e87bbe055896cbe0b857db3509acc8a74071b0064fed"
+      },
+      {
+        "id": "aime2026:12",
+        "input_hash": "5395df2aee0d1a19bcefe9896b7741ede70bdb68648af32b8fc675a3bd556ee4"
+      },
+      {
+        "id": "aime2025:18",
+        "input_hash": "4f0299ef83cc68fecf40261f3264be3edcbc55a21676f32bd55575b0e941bb09"
+      },
+      {
+        "id": "aime2026:14",
+        "input_hash": "bccaf954efdf1d8a2fd8d9e41481f46d1d2835aaae6e3f54bbd12cf5485bd279"
+      },
+      {
+        "id": "aime2026:17",
+        "input_hash": "fe403b7d2599cc440a428a16449c609fd5fcd177e1d4fb429b4b3d6af4d59f19"
+      }
+    ]
+  },
+  "audit_exclusions": {
+    "schema": "prior_registered_audit_exclusion_v1",
+    "sources": [
+      {
+        "registration_sha256": "47f36b9894c3183af64d2796bf53a961020cb99fe40963974ae7317c5b843c12",
+        "dataset": "aime_2025_2026",
+        "registered_audit_count": 12,
+        "audit_examples": [
+          {
+            "id": "aime2026:28",
+            "input_hash": "d42f3182a9b22ee0e42b7b08efd43a4066632ba8951320ab9304f3f92b7fd09f"
+          },
+          {
+            "id": "aime2026:8",
+            "input_hash": "429dc143fb9d99b08fa5068a37cbb600dbfecb60534804cacff84ad05df47998"
+          },
+          {
+            "id": "aime2026:13",
+            "input_hash": "de1df072f8d534dcf48b33cb9bd13dfba153c5c57438f50595c57d9248d3c58b"
+          },
+          {
+            "id": "aime2026:29",
+            "input_hash": "47d96ff03a4441e6176f6c79322914319fa8e04c54427eccdfe99cdcf45f9646"
+          },
+          {
+            "id": "aime2025:24",
+            "input_hash": "786bf408c8c7db470a07877b5a0a11770b961cc312a7d71ff5960845646aab49"
+          },
+          {
+            "id": "aime2026:1",
+            "input_hash": "ddf476306fd4b90d958a5baea1bccecdff207357ce1ff0b7b91d434ed84da618"
+          },
+          {
+            "id": "aime2025:16",
+            "input_hash": "13a136765c868b7d998f90ed50ae6ab0954d3581e38ef4087354270e9af33249"
+          },
+          {
+            "id": "aime2025:0",
+            "input_hash": "fb007fb19911426baa23d9a0145320ab777a948f3306676e3c805e12c8d097f2"
+          },
+          {
+            "id": "aime2025:8",
+            "input_hash": "fb95a14cddd10c1f82afd308643c6efd38f130ce2a0fe6b4a131efe86ebb4007"
+          },
+          {
+            "id": "aime2026:6",
+            "input_hash": "19d2dd90a444047e31d21d8503b01ce0af44d9f06e0f3073208a8df0e8b4ea3a"
+          },
+          {
+            "id": "aime2025:21",
+            "input_hash": "bab4d0e4534870fba39158d1a09aeee21d0a8131f9cf239fc84db3dcfe17686b"
+          },
+          {
+            "id": "aime2025:12",
+            "input_hash": "72908e371f022bf83ce06bdccda5bb2b662d112728e7786270e2b10ae7e2e1d2"
+          }
+        ]
+      },
+      {
+        "registration_sha256": "7c6c9e0d54271175fc2cb4897b8174c4c8b994a1ed86a31e5d065ed071cad6c9",
+        "dataset": "aime_2025_2026",
+        "registered_audit_count": 12,
+        "audit_examples": [
+          {
+            "id": "aime2026:28",
+            "input_hash": "d42f3182a9b22ee0e42b7b08efd43a4066632ba8951320ab9304f3f92b7fd09f"
+          },
+          {
+            "id": "aime2026:8",
+            "input_hash": "429dc143fb9d99b08fa5068a37cbb600dbfecb60534804cacff84ad05df47998"
+          },
+          {
+            "id": "aime2026:13",
+            "input_hash": "de1df072f8d534dcf48b33cb9bd13dfba153c5c57438f50595c57d9248d3c58b"
+          },
+          {
+            "id": "aime2026:29",
+            "input_hash": "47d96ff03a4441e6176f6c79322914319fa8e04c54427eccdfe99cdcf45f9646"
+          },
+          {
+            "id": "aime2025:24",
+            "input_hash": "786bf408c8c7db470a07877b5a0a11770b961cc312a7d71ff5960845646aab49"
+          },
+          {
+            "id": "aime2026:1",
+            "input_hash": "ddf476306fd4b90d958a5baea1bccecdff207357ce1ff0b7b91d434ed84da618"
+          },
+          {
+            "id": "aime2025:16",
+            "input_hash": "13a136765c868b7d998f90ed50ae6ab0954d3581e38ef4087354270e9af33249"
+          },
+          {
+            "id": "aime2025:0",
+            "input_hash": "fb007fb19911426baa23d9a0145320ab777a948f3306676e3c805e12c8d097f2"
+          },
+          {
+            "id": "aime2025:8",
+            "input_hash": "fb95a14cddd10c1f82afd308643c6efd38f130ce2a0fe6b4a131efe86ebb4007"
+          },
+          {
+            "id": "aime2026:6",
+            "input_hash": "19d2dd90a444047e31d21d8503b01ce0af44d9f06e0f3073208a8df0e8b4ea3a"
+          },
+          {
+            "id": "aime2025:21",
+            "input_hash": "bab4d0e4534870fba39158d1a09aeee21d0a8131f9cf239fc84db3dcfe17686b"
+          },
+          {
+            "id": "aime2025:12",
+            "input_hash": "72908e371f022bf83ce06bdccda5bb2b662d112728e7786270e2b10ae7e2e1d2"
+          }
+        ]
+      },
+      {
+        "registration_sha256": "1ada51d0f74b95d13954c3012ef73b0f697808d309b63561703e8119df47d147",
+        "dataset": "aime_2025_2026",
+        "registered_audit_count": 12,
+        "audit_examples": [
+          {
+            "id": "aime2026:28",
+            "input_hash": "d42f3182a9b22ee0e42b7b08efd43a4066632ba8951320ab9304f3f92b7fd09f"
+          },
+          {
+            "id": "aime2026:8",
+            "input_hash": "429dc143fb9d99b08fa5068a37cbb600dbfecb60534804cacff84ad05df47998"
+          },
+          {
+            "id": "aime2026:13",
+            "input_hash": "de1df072f8d534dcf48b33cb9bd13dfba153c5c57438f50595c57d9248d3c58b"
+          },
+          {
+            "id": "aime2026:29",
+            "input_hash": "47d96ff03a4441e6176f6c79322914319fa8e04c54427eccdfe99cdcf45f9646"
+          },
+          {
+            "id": "aime2025:24",
+            "input_hash": "786bf408c8c7db470a07877b5a0a11770b961cc312a7d71ff5960845646aab49"
+          },
+          {
+            "id": "aime2026:1",
+            "input_hash": "ddf476306fd4b90d958a5baea1bccecdff207357ce1ff0b7b91d434ed84da618"
+          },
+          {
+            "id": "aime2025:16",
+            "input_hash": "13a136765c868b7d998f90ed50ae6ab0954d3581e38ef4087354270e9af33249"
+          },
+          {
+            "id": "aime2025:0",
+            "input_hash": "fb007fb19911426baa23d9a0145320ab777a948f3306676e3c805e12c8d097f2"
+          },
+          {
+            "id": "aime2025:8",
+            "input_hash": "fb95a14cddd10c1f82afd308643c6efd38f130ce2a0fe6b4a131efe86ebb4007"
+          },
+          {
+            "id": "aime2026:6",
+            "input_hash": "19d2dd90a444047e31d21d8503b01ce0af44d9f06e0f3073208a8df0e8b4ea3a"
+          },
+          {
+            "id": "aime2025:21",
+            "input_hash": "bab4d0e4534870fba39158d1a09aeee21d0a8131f9cf239fc84db3dcfe17686b"
+          },
+          {
+            "id": "aime2025:12",
+            "input_hash": "72908e371f022bf83ce06bdccda5bb2b662d112728e7786270e2b10ae7e2e1d2"
+          }
+        ]
+      },
+      {
+        "registration_sha256": "b1ccfe2114919d32f9ee6faf5bdf00c27f53feda03ff085e3c1ed2d8cac68af4",
+        "dataset": "aime_2025_2026",
+        "registered_audit_count": 4,
+        "audit_examples": [
+          {
+            "id": "aime2026:5",
+            "input_hash": "d9a5a7b8e8569f4a0a754c54f83682fa7d7c508a1a7fb682c8d15b995deb1d94"
+          },
+          {
+            "id": "aime2025:8",
+            "input_hash": "fb95a14cddd10c1f82afd308643c6efd38f130ce2a0fe6b4a131efe86ebb4007"
+          },
+          {
+            "id": "aime2026:24",
+            "input_hash": "781def60decdbcce2c24664804f2e6013cc815eefa662464a88dec0410da19fb"
+          },
+          {
+            "id": "aime2026:26",
+            "input_hash": "83ac7f4ee26c544530332d1694472808161710018a77df75532578f92fafa1d3"
+          }
+        ]
+      }
+    ],
+    "policy": "all prior registered audit inputs, regardless of execution or score; dataset-qualified ID OR input hash",
+    "input_identity_boundary": "BenchmarkExample whitespace/casefold input SHA256; semantic rewrites are not detected",
+    "complete_historical_exposure_claimed": false,
+    "unique_prior_audit_ids": 15,
+    "unique_prior_audit_input_hashes": 15,
+    "audit_pool_before_count": 60,
+    "audit_pool_after_count": 45,
+    "audit_pool_before_identity_sha256": "e6444ca3566d8256b2f1b8d363ad68b22e0d10935f9f94a7d7f52bb404706eb8",
+    "audit_pool_after_identity_sha256": "378e73d6308e961938ff24e823e8c2a0859f0666b33a2a0e41e6c75e4de682b6",
+    "excluded_count": 15,
+    "excluded_examples": [
+      {
+        "id": "aime2025:0",
+        "input_hash": "fb007fb19911426baa23d9a0145320ab777a948f3306676e3c805e12c8d097f2",
+        "matched_by": [
+          "dataset_and_id",
+          "input_hash"
+        ]
+      },
+      {
+        "id": "aime2025:8",
+        "input_hash": "fb95a14cddd10c1f82afd308643c6efd38f130ce2a0fe6b4a131efe86ebb4007",
+        "matched_by": [
+          "dataset_and_id",
+          "input_hash"
+        ]
+      },
+      {
+        "id": "aime2025:12",
+        "input_hash": "72908e371f022bf83ce06bdccda5bb2b662d112728e7786270e2b10ae7e2e1d2",
+        "matched_by": [
+          "dataset_and_id",
+          "input_hash"
+        ]
+      },
+      {
+        "id": "aime2025:16",
+        "input_hash": "13a136765c868b7d998f90ed50ae6ab0954d3581e38ef4087354270e9af33249",
+        "matched_by": [
+          "dataset_and_id",
+          "input_hash"
+        ]
+      },
+      {
+        "id": "aime2025:21",
+        "input_hash": "bab4d0e4534870fba39158d1a09aeee21d0a8131f9cf239fc84db3dcfe17686b",
+        "matched_by": [
+          "dataset_and_id",
+          "input_hash"
+        ]
+      },
+      {
+        "id": "aime2025:24",
+        "input_hash": "786bf408c8c7db470a07877b5a0a11770b961cc312a7d71ff5960845646aab49",
+        "matched_by": [
+          "dataset_and_id",
+          "input_hash"
+        ]
+      },
+      {
+        "id": "aime2026:1",
+        "input_hash": "ddf476306fd4b90d958a5baea1bccecdff207357ce1ff0b7b91d434ed84da618",
+        "matched_by": [
+          "dataset_and_id",
+          "input_hash"
+        ]
+      },
+      {
+        "id": "aime2026:5",
+        "input_hash": "d9a5a7b8e8569f4a0a754c54f83682fa7d7c508a1a7fb682c8d15b995deb1d94",
+        "matched_by": [
+          "dataset_and_id",
+          "input_hash"
+        ]
+      },
+      {
+        "id": "aime2026:6",
+        "input_hash": "19d2dd90a444047e31d21d8503b01ce0af44d9f06e0f3073208a8df0e8b4ea3a",
+        "matched_by": [
+          "dataset_and_id",
+          "input_hash"
+        ]
+      },
+      {
+        "id": "aime2026:8",
+        "input_hash": "429dc143fb9d99b08fa5068a37cbb600dbfecb60534804cacff84ad05df47998",
+        "matched_by": [
+          "dataset_and_id",
+          "input_hash"
+        ]
+      },
+      {
+        "id": "aime2026:13",
+        "input_hash": "de1df072f8d534dcf48b33cb9bd13dfba153c5c57438f50595c57d9248d3c58b",
+        "matched_by": [
+          "dataset_and_id",
+          "input_hash"
+        ]
+      },
+      {
+        "id": "aime2026:24",
+        "input_hash": "781def60decdbcce2c24664804f2e6013cc815eefa662464a88dec0410da19fb",
+        "matched_by": [
+          "dataset_and_id",
+          "input_hash"
+        ]
+      },
+      {
+        "id": "aime2026:26",
+        "input_hash": "83ac7f4ee26c544530332d1694472808161710018a77df75532578f92fafa1d3",
+        "matched_by": [
+          "dataset_and_id",
+          "input_hash"
+        ]
+      },
+      {
+        "id": "aime2026:28",
+        "input_hash": "d42f3182a9b22ee0e42b7b08efd43a4066632ba8951320ab9304f3f92b7fd09f",
+        "matched_by": [
+          "dataset_and_id",
+          "input_hash"
+        ]
+      },
+      {
+        "id": "aime2026:29",
+        "input_hash": "47d96ff03a4441e6176f6c79322914319fa8e04c54427eccdfe99cdcf45f9646",
+        "matched_by": [
+          "dataset_and_id",
+          "input_hash"
+        ]
+      }
+    ],
+    "development_selection_unchanged": true
+  }
+}

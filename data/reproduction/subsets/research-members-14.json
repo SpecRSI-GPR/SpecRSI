@@ -1,0 +1,61 @@
+{
+  "source_id": "RESEARCH-MEMBERS-14",
+  "source_file_sha256": "ce1f1c8ac5126a05dc8c5ed9c0bab392ed9289a4e6f931156db396a0383f2a32",
+  "source_file_bytes": 42077,
+  "members": [
+    {
+      "id": "5a7a06935542990198eaf050",
+      "dataset": "hotpotqa",
+      "split": "selection",
+      "input_sha256": "c36a29f19035bdb16e409976b91e913891f3ed68332edd46a12409f8f5f1fa5c",
+      "prompt_bytes_sha256": "6ac56170c6ab38e261211a993be994006b98908be3fc9c76eeb1d9d0591960d2",
+      "source_file": "train-00000-of-00002.parquet",
+      "source_index": 0
+    },
+    {
+      "id": "5a7e36045542991319bc9440",
+      "dataset": "hotpotqa",
+      "split": "selection",
+      "input_sha256": "41bbd283c00dd06f071c189fa697aa647891ddab80bc755549433308b2648162",
+      "prompt_bytes_sha256": "9eac4cedc137951a070ab6da4f5c312b53bda3111c8ce34f7b608b0eb08436f7",
+      "source_file": "train-00000-of-00002.parquet",
+      "source_index": 5
+    },
+    {
+      "id": "5a832c3455429954d2e2ec41",
+      "dataset": "hotpotqa",
+      "split": "selection",
+      "input_sha256": "42516d80b2b57d2a43e4f9975b421635eae12abcda05bf085be640d3c5976642",
+      "prompt_bytes_sha256": "17559e3f18e7f7275266c126a43b260e66e16077063ad635420e448bb5a71f50",
+      "source_file": "train-00000-of-00002.parquet",
+      "source_index": 7
+    },
+    {
+      "id": "5a89372855429951533612e6",
+      "dataset": "hotpotqa",
+      "split": "selection",
+      "input_sha256": "c0477ac05e82a16971d29f3dc01ec5ecd8a0497aca6ff81206899d3c31b876d7",
+      "prompt_bytes_sha256": "61dbf06f2ced7b67e2cdca5678095579c2089c2364bf09c74264da48fd80f078",
+      "source_file": "train-00000-of-00002.parquet",
+      "source_index": 9
+    },
+    {
+      "id": "5a7722d655429966f1a36c99",
+      "dataset": "hotpotqa",
+      "split": "selection",
+      "input_sha256": "b8174613b3171969eeb0cb207577d81eb61c651b0c768d188c596987dd329d9a",
+      "prompt_bytes_sha256": "fdb6f7a6bd7ed04e43bacbf3e319b402850ba72cd3bb9576f01dbd6d4d4706ac",
+      "source_file": "train-00000-of-00002.parquet",
+      "source_index": 12
+    },
+    {
+      "id": "5ae0d91e55429924de1b7198",
+      "dataset": "hotpotqa",
+      "split": "selection",
+      "input_sha256": "b4636b8d7687b6c5b3dfad68248cb85479d4da5bd33b452f5cd2ea3c960dbcce",
+      "prompt_bytes_sha256": "d4c9a64f29056e0d2f35cf2dd065343abca3d38ff57fb921c58af5727ea34a60",
+      "source_file": "train-00000-of-00002.parquet",
+      "source_index": 15
+    }
+  ]
+}

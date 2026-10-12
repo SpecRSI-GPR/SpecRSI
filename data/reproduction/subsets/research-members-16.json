@@ -1,0 +1,25 @@
+{
+  "source_id": "RESEARCH-MEMBERS-16",
+  "source_file_sha256": "5e28124d57a2a1d3da313fc82020bcd3a013a14df6ef7288a4e3dea1646afa57",
+  "source_file_bytes": 14799,
+  "members": [
+    {
+      "id": "5a7a06935542990198eaf050",
+      "dataset": "hotpotqa",
+      "split": "selection",
+      "input_sha256": "c36a29f19035bdb16e409976b91e913891f3ed68332edd46a12409f8f5f1fa5c",
+      "prompt_bytes_sha256": "6ac56170c6ab38e261211a993be994006b98908be3fc9c76eeb1d9d0591960d2",
+      "source_file": "train-00000-of-00002.parquet",
+      "source_index": 0
+    },
+    {
+      "id": "5a7e36045542991319bc9440",
+      "dataset": "hotpotqa",
+      "split": "selection",
+      "input_sha256": "41bbd283c00dd06f071c189fa697aa647891ddab80bc755549433308b2648162",
+      "prompt_bytes_sha256": "9eac4cedc137951a070ab6da4f5c312b53bda3111c8ce34f7b608b0eb08436f7",
+      "source_file": "train-00000-of-00002.parquet",
+      "source_index": 5
+    }
+  ]
+}

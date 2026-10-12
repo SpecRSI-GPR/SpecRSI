@@ -1,0 +1,92 @@
+{
+  "source_id": "AIME-SUBSET-03",
+  "source_file_sha256": "1ada51d0f74b95d13954c3012ef73b0f697808d309b63561703e8119df47d147",
+  "source_file_bytes": 22444,
+  "dataset": "aime_2025_2026",
+  "sample_seed": 2026092808,
+  "counts": {
+    "development": 3,
+    "selection": 3,
+    "audit": 12
+  },
+  "members": {
+    "development": [
+      {
+        "id": "aime2024:79",
+        "input_hash": "40edfaa2c9438b864e60563e56a8c85ab647b43efeb1644041b00cb642920005"
+      },
+      {
+        "id": "aime2024:65",
+        "input_hash": "3d45c2c747ce59ccb90b106fffba4bed6e697f87b86a0af85d4c40b95bcc2726"
+      },
+      {
+        "id": "aime2024:89",
+        "input_hash": "376ee30c6d1f05d6fb7a2ccb7723755f24737ea158709e04e41dc3fee3c8c695"
+      }
+    ],
+    "selection": [
+      {
+        "id": "aime2024:61",
+        "input_hash": "a25c0cc98c5e82a05195ce21c434ac5df01591b68e21d3c558ff7a6c93188781"
+      },
+      {
+        "id": "aime2024:78",
+        "input_hash": "9cb54731ef976ec2b88cbf97b51df34e39980e68518b78daef52557bcc58fbcc"
+      },
+      {
+        "id": "aime2024:67",
+        "input_hash": "d8db1ae7616f9f6e008ee62f546de7420f053216803021df321287646ffea649"
+      }
+    ],
+    "audit": [
+      {
+        "id": "aime2026:28",
+        "input_hash": "d42f3182a9b22ee0e42b7b08efd43a4066632ba8951320ab9304f3f92b7fd09f"
+      },
+      {
+        "id": "aime2026:8",
+        "input_hash": "429dc143fb9d99b08fa5068a37cbb600dbfecb60534804cacff84ad05df47998"
+      },
+      {
+        "id": "aime2026:13",
+        "input_hash": "de1df072f8d534dcf48b33cb9bd13dfba153c5c57438f50595c57d9248d3c58b"
+      },
+      {
+        "id": "aime2026:29",
+        "input_hash": "47d96ff03a4441e6176f6c79322914319fa8e04c54427eccdfe99cdcf45f9646"
+      },
+      {
+        "id": "aime2025:24",
+        "input_hash": "786bf408c8c7db470a07877b5a0a11770b961cc312a7d71ff5960845646aab49"
+      },
+      {
+        "id": "aime2026:1",
+        "input_hash": "ddf476306fd4b90d958a5baea1bccecdff207357ce1ff0b7b91d434ed84da618"
+      },
+      {
+        "id": "aime2025:16",
+        "input_hash": "13a136765c868b7d998f90ed50ae6ab0954d3581e38ef4087354270e9af33249"
+      },
+      {
+        "id": "aime2025:0",
+        "input_hash": "fb007fb19911426baa23d9a0145320ab777a948f3306676e3c805e12c8d097f2"
+      },
+      {
+        "id": "aime2025:8",
+        "input_hash": "fb95a14cddd10c1f82afd308643c6efd38f130ce2a0fe6b4a131efe86ebb4007"
+      },
+      {
+        "id": "aime2026:6",
+        "input_hash": "19d2dd90a444047e31d21d8503b01ce0af44d9f06e0f3073208a8df0e8b4ea3a"
+      },
+      {
+        "id": "aime2025:21",
+        "input_hash": "bab4d0e4534870fba39158d1a09aeee21d0a8131f9cf239fc84db3dcfe17686b"
+      },
+      {
+        "id": "aime2025:12",
+        "input_hash": "72908e371f022bf83ce06bdccda5bb2b662d112728e7786270e2b10ae7e2e1d2"
+      }
+    ]
+  }
+}
