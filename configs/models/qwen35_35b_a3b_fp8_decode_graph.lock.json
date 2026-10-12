@@ -1,0 +1,198 @@
+{
+  "repo_id": "Qwen/Qwen3.5-35B-A3B-FP8",
+  "revision": "9d1823d2dee688a6b25e77009dc727688c44936e",
+  "source": "https://huggingface.co/Qwen/Qwen3.5-35B-A3B-FP8/tree/9d1823d2dee688a6b25e77009dc727688c44936e",
+  "local_path": "models/Qwen3.5-35B-A3B-FP8",
+  "served_model_name": "Qwen3.5-35B-A3B-FP8",
+  "dtype": "bfloat16",
+  "format": "publisher_fp8_block128_weights_dynamic_fp8_activation_quantization_bfloat16_model_dtype",
+  "quantization": "fp8",
+  "precision_extension_not_paper_bf16": true,
+  "gpu_ids": [
+    1
+  ],
+  "context_length": 32768,
+  "gpu_memory_budget_bytes": 58000000000,
+  "engine_version": "vllm-0.19.1",
+  "chat_template_thinking_key": "enable_thinking",
+  "reasoning_parser": "qwen3",
+  "backend_port": 18084,
+  "gateway_port": 18083,
+  "download_manifest": "artifacts/models/qwen35_35b_a3b_fp8_decode_graph.lock_download.json",
+  "files": [
+    {
+      "path": "LICENSE",
+      "bytes": 11343,
+      "git_blob_sha1": "1d5180a42f1c3383ba7c7bd0a50f0837ef0168df"
+    },
+    {
+      "path": "README.md",
+      "bytes": 93391,
+      "git_blob_sha1": "82c9ff5ed54b60a582c0ce1e26e53826b1f9bf5a"
+    },
+    {
+      "path": "chat_template.jinja",
+      "bytes": 7756,
+      "git_blob_sha1": "a585dec894e63da457d9440ec6aa7caa16d20860"
+    },
+    {
+      "path": "config.json",
+      "bytes": 20530,
+      "git_blob_sha1": "9f52a82c0aa19f955a6906364fa6aa4d1afcdb79"
+    },
+    {
+      "path": "configuration.json",
+      "bytes": 51,
+      "git_blob_sha1": "3a6d425685de8896b2bc8b59b671e41aea1d7bf3"
+    },
+    {
+      "path": "generation_config.json",
+      "bytes": 244,
+      "git_blob_sha1": "5ff346d6f85d566dd3e77105e91ce8dcfef766f0"
+    },
+    {
+      "path": "merges.txt",
+      "bytes": 3353259,
+      "git_blob_sha1": "a494e019ca1502219fd0128658b979e5f05ae8e8"
+    },
+    {
+      "path": "model.safetensors-00001-of-00014.safetensors",
+      "bytes": 2685395560,
+      "sha256": "8eec0929a43c759abc4e230ca6c55b1a314f26b8870cb63941b674b95ce6d49e"
+    },
+    {
+      "path": "model.safetensors-00002-of-00014.safetensors",
+      "bytes": 2685393512,
+      "sha256": "4cb364215f617628defac9a1345c9122ab65b36d555349285f73b7595eb068a6"
+    },
+    {
+      "path": "model.safetensors-00003-of-00014.safetensors",
+      "bytes": 2685393512,
+      "sha256": "f94b20e10e856926b902a51c9aa575ff8beb483cef6130996e098a40e3a2a92a"
+    },
+    {
+      "path": "model.safetensors-00004-of-00014.safetensors",
+      "bytes": 2685394536,
+      "sha256": "c3a0d1593280aeb44ba100a1dbef643071284519b58654b14591984ae558c5d3"
+    },
+    {
+      "path": "model.safetensors-00005-of-00014.safetensors",
+      "bytes": 2685395560,
+      "sha256": "a754c48ee879302bbb16debedea9032010bb616aa3fe9f1fd0340f81230b5e12"
+    },
+    {
+      "path": "model.safetensors-00006-of-00014.safetensors",
+      "bytes": 2685394536,
+      "sha256": "b5435e836f62b7d915e84f0f327d07ed773a0939d4acd3e16b9b082c35318ce9"
+    },
+    {
+      "path": "model.safetensors-00007-of-00014.safetensors",
+      "bytes": 2685393512,
+      "sha256": "684840ee3af77f22ddaa5df7330384c472b7e50efdd4ba1699558152a182045c"
+    },
+    {
+      "path": "model.safetensors-00008-of-00014.safetensors",
+      "bytes": 2685393512,
+      "sha256": "70ac96a66c7bc85d97649e460bdfaebc5947c191bb0742d596c35d53d833060a"
+    },
+    {
+      "path": "model.safetensors-00009-of-00014.safetensors",
+      "bytes": 3645492144,
+      "sha256": "775cec9a6755ecddcd3d41954f14e40051a5d8306ce6d5f6ccd96af58a8d93cb"
+    },
+    {
+      "path": "model.safetensors-00010-of-00014.safetensors",
+      "bytes": 2685398632,
+      "sha256": "5a86d13781bb91dbfce6602095e424f9b53fe76d3bb0d1ea1800f584fc1f41ab"
+    },
+    {
+      "path": "model.safetensors-00011-of-00014.safetensors",
+      "bytes": 2685400680,
+      "sha256": "6f0c1b222c972fb8ce4936f861a71e6f2987db80b523d290954473d7643bf417"
+    },
+    {
+      "path": "model.safetensors-00012-of-00014.safetensors",
+      "bytes": 2685399144,
+      "sha256": "040c27529a66e43f3a2cfef338ac121f5897ea476984ee3ba35540a49388809b"
+    },
+    {
+      "path": "model.safetensors-00013-of-00014.safetensors",
+      "bytes": 3011229472,
+      "sha256": "ee1088b806b0ce6ad374eec852503efa68d70f01480bd75815f8ca7b91327df0"
+    },
+    {
+      "path": "model.safetensors-00014-of-00014.safetensors",
+      "bytes": 1267650368,
+      "sha256": "38842b8f3d0a4ea29c064317591c4b6529efbcc0a1f7665c41b58e6852638dc9"
+    },
+    {
+      "path": "model.safetensors.index.json",
+      "bytes": 8088168,
+      "git_blob_sha1": "99d9582580e39ac09f358abf2d146aa8fd1a6fc2"
+    },
+    {
+      "path": "preprocessor_config.json",
+      "bytes": 390,
+      "git_blob_sha1": "2ea84a437d448ff71b08df68fdd949d5cc4ebb64"
+    },
+    {
+      "path": "tokenizer.json",
+      "bytes": 12807982,
+      "sha256": "5f9e4d4901a92b997e463c1f46055088b6cca5ca61a6522d1b9f64c4bb81cb42"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "bytes": 16710,
+      "git_blob_sha1": "eda48d3e75a8e59a8479ee4ec8b37f76e711d9c1"
+    },
+    {
+      "path": "video_preprocessor_config.json",
+      "bytes": 385,
+      "git_blob_sha1": "3ba673a5ad7d4d13f54155ecd38b2a94a6dac8fe"
+    },
+    {
+      "path": "vocab.json",
+      "bytes": 6722759,
+      "git_blob_sha1": "0aa0ce0658d60ac4a5d609f4eadb0e8e43514176"
+    }
+  ],
+  "activation_quantization": {
+    "scheme": "dynamic",
+    "format": "fp8",
+    "weight_block_size": [
+      128,
+      128
+    ],
+    "model_dtype": "bfloat16",
+    "all_activations_bfloat16": false
+  },
+  "serving_runtime": {
+    "execution_mode": "decode_graph",
+    "compilation_config": {
+      "mode": 0,
+      "cudagraph_mode": "FULL_DECODE_ONLY",
+      "cudagraph_capture_sizes": [
+        1
+      ],
+      "max_cudagraph_capture_size": 1
+    },
+    "environment": {
+      "VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS": "1"
+    },
+    "max_num_seqs": 1,
+    "max_num_batched_tokens": 2048,
+    "previous_lock_sha256": "caae797af23ae653c6124b6b720385bd23d31e47f1df6e1a90af69b6d3408eb0",
+    "source_sha256": {
+      "scripts/deploy_qwen35_fp8.py": "b3eb6d0e91f27e7fd96612f326e5f804c16599489236cf0c04f4eaa38350f236",
+      "scripts/serve_budget_gateway.py": "01b4cfd573f89b4f668ffa7df9c4cbe9f3c2fa1a2629b8e920c9fe93780c17b5",
+      "scripts/download_pinned_model.py": "957aaee6cb0812afb6821e86977ebf2b9632a6ac1fa4aad092ad38a189fcbd64",
+      ".venv-kimi/lib/python3.11/site-packages/vllm/config/compilation.py": "5f0b2e7a4716693eb587dab08413a81f5ff288436cb0b8bc187a8d6bb4856844",
+      ".venv-kimi/lib/python3.11/site-packages/vllm/config/vllm.py": "1c1e1ad1fdcb5873bce60464c8dad303ac62e7978b322ccedf1a6d85288d3666",
+      ".venv-kimi/lib/python3.11/site-packages/vllm/v1/attention/backends/gdn_attn.py": "bf72f7ff5772bb04ce0172f52e8f87e33cffbc1f894d75cd4d6ded84b03edefe",
+      ".venv-kimi/lib/python3.11/site-packages/vllm/v1/worker/gpu_worker.py": "ffbd4567a25e0a82ca5c714b75e86c7353cedb6fc5c2814b22f3c91afb1c88b1",
+      ".venv-kimi/lib/python3.11/site-packages/vllm/envs.py": "0878b5ca5379317b3f9f0fe65d9414c62f0a3a3400f79baeb07419507b933e5d"
+    },
+    "source_scope": "serving_scripts_and_selected_vllm_graph_config_sources; not_all_installed_binary_libraries",
+    "created_at_unix": 1790549720.0258768
+  }
+}
