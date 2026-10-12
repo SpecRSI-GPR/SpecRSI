@@ -31,6 +31,15 @@ cover several candidates. Prerequisite closure D(A)=A ensures no required
 operational job is omitted. Feasibility describes what can be attempted; it
 does not assert that any acquired outcome will pass or even return complete.
 
+Appendix G.1.3 supplies a further condition on X_Gamma: every legal nonempty
+plan consumes at least one registered primitive attempt. Thus a returned plan
+also satisfies n(A)>=1. This is a termination condition, not an extra term
+printed in Eq. (14): individual n_bar_j may still be zero, for example for an
+operational prerequisite paired with a positive-attempt contracted check.
+Both solver backends and the independent Eq. (15) check enforce the condition;
+otherwise a zero-attempt diagnostic could be offered indefinitely without
+decreasing the remaining primitive-attempt allowance N.
+
 These jobs request outcomes. A feasible cover is never evidence that they ran,
 passed, or even returned complete fields. Unlike the legacy additive proposer,
 keys can span several immutable candidates.
@@ -149,10 +158,12 @@ class CompletionProblem:
     def feasible(self, selected: Iterable[str], target: Iterable[tuple[str, str]] = ()) -> bool:
         # Eq. (15) is checked again outside the optimizer: closure, conflicts,
         # coverage, expense and attempts must all hold even for a timeout seed.
+        # G.1.3 requires a positive total attempt charge for nonempty work; a
+        # zero-attempt prerequisite is legal when its whole plan satisfies this.
         selected = tuple(selected)
         ids = set(selected)
         return (bool(ids) and len(ids) == len(selected) and ids.issubset(self.by_id)
-                and self.cost(ids) <= self.budget and self.attempt_cost(ids) <= self.attempts
+                and self.cost(ids) <= self.budget and 1 <= self.attempt_cost(ids) <= self.attempts
                 and all(a not in ids or b in ids for a, b in self.dependencies)
                 and all(not {a, b}.issubset(ids) for a, b in self.conflicts)
                 and set(target).issubset(self.coverage(ids)))
@@ -228,6 +239,10 @@ def solve_completion(problem: CompletionProblem, target: Iterable[tuple[str, str
     # requirements must be represented as explicit prerequisite jobs.
     add(dict(enumerate(objective)), problem.budget)
     add({i: j.attempts for i, j in enumerate(jobs)}, problem.attempts)
+    # G.1.3 restricts legal nonempty work to n(A)>=1. Put the condition in
+    # the optimizer as well as feasible(): merely rejecting an all-zero cheap
+    # incumbent afterward could hide a different, valid positive-attempt cover.
+    add({i: -j.attempts for i, j in enumerate(jobs)}, -1.)
     for key in sorted(target):
         # Convert coverage >= 1 to -coverage <= -1 for LinearConstraint.
         add({i: -1. for i, j in enumerate(jobs) if key in j.keys}, -1.)
