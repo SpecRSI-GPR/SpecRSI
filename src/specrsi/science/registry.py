@@ -116,7 +116,8 @@ def evaluate(domain: str, candidate: dict, *, scenario_set: str="selection", cas
         result = {"valid":False,"complete":True,"status":"invalid_candidate","violations":[str(exc)],
                   "native_score":None,"specrsi_score":0.0}
     children=resource.getrusage(resource.RUSAGE_CHILDREN)
-    return {"domain":domain,"scenario_set":scenario_set,"case_id":case_id,"replication_scope":c["replication_scope"],"author_exact":False,
+    return {"domain":domain,"scenario_set":scenario_set,"case_id":case_id,
+            "replication_scope":c.get("replication_scope", "registered_native_scientific_scenarios"),"author_exact":False,
             "profile":"full","candidate":candidate,"candidate_sha256":hashlib.sha256(canonical(candidate).encode()).hexdigest(),
             "evaluator_identity":manifest["evaluator_identity"],**result,
             "wall_seconds":time.monotonic()-started,"cpu_seconds":time.process_time()-cpu+children.ru_utime+children.ru_stime-child_cpu}

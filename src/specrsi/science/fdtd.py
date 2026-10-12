@@ -2,7 +2,8 @@
 
 Normalized units c=epsilon0=mu0=1. Ez is cell centered, Hx/Hy staggered
 in space and half a timestep. Flux interpolates both time and space.
-Candidate geometry and runtime grid settings define the material discretization.
+Scenario contracts fix the grid, source, absorbing-layer, and monitor settings;
+candidate edits change only the declared dielectric-design parameters.
 """
 from __future__ import annotations
 
