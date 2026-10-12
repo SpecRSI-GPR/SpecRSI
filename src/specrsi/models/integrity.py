@@ -4,11 +4,17 @@ import json
 from pathlib import Path
 
 
-def verify_model(lock_path, manifest_path):
+def verify_model(lock_path="configs/models/qwen35_35b_a3b_bf16.lock.json", manifest_path=None):
     lock = json.loads(Path(lock_path).read_text())
+    manifest_path = manifest_path or lock.get("download_manifest", "reports/model_download.json")
     manifest = json.loads(Path(manifest_path).read_text())
     if lock["revision"] != manifest["revision"] or lock["repo_id"] != manifest["repo_id"]:
         raise ValueError("Model manifest and configured revision differ")
+    if lock.get("download_manifest") and (
+        manifest.get("status") != "publisher_verified_complete"
+        or manifest.get("lock_sha256") != hashlib.sha256(Path(lock_path).read_bytes()).hexdigest()
+    ):
+        raise ValueError("A publisher-verified manifest for this exact model lock is required")
     root = Path(lock["local_path"])
     listed = {entry["path"] for entry in manifest["files"]}
     index = json.loads((root / "model.safetensors.index.json").read_text())
