@@ -1,0 +1,132 @@
+# SpecRSI (33), SHA256 c69c4dd5c470029474ba68c6560284e81145cc26889ad612181e268a96eb4236.
+# Reference backbone: official unquantized Qwen3.5-35B-A3B; immutable publisher revision below.
+# Eq. (18): fresh executed demonstrations initialize rank-16 Drafter and separate 256-wide heads.
+# Eq. (4): every complete collection freezes the actor, scorer, menu, root and contract.
+# Eqs. (11)-(13),(20)-(23): realized suffix-return critic, paired loss, whole-search LOO actor.
+stage: two_stage
+data_provenance: fresh_qwen35_reference_backbone_collection
+collector: specrsi.learning.bridge:collect_prompt_specrsi
+output: artifacts/training/qwen35/prospective/game24
+epochs: 3
+cpu_threads: 4
+model:
+  backend: hf
+  model_path: models/Qwen3.5-35B-A3B
+  device: cuda:1
+  dtype: bfloat16
+  lora_rank: 16
+  lora_alpha: 32
+  lora_dropout: 0
+  option_dim: 12
+  head_hidden_dim: 256
+  max_length: 2048
+  gradient_checkpointing: true
+  revision: 59d61f3ce65a6d9863b86d2e96597125219dc754
+  language_model_only: true
+  require_unquantized_backbone: true
+  lora_target_profile: qwen35_hybrid_attention
+  feature_dim: 8
+  architecture_version: 3
+  semantic_budget_mode: redistribute
+  semantic_global_tokens: 512
+  semantic_node_min_tokens: 32
+  semantic_node_max_tokens: 1024
+  semantic_total_tokens: 8192
+  graph_schema: actual_jobs_v2
+  role_observation_version: observed_results_v2
+  frozen_global_cache: true
+  experts_implementation: eager
+  disable_mmap: true
+training:
+  learning_rate: 2.0e-05
+  weight_decay: 0.0001
+  cost_coefficient: 0.0
+  time_coefficient: 0.0
+  value_weight: 1
+  surface_weight: 0
+  pair_weight: 1
+  estimator: gvo
+  clip_epsilon: 0.2
+  kl_weight: 0.0
+  batch_size: 1
+  seed: 20261010
+  gvo_update_schedule: frozen_collection_v1
+  optimizer_rule: adamw_legacy_v1
+  kl_reference: behavior_snapshot
+collection:
+  algorithm: vats_pdf
+  group_size: 4
+  forced_repetitions: 2
+  forced_state_indices:
+  - 0
+  forced_arm_rule: non_accept_first
+  forced_arm_count: 2
+  budget_ms: 3000000
+  execution_cap_ms: 120000
+  draft_cap_ms: 180000
+  head_cap_ms: 60000
+  max_actions: 6
+  max_candidates: 3
+  max_children: 2
+  draft_max_tokens: 128
+  draft_top_k: 32
+  proposal_mode: numeric_catalog
+  catalog_size: 8
+  all_u: true
+  temperature: 1.0
+  exploration: 0.1
+  vats:
+    max_attempts: 24
+    max_draft_depth: 1
+    max_draft_parents: 1
+    workers: 2
+    policy_call_cost: 60000
+    max_queries: 32
+    max_extensions: 4
+    max_menu_options: 16
+    max_completion_targets: 4
+    max_pair_targets: 4
+    max_singletons: 4
+  demonstration_quality:
+    edit_rule: verified
+    plan_rule: executed
+    min_gain: 0.0
+    require_changed_artifacts: true
+  dataset: game24
+  data_root: data
+  contexts: 2
+  tasks_per_context: 2
+  budget_tokens: 100000
+  draft_cap: 4096
+  execution_cap: 65536
+  initial_prompt: Find an arithmetic expression equal to 24 using each given number
+    exactly once. You may use +, -, *, / and parentheses. Output only the expression,
+    without explanation or '= 24'.
+  executor:
+    lock: configs/models/qwen35_35b_a3b_bf16.lock.json
+    base_url: http://127.0.0.1:18085
+    max_tokens: 512
+    temperature: 0.7
+    enable_thinking: false
+require_reference_backbone: true
+warmup:
+  epochs: 1
+  collection:
+    group_size: 2
+    demonstration_policy: observed_plateau
+    demonstration_stopping:
+      patience: 1
+      min_completed_edits: 1
+      min_gain: 0.0
+gvo:
+  epochs: 1
+  training:
+    optimizer_rule: pdf_gradient_v1
+    learning_rate: 0.001
+    actor_learning_rate: 0.001
+    value_learning_rate: 0.0005
+    weight_decay: 0.0
+    actor_max_grad_norm: 0.0
+    value_max_grad_norm: 0.0
+    kl_reference: frozen_sft_actor
+    kl_weight: 0.02
