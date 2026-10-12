@@ -1,0 +1,41 @@
+# Qwen3.5 reference backbone; fresh role checkpoints are required.
+schema_version: 2
+dataset: hotpotqa
+metric_variant: distractor_answer_f1
+data_root: data
+selection_limit: 10
+audit_limit: 100
+seed: 20260926
+model:
+  lock: configs/models/qwen35_35b_a3b_bf16.lock.json
+  base_url: http://127.0.0.1:18085
+  max_tokens: 512
+  temperature: 0.7
+  enable_thinking: false
+search:
+  algorithm: vats_pdf
+  controller: learned
+  role_checkpoint: artifacts/training/qwen35/paper_pdf_hotpotqa/checkpoint
+  role_device: cuda:1
+  budget_tokens: 3000000
+  max_actions: 16
+  max_candidates: 10
+  eta: 0
+  cost_lambda: 1.0e-06
+  reuse: all_U
+  draft_cap_tokens: 4096
+  draft_max_tokens: 256
+  execution_cap_tokens: 16384
+  initial_prompt: Answer the question using the supplied context. Reply with only
+    the concise answer.
+  vats:
+    max_attempts: 120
+    max_draft_depth: 2
+    max_draft_parents: 2
+    max_queries: 96
+    max_extensions: 4
+    max_menu_options: 32
+    max_completion_targets: 4
+    max_pair_targets: 4
+    max_singletons: 4
+output: results/qwen35/experiments/paper_pdf_hotpotqa

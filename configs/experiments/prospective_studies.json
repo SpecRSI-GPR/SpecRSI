@@ -1,0 +1,389 @@
+{
+  "schema_version": 1,
+  "paper_matrix": "configs/experiments/paper_matrix.yaml",
+  "prospective_seed_base": 20260916,
+  "pairing_rule": "Within each study/task, all optimizer methods share the newly registered seed and replicate index; mechanism fixed-pool and online retain distinct 50/30 paired strata.",
+  "profile": {
+    "development": 32,
+    "selection": 64,
+    "audit": 128,
+    "search_token_budget": 3000000,
+    "max_candidates": 16,
+    "max_actions": 120,
+    "gepa_metric_calls": 1000,
+    "mipro_candidates": 6,
+    "mipro_trials": 20,
+    "science_budget_ms": 10000000,
+    "science_execution_cap_ms": 180000,
+    "science_checker_cap_ms": 1000,
+    "science_candidates": 16,
+    "science_max_actions": 120,
+    "coding_search_token_budget": 100000000
+  },
+  "method_families": {
+    "science": [
+      "specrsi",
+      "specrsi-all-u",
+      "specrsi-heuristic",
+      "specrsi-all-u-heuristic",
+      "janus",
+      "native"
+    ],
+    "coding": [
+      "specrsi",
+      "specrsi-heuristic",
+      "repository-agent",
+      "hgm",
+      "aflow",
+      "janus",
+      "emas",
+      "gepa",
+      "gepa-merge",
+      "mipro-no-demos"
+    ],
+    "polyglot": [
+      "specrsi",
+      "specrsi-heuristic",
+      "gepa",
+      "gepa-merge",
+      "mipro-no-demos",
+      "hgm",
+      "aflow",
+      "janus",
+      "emas"
+    ],
+    "audit": [
+      "specrsi-audit",
+      "repository-agent",
+      "hgm",
+      "aflow",
+      "janus",
+      "emas",
+      "gepa",
+      "gepa-merge",
+      "mipro-no-demos"
+    ],
+    "prompts": [
+      "specrsi",
+      "specrsi-heuristic",
+      "gepa",
+      "gepa-merge",
+      "mipro-no-demos"
+    ],
+    "workflows": [
+      "specrsi",
+      "specrsi-heuristic",
+      "hgm",
+      "aflow",
+      "emas"
+    ],
+    "mechanisms": [
+      "fixed-pool",
+      "online"
+    ]
+  },
+  "prompt_templates": {
+    "hotpotqa": "configs/experiments/prospective/hotpotqa.yaml",
+    "ifbench": "configs/experiments/prospective/ifbench.yaml",
+    "hover": "configs/experiments/prospective/hover_retrieval.yaml",
+    "pupa": "configs/experiments/prospective/pupa.yaml",
+    "aime25": "configs/experiments/prospective/aime25.yaml",
+    "livebench_math": "configs/experiments/prospective/livebench_math.yaml",
+    "polyglot": "configs/experiments/prospective/polyglot.yaml"
+  },
+  "workflow_templates": {
+    "qwen": {
+      "math": "configs/experiments/prospective/math_workflow.yaml",
+      "mbpp": "configs/experiments/prospective/mbpp_workflow.yaml",
+      "planbench": "configs/experiments/prospective/planbench_workflow.yaml",
+      "game24": "configs/experiments/prospective/game24_workflow.yaml"
+    },
+    "kimi": {
+      "math": "configs/experiments/prospective/kimi_math.yaml",
+      "mbpp": "configs/experiments/prospective/kimi_mbpp_workflow.yaml",
+      "planbench": "configs/experiments/prospective/kimi_planbench.yaml",
+      "game24": "configs/experiments/prospective/kimi_game24_workflow.yaml"
+    }
+  },
+  "swe_templates": {
+    "specrsi": "configs/coding/specrsi_selection60.yaml",
+    "selection60": "configs/coding/qwen_selection60.yaml",
+    "verified500": "configs/coding/qwen_verified500.yaml",
+    "lite_audit_filtered": "configs/coding/qwen_lite_audit_filtered.yaml"
+  },
+  "supplemental_protocols": [
+    {
+      "id": "training-ablations",
+      "status": "runnable_prospective",
+      "source": "scripts/run_training_matrix.py",
+      "command": [
+        ".venv/bin/python",
+        "scripts/run_training_matrix.py",
+        "--config",
+        "configs/training/prospective/game24.yaml",
+        "--methods",
+        "sft",
+        "gvo",
+        "rloo",
+        "grpo",
+        "no_p",
+        "item_reward",
+        "outer_blind",
+        "inner_blind",
+        "evidence_blind",
+        "additive",
+        "blind_additive",
+        "--seeds",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "--plan"
+      ],
+      "execute_switch": "Replace --plan with --execute",
+      "note": "Eight separately trained replicas; new training data/seeds, no author-checkpoint equivalence."
+    },
+    {
+      "id": "recursion-reset-retain",
+      "status": "runnable_prospective",
+      "command": [
+        ".venv/bin/python",
+        "scripts/run_transfer.py",
+        "--config",
+        "configs/transfer/recursion_reset_retain.yaml",
+        "--plan"
+      ],
+      "execute_switch": "Remove --plan",
+      "note": "Paired reset/retain across three rounds with fresh result ledgers; fixed improver."
+    },
+    {
+      "id": "cross-family",
+      "status": "runnable_prospective",
+      "command": [
+        ".venv/bin/python",
+        "scripts/run_transfer.py",
+        "--config",
+        "configs/transfer/cross_family.yaml",
+        "--plan"
+      ],
+      "execute_switch": "Remove --plan",
+      "note": "Arithmetic to QA to planning; carry only frozen task-agent artifacts."
+    },
+    {
+      "id": "learned-recursion",
+      "status": "runnable_prospective",
+      "command": [
+        ".venv/bin/python",
+        "scripts/run_transfer.py",
+        "--config",
+        "configs/transfer/learned_recursion_training.yaml",
+        "--plan"
+      ],
+      "execute_switch": "Remove --plan",
+      "note": "Actual development training between rounds; explicitly registered pilot schedule, not original learned trajectory."
+    },
+    {
+      "id": "nested_training_8x12",
+      "status": "runnable_prospective",
+      "command": [
+        ".venv/bin/python",
+        "scripts/run_ablations.py",
+        "--config",
+        "configs/experiments/prospective_ablations.json",
+        "--plan"
+      ],
+      "execute_switch": "Replace --plan with --execute",
+      "note": "Five source-named training methods, eight independent training replicas each and 12 nested actual searches per replica; new Reactor task cohort. Optional observation controls are separate."
+    },
+    {
+      "id": "task-model-grpo",
+      "status": "runnable_prospective",
+      "command": [
+        ".venv/bin/python",
+        "scripts/run_task_grpo.py",
+        "--config",
+        "configs/training/task_grpo/hotpotqa.yaml",
+        "--plan"
+      ],
+      "execute_switch": "Replace --plan with --execute",
+      "other_registered_tasks": [
+        "ifbench",
+        "hover",
+        "pupa",
+        "aime25",
+        "livebench_math"
+      ],
+      "note": "Updates the task-generation LoRA; SpecRSI role-GRPO and task-model GRPO are different permissions and endpoints. Selection chooses a checkpoint before held-out audit."
+    },
+    {
+      "id": "paired-frozen-state-interventions",
+      "status": "conditional_on_real_observed_state_cohorts",
+      "command": [
+        ".venv/bin/python",
+        "scripts/run_ablations.py",
+        "--prepare-pairs"
+      ],
+      "execute_command": [
+        ".venv/bin/python",
+        "scripts/run_ablations.py",
+        "--execute-pairs"
+      ],
+      "requires": {
+        "outer_pairs": 120,
+        "batch_pairs": 120,
+        "source": "Completed nested searches with matching frozen legal support and receiver checkpoint hashes"
+      },
+      "note": "No fabricated states or original optimal-action labels. Insufficient compatible real states are explicitly counted, not marked complete."
+    }
+  ],
+  "optional_method_families": {
+    "science": [
+      "specrsi-quality-rule",
+      "specrsi-completion-cost-rule",
+      "specrsi-outer-blind",
+      "specrsi-inner-blind",
+      "specrsi-evidence-blind",
+      "specrsi-additive",
+      "specrsi-sham-relabel",
+      "specrsi-blind-additive",
+      "specrsi-no-exploration",
+      "specrsi-trained-outer-blind",
+      "specrsi-trained-inner-blind",
+      "specrsi-trained-evidence-blind",
+      "specrsi-trained-additive",
+      "specrsi-trained-blind-additive",
+      "specrsi-coarse-counts"
+    ],
+    "coding": [
+      "specrsi-quality-rule",
+      "specrsi-completion-cost-rule",
+      "specrsi-outer-blind",
+      "specrsi-inner-blind",
+      "specrsi-evidence-blind",
+      "specrsi-additive",
+      "specrsi-sham-relabel",
+      "specrsi-blind-additive",
+      "specrsi-no-exploration",
+      "specrsi-trained-outer-blind",
+      "specrsi-trained-inner-blind",
+      "specrsi-trained-evidence-blind",
+      "specrsi-trained-additive",
+      "specrsi-trained-blind-additive",
+      "specrsi-coarse-counts"
+    ],
+    "polyglot": [
+      "specrsi-quality-rule",
+      "specrsi-completion-cost-rule",
+      "specrsi-outer-blind",
+      "specrsi-inner-blind",
+      "specrsi-evidence-blind",
+      "specrsi-additive",
+      "specrsi-sham-relabel",
+      "specrsi-blind-additive",
+      "specrsi-no-exploration",
+      "specrsi-trained-outer-blind",
+      "specrsi-trained-inner-blind",
+      "specrsi-trained-evidence-blind",
+      "specrsi-trained-additive",
+      "specrsi-trained-blind-additive",
+      "specrsi-coarse-counts"
+    ],
+    "audit": [
+      "specrsi-quality-rule",
+      "specrsi-completion-cost-rule",
+      "specrsi-outer-blind",
+      "specrsi-inner-blind",
+      "specrsi-evidence-blind",
+      "specrsi-additive",
+      "specrsi-sham-relabel",
+      "specrsi-blind-additive",
+      "specrsi-no-exploration",
+      "specrsi-trained-outer-blind",
+      "specrsi-trained-inner-blind",
+      "specrsi-trained-evidence-blind",
+      "specrsi-trained-additive",
+      "specrsi-trained-blind-additive",
+      "specrsi-coarse-counts"
+    ],
+    "prompts": [
+      "specrsi-quality-rule",
+      "specrsi-completion-cost-rule",
+      "specrsi-outer-blind",
+      "specrsi-inner-blind",
+      "specrsi-evidence-blind",
+      "specrsi-additive",
+      "specrsi-sham-relabel",
+      "specrsi-blind-additive",
+      "specrsi-no-exploration",
+      "specrsi-trained-outer-blind",
+      "specrsi-trained-inner-blind",
+      "specrsi-trained-evidence-blind",
+      "specrsi-trained-additive",
+      "specrsi-trained-blind-additive",
+      "specrsi-coarse-counts",
+      "textgrad",
+      "trace-optoprime",
+      "mipro-demos"
+    ],
+    "workflows": [
+      "specrsi-quality-rule",
+      "specrsi-completion-cost-rule",
+      "specrsi-outer-blind",
+      "specrsi-inner-blind",
+      "specrsi-evidence-blind",
+      "specrsi-additive",
+      "specrsi-sham-relabel",
+      "specrsi-blind-additive",
+      "specrsi-no-exploration",
+      "specrsi-trained-outer-blind",
+      "specrsi-trained-inner-blind",
+      "specrsi-trained-evidence-blind",
+      "specrsi-trained-additive",
+      "specrsi-trained-blind-additive",
+      "specrsi-coarse-counts"
+    ]
+  },
+  "explicit_unavailable_tracks": [
+    {
+      "studies": [
+        "S10",
+        "S11",
+        "S12"
+      ],
+      "methods": [
+        "specrsi-exact-reuse"
+      ],
+      "reason": "Exact generation reuse requires a semantic equality kernel; ordinary local generation uses the U execution contract."
+    },
+    {
+      "studies": [
+        "S10"
+      ],
+      "methods": [
+        "gpt-4.1-mini",
+        "specrsi-gpt-4.1-mini"
+      ],
+      "reason": "This model requires its own remote API integration."
+    },
+    {
+      "studies": [
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12"
+      ],
+      "methods": [
+        "gepa+r",
+        "gepa-reuse"
+      ],
+      "reason": "GEPA generation reuse requires a semantic equality kernel and a matched-access adapter."
+    }
+  ]
+}

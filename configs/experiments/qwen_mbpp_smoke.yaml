@@ -1,0 +1,23 @@
+schema_version: 1
+dataset: mbpp
+data_root: data
+selection_limit: 1
+audit_limit: 1
+seed: 20260916
+model:
+  lock: configs/models/qwen35_35b_a3b_bf16.lock.json
+  base_url: http://127.0.0.1:18085
+  max_tokens: 160
+  temperature: 0.0
+  enable_thinking: false
+search:
+  controller: heuristic_bootstrap
+  budget_tokens: 30000
+  max_actions: 3
+  max_candidates: 2
+  eta: 0.005
+  cost_lambda: 1.0e-06
+  reuse: all_U
+  initial_prompt: Write Python code implementing the requested function. Return only
+    the code without markdown.
+output: results/qwen35/experiments/qwen_mbpp_smoke

@@ -1,0 +1,56 @@
+# Qwen3.5 reference backbone; fresh role checkpoints are required.
+profile_id: hotpotqa_local_engineering_smoke
+engineering_smoke_only: true
+dataset: hotpotqa
+metric_variant: distractor_answer_f1
+data_root: data
+selection_offset: 0
+selection_limit: 2
+audit_offset: 1
+audit_limit: 8
+initial_prompt: Answer the question using the supplied context. Reply with only the
+  concise answer.
+resource_profile: local_H20_same_task_server_cuda1_roles_sequential_arms
+model:
+  lock: configs/models/qwen35_35b_a3b_bf16.lock.json
+  base_url: http://127.0.0.1:18085
+  max_tokens: 128
+  temperature: 0.7
+  top_p: 0.8
+  enable_thinking: false
+role_device: cuda:1
+training_replicas:
+- seed: 20260926
+  checkpoint: artifacts/training/qwen35/paper_pdf_hotpotqa_local/checkpoint
+search_seeds:
+- 0
+- 1
+methods:
+- specrsi
+- initial
+- best_of_n
+- random_search
+order_seed: 20260926
+budget:
+  search_tokens: 50000
+  search_calls: 32
+  execution_cap: 16384
+  draft_cap: 4096
+search:
+  max_actions: 2
+  max_candidates: 2
+  max_children: 1
+  draft_max_tokens: 64
+  draft_top_k: 32
+  draft_temperature: 1
+  draft_exploration: 0
+  vats:
+    max_attempts: 4
+    max_draft_depth: 1
+    max_draft_parents: 1
+    max_queries: 2
+    max_extensions: 0
+    max_menu_options: 4
+    max_completion_targets: 1
+    max_pair_targets: 0
+    max_singletons: 1
