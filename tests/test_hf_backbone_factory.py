@@ -32,6 +32,27 @@ def test_text_hidden_dimension_has_priority_over_vision_or_top_level():
             hf._text_hidden_size(config)
 
 
+def test_native_text_only_factory_is_an_explicit_loading_contract():
+    causal = object()
+    classes = SimpleNamespace(Qwen3_5MoeForCausalLM=causal)
+    assert hf._backbone_factory('qwen3_5_moe', classes, language_model_only=True) is causal
+    with pytest.raises(RuntimeError, match='Qwen3_5MoeForCausalLM'):
+        hf._backbone_factory('qwen3_5_moe', SimpleNamespace(), language_model_only=True)
+
+
+@pytest.mark.parametrize('nested', [False, True])
+def test_bf16_contract_rejects_quantized_source_before_loading_weights(tmp_path, monkeypatch, nested):
+    quantization = {'quantization_config': {'quant_method': 'fp8'}}
+    raw = {'model_type': 'qwen3_5_moe', **({'text_config': quantization} if nested else quantization)}
+    (tmp_path / 'config.json').write_text(json.dumps(raw))
+    calls = []
+    monkeypatch.setattr(hf, '_backbone_factory', lambda *args, **kwargs: calls.append(args))
+    config = hf.HFModelConfig(str(tmp_path), require_unquantized_backbone=True)
+    with pytest.raises(ValueError, match='official BF16 snapshot'):
+        hf._load_local_backbone(config, torch.bfloat16)
+    assert calls == []
+
+
 def test_official_local_qwen35_checkpoint_uses_correct_text_width():
     raw={'architectures':['Qwen3_5MoeForConditionalGeneration'], 'text_config':{'hidden_size':2048}, 'vision_config':{'hidden_size':1152}}
     assert raw['architectures'] == ['Qwen3_5MoeForConditionalGeneration']
@@ -39,14 +60,21 @@ def test_official_local_qwen35_checkpoint_uses_correct_text_width():
     assert raw['vision_config']['hidden_size'] == 1152
 
 
-def test_local_loader_preserves_dtype_revision_and_no_remote_code(tmp_path,monkeypatch):
+@pytest.mark.parametrize('disable_mmap', [False, True])
+def test_local_loader_preserves_dtype_revision_and_no_remote_code(tmp_path,monkeypatch,disable_mmap):
     (tmp_path/'config.json').write_text(json.dumps({'model_type':'qwen3_5_moe'}))
     observed=[]
     factory=SimpleNamespace(from_pretrained=lambda *args,**kwargs: observed.append((args,kwargs)) or 'model')
     monkeypatch.setattr(hf,'_backbone_factory',lambda model_type: factory if model_type=='qwen3_5_moe' else None)
-    result=hf._load_local_backbone(hf.HFModelConfig(str(tmp_path),revision='pinned'),torch.float32)
+    result=hf._load_local_backbone(hf.HFModelConfig(str(tmp_path),revision='pinned',disable_mmap=disable_mmap),torch.float32)
     assert result=='model'
-    assert observed==[((str(tmp_path),),{'local_files_only':True,'revision':'pinned','torch_dtype':torch.float32,'trust_remote_code':False})]
+    assert observed==[((str(tmp_path),),{'local_files_only':True,'revision':'pinned','torch_dtype':torch.float32,'trust_remote_code':False,'experts_implementation':'eager','disable_mmap':disable_mmap})]
+
+
+@pytest.mark.parametrize('value', [None, 0, 1, 'true'])
+def test_loading_transport_contract_requires_real_boolean(value):
+    with pytest.raises(ValueError, match='disable_mmap'):
+        hf.HFModelConfig('local', disable_mmap=value)
 
 
 def role_config():
@@ -68,6 +96,10 @@ def test_old_qwen3_head_encoding_and_edit_logits_remain_functional():
     assert roles.encode('', 'verify', input_ids=(1,2,3)).shape==(16,)
     assert roles.encode('', 'value', input_ids=(1,2,3)).requires_grad is False
     assert torch.isfinite(roles.edit_nll(EditExample('root',(1,2,3,4),(-100,-100,3,4),True)))
+    for adapter in ('draft', 'verify'):
+        roles._activate(adapter)
+        assert all(p.requires_grad for name,p in roles.backbone.named_parameters() if 'lora_' in name)
+        assert all(p.requires_grad for module in (roles.surface_head, roles.edit_head) for p in module.parameters())
 
 
 def test_qwen35_shaped_conditional_wrapper_preserves_peft_and_hidden_interfaces():
@@ -93,6 +125,9 @@ def test_qwen35_shaped_conditional_wrapper_preserves_peft_and_hidden_interfaces(
             return self.model.language_model.embed_tokens
         def set_input_embeddings(self, value):
             self.model.language_model.embed_tokens=value
+        def set_experts_implementation(self, value):
+            # This interface-only dense fixture has no expert module.
+            assert value == 'eager'
         def forward(self,input_ids=None,attention_mask=None,inputs_embeds=None,use_cache=False,return_dict=True,**kwargs):
             self.logit_calls+=1
             hidden=self.model(input_ids=input_ids,attention_mask=attention_mask,inputs_embeds=inputs_embeds,

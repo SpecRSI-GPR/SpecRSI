@@ -1,4 +1,5 @@
 import torch
+import pytest
 from specrsi.learning.hf import HFRoleModel,HFModelConfig
 from specrsi.learning.task_grpo import HFTaskClient,sequence_logprobs,update_group
 
@@ -14,11 +15,15 @@ def tiny_model():
         lora_rank=2,lora_alpha=4,gradient_checkpointing=False,max_length=16),base_model=Qwen3ForCausalLM(c),tokenizer=Tokenizer())
 
 
-def test_task_grpo_full_vocabulary_replay_and_actor_only_updates():
+@pytest.mark.parametrize('mapping_output', [False, True])
+def test_task_grpo_full_vocabulary_replay_and_actor_only_updates(mapping_output):
     torch.set_num_threads(2);torch.manual_seed(7);model=tiny_model();client=HFTaskClient(model,'test-task-policy')
+    if mapping_output:
+        model.tokenizer.apply_chat_template=lambda *a,**kw: {'input_ids':[[1,2,3]],'attention_mask':[[1,1,1]]}
     for seed in (1,2):
         reply=client.generate([{'role':'user','content':'test'}],max_tokens=4,temperature=1.,seed=seed,total_token_cap=7)
         seq=client.sequences[-1]
+        assert seq.prompt_ids==(1,2,3)
         assert reply.prompt_tokens+reply.completion_tokens==len(seq.prompt_ids)+len(seq.generated_ids)
         assert torch.allclose(sequence_logprobs(model,seq).detach(),torch.tensor(seq.behavior_logprobs),atol=2e-5)
     before={n:p.detach().clone() for n,p in model.named_parameters()}

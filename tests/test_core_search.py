@@ -144,6 +144,51 @@ def test_stale_or_invalid_candidate_drafts_fail_before_admission():
     assert engine.state.budget.spent == 2
 
 
+@pytest.mark.parametrize("invalid_contract", ["parent", "forecast"])
+def test_paid_sampled_edit_trace_survives_rejection_before_child_admission(invalid_contract):
+    from specrsi.planning.policy import TraceDecision
+    engine = make_engine()
+    traces = []
+
+    class InvalidTracedDrafter:
+        def draft(self, parent, state, cap, rng):
+            trace = TraceDecision("edit", ("bad", "good"), "bad", (.4, .6), (0., 0.),
+                                  state.version, 0, 1., 0., stochastic=True)
+            traces.append(trace)
+            child = replace(parent, name="invalid", parent_id="wrong-parent" if invalid_contract == "parent" else parent.uid)
+            forecasts = {"not-in-scope": .8} if invalid_contract == "forecast" else {}
+            return DraftResult(child, 1, forecasts=forecasts, edit_decision=trace)
+
+    engine.drafter = InvalidTracedDrafter()
+    with pytest.raises(ValueError, match="actual parent|outside selection scope"):
+        engine.run()
+    assert engine.decisions[-1] == traces[0]
+    assert len(engine.state.candidates) == 1
+    assert len(engine.state.ledger.candidates) == 1
+    assert engine.state.budget.spent == 2
+    assert engine.state.children_drafted[engine.state.incumbent.uid] == 1
+
+
+def test_failed_sampled_edit_returns_its_paid_trace_without_creating_evidence():
+    from specrsi.planning.policy import TraceDecision
+    engine = make_engine(SearchConfig(execution_cap=10, draft_cap=1, max_actions=1,
+                                     max_children=1, reserve_completion=False))
+
+    class FailedTracedDrafter:
+        def draft(self, parent, state, cap, rng):
+            trace = TraceDecision("edit", ("invalid", "valid"), "invalid", (.3, .7), (0., 0.),
+                                  state.version, 0, 1., 0., stochastic=True)
+            return DraftResult(None, 1, status="error", error="sampled invalid edit", edit_decision=trace)
+
+    engine.drafter = FailedTracedDrafter()
+    result = engine.run()
+    assert result.total_cost == 2
+    assert [decision.selected_id for decision in result.decisions if decision.kind == "edit"] == ["invalid"]
+    assert result.transitions[0].events[0]["status"] == "error"
+    assert len(engine.state.candidates) == 1 and len(engine.state.ledger.records) == 2
+    assert result.selected == engine.state.incumbent
+
+
 def test_no_legal_selection_cost_preserves_budget_and_incumbent():
     engine = make_engine(total=0)
     result = engine.run()

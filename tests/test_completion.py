@@ -94,3 +94,50 @@ def test_cached_job_index_cannot_mutate_the_frozen_feasibility_contract():
         problem.by_id["check"] = VerificationJob("check", (("candidate", "item"),), 0)
     assert problem.cost(("check",)) == 3
     assert problem.feasible(("check",), (("candidate", "item"),))
+
+
+@pytest.mark.parametrize("backend", ["exhaustive", "scipy"])
+def test_nonempty_completion_requires_a_positive_plan_attempt_allowance(backend):
+    if backend == "scipy":
+        pytest.importorskip("scipy.optimize")
+    key = ("candidate", "item")
+    problem = CompletionProblem((VerificationJob("free", (key,), 0, attempts=0),),
+                                {"execution": 0}, 10, 10)
+    assert not problem.feasible(("free",), (key,))
+    assert solve_completion(problem, (key,), backend=backend) is None
+
+
+@pytest.mark.parametrize("backend", ["exhaustive", "scipy"])
+def test_zero_attempt_prerequisite_does_not_forbid_a_positive_attempt_plan(backend):
+    if backend == "scipy":
+        pytest.importorskip("scipy.optimize")
+    key = ("candidate", "item")
+    problem = CompletionProblem((VerificationJob("prepare", (), 1, attempts=0, kind="prerequisite"),
+                                 VerificationJob("check", (key,), 2, attempts=1)),
+                                {"execution": 0}, 3, 1, dependencies=(("check", "prepare"),))
+    solution = solve_completion(problem, (key,), backend=backend)
+    assert solution is not None and solution.optimal
+    assert solution.job_ids == ("check", "prepare")
+    assert solution.cost_cap == 3
+
+
+@pytest.mark.parametrize("backend", ["exhaustive", "scipy"])
+def test_solver_finds_legal_cover_instead_of_discarding_the_cheapest_zero_attempt_one(backend):
+    if backend == "scipy":
+        pytest.importorskip("scipy.optimize")
+    key = ("candidate", "item")
+    problem = CompletionProblem((VerificationJob("free", (key,), 0, attempts=0),
+                                 VerificationJob("paid", (key,), 3, attempts=1)),
+                                {"execution": 0}, 3, 1)
+    solution = solve_completion(problem, (key,), backend=backend)
+    assert solution is not None and solution.optimal
+    assert "paid" in solution.job_ids and solution.cost_cap == 3
+
+
+def test_timeout_incumbent_is_independently_rejected_when_all_attempts_are_zero(monkeypatch):
+    scipy = pytest.importorskip("scipy.optimize")
+    monkeypatch.setattr(scipy, "milp", lambda *args, **kwargs:
+                        SimpleNamespace(x=np.array([1., 1.]), status=1, message="time limit"))
+    problem = CompletionProblem((VerificationJob("free", (("c", "one"),), 0, attempts=0),),
+                                {"execution": 0}, 10, 10)
+    assert solve_completion(problem, (("c", "one"),)) is None

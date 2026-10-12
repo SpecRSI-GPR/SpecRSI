@@ -284,7 +284,9 @@ def test_offline_ce_remains_full_vocab_and_frozen_context_avoids_lm_head():
     model.encode("", "verify", (1, 2, 3))
     assert not projected
     loss = model.edit_nll(EditExample("root", (1, 2, 3, 4), (-100, -100, 3, 4), True))
-    assert projected == [(1, 4, 16)]
+    # Full vocabulary at the two supervised positions; masked prompts have no
+    # Eq. (18) likelihood term and need no vocabulary projection.
+    assert projected == [(1, 2, 16)]
     assert torch.isfinite(loss)
     loss.backward()
     handle.remove()

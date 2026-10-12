@@ -10,14 +10,14 @@ from specrsi.core import Candidate, EvaluationScope, Outcome, Task
 from specrsi.core.execution import ExecutionResult, PureIntegerExecutor
 from specrsi.core.search import DraftResult
 from specrsi.learning.continuations import ForcedCollectionConfig, FrozenRoleGuard, collect_paid_continuations
-from test_runner_integration import FakeRoles, fixture
+from test_paper_integration import FakeRoles, fixture
 
 torch.set_num_threads(2)
 
 
 def prompt_config(tmp_path, monkeypatch):
     config, seen = fixture(tmp_path, monkeypatch, learned=True)
-    executor = {**config["model"], "base_url": "http://127.0.0.1:8000"}
+    executor = {**config["model"], "base_url": "http://127.0.0.1:18080"}
     collection = {"algorithm": "vats_pdf", "dataset": "hotpotqa", "contexts": 1, "tasks_per_context": 1,
         "group_size": 2, "max_actions": 4, "max_candidates": 2, "budget_tokens": 4000,
         "execution_cap": 16, "draft_cap": 16, "initial_prompt": "initial", "exploration": .1,

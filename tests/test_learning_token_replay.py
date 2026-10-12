@@ -30,6 +30,31 @@ def sampled_edit(model, seed=0):
         temperature=.7, exploration=.2, proposal_snapshot="fixed-collection", token_grammar=grammar)
 
 
+def test_sft_projects_only_supervised_positions_with_exact_full_vocabulary_gradient():
+    from specrsi.learning.records import EditExample
+    roles = tiny_roles()
+    example = EditExample('root', (1, 2, 3, 4, 5, 6), (-100, -100, 3, -100, 5, 6), True)
+    roles._activate('draft')
+    tokens = roles._tokens(input_ids=example.input_ids)
+    full = roles.backbone(**tokens, use_cache=False, return_dict=True).logits[0, :-1].float()
+    expected = torch.nn.functional.cross_entropy(full, torch.tensor(example.labels[1:]), reduction='sum')
+    expected.backward()
+    gradients = {name: p.grad.clone() for name, p in roles.named_parameters() if p.grad is not None}
+    roles.zero_grad(set_to_none=True)
+    positions = []
+    hook = roles.backbone.register_forward_pre_hook(
+        lambda module, args, kwargs: positions.append(kwargs['logits_to_keep'].tolist()), with_kwargs=True)
+    actual = roles.edit_nll(example)
+    hook.remove()
+    actual.backward()
+    assert positions == [[1, 3, 4]]
+    assert torch.allclose(actual, expected, atol=1e-6)
+    assert any(torch.count_nonzero(value) for value in gradients.values())
+    for name, parameter in roles.named_parameters():
+        if name in gradients:
+            assert torch.allclose(parameter.grad, gradients[name], atol=2e-6, rtol=2e-5), name
+
+
 def test_causal_batch_preserves_fixed_support_probabilities_and_token_gradients():
     roles = tiny_roles()
     sample = sampled_edit(roles)

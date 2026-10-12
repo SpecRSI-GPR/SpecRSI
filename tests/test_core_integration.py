@@ -15,15 +15,13 @@ from specrsi.workflows import Workflow, execute_workflow
 
 
 def test_server_cap_uses_real_tokenized_prompt_and_rejects_overfull_context():
-    assert enforced_output_cap(9, 20, 12, context_cap=32) == 3
-    assert enforced_output_cap(9, 20, None, context_cap=32) == 20
+    assert enforced_output_cap(9, 20, 12) == 3
+    assert enforced_output_cap(9, 20, None) == 20
     with pytest.raises(ValueError, match="no output token"):
-        enforced_output_cap(12, 2, 12, context_cap=32)
+        enforced_output_cap(12, 2, 12)
     with pytest.raises(ValueError, match="context"):
-        enforced_output_cap(32, 1, None, context_cap=32)
-    assert ChatRequest(model="fixture-model", messages=[{"role": "user", "content": "x"}],
-                       max_tokens=2, temperature=0, top_p=1, seed=1,
-                       max_seconds=1, total_token_cap=5).total_token_cap == 5
+        enforced_output_cap(32768, 1, None)
+    assert ChatRequest(messages=[{"role": "user", "content": "x"}], total_token_cap=5).total_token_cap == 5
 
 
 def test_persistent_receipt_key_is_atomic_private_and_authenticates_reload(tmp_path):
