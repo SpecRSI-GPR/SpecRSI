@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "datasets": [
+    {
+      "dataset": "aime25",
+      "manifest": "data/reproduction/manifests/aime25.json",
+      "counts": {
+        "development": 13,
+        "selection": 11,
+        "audit": 6
+      },
+      "splits": {
+        "development": "data/reproduction/splits/aime25/development.json",
+        "selection": "data/reproduction/splits/aime25/selection.json",
+        "audit": "data/reproduction/splits/aime25/audit.json"
+      }
+    },
+    {
+      "dataset": "game24",
+      "manifest": "data/reproduction/manifests/game24.json",
+      "counts": {
+        "development": 254,
+        "selection": 574,
+        "audit": 534
+      },
+      "splits": {
+        "development": "data/reproduction/splits/game24/development.json",
+        "selection": "data/reproduction/splits/game24/selection.json",
+        "audit": "data/reproduction/splits/game24/audit.json"
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "manifest": "data/reproduction/manifests/hotpotqa.json",
+      "counts": {
+        "development": 19622,
+        "selection": 39351,
+        "audit": 38879
+      },
+      "splits": {
+        "development": "data/reproduction/splits/hotpotqa/development.json",
+        "selection": "data/reproduction/splits/hotpotqa/selection.json",
+        "audit": "data/reproduction/splits/hotpotqa/audit.json"
+      }
+    },
+    {
+      "dataset": "hover",
+      "manifest": "data/reproduction/manifests/hover.json",
+      "counts": {
+        "development": 4421,
+        "selection": 8898,
+        "audit": 8852
+      },
+      "splits": {
+        "development": "data/reproduction/splits/hover/development.json",
+        "selection": "data/reproduction/splits/hover/selection.json",
+        "audit": "data/reproduction/splits/hover/audit.json"
+      }
+    },
+    {
+      "dataset": "ifbench",
+      "manifest": "data/reproduction/manifests/ifbench.json",
+      "counts": {
+        "development": 48,
+        "selection": 110,
+        "audit": 142
+      },
+      "splits": {
+        "development": "data/reproduction/splits/ifbench/development.json",
+        "selection": "data/reproduction/splits/ifbench/selection.json",
+        "audit": "data/reproduction/splits/ifbench/audit.json"
+      }
+    },
+    {
+      "dataset": "livebench_math",
+      "manifest": "data/reproduction/manifests/livebench_math.json",
+      "counts": {
+        "development": 91,
+        "selection": 140,
+        "audit": 137
+      },
+      "splits": {
+        "development": "data/reproduction/splits/livebench_math/development.json",
+        "selection": "data/reproduction/splits/livebench_math/selection.json",
+        "audit": "data/reproduction/splits/livebench_math/audit.json"
+      }
+    },
+    {
+      "dataset": "math",
+      "manifest": "data/reproduction/manifests/math.json",
+      "counts": {
+        "development": 3750,
+        "selection": 3749,
+        "audit": 5000
+      },
+      "splits": {
+        "development": "data/reproduction/splits/math/development.json",
+        "selection": "data/reproduction/splits/math/selection.json",
+        "audit": "data/reproduction/splits/math/audit.json"
+      }
+    },
+    {
+      "dataset": "mbpp",
+      "manifest": "data/reproduction/manifests/mbpp.json",
+      "counts": {
+        "development": 186,
+        "selection": 375,
+        "audit": 413
+      },
+      "splits": {
+        "development": "data/reproduction/splits/mbpp/development.json",
+        "selection": "data/reproduction/splits/mbpp/selection.json",
+        "audit": "data/reproduction/splits/mbpp/audit.json"
+      }
+    },
+    {
+      "dataset": "planbench",
+      "manifest": "data/reproduction/manifests/planbench.json",
+      "counts": {
+        "development": 479,
+        "selection": 993,
+        "audit": 798
+      },
+      "splits": {
+        "development": "data/reproduction/splits/planbench/development.json",
+        "selection": "data/reproduction/splits/planbench/selection.json",
+        "audit": "data/reproduction/splits/planbench/audit.json"
+      }
+    },
+    {
+      "dataset": "polyglot",
+      "manifest": "data/reproduction/manifests/polyglot.json",
+      "counts": {
+        "development": 50,
+        "selection": 80,
+        "audit": 95
+      },
+      "splits": {
+        "development": "data/reproduction/splits/polyglot/development.json",
+        "selection": "data/reproduction/splits/polyglot/selection.json",
+        "audit": "data/reproduction/splits/polyglot/audit.json"
+      }
+    },
+    {
+      "dataset": "pupa",
+      "manifest": "data/reproduction/manifests/pupa.json",
+      "counts": {
+        "development": 171,
+        "selection": 386,
+        "audit": 344
+      },
+      "splits": {
+        "development": "data/reproduction/splits/pupa/development.json",
+        "selection": "data/reproduction/splits/pupa/selection.json",
+        "audit": "data/reproduction/splits/pupa/audit.json"
+      }
+    },
+    {
+      "dataset": "swe_lite",
+      "manifest": "data/reproduction/manifests/swe_lite.json",
+      "counts": {
+        "development": 60,
+        "selection": 141,
+        "audit": 122
+      },
+      "splits": {
+        "development": "data/reproduction/splits/swe_lite/development.json",
+        "selection": "data/reproduction/splits/swe_lite/selection.json",
+        "audit": "data/reproduction/splits/swe_lite/audit.json"
+      }
+    },
+    {
+      "dataset": "swe_verified",
+      "manifest": "data/reproduction/manifests/swe_verified.json",
+      "counts": {
+        "development": 103,
+        "selection": 190,
+        "audit": 207
+      },
+      "splits": {
+        "development": "data/reproduction/splits/swe_verified/development.json",
+        "selection": "data/reproduction/splits/swe_verified/selection.json",
+        "audit": "data/reproduction/splits/swe_verified/audit.json"
+      }
+    },
+    {
+      "dataset": "aime_2025_2026",
+      "manifest": "data/reproduction/manifests/aime_2025_2026.json",
+      "counts": {
+        "development": 15,
+        "selection": 15,
+        "audit": 60
+      },
+      "splits": {
+        "development": "data/reproduction/splits/aime_2025_2026/development.json",
+        "selection": "data/reproduction/splits/aime_2025_2026/selection.json",
+        "audit": "data/reproduction/splits/aime_2025_2026/audit.json"
+      }
+    }
+  ],
+  "scorer_resources": [
+    {
+      "dataset": "gepa_artifact",
+      "manifest": "data/reproduction/manifests/gepa_artifact.json"
+    },
+    {
+      "dataset": "livebench_harness",
+      "manifest": "data/reproduction/manifests/livebench_harness.json"
+    },
+    {
+      "dataset": "nltk",
+      "manifest": "data/reproduction/manifests/nltk.json"
+    }
+  ],
+  "dataset_conditions": 14,
+  "split_files": 42,
+  "member_ids": 139865
+}
