@@ -22,6 +22,7 @@ from specrsi.core.models import Candidate, EvaluationScope, Task, thaw, digest
 from specrsi.core.search import DraftResult, SearchConfig, SearchEngine, ValueEstimate
 from specrsi.planning.batches import MenuBuilder
 from specrsi.planning.policy import TraceDecision
+from specrsi.tokenization import chat_token_ids
 
 from .objectives import mixture_probabilities
 from .records import CheckerAudit, DecisionRecord, SearchTrajectory, TransitionRecord, validate_group
@@ -258,7 +259,7 @@ class HFPromptDrafter:
             raise ValueError("output_contract currently requires single-prompt execution")
 
         def template(text):
-            return model.tokenizer.apply_chat_template([{"role": "user", "content": text}],
+            return chat_token_ids(model.tokenizer,[{"role": "user", "content": text}],
                 tokenize=True, add_generation_prompt=True, enable_thinking=False)
 
         def prepare_input(reserved_output):
@@ -513,14 +514,14 @@ def collect_prompt_specrsi(model, round_index, config):
     if swe_mode:
         from specrsi.baselines.native_backend import native_splits
         examples=list(native_splits({'dataset':dataset,'data_root':settings.get('data_root','data'),
-            'coding_registry':settings.get('coding_registry','configs/coding/swe_tracks.json'),
+            'coding_registry':settings.get('coding_registry','configs/coding/prospective_swe_tracks.json'),
             **({'development_ids':settings['development_ids']} if 'development_ids' in settings else {}),
-            'selection_track':'verified','audit_track':'audit_disjoint_verified'})['development'])
+            'selection_track':'verified500','audit_track':'lite_audit_disjoint_verified500'})['development'])
     else:
         examples = load_examples(dataset,"development",data_root=settings.get("data_root","data"))
     executor_config = settings["executor"]
-    lock = json.loads(Path(executor_config.get("lock","configs/models/model.lock.json")).read_text())
-    client = LocalModelClient(executor_config["base_url"],executor_config.get('served_model_name',lock.get('served_model_name','local-model')))
+    lock = json.loads(Path(executor_config.get("lock","configs/models/qwen35_35b_a3b_bf16.lock.json")).read_text())
+    client = LocalModelClient(executor_config["base_url"],executor_config.get('served_model_name',lock.get('served_model_name','Qwen3.5-35B-A3B')))
     health = client.health()
     if not health.get("server_enforces_total_token_cap") or health.get("protocol_version",0)<2:
         raise ValueError("Execution server must enforce total_token_cap with protocol v2")
@@ -553,7 +554,7 @@ def collect_prompt_specrsi(model, round_index, config):
     actual_contexts = []
     initial_cost = 0
     def progress(status,extra=None):
-        directory = Path(config.get("output","artifacts/training/roles"))
+        directory = Path(config.get("output","artifacts/training/qwen_prompt_gvo"))
         directory.mkdir(parents=True,exist_ok=True)
         (directory/f"collection_progress_round_{round_index}.json").write_text(json.dumps({
             "status":status,"valid_training_batch":status=="complete","initial_acquisition_tokens":initial_cost,
@@ -654,7 +655,7 @@ def collect_prompt_specrsi(model, round_index, config):
             if forced_config.repetitions and member == 0:
                 def suffix_executor():
                     suffix_client = LocalModelClient(executor_config["base_url"],
-                        executor_config.get('served_model_name',lock.get('served_model_name','local-model')))
+                        executor_config.get('served_model_name',lock.get('served_model_name','Qwen3.5-35B-A3B')))
                     return executor_class(suffix_client, execution_tokenizer, executor_config)
 
                 def suffix_drafter(suffix_bridge, suffix_executor):
@@ -672,7 +673,7 @@ def collect_prompt_specrsi(model, round_index, config):
                         checker_factory=ConservativeChecker,environment_contract="local_qwen_prompt",config=forced_config,
                         seed=(master_seed + round_index * 1000000 + context_index * 10007) ^ 0x47564F,
                         lineage_id=f"development-{dataset}-{scope.uid}",training=config.get("training",{}),guard=guard,
-                        acquisition_path=Path(config.get("output","artifacts/training/roles")) / f"forced_acquisition_round_{round_index}.jsonl")
+                        acquisition_path=Path(config.get("output","artifacts/training/qwen_prompt_gvo")) / f"forced_acquisition_round_{round_index}.jsonl")
                 except Exception as exc:
                     progress("failed", {"stage":"forced_continuations","error":str(exc),
                         "partial_acquisition_journal":f"forced_acquisition_round_{round_index}.jsonl"})

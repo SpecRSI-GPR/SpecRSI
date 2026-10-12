@@ -98,7 +98,7 @@ def run_two_stage(config, output, *, root, epochs=None):
     output.mkdir(parents=True, exist_ok=False)
     (output / "registration.json").write_text(json.dumps({
         "pipeline": "pdf_sft_then_refreshed_gvo_v1", "stages": stages,
-        "demonstrations": "Executed development edits and legal teacher plans",
+        "demonstrations": "Executed development edits and legal teacher plans; no original-author demonstrations inferred",
         "selection_rule": "final GVO checkpoint; no audit-based checkpoint selection"}, indent=2))
     started = time.monotonic()
     evidence = []

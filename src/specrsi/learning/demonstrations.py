@@ -1,8 +1,9 @@
 """Development demonstrations from executed, verified VATS work.
 
 The collection policy completes observed children before requesting another edit.
-It receives observed execution feedback without expected task answers or
-unexecuted outcomes.
+It selects legal plans from the paid search state and uses completed native
+evaluations to admit supervised edits. Expected task answers and unexecuted
+outcomes are excluded from the teacher's inputs.
 """
 from __future__ import annotations
 
@@ -23,8 +24,8 @@ DEMONSTRATION_POLICIES = frozenset({"complete_then_draft", "observed_plateau"})
 class DemonstrationStopping:
     """A registered local teacher rule, using only completed observed edits.
 
-    Collection stopping uses observed child gains and a configurable patience.
-    Demonstrations and return labels require executed actions.
+    This is a collection choice, not the paper's immutable final argmax rule.
+    No unexecuted action receives a fabricated demonstration or return label.
     """
     patience: int = 1
     min_completed_edits: int = 1
@@ -65,8 +66,8 @@ def demonstration_bridge_kwargs(settings):
 class DemonstrationQuality:
     """Registered SFT dataset selection, independent of search/GVO objectives.
 
-    The default accepts complete, admissible executed edits. Quality comparisons
-    use the fixed host utility, including its operating penalty,
+    The default reproduces the original executed/verified dataset. Quality
+    comparisons use the fixed host utility, including its operating penalty,
     on the parent's and child's complete records from the same contract.
     """
     edit_rule: str = "verified"

@@ -169,7 +169,8 @@ class FrozenNodeTextCache:
                 for name in ("normalizer", "pre_tokenizer", "post_processor", "decoder")
                 for component in (getattr(backend, name, None),)}
         # Fast-tokenizer len() merges the entire base and added vocabularies;
-        # the vocabulary walk can dominate an otherwise cached node lookup.
+        # avoid repeating that work for the Qwen3.5 248,320-token vocabulary
+        # when the frozen node representation is already cached.
         # Read the base size directly and fingerprint only the small added-token
         # table. Keep these fast mutation hints out of the encoder contract so
         # unchanged tokenizers retain their exact historical identity. Same-size
@@ -208,6 +209,8 @@ class FrozenNodeTextCache:
         config = self.model.config
         config = asdict(config) if is_dataclass(config) else dict(vars(config))
         config.pop("device", None)
+        # File I/O transport cannot change an encoder's mathematical identity.
+        config.pop("disable_mmap", None)
         from .work_graph import graph_schema, LEGACY_GRAPH_SCHEMA
         if graph_schema(config) == LEGACY_GRAPH_SCHEMA:
             # Preserve the exact encoder identity of pre-schema checkpoints.

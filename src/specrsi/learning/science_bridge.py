@@ -14,6 +14,7 @@ from specrsi.core.search import DraftResult,SearchConfig,SearchEngine
 from specrsi.planning.batches import MenuBuilder
 from specrsi.science.executor import make_scope,make_candidate,ScienceExecutor,mutate,selected_parameters
 from specrsi.science.checker import ScienceParameterChecker
+from specrsi.tokenization import chat_token_ids
 from .bridge import NeuralSearchBridge
 from .records import CheckerAudit,validate_group
 from .sampler import sample_edit_tokens
@@ -54,7 +55,7 @@ class HFParameterDrafter:
                 '\nObserved parent feedback: ')
 
         def template(text):
-            return model.tokenizer.apply_chat_template([{'role':'user','content':text}],tokenize=True,
+            return chat_token_ids(model.tokenizer,[{'role':'user','content':text}],tokenize=True,
                 add_generation_prompt=True,enable_thinking=False)
 
         input_cap=model.config.max_length-output_cap
