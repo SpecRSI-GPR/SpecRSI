@@ -5652,14 +5652,14 @@
       "scope": "Formal scientific reference template; the registered trial overrides below set two GVO collection/update rounds."
     },
     {
-      "configuration_path": "configs/training/qwen3_8b.yaml",
+      "configuration_path": "configs/training/qwen35_35b_a3b.yaml",
       "configuration_category": "specrsi_role_training",
-      "source_file_sha256": "deb9ec732e2d511ee829977066ef70a7bf4ea48e41dff6785c7e7de735c39b20",
+      "source_file_sha256": "3cf776485a06c373e55ac8bb62d66766e87f58fff1a15b56cec47c54242cb646",
       "parameters": {
         "stage": "warmup",
         "data_provenance": "fresh_qwen35_reference_backbone_collection",
         "collector": "specrsi.learning.science_bridge:collect_science_specrsi",
-        "output": "artifacts/training/qwen35_paper33_20261010/qwen3_8b",
+        "output": "artifacts/training/qwen35/qwen35_35b_a3b",
         "epochs": 1,
         "cpu_threads": 4,
         "model": {
@@ -5783,7 +5783,6 @@
           }
         },
         "validation_fraction": 0.0,
-        "require_current_paper": true,
         "require_reference_backbone": true
       },
       "scope": "Callable configuration; its existence does not imply that this entrypoint has been executed."
