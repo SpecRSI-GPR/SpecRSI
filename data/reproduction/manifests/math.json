@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "dataset": "math",
+  "family": "workflows",
+  "source_page": "https://huggingface.co/datasets/EleutherAI/hendrycks_math",
+  "split_policy": {
+    "algorithm": "original-test-audit; train-sha256-parity-development-selection",
+    "seed": 20260916,
+    "removed_training_test_overlap_ids": [
+      "geometry_train:433"
+    ]
+  },
+  "files": [
+    {
+      "path": "data/raw/math/algebra_train.parquet",
+      "sha256": "73347f5b55869f21ff094361025dbd12d291e971aa4d72142eacee10438e449f",
+      "bytes": 505186,
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/algebra/train-00000-of-00001.parquet",
+      "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+    },
+    {
+      "path": "data/raw/math/algebra_test.parquet",
+      "sha256": "0e04a850dac9cfc758eac0c80afd2d0cc65e29ea72f916c8ac1045b12af937f5",
+      "bytes": 353114,
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/algebra/test-00000-of-00001.parquet",
+      "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+    },
+    {
+      "path": "data/raw/math/counting_and_probability_train.parquet",
+      "sha256": "d37ae017930df41678edee50dcde18c17fb06afaff9eb505c1b95f1002bfcb31",
+      "bytes": 329354,
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/counting_and_probability/train-00000-of-00001.parquet",
+      "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+    },
+    {
+      "path": "data/raw/math/counting_and_probability_test.parquet",
+      "sha256": "c324818949c75a6227c0328a8499d58023cbbf6757cfc1736f5ab24cc8d87966",
+      "bytes": 175032,
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/counting_and_probability/test-00000-of-00001.parquet",
+      "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+    },
+    {
+      "path": "data/raw/math/geometry_train.parquet",
+      "sha256": "9dbf5e5b55499e696e0ba72da9d85d4f0be3acbf7eaa6cb014b0fc78bb63784f",
+      "bytes": 549388,
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/geometry/train-00000-of-00001.parquet",
+      "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+    },
+    {
+      "path": "data/raw/math/geometry_test.parquet",
+      "sha256": "98720f3a8134ad9784fd8951195245264495df03ffc5c9485a9a54ff5ae2431a",
+      "bytes": 263835,
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/geometry/test-00000-of-00001.parquet",
+      "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+    },
+    {
+      "path": "data/raw/math/intermediate_algebra_train.parquet",
+      "sha256": "0c87f3798ebdfb915b1f9b6fc13c1a8d064c3cb91631ccbe85b83ed5d71150f6",
+      "bytes": 575154,
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/intermediate_algebra/train-00000-of-00001.parquet",
+      "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+    },
+    {
+      "path": "data/raw/math/intermediate_algebra_test.parquet",
+      "sha256": "e859f72486c951c2017da880541ca729940eaa986b0364eb23e238983df9bfeb",
+      "bytes": 394797,
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/intermediate_algebra/test-00000-of-00001.parquet",
+      "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+    },
+    {
+      "path": "data/raw/math/number_theory_train.parquet",
+      "sha256": "81c08649149b39811f2d1d7ddf5dfccf6c4c8044a2e169cfb24db09160c941f4",
+      "bytes": 308653,
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/number_theory/train-00000-of-00001.parquet",
+      "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+    },
+    {
+      "path": "data/raw/math/number_theory_test.parquet",
+      "sha256": "ba156c9c9fa2040836ba12135fd964e6e67d6bccd8c469ec4a3ad941f8f6fbe9",
+      "bytes": 182003,
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/number_theory/test-00000-of-00001.parquet",
+      "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+    },
+    {
+      "path": "data/raw/math/prealgebra_train.parquet",
+      "sha256": "765b526fb5c0b8385cb7be2c16bf4f6f28cf71f2bc15c826abfbb5fa7f8616cc",
+      "bytes": 383626,
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/prealgebra/train-00000-of-00001.parquet",
+      "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+    },
+    {
+      "path": "data/raw/math/prealgebra_test.parquet",
+      "sha256": "301e5d8ade5c7b5038032532e498bdc9dca799e7f1061a63f2e7d980803240cc",
+      "bytes": 267729,
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/prealgebra/test-00000-of-00001.parquet",
+      "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+    },
+    {
+      "path": "data/raw/math/precalculus_train.parquet",
+      "sha256": "28bb1ff95525c8d32521509bef91de76339659f5467a381e6e8deea204538f0e",
+      "bytes": 353745,
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/precalculus/train-00000-of-00001.parquet",
+      "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+    },
+    {
+      "path": "data/raw/math/precalculus_test.parquet",
+      "sha256": "da37474ba3761ae5727af3844a7ba963a735bd6a14c65e6137593669a4fe3b9c",
+      "bytes": 242241,
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/precalculus/test-00000-of-00001.parquet",
+      "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+    },
+    {
+      "path": "data/raw/math/README.md",
+      "sha256": "2372e22a154ca3ed5865378e270b32d8ed5b615c4592fad42630a731a950bcc0",
+      "bytes": 3926,
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/README.md",
+      "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3"
+    },
+    {
+      "path": "data/processed/math/development.jsonl",
+      "bytes": 4964839,
+      "sha256": "fd0eaf1874963946f508872b140645664ba7f5b6586e598ee97fa1dd00e3b948"
+    },
+    {
+      "path": "data/processed/math/selection.jsonl",
+      "bytes": 4892301,
+      "sha256": "61c114b14891cc0e90bad4e89277a644915c45c187746ec61429e0aa2cbfc601"
+    },
+    {
+      "path": "data/processed/math/audit.jsonl",
+      "bytes": 6168263,
+      "sha256": "87ee89efc3aa6493cb4a0d4f0adb2a1a500f1d5d1477900c258dee241df3ad0c"
+    }
+  ],
+  "counts": {
+    "development": 3750,
+    "selection": 3749,
+    "audit": 5000
+  }
+}

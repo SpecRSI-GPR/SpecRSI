@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "dataset": "aime25",
+  "family": "prompts",
+  "source_page": "https://math-ai-org.github.io/aime25/",
+  "split_policy": {
+    "algorithm": "sha256-group-or-normalized-input-v2",
+    "seed": 20260916,
+    "fractions": [
+      0.2,
+      0.4,
+      0.4
+    ],
+    "group_metadata_field": "split_group"
+  },
+  "files": [
+    {
+      "path": "data/raw/aime25/test.jsonl",
+      "sha256": "b4e273c02d3e7fe1b74b59eae768fc8230bfb0f79539890cb56f4361caac0331",
+      "bytes": 15813,
+      "url": "https://huggingface.co/datasets/math-ai/aime25/resolve/563bb8404243c5f09de6ec262f2db674fe5bce9b/test.jsonl",
+      "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b"
+    },
+    {
+      "path": "data/raw/aime25/README.md",
+      "sha256": "ea8589560f464f85305edd22e4f5033759561af8040aa59d8b2759b606489c10",
+      "bytes": 878,
+      "url": "https://huggingface.co/datasets/math-ai/aime25/resolve/563bb8404243c5f09de6ec262f2db674fe5bce9b/README.md",
+      "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b"
+    },
+    {
+      "path": "data/raw/aime25/LICENSE",
+      "sha256": "498cdc89653a01fca77c90c94f5deb526398a1d4c0f8b54f0fdb93827dd011a9",
+      "bytes": 11356,
+      "url": "https://huggingface.co/datasets/math-ai/aime25/resolve/563bb8404243c5f09de6ec262f2db674fe5bce9b/LICENSE",
+      "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b"
+    },
+    {
+      "path": "data/processed/aime25/development.jsonl",
+      "bytes": 7186,
+      "sha256": "51e1fe3c1b831c5b4d92af444c7e20f2986641ca245b16a6ad3f6c918a19d7b6"
+    },
+    {
+      "path": "data/processed/aime25/selection.jsonl",
+      "bytes": 7414,
+      "sha256": "a74204d2af9dc24389375602bb71f92c3f6d4b85d8cb94b605a2fe93b694fc3c"
+    },
+    {
+      "path": "data/processed/aime25/audit.jsonl",
+      "bytes": 4025,
+      "sha256": "796f3b8514aefddf1e1188679312e4acbbfcb90fbc00f3980d361d9947207237"
+    }
+  ],
+  "counts": {
+    "development": 13,
+    "selection": 11,
+    "audit": 6
+  }
+}

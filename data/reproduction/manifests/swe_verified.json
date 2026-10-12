@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "dataset": "swe_verified",
+  "family": "coding",
+  "source_page": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
+  "split_policy": {
+    "algorithm": "sha256-group-or-normalized-input-v2",
+    "seed": 20260916,
+    "fractions": [
+      0.2,
+      0.4,
+      0.4
+    ],
+    "group_metadata_field": "split_group"
+  },
+  "files": [
+    {
+      "path": "data/raw/swe_verified/test-00000-of-00001.parquet",
+      "sha256": "a45b1fe4e2f0c8390b2b2938ac83e92ed5979000856808f3679c07812e9e6dcd",
+      "bytes": 2096679,
+      "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified/resolve/c104f840cc67f8b6eec6f759ebc8b2693d585d4a/data/test-00000-of-00001.parquet",
+      "revision": "c104f840cc67f8b6eec6f759ebc8b2693d585d4a"
+    },
+    {
+      "path": "data/raw/swe_verified/README.md",
+      "sha256": "6edb58b1b2c44ce858426c4ebc90077827713b75cebc243661e4433c81fd57f5",
+      "bytes": 3336,
+      "url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified/resolve/c104f840cc67f8b6eec6f759ebc8b2693d585d4a/README.md",
+      "revision": "c104f840cc67f8b6eec6f759ebc8b2693d585d4a"
+    },
+    {
+      "path": "data/processed/swe_verified/development.jsonl",
+      "bytes": 2191169,
+      "sha256": "ef041a5904f4042cb54dea60d409a1c51765d114cda0a180a1846e7e99461aa1"
+    },
+    {
+      "path": "data/processed/swe_verified/selection.jsonl",
+      "bytes": 3658548,
+      "sha256": "e2952a824d989f3a759021d47a7378ebe47227b14f6c7f75a997041a7521ff6e"
+    },
+    {
+      "path": "data/processed/swe_verified/audit.jsonl",
+      "bytes": 3270051,
+      "sha256": "ab4c91e5057d4fc62375379003342b7778d280281bce002110a4a7abbbd858eb"
+    }
+  ],
+  "counts": {
+    "development": 103,
+    "selection": 190,
+    "audit": 207
+  }
+}

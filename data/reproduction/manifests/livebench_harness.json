@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "dataset": "livebench_harness",
+  "family": "reference_artifact",
+  "source_page": "https://github.com/LiveBench/LiveBench",
+  "split_policy": {
+    "algorithm": "sha256-group-or-normalized-input-v2",
+    "seed": 20260916,
+    "fractions": [
+      0.2,
+      0.4,
+      0.4
+    ],
+    "group_metadata_field": "split_group"
+  },
+  "files": [
+    {
+      "path": "data/raw/livebench_harness/source.zip",
+      "sha256": "9f0fd4372134121606ca143385faf5cddf7f00a53443845990dec3044307247d",
+      "bytes": 7406001,
+      "url": "https://codeload.github.com/LiveBench/LiveBench/zip/0edef1710338da97d78e071e3c3ac06426a937a8",
+      "revision": "0edef1710338da97d78e071e3c3ac06426a937a8"
+    }
+  ],
+  "counts": {}
+}

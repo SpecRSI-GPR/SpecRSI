@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "dataset": "mbpp",
+  "family": "workflows",
+  "source_page": "https://github.com/google-research/google-research/tree/master/mbpp",
+  "split_policy": {
+    "algorithm": "sha256-group-or-normalized-input-v2",
+    "seed": 20260916,
+    "fractions": [
+      0.2,
+      0.4,
+      0.4
+    ],
+    "group_metadata_field": "split_group"
+  },
+  "files": [
+    {
+      "path": "data/raw/mbpp/mbpp.jsonl",
+      "sha256": "ccf64ceae9c5403bf50a044cb6d505bfd2a2963ee58338ba268fd65beab92a9f",
+      "bytes": 563743,
+      "url": "https://raw.githubusercontent.com/google-research/google-research/8025cf1351da4d3cb8c289afe2d11247623fbdfb/mbpp/mbpp.jsonl",
+      "revision": "8025cf1351da4d3cb8c289afe2d11247623fbdfb"
+    },
+    {
+      "path": "data/raw/mbpp/README.md",
+      "sha256": "02d63a4ffdad806c3c87b5ea2aa91e946f6eec0c2869643b09831650883f41be",
+      "bytes": 1422,
+      "url": "https://raw.githubusercontent.com/google-research/google-research/8025cf1351da4d3cb8c289afe2d11247623fbdfb/mbpp/README.md",
+      "revision": "8025cf1351da4d3cb8c289afe2d11247623fbdfb"
+    },
+    {
+      "path": "data/processed/mbpp/development.jsonl",
+      "bytes": 146334,
+      "sha256": "0e3d349158655cd9439117343896991cda73879adb5a22e3562d3879bc800752"
+    },
+    {
+      "path": "data/processed/mbpp/selection.jsonl",
+      "bytes": 303009,
+      "sha256": "82e6946148e6f27b7aab6543f5fc24c14aec073146cdbc76a4b153a8eb90f32e"
+    },
+    {
+      "path": "data/processed/mbpp/audit.jsonl",
+      "bytes": 326660,
+      "sha256": "3a04c16b46130d4a1ffb8bfa91104fe09e403574c06a3871a737d3db6514f568"
+    }
+  ],
+  "counts": {
+    "development": 186,
+    "selection": 375,
+    "audit": 413
+  }
+}

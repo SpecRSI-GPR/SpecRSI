@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "dataset": "planbench",
+  "family": "workflows",
+  "source_page": "https://github.com/harshakokel/PlanBench",
+  "split_policy": {
+    "algorithm": "sha256-group-or-normalized-input-v2",
+    "seed": 20260916,
+    "fractions": [
+      0.2,
+      0.4,
+      0.4
+    ],
+    "instance_group": "planbench-instance:<native_instance_id>, shared across domain encodings",
+    "normalized_track": "prospective_zero_shot_task_1_plan_generation",
+    "demonstrations_removed": true,
+    "group_metadata_field": "split_group"
+  },
+  "files": [
+    {
+      "path": "data/raw/planbench/source.zip",
+      "sha256": "027e9726cac2d36c3e26786f663c7fdf049111d88641aa403fd74ac6ab69c1fe",
+      "bytes": 58552270,
+      "url": "https://codeload.github.com/harshakokel/PlanBench/zip/1f4d600f4806bedbefebbbe44b168372aaf5060d",
+      "revision": "1f4d600f4806bedbefebbbe44b168372aaf5060d"
+    },
+    {
+      "path": "data/processed/planbench/development.jsonl",
+      "bytes": 3296435,
+      "sha256": "f4596168b1a9092fec580a9eb462f785c9fe4e65324c8649f86c99642c4208a5"
+    },
+    {
+      "path": "data/processed/planbench/selection.jsonl",
+      "bytes": 6796364,
+      "sha256": "0468808047b2478b67a0bd5c1c2db92e11a72ccc7aa422e1733caf5eb4fa60b3"
+    },
+    {
+      "path": "data/processed/planbench/audit.jsonl",
+      "bytes": 5433564,
+      "sha256": "8d5322b7e3874443238dbbb9d790590073015f35d029a1c2b2d4c5bab40a6435"
+    }
+  ],
+  "counts": {
+    "development": 479,
+    "selection": 993,
+    "audit": 798
+  }
+}
