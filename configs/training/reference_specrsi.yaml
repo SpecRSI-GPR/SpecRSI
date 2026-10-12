@@ -1,0 +1,33 @@
+# Actual SpecRSI engine collection on explicitly synthetic pure-integer reference tasks.
+stage: gvo
+data_provenance: synthetic_integer_reference_tasks
+collector: specrsi.learning.bridge:collect_reference_specrsi
+output: artifacts/training/reference_specrsi
+epochs: 2
+device: cpu
+cpu_threads: 2
+model:
+  backend: tiny
+  feature_dim: 8
+  option_dim: 8
+  hidden_dim: 32
+  lora_rank: 4
+  lora_alpha: 8
+  seed: 0
+training:
+  learning_rate: 0.0002
+  weight_decay: 0.0001
+  cost_coefficient: 0.01
+  clip_epsilon: 0.2
+  value_weight: 1
+  surface_weight: 1
+  estimator: gvo
+  batch_size: 8
+  seed: 0
+collection:
+  contexts: 2
+  group_size: 4
+  budget: 150
+  max_actions: 12
+  max_candidates: 6
+  reserve_completion: false

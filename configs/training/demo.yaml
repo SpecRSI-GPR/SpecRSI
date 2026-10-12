@@ -1,0 +1,27 @@
+# Synthetic integration smoke only. These are NOT the paper's author checkpoints/data.
+stage: demo
+output: artifacts/training/demo
+epochs: 2
+device: cpu
+cpu_threads: 2
+groups: 4
+group_size: 4
+model:
+  backend: tiny
+  feature_dim: 8
+  option_dim: 8
+  hidden_dim: 32
+  lora_rank: 4
+  lora_alpha: 8
+  seed: 0
+training:
+  learning_rate: 0.005
+  weight_decay: 0.0001
+  cost_coefficient: 0.01
+  checker_protocol_id: demo-integer-equality-v1
+  clip_epsilon: 0.2
+  value_weight: 1.0
+  surface_weight: 1.0
+  estimator: gvo
+  batch_size: 8
+  seed: 0
