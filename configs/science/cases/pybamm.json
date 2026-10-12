@@ -1,0 +1,78 @@
+{
+  "domain": "pybamm",
+  "case_count": 12,
+  "cases": [
+    {
+      "case_id": 0,
+      "patch": {
+        "initial_soc_delta": 0.0
+      }
+    },
+    {
+      "case_id": 1,
+      "patch": {
+        "initial_soc_delta": 0.002
+      }
+    },
+    {
+      "case_id": 2,
+      "patch": {
+        "initial_soc_delta": 0.004
+      }
+    },
+    {
+      "case_id": 3,
+      "patch": {
+        "initial_soc_delta": 0.006
+      }
+    },
+    {
+      "case_id": 4,
+      "patch": {
+        "initial_soc_delta": 0.008
+      }
+    },
+    {
+      "case_id": 5,
+      "patch": {
+        "initial_soc_delta": 0.01
+      }
+    },
+    {
+      "case_id": 6,
+      "patch": {
+        "initial_soc_delta": 0.012
+      }
+    },
+    {
+      "case_id": 7,
+      "patch": {
+        "initial_soc_delta": 0.014
+      }
+    },
+    {
+      "case_id": 8,
+      "patch": {
+        "initial_soc_delta": 0.016
+      }
+    },
+    {
+      "case_id": 9,
+      "patch": {
+        "initial_soc_delta": 0.018000000000000002
+      }
+    },
+    {
+      "case_id": 10,
+      "patch": {
+        "initial_soc_delta": 0.02
+      }
+    },
+    {
+      "case_id": 11,
+      "patch": {
+        "initial_soc_delta": 0.022
+      }
+    }
+  ]
+}

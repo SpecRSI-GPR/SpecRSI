@@ -1,0 +1,83 @@
+{
+  "domain": "irp",
+  "case_count": 11,
+  "cases": [
+    {
+      "case_id": 0,
+      "patch": {
+        "seed_offset": 0,
+        "demand_mean_scale": 1.0
+      }
+    },
+    {
+      "case_id": 1,
+      "patch": {
+        "seed_offset": 10000,
+        "demand_mean_scale": 1.01
+      }
+    },
+    {
+      "case_id": 2,
+      "patch": {
+        "seed_offset": 20000,
+        "demand_mean_scale": 1.02
+      }
+    },
+    {
+      "case_id": 3,
+      "patch": {
+        "seed_offset": 30000,
+        "demand_mean_scale": 1.03
+      }
+    },
+    {
+      "case_id": 4,
+      "patch": {
+        "seed_offset": 40000,
+        "demand_mean_scale": 1.04
+      }
+    },
+    {
+      "case_id": 5,
+      "patch": {
+        "seed_offset": 50000,
+        "demand_mean_scale": 1.05
+      }
+    },
+    {
+      "case_id": 6,
+      "patch": {
+        "seed_offset": 60000,
+        "demand_mean_scale": 1.06
+      }
+    },
+    {
+      "case_id": 7,
+      "patch": {
+        "seed_offset": 70000,
+        "demand_mean_scale": 1.07
+      }
+    },
+    {
+      "case_id": 8,
+      "patch": {
+        "seed_offset": 80000,
+        "demand_mean_scale": 1.08
+      }
+    },
+    {
+      "case_id": 9,
+      "patch": {
+        "seed_offset": 90000,
+        "demand_mean_scale": 1.09
+      }
+    },
+    {
+      "case_id": 10,
+      "patch": {
+        "seed_offset": 100000,
+        "demand_mean_scale": 1.1
+      }
+    }
+  ]
+}
