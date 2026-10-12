@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "dataset": "aime_2025_2026",
+  "split": "selection",
+  "processed_path": "data/performance_extension/processed/aime_2025_2026/selection.jsonl",
+  "sha256": "ae425fd9883a3ae0bcf04adb9fac1b13c1947a4ad48a8c01c9b670212e505f5d",
+  "bytes": 9380,
+  "count": 15,
+  "ids": [
+    "aime2024:76",
+    "aime2024:62",
+    "aime2024:64",
+    "aime2024:86",
+    "aime2024:82",
+    "aime2024:75",
+    "aime2024:78",
+    "aime2024:61",
+    "aime2024:88",
+    "aime2024:85",
+    "aime2024:60",
+    "aime2024:67",
+    "aime2024:73",
+    "aime2024:74",
+    "aime2024:77"
+  ],
+  "id_list_sha256": "c07a9b03d46e8fbea7b0b6f8f23ca18349fcb4cab9d491ce1c0c12e00b5e6085"
+}
