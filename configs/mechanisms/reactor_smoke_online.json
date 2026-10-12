@@ -1,0 +1,18 @@
+{
+  "domain": "reactor",
+  "case_ids": [
+    0,
+    1
+  ],
+  "budget_ms": 10000000,
+  "setup_budget_ms": 1000000,
+  "execution_cap_ms": 30000,
+  "checker_cap_ms": 1000,
+  "max_sources": 1,
+  "mode": "online",
+  "seeds": [
+    0
+  ],
+  "candidate_count": 5,
+  "output": "results/mechanisms/reactor_smoke_online"
+}
