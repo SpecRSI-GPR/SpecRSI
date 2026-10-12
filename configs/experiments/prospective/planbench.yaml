@@ -1,0 +1,25 @@
+schema_version: 1
+dataset: planbench
+data_root: data
+selection_limit: 10
+audit_limit: 10
+seed: 20260916
+model:
+  lock: configs/models/qwen35_35b_a3b_bf16.lock.json
+  base_url: http://127.0.0.1:18085
+  max_tokens: 2048
+  temperature: 0.7
+  enable_thinking: false
+search:
+  controller: heuristic_bootstrap
+  budget_tokens: 500000
+  max_actions: 20
+  max_candidates: 6
+  eta: 0.005
+  cost_lambda: 1.0e-06
+  reuse: all_U
+  execution_cap_tokens: 32768
+  initial_prompt: Return a complete valid plan using only the exact action names and
+    objects in the task. Put one action on each line; do not include explanations.
+output: results/qwen35/experiments/prospective/planbench
+metric_variant: native_zero_shot_STRIPS_plan_validity
