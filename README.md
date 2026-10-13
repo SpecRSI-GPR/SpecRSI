@@ -80,7 +80,7 @@ The paper evaluates several distinct profiles. Their initial agents, edit permis
 | Workflow optimization | PlanBench, Math, MBPP, Game24 | Success (%) and task-inference token counts, excluding search and training |
 | Mechanism studies | Information/scope, planning, evidence, learning, resource controls | Verified gains, completion, prediction diagnostics, and separately defined cost indices |
 
-**Qwen3.5-35B-A3B** is the reference backbone for mechanism studies and the primary matched system comparison. Validation normally uses **five training seeds with three nested searches per seed**. Scientific backbone evaluation covers ten backbones and five domains, totaling 50 pairs. Figure 2 and Figure S2(a) use the same ten backbone models for system and scientific evaluation, respectively. Figure S2(b) covers the full twenty-backbone system comparison, including the self-hosted reference model and nineteen provider-API backbones.
+**Qwen3.5-35B-A3B** is the reference backbone for mechanism studies and the primary matched system comparison. Validation uses **five training seeds with three nested searches per seed**. Scientific backbone evaluation covers ten backbones and five domains, totaling 50 pairs. Figure 2 and Figure S2(a) use the same ten backbone models for system and scientific evaluation, respectively. Figure S2(b) covers the full twenty-backbone system comparison, including the self-hosted reference model and nineteen provider-API backbones.
 
 The ten backbones shared by Figure 2 and Figure S2(a) are GPT-6-Astra, Claude-Opus-5, Gemini-3.5-Flash, DeepSeek-V4-Pro, GLM-5.3, Kimi-K3, MiniMax-M3, GPT-5.6-Sol, Claude-Sonnet-5-1M, and GPT-5.5.
 
