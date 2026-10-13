@@ -240,7 +240,7 @@ python -m pytest -q
 
 The model extra specifies PyTorch >=2.6, Transformers 4.57.6, Hugging Face Hub 0.36.2, PEFT 0.18.1, Accelerate >=1.2, FastAPI >=0.115, and Uvicorn >=0.30. The data extra includes Datasets 3.6.0; the solver extra pins Pyomo 6.9.5 and highspy 1.12.0. Install the extras needed by your integration with `python -m pip install -e '.[models,data,solver,test]'`.
 
-The built-in completion solver uses SciPy MILP; it does not require the optional Pyomo/HiGHS extra. `doctor` reports installed versions and contacts a model endpoint only when explicitly configured. **Optional installation check:** `python -m specrsi.cli demo` runs a small CPU-only example to check candidate creation, evidence bookkeeping, budget accounting, and acceptance, without downloading datasets or calling model APIs. For VATS experiments, use the complete configurations below.
+The built-in completion solver uses SciPy MILP; it does not require the optional Pyomo/HiGHS extra. `doctor` reports installed versions and contacts a model endpoint only when explicitly configured. **Optional installation check:** `python -m specrsi.cli demo` runs a small CPU-only example to check candidate creation, evidence bookkeeping, budget accounting, and acceptance, without downloading datasets or calling model APIs. For VATS experiments, see [Running experiments and training](#-running-experiments-and-training), which lists the complete HotpotQA and Reactor YAML configurations in `configs/training/` and `configs/experiments/`, together with their training and evaluation commands.
 
 **Release verification:** editable installation, doctor, demo, and the following no-model suite were checked under Python 3.13; **267 tests passed**.
 

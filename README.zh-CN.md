@@ -240,7 +240,7 @@ python -m pytest -q
 
 `models` 依赖组指定 PyTorch >=2.6、Transformers 4.57.6、Hugging Face Hub 0.36.2、PEFT 0.18.1、Accelerate >=1.2、FastAPI >=0.115 和 Uvicorn >=0.30。`data` 依赖组包含 Datasets 3.6.0；`solver` 依赖组固定 Pyomo 6.9.5 和 highspy 1.12.0。可使用 `python -m pip install -e '.[models,data,solver,test]'` 安装集成所需的依赖组。
 
-内置验证补全求解器使用 SciPy MILP，无需可选 Pyomo/HiGHS 依赖组。`doctor` 报告已安装版本，仅在显式配置后联系模型端点。**可选安装自检：** `python -m specrsi.cli demo` 通过小型 CPU 示例检查候选创建、证据记录、预算核算与接受流程，无需下载数据集或调用模型 API。VATS 实验使用下述完整配置。
+内置验证补全求解器使用 SciPy MILP，无需可选 Pyomo/HiGHS 依赖组。`doctor` 报告已安装版本，仅在显式配置后联系模型端点。**可选安装自检：** `python -m specrsi.cli demo` 通过小型 CPU 示例检查候选创建、证据记录、预算核算与接受流程，无需下载数据集或调用模型 API。VATS 实验请参见[运行实验与训练](#-运行实验与训练)：该节列出了仓库中 HotpotQA 和 Reactor 的完整 YAML 配置（位于 `configs/training/` 和 `configs/experiments/`），以及对应的训练与评估命令。
 
 **发布验证：** 已在 Python 3.13 下检查可编辑安装、doctor、demo 及以下不依赖模型的测试集合；**267 项测试通过**。
 
