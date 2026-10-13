@@ -244,7 +244,7 @@ python -m pytest -q
 
 The model extra specifies PyTorch >=2.6, Transformers 4.57.6, Hugging Face Hub 0.36.2, PEFT 0.18.1, Accelerate >=1.2, FastAPI >=0.115, and Uvicorn >=0.30. The data extra includes Datasets 3.6.0; the solver extra pins Pyomo 6.9.5 and highspy 1.12.0. Install the extras needed by your integration with `python -m pip install -e '.[models,data,solver,test]'`.
 
-The built-in completion solver uses SciPy MILP; it does not require the optional Pyomo/HiGHS extra. `doctor` reports installed versions and contacts a model endpoint only when explicitly configured. Optional `python -m specrsi.cli demo` checks candidate creation, evidence bookkeeping, budget accounting, and acceptance on a small CPU-only example, without datasets or API calls. Use the VATS entry points below for benchmark experiments.
+The built-in completion solver uses SciPy MILP; it does not require the optional Pyomo/HiGHS extra. `doctor` reports installed versions and contacts a model endpoint only when explicitly configured. **Optional installation check:** `python -m specrsi.cli demo` runs a small CPU-only example to check candidate creation, evidence bookkeeping, budget accounting, and acceptance, without downloading datasets or calling model APIs. For VATS experiments, use the complete configurations below.
 
 **Release verification:** editable installation, doctor, demo, and the following no-model suite were checked under Python 3.13; **267 tests passed**.
 
@@ -262,21 +262,23 @@ python -m pytest -q \
 
 ## 🚀 Running experiments and training
 
-Run VATS on text/code/workflow tasks with `run_experiment.py`, or on native scientific tasks with `run_paper_science.py`. Each command loads a complete YAML configuration; replace the paths below with your experiment configuration and trained checkpoint locations.
+Run VATS on text/code/workflow tasks with `run_experiment.py`, or on native scientific tasks with `run_paper_science.py`. The examples below use complete YAML configurations included in this repository. Follow the [reproducibility guide](docs/REPRODUCIBILITY.md) to prepare the pinned model, task data or simulators, and training/serving environments; set the device and endpoint for your deployment.
 
 ```sh
-python scripts/run_experiment.py --config path/to/run.yaml
-python scripts/run_paper_science.py --config path/to/science.yaml
-python scripts/run_paper_science_comparison.py --config path/to/comparison.yaml --stage all
-python scripts/train.py --config path/to/train.yaml --stage warmup
-python scripts/train.py --config path/to/train.yaml --stage gvo --resume path/to/warmup
+# HotpotQA: train the roles, then evaluate with VATS
+python scripts/train.py --config configs/training/paper_pdf_hotpotqa.yaml --stage two_stage
+python scripts/run_experiment.py --config configs/experiments/paper_pdf_hotpotqa.yaml
+
+# Reactor: train the roles, then evaluate with VATS
+python scripts/train.py --config configs/training/paper_pdf_reactor.yaml --stage two_stage
+python scripts/run_paper_science.py --config configs/experiments/paper_pdf_reactor.yaml
 ```
 
-In the full run configuration, `search.algorithm: vats_pdf` selects `VATSEngine`, and `search.controller: learned` loads the trained Drafter, Scorer, and Policy. Configure the pinned model endpoint, dataset or simulator registrations, disjoint selection/audit cases, seed, budget, and output directory. Scientific runs require registered contracts, case manifests, selection/audit IDs, and a compatible role checkpoint; `heuristic_bootstrap` selects an explicit heuristic controller. The [training configuration catalog](docs/reproducibility-training-configs.json) and [reproducibility guide](docs/REPRODUCIBILITY.md) record the reference parameters and experiment settings.
+`--stage two_stage` runs supervised warmup followed by GVO and saves the role checkpoint at the path used by the matching experiment configuration. If that checkpoint is already available, run the evaluation command directly. Each experiment configuration specifies its inputs, seed, budget, output directory, and `search.controller: learned` to load the trained Drafter, Scorer, and Policy. Scientific runs use the registered contracts, case manifests, and separate selection/audit scenarios. Further settings are listed in the [training configuration catalog](docs/reproducibility-training-configs.json).
 
-The science comparison runner evaluates `initial`, `best_of_n`, `random_search`, and `specrsi` on common frozen held-out scenarios, with the selected agents fixed before audit evaluation.
+The science comparison runner, `run_paper_science_comparison.py`, evaluates `initial`, `best_of_n`, `random_search`, and `specrsi` on common frozen held-out scenarios, with the selected agents fixed before audit evaluation.
 
-Training configurations select the VATS collector through `collection.algorithm: vats_pdf`; `search.algorithm` applies to the experiment runners above.
+**VATS configuration by stage:** experiment YAML files use `search.algorithm: vats_pdf` for search and evaluation; training YAML files use `collection.algorithm: vats_pdf` to collect verified search trajectories for warmup and GVO. Both select `VATSEngine`; optimizer, learning rate, and batch settings are configured separately under `training`.
 
 The learned path validates HF checkpoint architecture, feature dimensions, role heads, adapters, and applicable frozen-text identity before paid task calls. Training consumes verified JSONL or a configured collector. The optional local model server requires an explicit model lock, integrity manifest, port, and request-log destination.
 
