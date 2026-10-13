@@ -205,7 +205,7 @@ The SWE-Pro coding result uses a different profile from the matched system table
 - **Scorer supervision:** adding pair loss on the same acquired arms increases gain **5.4 → 6.3 pp** and reduces RMSE **1.05 → 0.85**, while training cost rises **23.7 → 28.4**.
 - **Repeated rounds:** updated SpecRSI accumulates **21.7 pp** by round 5, versus **17.8 pp** for updated MetaRSI and **13.8 pp** for the original-improver SpecRSI control. Every evaluated round retains a positive incremental gain.
 - **Bounded planning:** 32 offered plans achieve the highest tested net return, **4.7**, versus **4.5** with 64. Seeded growth yields Final **5.9 versus 5.8** for exhaustive construction at **56.2% lower planning cost**.
-- **Parallelism and cost:** eight workers reduce elapsed time **1,287 → 192 seconds**, a **6.7× speedup**, with **9.0% more worker time**. The separate lifecycle total is **106.3 versus 112.7**, 5.7% lower; its overlapping categories must not be summed independently.
+- **Parallelism and cost:** eight workers deliver a **6.7× speedup (1,287 → 192 seconds)** with **9.0% more cumulative worker time**; in the separate lifecycle comparison, SpecRSI achieves a **5.7% lower total-cost index than MetaRSI-v1 (106.3 versus 112.7)**.
 
 **Adaptive verification reduces cost.** Batching lowers mean verification cost by **17.1%**, **6.5%**, and **12.2%** in the *Dependent fail*, *Independent fail*, and *Early cancellation* configurations, respectively. VATS selects feasible singleton checks or completion bundles according to their expected verified return net of cost and replans after each executed block. This lets verification scope adapt to the search state and execution conditions.
 
