@@ -244,7 +244,7 @@ python -m pytest -q
 
 `models` 依赖组指定 PyTorch >=2.6、Transformers 4.57.6、Hugging Face Hub 0.36.2、PEFT 0.18.1、Accelerate >=1.2、FastAPI >=0.115 和 Uvicorn >=0.30。`data` 依赖组包含 Datasets 3.6.0；`solver` 依赖组固定 Pyomo 6.9.5 和 highspy 1.12.0。可使用 `python -m pip install -e '.[models,data,solver,test]'` 安装集成所需的依赖组。
 
-内置验证补全求解器使用 SciPy MILP，无需可选 Pyomo/HiGHS 依赖组。`doctor` 报告已安装版本，仅在显式配置后联系模型端点。可选命令 `python -m specrsi.cli demo` 使用小型 CPU 示例检查候选创建、证据记录、预算核算与接受流程，无需数据集或 API 调用。基准实验使用下述 VATS 入口。
+内置验证补全求解器使用 SciPy MILP，无需可选 Pyomo/HiGHS 依赖组。`doctor` 报告已安装版本，仅在显式配置后联系模型端点。**可选安装自检：** `python -m specrsi.cli demo` 通过小型 CPU 示例检查候选创建、证据记录、预算核算与接受流程，无需下载数据集或调用模型 API。VATS 实验使用下述完整配置。
 
 **发布验证：** 已在 Python 3.13 下检查可编辑安装、doctor、demo 及以下不依赖模型的测试集合；**267 项测试通过**。
 
@@ -262,21 +262,23 @@ python -m pytest -q \
 
 ## 🚀 运行实验与训练
 
-文本、代码和工作流任务通过 `run_experiment.py` 执行 VATS，原生科学任务通过 `run_paper_science.py` 执行。每个命令读取完整的 YAML 配置；将下列路径替换为实验配置及训练检查点的位置。
+文本、代码和工作流任务通过 `run_experiment.py` 执行 VATS，原生科学任务通过 `run_paper_science.py` 执行。以下示例使用仓库内已有的完整 YAML 配置。先按[复现指南](docs/REPRODUCIBILITY.md)准备固定版本的模型、任务数据或仿真器，以及训练和服务环境，并按实际部署设置设备和模型端点。
 
 ```sh
-python scripts/run_experiment.py --config path/to/run.yaml
-python scripts/run_paper_science.py --config path/to/science.yaml
-python scripts/run_paper_science_comparison.py --config path/to/comparison.yaml --stage all
-python scripts/train.py --config path/to/train.yaml --stage warmup
-python scripts/train.py --config path/to/train.yaml --stage gvo --resume path/to/warmup
+# HotpotQA：训练角色，然后使用 VATS 评估
+python scripts/train.py --config configs/training/paper_pdf_hotpotqa.yaml --stage two_stage
+python scripts/run_experiment.py --config configs/experiments/paper_pdf_hotpotqa.yaml
+
+# Reactor：训练角色，然后使用 VATS 评估
+python scripts/train.py --config configs/training/paper_pdf_reactor.yaml --stage two_stage
+python scripts/run_paper_science.py --config configs/experiments/paper_pdf_reactor.yaml
 ```
 
-在完整运行配置中，`search.algorithm: vats_pdf` 选择 `VATSEngine`，`search.controller: learned` 加载训练后的 Drafter、Scorer 和 Policy。同时配置固定版本的模型端点、数据集或仿真器注册、不重叠的选择与审计案例、随机种子、预算及输出目录。科学实验需要已注册契约、案例清单、选择/审计 ID，以及兼容的角色检查点；`heuristic_bootstrap` 用于显式选择启发式控制器。[训练配置目录](docs/reproducibility-training-configs.json)与[复现指南](docs/REPRODUCIBILITY.md)记录参考参数和实验设置。
+`--stage two_stage` 依次执行监督预热和 GVO，并将角色检查点保存到对应实验配置所引用的路径。已有兼容检查点时，可直接执行评估命令。每份实验配置均指定输入、随机种子、预算、输出目录，并通过 `search.controller: learned` 加载训练后的 Drafter、Scorer 和 Policy。科学实验使用已注册契约、案例清单及独立的选择/审计场景。更多设置见[训练配置目录](docs/reproducibility-training-configs.json)。
 
-科学比较运行器在相同的冻结留出场景下评估 `initial`、`best_of_n`、`random_search` 和 `specrsi`，并在审计评估前固定选中的智能体。
+科学比较运行器 `run_paper_science_comparison.py` 在相同的冻结留出场景下评估 `initial`、`best_of_n`、`random_search` 和 `specrsi`，并在审计评估前固定选中的智能体。
 
-训练配置通过 `collection.algorithm: vats_pdf` 选择 VATS 数据采集器；`search.algorithm` 适用于上述实验运行器。
+**不同阶段的 VATS 配置：** 实验 YAML 使用 `search.algorithm: vats_pdf` 执行搜索与评估；训练 YAML 使用 `collection.algorithm: vats_pdf` 采集用于预热和 GVO 的已验证搜索轨迹。两者均选择 `VATSEngine`；优化器、学习率和批大小另在 `training` 中配置。
 
 学习路径在付费任务调用前，检查 HF 检查点架构、特征维度、角色头、适配器及适用的冻结文本身份。训练使用已验证的 JSONL，或使用配置的数据采集器。可选本地模型服务需要显式的模型锁、完整性清单、端口及请求日志目标位置。
 
