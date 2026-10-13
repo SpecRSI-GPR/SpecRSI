@@ -56,8 +56,6 @@ The manuscript reports five main findings:
 
 ![SpecRSI method overview](docs/figures/method-overview.png)
 
-[Vector PDF](docs/figures/method-overview.pdf) · [Vector SVG](docs/figures/method-overview.svg)
-
 The method has two timescales:
 
 1. **Inner search:** immutable candidate versions, admitted outcomes, missing checks, and remaining resources form the state. The improver is frozen throughout each search. DRAFT executes bounded edits; VERIFY obtains contracted outcomes; ACCEPT returns the highest-scoring complete, admissible version.
@@ -172,8 +170,6 @@ Scores (%) show mean ± SD. D/H/M permits data, harness, and model edits.
 Mean advantages over the matched MetaRSI controls are **2.25 pp with D/H/M** and **2.20 pp with D+H**. Improvements therefore persist without task-model weight updates.
 
 ![Ten-backbone performance comparison](docs/figures/backbone-comparison.png)
-
-[Vector PDF](docs/figures/backbone-comparison.pdf) · [Vector SVG](docs/figures/backbone-comparison.svg)
 
 Across the full twenty-backbone system comparison in Appendix B, SpecRSI improves four-task macro-average scores over MetaRSI-v1 by **1.85–2.38 pp**. Figure 2 presents ten representative backbones, all with higher macro-average scores and lower target-cost indices; their total-cost indices are **0.83%–0.90% higher** than MetaRSI-v1.
 

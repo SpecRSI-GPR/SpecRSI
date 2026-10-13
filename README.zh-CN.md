@@ -56,8 +56,6 @@ SpecRSI 在中间版本尚未完成全部评估时，就为智能体起草可执
 
 ![SpecRSI 方法概览](docs/figures/method-overview.png)
 
-[矢量 PDF](docs/figures/method-overview.pdf) · [矢量 SVG](docs/figures/method-overview.svg)
-
 方法包含两个时间尺度：
 
 1. **内层搜索：** 状态由不可变候选版本、已接纳结果、缺失检查和剩余资源组成。每次搜索期间，改进器保持冻结。DRAFT 执行有界编辑；VERIFY 获取验证契约要求的结果；ACCEPT 返回分数最高的完整、可接纳版本。
@@ -172,8 +170,6 @@ SpecRSI 在中间版本尚未完成全部评估时，就为智能体起草可执
 相比权限匹配的 MetaRSI 对照，平均优势分别为 **D/H/M 下的 2.25 个百分点**和 **D+H 下的 2.20 个百分点**。因此，不更新任务模型权重时，提升依然存在。
 
 ![十个骨干模型的性能比较](docs/figures/backbone-comparison.png)
-
-[矢量 PDF](docs/figures/backbone-comparison.pdf) · [矢量 SVG](docs/figures/backbone-comparison.svg)
 
 附录 B 的完整二十骨干系统比较中，SpecRSI 相比 MetaRSI-v1 的四任务宏平均分数提高 **1.85–2.38 个百分点**。图 2 展示其中十个代表性骨干模型：SpecRSI 在这十个模型上均获得更高的四任务宏平均分数和更低的目标成本指数，同时总成本指数**增加 0.83%–0.90%**。
 
