@@ -38,15 +38,31 @@ def canonical(value):
     return json.dumps(value,sort_keys=True,separators=(",",":"),allow_nan=False)
 
 
-def case_count(domain: str) -> int:
+def case_count(domain: str, scenario_set: str="selection") -> int:
     if domain not in DOMAINS:
         raise ValueError("Unknown science domain")
+    if scenario_set == "reference":
+        if domain != "reactor":
+            raise ValueError("Reference profile is registered only for Reactor")
+        return json.loads(_read(ROOT/"configs/science/reference/reactor.json"))["case_count"]
+    if scenario_set not in {"development", "selection", "audit"}:
+        raise ValueError("Unknown registered scenario set")
     return json.loads(_read(ROOT/"configs/science/cases"/f"{domain}.json"))["case_count"]
 
 
 def load_config(domain: str, scenario_set: str="selection", case_id: int=0) -> dict:
     if domain not in DOMAINS:
         raise ValueError(f"Unknown science domain {domain}")
+    if scenario_set == "reference":
+        if domain != "reactor":
+            raise ValueError("Reference profile is registered only for Reactor")
+        bundle=json.loads(_read(ROOT/"configs/science/reference/reactor.json"))
+        if type(case_id) is not int or not 0 <= case_id < bundle["case_count"]:
+            raise ValueError("Unregistered science case ID")
+        case=bundle["cases"][case_id]
+        if case["case_id"] != case_id:
+            raise ValueError("Mismatched registered Reactor case ID")
+        return {**bundle["common"], **case}
     if scenario_set not in {"development","selection","audit"}:
         raise ValueError("Unknown registered scenario set")
     folder=ROOT/"configs/science"

@@ -123,7 +123,8 @@ def solve_field(epsilon: np.ndarray, c: dict, wavelength_um: float, reference: b
     return {"flux": mean.tolist(), "late_window_relative_drift": drift.tolist(), "peak_field": float(peak)}
 
 
-def simulate(candidate: dict, c: dict) -> dict:
+def _simulate_fields(candidate: dict, c: dict) -> dict:
+    """Raw field diagnostics; candidate admissibility is checked by simulate()."""
     if c["courant"] >= 1/math.sqrt(2):
         raise RuntimeError("Registered FDTD Courant factor unstable")
     epsilon = design(candidate,c)
@@ -145,3 +146,23 @@ def simulate(candidate: dict, c: dict) -> dict:
             "wavelength_runs":rows,"epsilon_sha256":hashlib.sha256(epsilon.tobytes()).hexdigest(),
             "grid":[c["nx"],c["ny"]],"steps_per_solve":c["steps"],"actual_field_solves":4,
             "simulator":"TM Yee FDTD with split-field polynomial absorbing layer; straight-guide flux reference"}
+
+
+def simulate(candidate: dict, c: dict) -> dict:
+    result = _simulate_fields(candidate, c)
+    for k, row in enumerate(result["wavelength_runs"]):
+        wavelength = row["wavelength_um"]
+        upper = result["transmissions"][f"T{k+1}A"]
+        lower = result["transmissions"][f"T{k+1}B"]
+        # The registered routing targets are port A at wavelength 1 and B at 2.
+        target, other = (upper, lower) if k == 0 else (lower, upper)
+        if target <= 0:
+            raise InvalidCandidate(f"FDTD target-port power is zero at {wavelength} um")
+        crosstalk_ratio = other / target
+        # Compare power ratios so the inclusive -20 dB boundary is not rounded by log10.
+        if crosstalk_ratio > 10**(-20/10):
+            raise InvalidCandidate(f"FDTD crosstalk exceeds -20 dB at {wavelength} um")
+        # Zero leakage has -infinity dB; use null plus its exact zero ratio in JSON.
+        crosstalk_db = 10*math.log10(crosstalk_ratio) if crosstalk_ratio > 0 else None
+        row.update(crosstalk_ratio=crosstalk_ratio, crosstalk_db=crosstalk_db)
+    return result

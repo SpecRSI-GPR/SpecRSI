@@ -23,8 +23,10 @@ def make_task(domain: str,scenario_set: str="selection",case_id: int=0) -> Task:
                 metadata={"evaluator_identity":identity,"unit":"one complete native scenario suite"})
 
 
-def make_scope(domain: str,scenario_set: str="selection",case_ids: tuple[int,...]=(0,), *, native_utility: bool=False) -> EvaluationScope:
+def make_scope(domain: str,scenario_set: str="selection",case_ids: tuple[int,...]=(0,), *, native_utility: bool|None=None) -> EvaluationScope:
     from specrsi.core.models import digest
+    if native_utility is None:
+        native_utility = scenario_set == "reference"
     tasks=tuple(make_task(domain,scenario_set,i) for i in case_ids)
     identity=digest([task.metadata["evaluator_identity"] for task in tasks])
     score_identity = "native-utility-v1" if native_utility else "native-atan-v1"
@@ -32,7 +34,7 @@ def make_scope(domain: str,scenario_set: str="selection",case_ids: tuple[int,...
                            scored_fields=("native_score","valid","evaluator_identity"),
                            aggregation_id="science_native_weighted_mean_v1" if native_utility else "weighted_mean_v1",
                            constraints_id="native-complete-and-all-hard-constraints-v1",
-                           split="dev" if scenario_set=="development" else scenario_set)
+                           split={"development":"dev", "reference":"audit"}.get(scenario_set,scenario_set))
 
 
 def native_science_utility(outcomes, scope):
@@ -46,8 +48,8 @@ def make_science_ledger(checker=None, *, receipt_secret=None):
                   aggregators={"science_native_weighted_mean_v1": native_science_utility})
 
 
-def make_candidate(domain: str,parameters: dict|None=None,name: str="baseline",parent_id=None,scenario_overrides: dict|None=None) -> Candidate:
-    return Candidate(name,{"parameters":load_config(domain)["baseline"] if parameters is None else parameters,
+def make_candidate(domain: str,parameters: dict|None=None,name: str="baseline",parent_id=None,scenario_overrides: dict|None=None, *, scenario_set: str="selection", case_id: int=0) -> Candidate:
+    return Candidate(name,{"parameters":load_config(domain,scenario_set,case_id)["baseline"] if parameters is None else parameters,
                            "scenario_overrides":scenario_overrides or {}},{"domain":domain,"contract":"science-parameter-kernel-v2"},
                      semantic_kind="scientific_parameters",deterministic=True,parent_id=parent_id)
 
@@ -73,7 +75,7 @@ def selected_parameters(candidate: Candidate,task: Task,scope: EvaluationScope) 
     if not isinstance(overrides,Mapping) or any(not isinstance(k,str) or not isinstance(v,Mapping) for k,v in overrides.items()):
         raise ValueError("Scientific overrides must map stable case keys or legacy task IDs to complete parameter objects")
     from .registry import case_count
-    stable_keys={f"case:{i}" for i in range(case_count(domain))}
+    stable_keys={f"case:{i}" for i in range(case_count(domain,scenario_set))}
     if any(k.startswith("case:") and k not in stable_keys for k in overrides):
         raise ValueError("Unregistered stable scientific case route")
     stable_key=f"case:{task.inputs['case_id']}"
@@ -152,7 +154,9 @@ class ScienceExecutor:
 
 def mutate(domain: str,parameters: dict,rng: random.Random) -> dict:
     p=json.loads(json.dumps(parameters))
-    if domain=="reactor":
+    if domain=="reactor" and set(p)=={"coolant_flow_l_min"}:
+        p["coolant_flow_l_min"]=min(50.0,max(5.0,p["coolant_flow_l_min"]+rng.uniform(-4.5,4.5)))
+    elif domain=="reactor":
         key=rng.choice(["feed_mol_per_second","jacket_temperature_k"])
         j=rng.randrange(10);p[key][j]*=rng.uniform(.9,1.1)
         if key=="jacket_temperature_k":p[key][j]=min(330,max(275,p[key][j]))

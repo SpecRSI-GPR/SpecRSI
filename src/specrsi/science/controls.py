@@ -57,7 +57,7 @@ def physics_controls():
     """Independent physical checks; reduced/extended discretizations are labeled."""
     import numpy as np
     from .reactor import simulate as reactor
-    from .fdtd import simulate as fdtd
+    from .fdtd import _simulate_fields as fdtd  # Field diagnostics, not candidate acceptance.
     results={}
     c=load_config("reactor");candidate=c["baseline"]
     regular=reactor(candidate,c)

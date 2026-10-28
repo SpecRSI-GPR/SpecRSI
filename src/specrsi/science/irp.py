@@ -97,6 +97,15 @@ def simulate(candidate: dict, c: dict) -> dict:
             raise RuntimeError("Inventory demand conservation failed")
         episodes.append({"seed": seed, "total_cost": sum(cumulative.values()), "total_demand": total_demand,
                          "sold": sold, "lost": lost, "wasted": wasted, "max_shipped": max_vehicle, "cost_breakdown": cumulative})
+    total_demand = sum(row["total_demand"] for row in episodes)
+    total_sold = sum(row["sold"] for row in episodes)
+    if total_demand <= 0:
+        raise InvalidCandidate("IRP service level is undefined without demand")
+    service_level = total_sold / total_demand
+    # Pool demand across the complete case; this is not a mean of episode rates.
+    if 100 * total_sold < 95 * total_demand:
+        raise InvalidCandidate(f"IRP service level {service_level:.6f} is below 95%")
     result = irp_score(episodes, valid=True, ddof=c["std_ddof"])
     return {"native_score": result.score, "native_unit": result.metrics["native_unit"], "episodes": episodes,
+            "service_level": service_level,
             "demand_sha256": demands_hash.hexdigest(), "simulator": "daily FIFO discrete inventory and Euclidean nearest-neighbor routing"}

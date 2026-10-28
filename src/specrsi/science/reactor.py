@@ -1,4 +1,4 @@
-"""Six-state stiff material/energy balances for a semibatch chemical reactor."""
+"""Registered Reactor models: Reference CSTR and legacy semibatch balances."""
 from __future__ import annotations
 
 import numpy as np
@@ -9,6 +9,11 @@ from .common import InvalidCandidate, exact_keys, vector
 
 
 def simulate(candidate: dict, c: dict) -> dict:
+    if c.get("model_id") == "reference-cstr-dual-valve-v1":
+        from .reactor_cstr import simulate as simulate_cstr
+        return simulate_cstr(candidate, c)
+    if c.get("model_id") is not None:
+        raise ValueError("Unknown Reactor model")
     exact_keys(candidate, ("feed_mol_per_second", "jacket_temperature_k"))
     n = c["segments"]
     feeds = vector(candidate["feed_mol_per_second"], n, *c["feed_bounds_mol_second"], "feed")
