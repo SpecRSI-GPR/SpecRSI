@@ -18,7 +18,6 @@
 
 ## 🔥 What's New
 
-- **October 28, 2026** — Updated the result tables, figures, online supplement, and model-source list.
 - **October 10, 2026** — We released **SpecRSI v1**, including the code, experimental guide, and reproducibility specifications.
 
 ## 📌 Citation
