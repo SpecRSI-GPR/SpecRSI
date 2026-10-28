@@ -1,0 +1,92 @@
+\documentclass[10pt]{article}
+\usepackage[margin=22mm]{geometry}
+\usepackage{iftex}
+\ifPDFTeX\usepackage[T1]{fontenc}\fi
+\usepackage{libertine}
+\usepackage{amsmath,booktabs,array,colortbl,float,caption,tabularx}
+\ifPDFTeX
+  \newcommand{\CaptionRoman}{\fontfamily{ptm}\selectfont\upshape\mdseries}
+\else
+  \usepackage{fontspec}
+  \IfFontExistsTF{Times New Roman}{\newfontfamily\CaptionRoman[Ligatures=TeX]{Times New Roman}}{\newfontfamily\CaptionRoman[Ligatures=TeX]{TeX Gyre Termes}}
+\fi
+\DeclareCaptionFont{captionroman}{\CaptionRoman\upshape\mdseries}
+\captionsetup{font={captionroman},labelfont={captionroman},textfont={captionroman}}
+\captionsetup[figure]{position=bottom}
+\captionsetup[table]{position=top}
+\usepackage[most]{tcolorbox}
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+\definecolor{OursRow}{HTML}{EAF3F6}
+\definecolor{CaseSetup}{HTML}{2F65B0}
+\definecolor{CaseBlocked}{HTML}{B43C3C}
+\definecolor{CaseSuccess}{HTML}{21804A}
+\definecolor{CaseAnalysis}{HTML}{B35C12}
+\hypersetup{pdftitle={SpecRSI: Online Supplement},pdfauthor={},pdfcreator={},pdfproducer={}}
+\renewcommand{\thefigure}{O\arabic{figure}}
+\renewcommand{\thetable}{O\arabic{table}}
+\title{SpecRSI: Online Supplement}
+\author{}\date{}
+\begin{document}\maketitle
+\noindent This supplement presents the released Drafter prompt template and a supplementary D+H \texttt{csvcut} case.
+\section{Drafter prompt template}
+The released \texttt{HFPromptDrafter} uses the following template for task agents represented by a single system instruction. Braced fields are filled at runtime.
+
+\begin{tcolorbox}[
+enhanced,
+colback=black!5,
+colframe=black!75,
+colbacktitle=black!75,
+coltitle=white,
+title={Prompt O1. Drafter for task-agent instructions},
+fonttitle=\large\rmfamily,
+fontupper=\normalsize,
+boxrule=0.5pt,
+arc=1.5mm,
+left=3mm,
+right=3mm,
+top=2.5mm,
+bottom=2.5mm,
+before skip=9pt,
+after skip=9pt
+]
+Write an improved system instruction for the task agent. Return only the new instruction, without commentary. Make a concrete change using the observed feedback; do not copy the current instruction. Preserve the required output format and interface constraints in the current instruction. The checker and evaluation rules cannot be edited.
+
+\medskip
+\texttt{\{interface\_guidance\}}
+
+\medskip
+\textbf{Current instruction:}\par
+\texttt{\{bounded\_parent\}}
+
+\medskip
+\textbf{Observed search context:}\par
+\texttt{\{context\}}
+\end{tcolorbox}
+\noindent The feedback serializer includes up to four parent-task examples, with visible task inputs and observed scores, admissibility, and available answer/checker feedback. A null outcome denotes an unobserved result. Examples are selected in failure-first order; task references and metadata are not read. The current instruction and serialized feedback are bounded by the available input-token allowance. The box reproduces the released implementation template, rather than a logged prompt from the case below.
+
+\smallskip
+\noindent\textbf{Source.} \path{src/specrsi/learning/bridge.py} (\texttt{HFPromptDrafter}) and \path{src/specrsi/learning/draft_context.py} (\texttt{parent\_feedback\_context}).
+
+\clearpage
+\section{Supplementary case: header handling with frozen task models}
+Table~\ref{tab:online-csvcut} compares header handling with frozen task-model weights. Costs and token shares summarize five seeds.
+
+\setcounter{table}{1}
+\begin{table}[H]
+
+\centering
+\caption{Supplementary D+H \texttt{csvcut} case. Search costs are five-seed means in k tokens.}
+\label{tab:online-csvcut}
+\small
+\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{@{}p{0.16\linewidth}X@{}}\toprule
+\textbf{Setup} & \textcolor{CaseSetup}{MetaRSI-H and SpecRSI-H add \texttt{--skip-header} to \texttt{csvcut} while preserving compatibility with \texttt{--columns} and \texttt{--out-delimiter}. Both use the same root, D+H permissions, and a 2.0-k-token instance budget; task-model weights remain frozen. The root fails all 12 new feature tests.}\\\midrule
+\textbf{MetaRSI-H trace} & Adds argument parsing and help text, then header-skipping logic. The first revision passes the original regression suite, \textcolor{CaseBlocked}{while the 12 new feature tests still fail}. After header-skipping logic is added, all 12 new feature tests pass. The final combined suite passes, with clean static checks.\\\midrule
+\textbf{SpecRSI-H trace} & \textcolor{CaseSuccess}{Drafts argument parsing, header skipping, and empty/single-line handling with corresponding tests. Syntax and module checks precede the final full suite and static checks. The final version passes all 12 new feature tests and the original regression suite.}\\\midrule
+\textbf{Search cost}\newline(five-seed means) & MetaRSI-H: \textbf{1.722} k tokens; SpecRSI-H: \textcolor{CaseSuccess}{\textbf{1.468} k tokens}. MetaRSI-H token shares are 78\% full-test interaction, 18\% generation, and 4\% other search inference. SpecRSI-H uses 42\% on full-test interaction, 11\% on staged checks, 35\% on generation, and 12\% on planning.\\\midrule
+\textcolor{CaseAnalysis}{\textbf{Analysis}} & \textcolor{CaseAnalysis}{Both versions complete the feature. SpecRSI-H uses staged checks and reduces mean search-token cost by \textbf{14.8\%}, with task-model weights frozen throughout.}\\\bottomrule
+\end{tabularx}
+\end{table}
+\noindent Search cost counts forward input/output and tool-return text tokens; test execution is not converted to tokens. \textcolor{CaseSetup}{Blue marks the setup}, \textcolor{CaseBlocked}{red marks incomplete intermediate functionality}, \textcolor{CaseSuccess}{green marks the SpecRSI-H trace and cost}, and \textcolor{CaseAnalysis}{orange marks the analysis}.
+
+\end{document}

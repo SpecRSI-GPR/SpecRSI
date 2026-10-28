@@ -1,0 +1,4 @@
+condition,gain_mean_pp,gain_sd_pp,training_cost_mean_k_tokens,training_cost_sd_k_tokens
+Same arms / means,5.40,0.57,237.00,9.53
+Same arms / means + pair,6.30,0.65,284.00,9.71
+Equal-acquisition-cost search,5.10,0.57,253.00,9.45
