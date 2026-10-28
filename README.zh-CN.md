@@ -7,7 +7,7 @@
 <p align="center"><strong>SpecRSI</strong></p>
 
 <p align="center">
-  <img src="docs/assets/badge-arxiv.svg" alt="arXiv Paper">
+  <a href="https://arxiv.org/pdf/2610.16491"><img src="docs/assets/badge-arxiv.svg" alt="arXiv Paper"></a>
   <img src="docs/assets/badge-twitter.svg" alt="Twitter / X">
   <img src="docs/assets/badge-xiaohongshu.svg" alt="Xiaohongshu">
   <a href="https://github.com/xuxinthuad/SpecRSI"><img src="docs/assets/badge-github.svg" alt="GitHub"></a>
