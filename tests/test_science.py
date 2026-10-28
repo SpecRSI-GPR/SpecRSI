@@ -59,12 +59,15 @@ def test_reactor_material_conservation_and_thermal_failure():
 def test_irp_real_demand_independent_and_conserved():
     c=load_config("irp")
     first=evaluate("irp",c["baseline"])
-    second=evaluate("irp",dict(c["baseline"],target_days=0,safety_stock=0))
+    second=evaluate("irp",dict(c["baseline"],target_days=1.6))
     assert first["valid"] and second["valid"]
     assert first["demand_sha256"]==second["demand_sha256"]
-    assert first["native_score"]>second["native_score"]
-    assert all(x["sold"]+x["lost"]==x["total_demand"] for x in first["episodes"])
-    assert all(x["sold"]==0 for x in second["episodes"])
+    assert first["native_score"]!=second["native_score"]
+    assert all(x["sold"]+x["lost"]==x["total_demand"] for r in (first,second) for x in r["episodes"])
+    assert all(r["service_level"]>=.95 for r in (first,second))
+    unserved=evaluate("irp",dict(c["baseline"],target_days=0,safety_stock=0))
+    assert not unserved["valid"] and unserved["native_score"] is None
+    assert "service level" in unserved["violations"][0]
 
 
 def test_irp_rejects_capacity_violation_from_policy(monkeypatch):
