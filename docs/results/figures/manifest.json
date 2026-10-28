@@ -1,0 +1,74 @@
+{
+  "figure1": {
+    "visual_content_unchanged": true,
+    "text_unchanged": true,
+    "pages": 1,
+    "metadata_identity_fields_empty": true,
+    "pdf_sha256": "d6700f860ae83cb20042a30e8b4e0aba2a27fe8ccb440f9ef1737435f1bdf260",
+    "png_sha256": "80c3fe8f6f09b2566cd5f89957b76c0975fbea6368cc8d8f8abc1996c899f8f0"
+  },
+  "figure2": {
+    "visual_content_unchanged": true,
+    "text_unchanged": true,
+    "pages": 1,
+    "metadata_identity_fields_empty": true,
+    "pdf_sha256": "c88c6a2602813aa6ab07493d290c88dff9385c9739501ca040bb6dfc29a3d269",
+    "png_sha256": "0321f08e50a9bfb51e19d162e2491cda9a92e2e5f73141e2734c45e6772262b6"
+  },
+  "figure4": {
+    "visual_content_unchanged": true,
+    "text_unchanged": true,
+    "pages": 1,
+    "metadata_identity_fields_empty": true,
+    "pdf_sha256": "c11c5ec456167f8a7eac16fc1a060ff412e197cd6d630f96780c223063e621da",
+    "png_sha256": "5c4258930d2f5e846a9a31717c48d36880eafa56299f15384313e9bfb6d730b3"
+  },
+  "figure5": {
+    "visual_content_unchanged": true,
+    "text_unchanged": true,
+    "pages": 1,
+    "metadata_identity_fields_empty": true,
+    "pdf_sha256": "f2a79703bb1c74b70fadba72f2a36ee3cc202b90f63114d270e5d4807daeb9be",
+    "png_sha256": "460fa27807c0983720aa726ac89df53f7c1c342a50e4cacf5dc7ac16d66af912"
+  },
+  "figure6": {
+    "visual_content_unchanged": true,
+    "text_unchanged": true,
+    "pages": 1,
+    "metadata_identity_fields_empty": true,
+    "pdf_sha256": "20bf750b6a3a50960afbb5cf0e2a2a69c1ea316da5f2deb1a536378358be66f3",
+    "png_sha256": "72caf3c22c9706bb191a4f885e94e80a6746b1cd1c97a6268b5e9ad4829832a2"
+  },
+  "figure7": {
+    "visual_content_unchanged": true,
+    "text_unchanged": true,
+    "pages": 1,
+    "metadata_identity_fields_empty": true,
+    "pdf_sha256": "c6235c4e51df17dcc4b080ace61d1baee653e7fc83987c9fe7916b7c23107464",
+    "png_sha256": "9e456df883039ccaaeb8abd9240a7f29b54da6deaaebb99d5a04bdbf137ffe52"
+  },
+  "figure_s1": {
+    "visual_content_unchanged": true,
+    "text_unchanged": true,
+    "pages": 1,
+    "metadata_identity_fields_empty": true,
+    "pdf_sha256": "21b61eab96e9a941901cf3228bd6feea70ca48972744c0f223a4e47f26533afe",
+    "png_sha256": "e7f717df52204a1fe32f25b117aeb647cbeca397352656f54201bb24e82912cb"
+  },
+  "figure_s2": {
+    "visual_content_unchanged": true,
+    "text_unchanged": true,
+    "pages": 1,
+    "metadata_identity_fields_empty": true,
+    "pdf_sha256": "1de66dab7ac3ebed0dcd0fdc918efcd202dfadfd16c3c20a940aa4584394f8e3",
+    "png_sha256": "e6cf4d2f20478a58d0c9b6691b5d58c49f68b9f0d4a3418efeb36db10fe61342"
+  },
+  "figure3": {
+    "pages": 1,
+    "composition": "Revised PowerPoint-derived manuscript vector panels A/B/C; subcaptions below each panel.",
+    "metadata_identity_fields_empty": true,
+    "pdf_sha256": "9d62b039a7f7ac48ffbdcf0e3afe21a1e13d5a2eb2896e7ce1774b6c833b3421",
+    "png_sha256": "978e4ccf646d1ec1109d4ca933ea2ae16795e5afa4c989f721ae910ee871de62",
+    "subcaptions_verified": true
+  }
+}
