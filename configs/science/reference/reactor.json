@@ -1,0 +1,210 @@
+{
+  "case_count": 12,
+  "common": {
+    "registration_version": "specrsi-reference-reactor-cstr-v1",
+    "model_id": "reference-cstr-dual-valve-v1",
+    "domain": "reactor",
+    "profile": "full",
+    "scenario_set": "reference",
+    "source": "Author-confirmed equations and 12 instance parameter sets.",
+    "replication_scope": "reference_author_confirmed_cstr_instances",
+    "duration_min": 60.0,
+    "liquid_volume_litres": 100.0,
+    "headspace_volume_m3": 0.05,
+    "gas_constant_j_mol_k": 8.314,
+    "k0_per_min": 250000.0,
+    "activation_energy_j_mol": 40000.0,
+    "reaction_enthalpy_j_mol": -45000.0,
+    "ua_j_min_k": 1200.0,
+    "liquid_density_kg_m3": 1000.0,
+    "liquid_heat_capacity_j_kg_k": 4000.0,
+    "coolant_density_kg_m3": 1000.0,
+    "coolant_heat_capacity_j_kg_k": 4186.0,
+    "backpressure_mpa": 1.2,
+    "backpressure_outflow_mol_min_mpa": 4.0,
+    "safety_valve_pressure_mpa": 2.8,
+    "safety_valve_outflow_mol_min_mpa": 90.0,
+    "coolant_flow_bounds_l_min": [
+      5.0,
+      50.0
+    ],
+    "temperature_bounds_k": [
+      300.0,
+      400.0
+    ],
+    "pressure_bounds_mpa": [
+      1.0,
+      3.0
+    ],
+    "initial_concentration_fraction": 0.2,
+    "reference_coolant_flow_l_min": 15.0,
+    "solver": {
+      "method": "DOP853",
+      "rtol": 1e-10,
+      "atol": 1e-11,
+      "max_step_min": 0.1,
+      "extrema_grid_step_min": 0.01
+    },
+    "invalid": {
+      "coolant_flow_l_min": 0.0
+    }
+  },
+  "cases": [
+    {
+      "feed_flow_l_min": 1.0,
+      "feed_concentration_mol_l": 1.0,
+      "feed_temperature_k": 298.15,
+      "coolant_inlet_temperature_k": 288.15,
+      "initial_temperature_k": 320.0,
+      "case_id": 0,
+      "instance_id": "reactor_case_01",
+      "initial_gas_mol": 24.8,
+      "baseline": {
+        "coolant_flow_l_min": 10
+      }
+    },
+    {
+      "feed_flow_l_min": 1.5,
+      "feed_concentration_mol_l": 1.2,
+      "feed_temperature_k": 298.15,
+      "coolant_inlet_temperature_k": 288.15,
+      "initial_temperature_k": 330.0,
+      "case_id": 1,
+      "instance_id": "reactor_case_02",
+      "initial_gas_mol": 28.79,
+      "baseline": {
+        "coolant_flow_l_min": 12
+      }
+    },
+    {
+      "feed_flow_l_min": 2.0,
+      "feed_concentration_mol_l": 1.5,
+      "feed_temperature_k": 300.15,
+      "coolant_inlet_temperature_k": 290.15,
+      "initial_temperature_k": 340.0,
+      "case_id": 2,
+      "instance_id": "reactor_case_03",
+      "initial_gas_mol": 32.71,
+      "baseline": {
+        "coolant_flow_l_min": 15
+      }
+    },
+    {
+      "feed_flow_l_min": 2.0,
+      "feed_concentration_mol_l": 1.8,
+      "feed_temperature_k": 300.15,
+      "coolant_inlet_temperature_k": 290.15,
+      "initial_temperature_k": 345.0,
+      "case_id": 3,
+      "instance_id": "reactor_case_04",
+      "initial_gas_mol": 35.02,
+      "baseline": {
+        "coolant_flow_l_min": 16
+      }
+    },
+    {
+      "feed_flow_l_min": 2.5,
+      "feed_concentration_mol_l": 2.0,
+      "feed_temperature_k": 303.15,
+      "coolant_inlet_temperature_k": 293.15,
+      "initial_temperature_k": 355.0,
+      "case_id": 4,
+      "instance_id": "reactor_case_05",
+      "initial_gas_mol": 37.87,
+      "baseline": {
+        "coolant_flow_l_min": 18
+      }
+    },
+    {
+      "feed_flow_l_min": 3.0,
+      "feed_concentration_mol_l": 2.2,
+      "feed_temperature_k": 303.15,
+      "coolant_inlet_temperature_k": 293.15,
+      "initial_temperature_k": 365.0,
+      "case_id": 5,
+      "instance_id": "reactor_case_06",
+      "initial_gas_mol": 40.66,
+      "baseline": {
+        "coolant_flow_l_min": 20
+      }
+    },
+    {
+      "feed_flow_l_min": 2.0,
+      "feed_concentration_mol_l": 2.5,
+      "feed_temperature_k": 305.15,
+      "coolant_inlet_temperature_k": 295.15,
+      "initial_temperature_k": 350.0,
+      "case_id": 6,
+      "instance_id": "reactor_case_07",
+      "initial_gas_mol": 37.41,
+      "baseline": {
+        "coolant_flow_l_min": 22
+      }
+    },
+    {
+      "feed_flow_l_min": 3.0,
+      "feed_concentration_mol_l": 1.5,
+      "feed_temperature_k": 298.15,
+      "coolant_inlet_temperature_k": 285.15,
+      "initial_temperature_k": 340.0,
+      "case_id": 7,
+      "instance_id": "reactor_case_08",
+      "initial_gas_mol": 33.6,
+      "baseline": {
+        "coolant_flow_l_min": 25
+      }
+    },
+    {
+      "feed_flow_l_min": 1.5,
+      "feed_concentration_mol_l": 2.0,
+      "feed_temperature_k": 305.15,
+      "coolant_inlet_temperature_k": 298.15,
+      "initial_temperature_k": 335.0,
+      "case_id": 8,
+      "instance_id": "reactor_case_09",
+      "initial_gas_mol": 31.62,
+      "baseline": {
+        "coolant_flow_l_min": 14
+      }
+    },
+    {
+      "feed_flow_l_min": 2.5,
+      "feed_concentration_mol_l": 1.8,
+      "feed_temperature_k": 300.15,
+      "coolant_inlet_temperature_k": 288.15,
+      "initial_temperature_k": 350.0,
+      "case_id": 9,
+      "instance_id": "reactor_case_10",
+      "initial_gas_mol": 36.38,
+      "baseline": {
+        "coolant_flow_l_min": 17
+      }
+    },
+    {
+      "feed_flow_l_min": 3.5,
+      "feed_concentration_mol_l": 2.0,
+      "feed_temperature_k": 308.15,
+      "coolant_inlet_temperature_k": 298.15,
+      "initial_temperature_k": 370.0,
+      "case_id": 10,
+      "instance_id": "reactor_case_11",
+      "initial_gas_mol": 42.97,
+      "baseline": {
+        "coolant_flow_l_min": 28
+      }
+    },
+    {
+      "feed_flow_l_min": 1.0,
+      "feed_concentration_mol_l": 2.8,
+      "feed_temperature_k": 310.15,
+      "coolant_inlet_temperature_k": 300.15,
+      "initial_temperature_k": 330.0,
+      "case_id": 11,
+      "instance_id": "reactor_case_12",
+      "initial_gas_mol": 30.8,
+      "baseline": {
+        "coolant_flow_l_min": 12
+      }
+    }
+  ]
+}
