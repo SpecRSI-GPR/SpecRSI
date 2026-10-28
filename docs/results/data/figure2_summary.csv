@@ -1,0 +1,61 @@
+model,method,metric,unit,n,mean,sd
+MiniMax M3,Initial Agent,cost,k tokens,5,69.02,4.630010799123476
+MiniMax M3,MetaRSI-v1,cost,k tokens,5,57.12,3.225213171249306
+MiniMax M3,SpecRSI (ours),cost,k tokens,5,54.52,3.72451339103513
+GPT 5.5,Initial Agent,cost,k tokens,5,61.88,2.642347441196938
+GPT 5.5,MetaRSI-v1,cost,k tokens,5,52.72,2.514358765172543
+GPT 5.5,SpecRSI (ours),cost,k tokens,5,49.88,2.5203174403237383
+Claude Sonnet 5-1M,Initial Agent,cost,k tokens,5,65.92,4.589335463877094
+Claude Sonnet 5-1M,MetaRSI-v1,cost,k tokens,5,56.52,4.2915032331340495
+Claude Sonnet 5-1M,SpecRSI (ours),cost,k tokens,5,53.74,4.480290169174313
+Kimi K3,Initial Agent,cost,k tokens,5,61.32,2.857796353836293
+Kimi K3,MetaRSI-v1,cost,k tokens,5,52.5,2.979093821953247
+Kimi K3,SpecRSI (ours),cost,k tokens,5,49.56,2.9177045772319032
+GLM 5.3,Initial Agent,cost,k tokens,5,64.14,3.0418744221285667
+GLM 5.3,MetaRSI-v1,cost,k tokens,5,54.12,2.85779635383629
+GLM 5.3,SpecRSI (ours),cost,k tokens,5,51.26,3.1769482211707523
+DeepSeek V4 Pro,Initial Agent,cost,k tokens,5,58.9,2.577789750930049
+DeepSeek V4 Pro,MetaRSI-v1,cost,k tokens,5,51.18,2.6975915183733803
+DeepSeek V4 Pro,SpecRSI (ours),cost,k tokens,5,48.28,2.6975915183733803
+Gemini 3.5 Flash,Initial Agent,cost,k tokens,5,67.54,5.426140433125556
+Gemini 3.5 Flash,MetaRSI-v1,cost,k tokens,5,58.4,5.681109046656294
+Gemini 3.5 Flash,SpecRSI (ours),cost,k tokens,5,55.5,5.681109046656297
+GPT-5.6 Sol,Initial Agent,cost,k tokens,5,56.0,2.091650066335188
+GPT-5.6 Sol,MetaRSI-v1,cost,k tokens,5,47.78,2.2151749366585034
+GPT-5.6 Sol,SpecRSI (ours),cost,k tokens,5,44.88,2.2151749366585034
+Claude Opus 5,Initial Agent,cost,k tokens,5,54.0,3.259601202601326
+Claude Opus 5,MetaRSI-v1,cost,k tokens,5,45.82,3.4578895297565544
+Claude Opus 5,SpecRSI (ours),cost,k tokens,5,42.92,3.4578895297565544
+GPT-6 Astra,Initial Agent,cost,k tokens,5,50.54,1.5208550226763882
+GPT-6 Astra,MetaRSI-v1,cost,k tokens,5,43.32,1.6483324907311627
+GPT-6 Astra,SpecRSI (ours),cost,k tokens,5,40.42,1.648332490731164
+MiniMax M3,Initial Agent,score,%,5,39.0,2.8062430400804543
+MiniMax M3,MetaRSI-v1,score,%,5,48.7,3.1535694062442965
+MiniMax M3,SpecRSI (ours),score,%,5,51.88,3.966988782439397
+GPT 5.5,Initial Agent,score,%,5,44.46,2.2478878975607284
+GPT 5.5,MetaRSI-v1,score,%,5,53.36,2.377603835797712
+GPT 5.5,SpecRSI (ours),score,%,5,56.4,2.757716446627536
+Claude Sonnet 5-1M,Initial Agent,score,%,5,42.18,3.4557198960563915
+Claude Sonnet 5-1M,MetaRSI-v1,score,%,5,50.72,3.9034600036377993
+Claude Sonnet 5-1M,SpecRSI (ours),score,%,5,53.660000000000004,4.417352148063362
+Kimi K3,Initial Agent,score,%,5,45.5,2.469817807045695
+Kimi K3,MetaRSI-v1,score,%,5,54.44,2.5353500744473116
+Kimi K3,SpecRSI (ours),score,%,5,57.24,2.7582603212894887
+GLM 5.3,Initial Agent,score,%,5,43.02,2.660263144878716
+GLM 5.3,MetaRSI-v1,score,%,5,52.12,2.790519664865309
+GLM 5.3,SpecRSI (ours),score,%,5,54.94,3.1389488686501417
+DeepSeek V4 Pro,Initial Agent,score,%,5,46.8,2.3119256043393785
+DeepSeek V4 Pro,MetaRSI-v1,score,%,5,55.54,2.3776038357977134
+DeepSeek V4 Pro,SpecRSI (ours),score,%,5,58.56,2.6340083523026263
+Gemini 3.5 Flash,Initial Agent,score,%,5,41.160000000000004,3.67328191131582
+Gemini 3.5 Flash,MetaRSI-v1,score,%,5,50.28,4.190107397191628
+Gemini 3.5 Flash,SpecRSI (ours),score,%,5,53.32,4.703934523353826
+GPT-5.6 Sol,Initial Agent,score,%,5,47.78,1.9639246421387941
+GPT-5.6 Sol,MetaRSI-v1,score,%,5,57.6,1.9962464777677142
+GPT-5.6 Sol,SpecRSI (ours),score,%,5,60.72,2.2521101216414814
+Claude Opus 5,Initial Agent,score,%,5,50.36,2.7263528751795874
+Claude Opus 5,MetaRSI-v1,score,%,5,59.28,2.7598913022073903
+Claude Opus 5,SpecRSI (ours),score,%,5,62.379999999999995,2.8908476265621452
+GPT-6 Astra,Initial Agent,score,%,5,49.98,1.6769019053003682
+GPT-6 Astra,MetaRSI-v1,score,%,5,59.0,1.3928388277184094
+GPT-6 Astra,SpecRSI (ours),score,%,5,61.9,1.4577379737113243

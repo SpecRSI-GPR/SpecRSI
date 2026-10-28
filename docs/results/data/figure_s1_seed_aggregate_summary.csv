@@ -1,0 +1,9 @@
+task,method,metric,unit,n,mean,sd
+PyBaMM,Janus,gain,dimensionless,5,0.05605,0.006016932127107818
+PyBaMM,Janus,total cost,k tokens/seed,5,138.824,0.4441058432400904
+PyBaMM,SpecRSI,gain,dimensionless,5,0.13596666666666668,0.013529366208363197
+PyBaMM,SpecRSI,total cost,k tokens/seed,5,129.074,0.3562021897742868
+SWE-Pro,HGM,success,percent,5,62.0,2.0
+SWE-Pro,HGM,total cost,k tokens/seed,5,67.618,1.9387289650696458
+SWE-Pro,SpecRSI,success,percent,5,68.0,2.8284271247461903
+SWE-Pro,SpecRSI,total cost,k tokens/seed,5,61.401999999999994,1.6840338476408236

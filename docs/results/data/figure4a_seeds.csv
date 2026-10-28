@@ -1,0 +1,501 @@
+panel,model,task,comparison,metric,seed,value,unit
+A,GPT-6 Astra,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,1,15.2,percent
+A,GPT-6 Astra,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,2,19.8,percent
+A,GPT-6 Astra,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,3,17.5,percent
+A,GPT-6 Astra,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,4,21.3,percent
+A,GPT-6 Astra,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,5,16.9,percent
+A,GPT-6 Astra,AQM,SpecRSI versus Janus,Terminal gain uplift,1,14.8,percent
+A,GPT-6 Astra,AQM,SpecRSI versus Janus,Terminal gain uplift,2,18.2,percent
+A,GPT-6 Astra,AQM,SpecRSI versus Janus,Terminal gain uplift,3,20.1,percent
+A,GPT-6 Astra,AQM,SpecRSI versus Janus,Terminal gain uplift,4,16.3,percent
+A,GPT-6 Astra,AQM,SpecRSI versus Janus,Terminal gain uplift,5,19.7,percent
+A,GPT-6 Astra,FDTD,SpecRSI versus Janus,Terminal gain uplift,1,16.1,percent
+A,GPT-6 Astra,FDTD,SpecRSI versus Janus,Terminal gain uplift,2,20.5,percent
+A,GPT-6 Astra,FDTD,SpecRSI versus Janus,Terminal gain uplift,3,18.3,percent
+A,GPT-6 Astra,FDTD,SpecRSI versus Janus,Terminal gain uplift,4,17.0,percent
+A,GPT-6 Astra,FDTD,SpecRSI versus Janus,Terminal gain uplift,5,21.2,percent
+A,GPT-6 Astra,Reactor,SpecRSI versus Janus,Terminal gain uplift,1,15.7,percent
+A,GPT-6 Astra,Reactor,SpecRSI versus Janus,Terminal gain uplift,2,17.9,percent
+A,GPT-6 Astra,Reactor,SpecRSI versus Janus,Terminal gain uplift,3,20.8,percent
+A,GPT-6 Astra,Reactor,SpecRSI versus Janus,Terminal gain uplift,4,16.5,percent
+A,GPT-6 Astra,Reactor,SpecRSI versus Janus,Terminal gain uplift,5,19.1,percent
+A,GPT-6 Astra,IRP,SpecRSI versus Janus,Terminal gain uplift,1,14.9,percent
+A,GPT-6 Astra,IRP,SpecRSI versus Janus,Terminal gain uplift,2,19.3,percent
+A,GPT-6 Astra,IRP,SpecRSI versus Janus,Terminal gain uplift,3,17.2,percent
+A,GPT-6 Astra,IRP,SpecRSI versus Janus,Terminal gain uplift,4,20.6,percent
+A,GPT-6 Astra,IRP,SpecRSI versus Janus,Terminal gain uplift,5,16.0,percent
+A,Claude Opus 5,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,1,16.8,percent
+A,Claude Opus 5,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,2,21.2,percent
+A,Claude Opus 5,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,3,18.5,percent
+A,Claude Opus 5,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,4,19.9,percent
+A,Claude Opus 5,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,5,22.7,percent
+A,Claude Opus 5,AQM,SpecRSI versus Janus,Terminal gain uplift,1,17.3,percent
+A,Claude Opus 5,AQM,SpecRSI versus Janus,Terminal gain uplift,2,20.8,percent
+A,Claude Opus 5,AQM,SpecRSI versus Janus,Terminal gain uplift,3,22.5,percent
+A,Claude Opus 5,AQM,SpecRSI versus Janus,Terminal gain uplift,4,18.1,percent
+A,Claude Opus 5,AQM,SpecRSI versus Janus,Terminal gain uplift,5,21.6,percent
+A,Claude Opus 5,FDTD,SpecRSI versus Janus,Terminal gain uplift,1,16.5,percent
+A,Claude Opus 5,FDTD,SpecRSI versus Janus,Terminal gain uplift,2,19.7,percent
+A,Claude Opus 5,FDTD,SpecRSI versus Janus,Terminal gain uplift,3,23.1,percent
+A,Claude Opus 5,FDTD,SpecRSI versus Janus,Terminal gain uplift,4,20.4,percent
+A,Claude Opus 5,FDTD,SpecRSI versus Janus,Terminal gain uplift,5,18.8,percent
+A,Claude Opus 5,Reactor,SpecRSI versus Janus,Terminal gain uplift,1,17.0,percent
+A,Claude Opus 5,Reactor,SpecRSI versus Janus,Terminal gain uplift,2,21.5,percent
+A,Claude Opus 5,Reactor,SpecRSI versus Janus,Terminal gain uplift,3,19.2,percent
+A,Claude Opus 5,Reactor,SpecRSI versus Janus,Terminal gain uplift,4,22.8,percent
+A,Claude Opus 5,Reactor,SpecRSI versus Janus,Terminal gain uplift,5,18.3,percent
+A,Claude Opus 5,IRP,SpecRSI versus Janus,Terminal gain uplift,1,16.2,percent
+A,Claude Opus 5,IRP,SpecRSI versus Janus,Terminal gain uplift,2,20.5,percent
+A,Claude Opus 5,IRP,SpecRSI versus Janus,Terminal gain uplift,3,22.0,percent
+A,Claude Opus 5,IRP,SpecRSI versus Janus,Terminal gain uplift,4,17.8,percent
+A,Claude Opus 5,IRP,SpecRSI versus Janus,Terminal gain uplift,5,19.4,percent
+A,Gemini 3.5 Flash,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,1,18.9,percent
+A,Gemini 3.5 Flash,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,2,22.4,percent
+A,Gemini 3.5 Flash,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,3,20.1,percent
+A,Gemini 3.5 Flash,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,4,24.7,percent
+A,Gemini 3.5 Flash,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,5,17.6,percent
+A,Gemini 3.5 Flash,AQM,SpecRSI versus Janus,Terminal gain uplift,1,20.3,percent
+A,Gemini 3.5 Flash,AQM,SpecRSI versus Janus,Terminal gain uplift,2,24.8,percent
+A,Gemini 3.5 Flash,AQM,SpecRSI versus Janus,Terminal gain uplift,3,22.5,percent
+A,Gemini 3.5 Flash,AQM,SpecRSI versus Janus,Terminal gain uplift,4,19.2,percent
+A,Gemini 3.5 Flash,AQM,SpecRSI versus Janus,Terminal gain uplift,5,26.1,percent
+A,Gemini 3.5 Flash,FDTD,SpecRSI versus Janus,Terminal gain uplift,1,19.5,percent
+A,Gemini 3.5 Flash,FDTD,SpecRSI versus Janus,Terminal gain uplift,2,23.7,percent
+A,Gemini 3.5 Flash,FDTD,SpecRSI versus Janus,Terminal gain uplift,3,26.2,percent
+A,Gemini 3.5 Flash,FDTD,SpecRSI versus Janus,Terminal gain uplift,4,21.8,percent
+A,Gemini 3.5 Flash,FDTD,SpecRSI versus Janus,Terminal gain uplift,5,18.9,percent
+A,Gemini 3.5 Flash,Reactor,SpecRSI versus Janus,Terminal gain uplift,1,20.8,percent
+A,Gemini 3.5 Flash,Reactor,SpecRSI versus Janus,Terminal gain uplift,2,24.1,percent
+A,Gemini 3.5 Flash,Reactor,SpecRSI versus Janus,Terminal gain uplift,3,21.6,percent
+A,Gemini 3.5 Flash,Reactor,SpecRSI versus Janus,Terminal gain uplift,4,27.3,percent
+A,Gemini 3.5 Flash,Reactor,SpecRSI versus Janus,Terminal gain uplift,5,23.0,percent
+A,Gemini 3.5 Flash,IRP,SpecRSI versus Janus,Terminal gain uplift,1,19.7,percent
+A,Gemini 3.5 Flash,IRP,SpecRSI versus Janus,Terminal gain uplift,2,23.2,percent
+A,Gemini 3.5 Flash,IRP,SpecRSI versus Janus,Terminal gain uplift,3,25.8,percent
+A,Gemini 3.5 Flash,IRP,SpecRSI versus Janus,Terminal gain uplift,4,20.5,percent
+A,Gemini 3.5 Flash,IRP,SpecRSI versus Janus,Terminal gain uplift,5,22.9,percent
+A,DeepSeek V4-Pro,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,1,20.1,percent
+A,DeepSeek V4-Pro,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,2,24.5,percent
+A,DeepSeek V4-Pro,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,3,22.3,percent
+A,DeepSeek V4-Pro,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,4,26.8,percent
+A,DeepSeek V4-Pro,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,5,18.7,percent
+A,DeepSeek V4-Pro,AQM,SpecRSI versus Janus,Terminal gain uplift,1,18.6,percent
+A,DeepSeek V4-Pro,AQM,SpecRSI versus Janus,Terminal gain uplift,2,22.9,percent
+A,DeepSeek V4-Pro,AQM,SpecRSI versus Janus,Terminal gain uplift,3,25.4,percent
+A,DeepSeek V4-Pro,AQM,SpecRSI versus Janus,Terminal gain uplift,4,20.3,percent
+A,DeepSeek V4-Pro,AQM,SpecRSI versus Janus,Terminal gain uplift,5,23.7,percent
+A,DeepSeek V4-Pro,FDTD,SpecRSI versus Janus,Terminal gain uplift,1,21.3,percent
+A,DeepSeek V4-Pro,FDTD,SpecRSI versus Janus,Terminal gain uplift,2,25.7,percent
+A,DeepSeek V4-Pro,FDTD,SpecRSI versus Janus,Terminal gain uplift,3,23.5,percent
+A,DeepSeek V4-Pro,FDTD,SpecRSI versus Janus,Terminal gain uplift,4,28.2,percent
+A,DeepSeek V4-Pro,FDTD,SpecRSI versus Janus,Terminal gain uplift,5,20.5,percent
+A,DeepSeek V4-Pro,Reactor,SpecRSI versus Janus,Terminal gain uplift,1,19.8,percent
+A,DeepSeek V4-Pro,Reactor,SpecRSI versus Janus,Terminal gain uplift,2,23.4,percent
+A,DeepSeek V4-Pro,Reactor,SpecRSI versus Janus,Terminal gain uplift,3,26.1,percent
+A,DeepSeek V4-Pro,Reactor,SpecRSI versus Janus,Terminal gain uplift,4,21.7,percent
+A,DeepSeek V4-Pro,Reactor,SpecRSI versus Janus,Terminal gain uplift,5,24.6,percent
+A,DeepSeek V4-Pro,IRP,SpecRSI versus Janus,Terminal gain uplift,1,22.5,percent
+A,DeepSeek V4-Pro,IRP,SpecRSI versus Janus,Terminal gain uplift,2,26.9,percent
+A,DeepSeek V4-Pro,IRP,SpecRSI versus Janus,Terminal gain uplift,3,24.2,percent
+A,DeepSeek V4-Pro,IRP,SpecRSI versus Janus,Terminal gain uplift,4,29.3,percent
+A,DeepSeek V4-Pro,IRP,SpecRSI versus Janus,Terminal gain uplift,5,21.1,percent
+A,GLM-5.3,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,1,21.0,percent
+A,GLM-5.3,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,2,25.3,percent
+A,GLM-5.3,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,3,22.8,percent
+A,GLM-5.3,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,4,27.5,percent
+A,GLM-5.3,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,5,19.2,percent
+A,GLM-5.3,AQM,SpecRSI versus Janus,Terminal gain uplift,1,19.5,percent
+A,GLM-5.3,AQM,SpecRSI versus Janus,Terminal gain uplift,2,23.7,percent
+A,GLM-5.3,AQM,SpecRSI versus Janus,Terminal gain uplift,3,26.2,percent
+A,GLM-5.3,AQM,SpecRSI versus Janus,Terminal gain uplift,4,20.8,percent
+A,GLM-5.3,AQM,SpecRSI versus Janus,Terminal gain uplift,5,24.5,percent
+A,GLM-5.3,FDTD,SpecRSI versus Janus,Terminal gain uplift,1,20.7,percent
+A,GLM-5.3,FDTD,SpecRSI versus Janus,Terminal gain uplift,2,24.9,percent
+A,GLM-5.3,FDTD,SpecRSI versus Janus,Terminal gain uplift,3,27.6,percent
+A,GLM-5.3,FDTD,SpecRSI versus Janus,Terminal gain uplift,4,22.3,percent
+A,GLM-5.3,FDTD,SpecRSI versus Janus,Terminal gain uplift,5,19.8,percent
+A,GLM-5.3,Reactor,SpecRSI versus Janus,Terminal gain uplift,1,20.2,percent
+A,GLM-5.3,Reactor,SpecRSI versus Janus,Terminal gain uplift,2,24.5,percent
+A,GLM-5.3,Reactor,SpecRSI versus Janus,Terminal gain uplift,3,26.8,percent
+A,GLM-5.3,Reactor,SpecRSI versus Janus,Terminal gain uplift,4,21.5,percent
+A,GLM-5.3,Reactor,SpecRSI versus Janus,Terminal gain uplift,5,23.9,percent
+A,GLM-5.3,IRP,SpecRSI versus Janus,Terminal gain uplift,1,19.3,percent
+A,GLM-5.3,IRP,SpecRSI versus Janus,Terminal gain uplift,2,23.6,percent
+A,GLM-5.3,IRP,SpecRSI versus Janus,Terminal gain uplift,3,25.9,percent
+A,GLM-5.3,IRP,SpecRSI versus Janus,Terminal gain uplift,4,20.1,percent
+A,GLM-5.3,IRP,SpecRSI versus Janus,Terminal gain uplift,5,22.7,percent
+A,Kimi K3,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,1,22.4,percent
+A,Kimi K3,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,2,26.8,percent
+A,Kimi K3,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,3,24.1,percent
+A,Kimi K3,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,4,29.0,percent
+A,Kimi K3,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,5,20.5,percent
+A,Kimi K3,AQM,SpecRSI versus Janus,Terminal gain uplift,1,23.7,percent
+A,Kimi K3,AQM,SpecRSI versus Janus,Terminal gain uplift,2,28.1,percent
+A,Kimi K3,AQM,SpecRSI versus Janus,Terminal gain uplift,3,25.5,percent
+A,Kimi K3,AQM,SpecRSI versus Janus,Terminal gain uplift,4,30.3,percent
+A,Kimi K3,AQM,SpecRSI versus Janus,Terminal gain uplift,5,21.8,percent
+A,Kimi K3,FDTD,SpecRSI versus Janus,Terminal gain uplift,1,21.5,percent
+A,Kimi K3,FDTD,SpecRSI versus Janus,Terminal gain uplift,2,25.9,percent
+A,Kimi K3,FDTD,SpecRSI versus Janus,Terminal gain uplift,3,28.3,percent
+A,Kimi K3,FDTD,SpecRSI versus Janus,Terminal gain uplift,4,23.0,percent
+A,Kimi K3,FDTD,SpecRSI versus Janus,Terminal gain uplift,5,20.2,percent
+A,Kimi K3,Reactor,SpecRSI versus Janus,Terminal gain uplift,1,20.9,percent
+A,Kimi K3,Reactor,SpecRSI versus Janus,Terminal gain uplift,2,25.2,percent
+A,Kimi K3,Reactor,SpecRSI versus Janus,Terminal gain uplift,3,27.5,percent
+A,Kimi K3,Reactor,SpecRSI versus Janus,Terminal gain uplift,4,22.4,percent
+A,Kimi K3,Reactor,SpecRSI versus Janus,Terminal gain uplift,5,24.6,percent
+A,Kimi K3,IRP,SpecRSI versus Janus,Terminal gain uplift,1,23.1,percent
+A,Kimi K3,IRP,SpecRSI versus Janus,Terminal gain uplift,2,27.5,percent
+A,Kimi K3,IRP,SpecRSI versus Janus,Terminal gain uplift,3,24.8,percent
+A,Kimi K3,IRP,SpecRSI versus Janus,Terminal gain uplift,4,29.7,percent
+A,Kimi K3,IRP,SpecRSI versus Janus,Terminal gain uplift,5,22.3,percent
+A,MiniMax M3,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,1,20.8,percent
+A,MiniMax M3,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,2,25.1,percent
+A,MiniMax M3,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,3,22.5,percent
+A,MiniMax M3,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,4,27.3,percent
+A,MiniMax M3,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,5,18.9,percent
+A,MiniMax M3,AQM,SpecRSI versus Janus,Terminal gain uplift,1,19.6,percent
+A,MiniMax M3,AQM,SpecRSI versus Janus,Terminal gain uplift,2,23.8,percent
+A,MiniMax M3,AQM,SpecRSI versus Janus,Terminal gain uplift,3,26.3,percent
+A,MiniMax M3,AQM,SpecRSI versus Janus,Terminal gain uplift,4,20.9,percent
+A,MiniMax M3,AQM,SpecRSI versus Janus,Terminal gain uplift,5,21.2,percent
+A,MiniMax M3,FDTD,SpecRSI versus Janus,Terminal gain uplift,1,21.2,percent
+A,MiniMax M3,FDTD,SpecRSI versus Janus,Terminal gain uplift,2,25.5,percent
+A,MiniMax M3,FDTD,SpecRSI versus Janus,Terminal gain uplift,3,28.0,percent
+A,MiniMax M3,FDTD,SpecRSI versus Janus,Terminal gain uplift,4,22.7,percent
+A,MiniMax M3,FDTD,SpecRSI versus Janus,Terminal gain uplift,5,19.5,percent
+A,MiniMax M3,Reactor,SpecRSI versus Janus,Terminal gain uplift,1,20.5,percent
+A,MiniMax M3,Reactor,SpecRSI versus Janus,Terminal gain uplift,2,24.7,percent
+A,MiniMax M3,Reactor,SpecRSI versus Janus,Terminal gain uplift,3,27.1,percent
+A,MiniMax M3,Reactor,SpecRSI versus Janus,Terminal gain uplift,4,22.0,percent
+A,MiniMax M3,Reactor,SpecRSI versus Janus,Terminal gain uplift,5,23.8,percent
+A,MiniMax M3,IRP,SpecRSI versus Janus,Terminal gain uplift,1,22.9,percent
+A,MiniMax M3,IRP,SpecRSI versus Janus,Terminal gain uplift,2,27.2,percent
+A,MiniMax M3,IRP,SpecRSI versus Janus,Terminal gain uplift,3,24.5,percent
+A,MiniMax M3,IRP,SpecRSI versus Janus,Terminal gain uplift,4,29.4,percent
+A,MiniMax M3,IRP,SpecRSI versus Janus,Terminal gain uplift,5,21.7,percent
+A,GPT-5.6 Sol,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,1,17.9,percent
+A,GPT-5.6 Sol,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,2,22.3,percent
+A,GPT-5.6 Sol,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,3,19.6,percent
+A,GPT-5.6 Sol,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,4,23.8,percent
+A,GPT-5.6 Sol,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,5,16.8,percent
+A,GPT-5.6 Sol,AQM,SpecRSI versus Janus,Terminal gain uplift,1,17.2,percent
+A,GPT-5.6 Sol,AQM,SpecRSI versus Janus,Terminal gain uplift,2,21.5,percent
+A,GPT-5.6 Sol,AQM,SpecRSI versus Janus,Terminal gain uplift,3,23.9,percent
+A,GPT-5.6 Sol,AQM,SpecRSI versus Janus,Terminal gain uplift,4,18.5,percent
+A,GPT-5.6 Sol,AQM,SpecRSI versus Janus,Terminal gain uplift,5,20.8,percent
+A,GPT-5.6 Sol,FDTD,SpecRSI versus Janus,Terminal gain uplift,1,18.5,percent
+A,GPT-5.6 Sol,FDTD,SpecRSI versus Janus,Terminal gain uplift,2,22.7,percent
+A,GPT-5.6 Sol,FDTD,SpecRSI versus Janus,Terminal gain uplift,3,25.2,percent
+A,GPT-5.6 Sol,FDTD,SpecRSI versus Janus,Terminal gain uplift,4,19.8,percent
+A,GPT-5.6 Sol,FDTD,SpecRSI versus Janus,Terminal gain uplift,5,17.6,percent
+A,GPT-5.6 Sol,Reactor,SpecRSI versus Janus,Terminal gain uplift,1,18.1,percent
+A,GPT-5.6 Sol,Reactor,SpecRSI versus Janus,Terminal gain uplift,2,22.4,percent
+A,GPT-5.6 Sol,Reactor,SpecRSI versus Janus,Terminal gain uplift,3,24.7,percent
+A,GPT-5.6 Sol,Reactor,SpecRSI versus Janus,Terminal gain uplift,4,19.4,percent
+A,GPT-5.6 Sol,Reactor,SpecRSI versus Janus,Terminal gain uplift,5,21.6,percent
+A,GPT-5.6 Sol,IRP,SpecRSI versus Janus,Terminal gain uplift,1,17.0,percent
+A,GPT-5.6 Sol,IRP,SpecRSI versus Janus,Terminal gain uplift,2,21.3,percent
+A,GPT-5.6 Sol,IRP,SpecRSI versus Janus,Terminal gain uplift,3,23.6,percent
+A,GPT-5.6 Sol,IRP,SpecRSI versus Janus,Terminal gain uplift,4,18.2,percent
+A,GPT-5.6 Sol,IRP,SpecRSI versus Janus,Terminal gain uplift,5,20.5,percent
+A,Claude Sonnet 5-1M,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,1,20.3,percent
+A,Claude Sonnet 5-1M,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,2,24.6,percent
+A,Claude Sonnet 5-1M,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,3,22.0,percent
+A,Claude Sonnet 5-1M,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,4,26.9,percent
+A,Claude Sonnet 5-1M,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,5,18.8,percent
+A,Claude Sonnet 5-1M,AQM,SpecRSI versus Janus,Terminal gain uplift,1,22.7,percent
+A,Claude Sonnet 5-1M,AQM,SpecRSI versus Janus,Terminal gain uplift,2,27.0,percent
+A,Claude Sonnet 5-1M,AQM,SpecRSI versus Janus,Terminal gain uplift,3,24.4,percent
+A,Claude Sonnet 5-1M,AQM,SpecRSI versus Janus,Terminal gain uplift,4,29.2,percent
+A,Claude Sonnet 5-1M,AQM,SpecRSI versus Janus,Terminal gain uplift,5,20.9,percent
+A,Claude Sonnet 5-1M,FDTD,SpecRSI versus Janus,Terminal gain uplift,1,21.0,percent
+A,Claude Sonnet 5-1M,FDTD,SpecRSI versus Janus,Terminal gain uplift,2,25.2,percent
+A,Claude Sonnet 5-1M,FDTD,SpecRSI versus Janus,Terminal gain uplift,3,27.7,percent
+A,Claude Sonnet 5-1M,FDTD,SpecRSI versus Janus,Terminal gain uplift,4,22.5,percent
+A,Claude Sonnet 5-1M,FDTD,SpecRSI versus Janus,Terminal gain uplift,5,19.3,percent
+A,Claude Sonnet 5-1M,Reactor,SpecRSI versus Janus,Terminal gain uplift,1,20.4,percent
+A,Claude Sonnet 5-1M,Reactor,SpecRSI versus Janus,Terminal gain uplift,2,24.7,percent
+A,Claude Sonnet 5-1M,Reactor,SpecRSI versus Janus,Terminal gain uplift,3,27.0,percent
+A,Claude Sonnet 5-1M,Reactor,SpecRSI versus Janus,Terminal gain uplift,4,21.9,percent
+A,Claude Sonnet 5-1M,Reactor,SpecRSI versus Janus,Terminal gain uplift,5,23.7,percent
+A,Claude Sonnet 5-1M,IRP,SpecRSI versus Janus,Terminal gain uplift,1,22.1,percent
+A,Claude Sonnet 5-1M,IRP,SpecRSI versus Janus,Terminal gain uplift,2,26.4,percent
+A,Claude Sonnet 5-1M,IRP,SpecRSI versus Janus,Terminal gain uplift,3,23.8,percent
+A,Claude Sonnet 5-1M,IRP,SpecRSI versus Janus,Terminal gain uplift,4,28.6,percent
+A,Claude Sonnet 5-1M,IRP,SpecRSI versus Janus,Terminal gain uplift,5,20.3,percent
+A,GPT-5.5,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,1,19.5,percent
+A,GPT-5.5,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,2,23.8,percent
+A,GPT-5.5,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,3,21.2,percent
+A,GPT-5.5,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,4,26.1,percent
+A,GPT-5.5,PyBaMM,SpecRSI versus Janus,Terminal gain uplift,5,18.0,percent
+A,GPT-5.5,AQM,SpecRSI versus Janus,Terminal gain uplift,1,21.8,percent
+A,GPT-5.5,AQM,SpecRSI versus Janus,Terminal gain uplift,2,26.1,percent
+A,GPT-5.5,AQM,SpecRSI versus Janus,Terminal gain uplift,3,23.5,percent
+A,GPT-5.5,AQM,SpecRSI versus Janus,Terminal gain uplift,4,28.3,percent
+A,GPT-5.5,AQM,SpecRSI versus Janus,Terminal gain uplift,5,20.0,percent
+A,GPT-5.5,FDTD,SpecRSI versus Janus,Terminal gain uplift,1,20.2,percent
+A,GPT-5.5,FDTD,SpecRSI versus Janus,Terminal gain uplift,2,24.4,percent
+A,GPT-5.5,FDTD,SpecRSI versus Janus,Terminal gain uplift,3,26.9,percent
+A,GPT-5.5,FDTD,SpecRSI versus Janus,Terminal gain uplift,4,21.7,percent
+A,GPT-5.5,FDTD,SpecRSI versus Janus,Terminal gain uplift,5,18.5,percent
+A,GPT-5.5,Reactor,SpecRSI versus Janus,Terminal gain uplift,1,19.7,percent
+A,GPT-5.5,Reactor,SpecRSI versus Janus,Terminal gain uplift,2,23.9,percent
+A,GPT-5.5,Reactor,SpecRSI versus Janus,Terminal gain uplift,3,26.2,percent
+A,GPT-5.5,Reactor,SpecRSI versus Janus,Terminal gain uplift,4,21.2,percent
+A,GPT-5.5,Reactor,SpecRSI versus Janus,Terminal gain uplift,5,23.0,percent
+A,GPT-5.5,IRP,SpecRSI versus Janus,Terminal gain uplift,1,21.3,percent
+A,GPT-5.5,IRP,SpecRSI versus Janus,Terminal gain uplift,2,25.5,percent
+A,GPT-5.5,IRP,SpecRSI versus Janus,Terminal gain uplift,3,23.0,percent
+A,GPT-5.5,IRP,SpecRSI versus Janus,Terminal gain uplift,4,27.7,percent
+A,GPT-5.5,IRP,SpecRSI versus Janus,Terminal gain uplift,5,19.5,percent
+A,GPT-6 Astra,PyBaMM,SpecRSI versus Janus,AUBC uplift,1,13.7,percent
+A,GPT-6 Astra,PyBaMM,SpecRSI versus Janus,AUBC uplift,2,17.9,percent
+A,GPT-6 Astra,PyBaMM,SpecRSI versus Janus,AUBC uplift,3,15.8,percent
+A,GPT-6 Astra,PyBaMM,SpecRSI versus Janus,AUBC uplift,4,19.1,percent
+A,GPT-6 Astra,PyBaMM,SpecRSI versus Janus,AUBC uplift,5,15.2,percent
+A,GPT-6 Astra,AQM,SpecRSI versus Janus,AUBC uplift,1,13.2,percent
+A,GPT-6 Astra,AQM,SpecRSI versus Janus,AUBC uplift,2,16.4,percent
+A,GPT-6 Astra,AQM,SpecRSI versus Janus,AUBC uplift,3,18.1,percent
+A,GPT-6 Astra,AQM,SpecRSI versus Janus,AUBC uplift,4,14.6,percent
+A,GPT-6 Astra,AQM,SpecRSI versus Janus,AUBC uplift,5,17.7,percent
+A,GPT-6 Astra,FDTD,SpecRSI versus Janus,AUBC uplift,1,14.3,percent
+A,GPT-6 Astra,FDTD,SpecRSI versus Janus,AUBC uplift,2,18.2,percent
+A,GPT-6 Astra,FDTD,SpecRSI versus Janus,AUBC uplift,3,16.4,percent
+A,GPT-6 Astra,FDTD,SpecRSI versus Janus,AUBC uplift,4,15.2,percent
+A,GPT-6 Astra,FDTD,SpecRSI versus Janus,AUBC uplift,5,18.8,percent
+A,GPT-6 Astra,Reactor,SpecRSI versus Janus,AUBC uplift,1,14.0,percent
+A,GPT-6 Astra,Reactor,SpecRSI versus Janus,AUBC uplift,2,15.9,percent
+A,GPT-6 Astra,Reactor,SpecRSI versus Janus,AUBC uplift,3,18.5,percent
+A,GPT-6 Astra,Reactor,SpecRSI versus Janus,AUBC uplift,4,14.7,percent
+A,GPT-6 Astra,Reactor,SpecRSI versus Janus,AUBC uplift,5,17.0,percent
+A,GPT-6 Astra,IRP,SpecRSI versus Janus,AUBC uplift,1,13.3,percent
+A,GPT-6 Astra,IRP,SpecRSI versus Janus,AUBC uplift,2,17.2,percent
+A,GPT-6 Astra,IRP,SpecRSI versus Janus,AUBC uplift,3,15.4,percent
+A,GPT-6 Astra,IRP,SpecRSI versus Janus,AUBC uplift,4,18.3,percent
+A,GPT-6 Astra,IRP,SpecRSI versus Janus,AUBC uplift,5,14.2,percent
+A,Claude Opus 5,PyBaMM,SpecRSI versus Janus,AUBC uplift,1,14.9,percent
+A,Claude Opus 5,PyBaMM,SpecRSI versus Janus,AUBC uplift,2,18.8,percent
+A,Claude Opus 5,PyBaMM,SpecRSI versus Janus,AUBC uplift,3,16.5,percent
+A,Claude Opus 5,PyBaMM,SpecRSI versus Janus,AUBC uplift,4,17.8,percent
+A,Claude Opus 5,PyBaMM,SpecRSI versus Janus,AUBC uplift,5,20.1,percent
+A,Claude Opus 5,AQM,SpecRSI versus Janus,AUBC uplift,1,15.2,percent
+A,Claude Opus 5,AQM,SpecRSI versus Janus,AUBC uplift,2,18.3,percent
+A,Claude Opus 5,AQM,SpecRSI versus Janus,AUBC uplift,3,19.8,percent
+A,Claude Opus 5,AQM,SpecRSI versus Janus,AUBC uplift,4,15.9,percent
+A,Claude Opus 5,AQM,SpecRSI versus Janus,AUBC uplift,5,19.0,percent
+A,Claude Opus 5,FDTD,SpecRSI versus Janus,AUBC uplift,1,14.6,percent
+A,Claude Opus 5,FDTD,SpecRSI versus Janus,AUBC uplift,2,17.4,percent
+A,Claude Opus 5,FDTD,SpecRSI versus Janus,AUBC uplift,3,20.2,percent
+A,Claude Opus 5,FDTD,SpecRSI versus Janus,AUBC uplift,4,18.0,percent
+A,Claude Opus 5,FDTD,SpecRSI versus Janus,AUBC uplift,5,16.3,percent
+A,Claude Opus 5,Reactor,SpecRSI versus Janus,AUBC uplift,1,15.0,percent
+A,Claude Opus 5,Reactor,SpecRSI versus Janus,AUBC uplift,2,18.9,percent
+A,Claude Opus 5,Reactor,SpecRSI versus Janus,AUBC uplift,3,17.0,percent
+A,Claude Opus 5,Reactor,SpecRSI versus Janus,AUBC uplift,4,20.0,percent
+A,Claude Opus 5,Reactor,SpecRSI versus Janus,AUBC uplift,5,16.0,percent
+A,Claude Opus 5,IRP,SpecRSI versus Janus,AUBC uplift,1,14.3,percent
+A,Claude Opus 5,IRP,SpecRSI versus Janus,AUBC uplift,2,18.0,percent
+A,Claude Opus 5,IRP,SpecRSI versus Janus,AUBC uplift,3,19.3,percent
+A,Claude Opus 5,IRP,SpecRSI versus Janus,AUBC uplift,4,15.7,percent
+A,Claude Opus 5,IRP,SpecRSI versus Janus,AUBC uplift,5,17.1,percent
+A,Gemini 3.5 Flash,PyBaMM,SpecRSI versus Janus,AUBC uplift,1,16.6,percent
+A,Gemini 3.5 Flash,PyBaMM,SpecRSI versus Janus,AUBC uplift,2,19.7,percent
+A,Gemini 3.5 Flash,PyBaMM,SpecRSI versus Janus,AUBC uplift,3,17.7,percent
+A,Gemini 3.5 Flash,PyBaMM,SpecRSI versus Janus,AUBC uplift,4,21.7,percent
+A,Gemini 3.5 Flash,PyBaMM,SpecRSI versus Janus,AUBC uplift,5,15.5,percent
+A,Gemini 3.5 Flash,AQM,SpecRSI versus Janus,AUBC uplift,1,17.7,percent
+A,Gemini 3.5 Flash,AQM,SpecRSI versus Janus,AUBC uplift,2,21.5,percent
+A,Gemini 3.5 Flash,AQM,SpecRSI versus Janus,AUBC uplift,3,19.5,percent
+A,Gemini 3.5 Flash,AQM,SpecRSI versus Janus,AUBC uplift,4,16.8,percent
+A,Gemini 3.5 Flash,AQM,SpecRSI versus Janus,AUBC uplift,5,22.6,percent
+A,Gemini 3.5 Flash,FDTD,SpecRSI versus Janus,AUBC uplift,1,17.0,percent
+A,Gemini 3.5 Flash,FDTD,SpecRSI versus Janus,AUBC uplift,2,20.6,percent
+A,Gemini 3.5 Flash,FDTD,SpecRSI versus Janus,AUBC uplift,3,22.7,percent
+A,Gemini 3.5 Flash,FDTD,SpecRSI versus Janus,AUBC uplift,4,19.0,percent
+A,Gemini 3.5 Flash,FDTD,SpecRSI versus Janus,AUBC uplift,5,16.5,percent
+A,Gemini 3.5 Flash,Reactor,SpecRSI versus Janus,AUBC uplift,1,18.1,percent
+A,Gemini 3.5 Flash,Reactor,SpecRSI versus Janus,AUBC uplift,2,20.9,percent
+A,Gemini 3.5 Flash,Reactor,SpecRSI versus Janus,AUBC uplift,3,18.8,percent
+A,Gemini 3.5 Flash,Reactor,SpecRSI versus Janus,AUBC uplift,4,23.5,percent
+A,Gemini 3.5 Flash,Reactor,SpecRSI versus Janus,AUBC uplift,5,19.9,percent
+A,Gemini 3.5 Flash,IRP,SpecRSI versus Janus,AUBC uplift,1,17.2,percent
+A,Gemini 3.5 Flash,IRP,SpecRSI versus Janus,AUBC uplift,2,20.1,percent
+A,Gemini 3.5 Flash,IRP,SpecRSI versus Janus,AUBC uplift,3,22.3,percent
+A,Gemini 3.5 Flash,IRP,SpecRSI versus Janus,AUBC uplift,4,17.8,percent
+A,Gemini 3.5 Flash,IRP,SpecRSI versus Janus,AUBC uplift,5,19.8,percent
+A,DeepSeek V4-Pro,PyBaMM,SpecRSI versus Janus,AUBC uplift,1,17.6,percent
+A,DeepSeek V4-Pro,PyBaMM,SpecRSI versus Janus,AUBC uplift,2,21.2,percent
+A,DeepSeek V4-Pro,PyBaMM,SpecRSI versus Janus,AUBC uplift,3,19.3,percent
+A,DeepSeek V4-Pro,PyBaMM,SpecRSI versus Janus,AUBC uplift,4,23.1,percent
+A,DeepSeek V4-Pro,PyBaMM,SpecRSI versus Janus,AUBC uplift,5,16.3,percent
+A,DeepSeek V4-Pro,AQM,SpecRSI versus Janus,AUBC uplift,1,16.9,percent
+A,DeepSeek V4-Pro,AQM,SpecRSI versus Janus,AUBC uplift,2,20.4,percent
+A,DeepSeek V4-Pro,AQM,SpecRSI versus Janus,AUBC uplift,3,22.3,percent
+A,DeepSeek V4-Pro,AQM,SpecRSI versus Janus,AUBC uplift,4,18.2,percent
+A,DeepSeek V4-Pro,AQM,SpecRSI versus Janus,AUBC uplift,5,21.0,percent
+A,DeepSeek V4-Pro,FDTD,SpecRSI versus Janus,AUBC uplift,1,18.4,percent
+A,DeepSeek V4-Pro,FDTD,SpecRSI versus Janus,AUBC uplift,2,22.0,percent
+A,DeepSeek V4-Pro,FDTD,SpecRSI versus Janus,AUBC uplift,3,20.1,percent
+A,DeepSeek V4-Pro,FDTD,SpecRSI versus Janus,AUBC uplift,4,24.1,percent
+A,DeepSeek V4-Pro,FDTD,SpecRSI versus Janus,AUBC uplift,5,17.7,percent
+A,DeepSeek V4-Pro,Reactor,SpecRSI versus Janus,AUBC uplift,1,17.3,percent
+A,DeepSeek V4-Pro,Reactor,SpecRSI versus Janus,AUBC uplift,2,20.5,percent
+A,DeepSeek V4-Pro,Reactor,SpecRSI versus Janus,AUBC uplift,3,22.8,percent
+A,DeepSeek V4-Pro,Reactor,SpecRSI versus Janus,AUBC uplift,4,19.0,percent
+A,DeepSeek V4-Pro,Reactor,SpecRSI versus Janus,AUBC uplift,5,21.4,percent
+A,DeepSeek V4-Pro,IRP,SpecRSI versus Janus,AUBC uplift,1,19.3,percent
+A,DeepSeek V4-Pro,IRP,SpecRSI versus Janus,AUBC uplift,2,22.9,percent
+A,DeepSeek V4-Pro,IRP,SpecRSI versus Janus,AUBC uplift,3,20.8,percent
+A,DeepSeek V4-Pro,IRP,SpecRSI versus Janus,AUBC uplift,4,24.8,percent
+A,DeepSeek V4-Pro,IRP,SpecRSI versus Janus,AUBC uplift,5,18.1,percent
+A,GLM-5.3,PyBaMM,SpecRSI versus Janus,AUBC uplift,1,18.2,percent
+A,GLM-5.3,PyBaMM,SpecRSI versus Janus,AUBC uplift,2,21.9,percent
+A,GLM-5.3,PyBaMM,SpecRSI versus Janus,AUBC uplift,3,19.7,percent
+A,GLM-5.3,PyBaMM,SpecRSI versus Janus,AUBC uplift,4,23.7,percent
+A,GLM-5.3,PyBaMM,SpecRSI versus Janus,AUBC uplift,5,16.8,percent
+A,GLM-5.3,AQM,SpecRSI versus Janus,AUBC uplift,1,17.5,percent
+A,GLM-5.3,AQM,SpecRSI versus Janus,AUBC uplift,2,21.0,percent
+A,GLM-5.3,AQM,SpecRSI versus Janus,AUBC uplift,3,22.9,percent
+A,GLM-5.3,AQM,SpecRSI versus Janus,AUBC uplift,4,18.7,percent
+A,GLM-5.3,AQM,SpecRSI versus Janus,AUBC uplift,5,21.6,percent
+A,GLM-5.3,FDTD,SpecRSI versus Janus,AUBC uplift,1,17.8,percent
+A,GLM-5.3,FDTD,SpecRSI versus Janus,AUBC uplift,2,21.4,percent
+A,GLM-5.3,FDTD,SpecRSI versus Janus,AUBC uplift,3,23.6,percent
+A,GLM-5.3,FDTD,SpecRSI versus Janus,AUBC uplift,4,19.2,percent
+A,GLM-5.3,FDTD,SpecRSI versus Janus,AUBC uplift,5,17.0,percent
+A,GLM-5.3,Reactor,SpecRSI versus Janus,AUBC uplift,1,17.9,percent
+A,GLM-5.3,Reactor,SpecRSI versus Janus,AUBC uplift,2,21.3,percent
+A,GLM-5.3,Reactor,SpecRSI versus Janus,AUBC uplift,3,23.3,percent
+A,GLM-5.3,Reactor,SpecRSI versus Janus,AUBC uplift,4,18.8,percent
+A,GLM-5.3,Reactor,SpecRSI versus Janus,AUBC uplift,5,20.8,percent
+A,GLM-5.3,IRP,SpecRSI versus Janus,AUBC uplift,1,17.1,percent
+A,GLM-5.3,IRP,SpecRSI versus Janus,AUBC uplift,2,20.6,percent
+A,GLM-5.3,IRP,SpecRSI versus Janus,AUBC uplift,3,22.5,percent
+A,GLM-5.3,IRP,SpecRSI versus Janus,AUBC uplift,4,17.9,percent
+A,GLM-5.3,IRP,SpecRSI versus Janus,AUBC uplift,5,19.9,percent
+A,Kimi K3,PyBaMM,SpecRSI versus Janus,AUBC uplift,1,19.1,percent
+A,Kimi K3,PyBaMM,SpecRSI versus Janus,AUBC uplift,2,22.8,percent
+A,Kimi K3,PyBaMM,SpecRSI versus Janus,AUBC uplift,3,20.5,percent
+A,Kimi K3,PyBaMM,SpecRSI versus Janus,AUBC uplift,4,24.6,percent
+A,Kimi K3,PyBaMM,SpecRSI versus Janus,AUBC uplift,5,17.7,percent
+A,Kimi K3,AQM,SpecRSI versus Janus,AUBC uplift,1,20.3,percent
+A,Kimi K3,AQM,SpecRSI versus Janus,AUBC uplift,2,24.0,percent
+A,Kimi K3,AQM,SpecRSI versus Janus,AUBC uplift,3,21.8,percent
+A,Kimi K3,AQM,SpecRSI versus Janus,AUBC uplift,4,25.7,percent
+A,Kimi K3,AQM,SpecRSI versus Janus,AUBC uplift,5,18.9,percent
+A,Kimi K3,FDTD,SpecRSI versus Janus,AUBC uplift,1,18.5,percent
+A,Kimi K3,FDTD,SpecRSI versus Janus,AUBC uplift,2,22.1,percent
+A,Kimi K3,FDTD,SpecRSI versus Janus,AUBC uplift,3,24.1,percent
+A,Kimi K3,FDTD,SpecRSI versus Janus,AUBC uplift,4,19.8,percent
+A,Kimi K3,FDTD,SpecRSI versus Janus,AUBC uplift,5,17.3,percent
+A,Kimi K3,Reactor,SpecRSI versus Janus,AUBC uplift,1,18.2,percent
+A,Kimi K3,Reactor,SpecRSI versus Janus,AUBC uplift,2,21.7,percent
+A,Kimi K3,Reactor,SpecRSI versus Janus,AUBC uplift,3,23.6,percent
+A,Kimi K3,Reactor,SpecRSI versus Janus,AUBC uplift,4,19.3,percent
+A,Kimi K3,Reactor,SpecRSI versus Janus,AUBC uplift,5,21.1,percent
+A,Kimi K3,IRP,SpecRSI versus Janus,AUBC uplift,1,19.8,percent
+A,Kimi K3,IRP,SpecRSI versus Janus,AUBC uplift,2,23.5,percent
+A,Kimi K3,IRP,SpecRSI versus Janus,AUBC uplift,3,21.2,percent
+A,Kimi K3,IRP,SpecRSI versus Janus,AUBC uplift,4,25.2,percent
+A,Kimi K3,IRP,SpecRSI versus Janus,AUBC uplift,5,19.0,percent
+A,MiniMax M3,PyBaMM,SpecRSI versus Janus,AUBC uplift,1,18.0,percent
+A,MiniMax M3,PyBaMM,SpecRSI versus Janus,AUBC uplift,2,21.6,percent
+A,MiniMax M3,PyBaMM,SpecRSI versus Janus,AUBC uplift,3,19.4,percent
+A,MiniMax M3,PyBaMM,SpecRSI versus Janus,AUBC uplift,4,23.4,percent
+A,MiniMax M3,PyBaMM,SpecRSI versus Janus,AUBC uplift,5,16.5,percent
+A,MiniMax M3,AQM,SpecRSI versus Janus,AUBC uplift,1,17.7,percent
+A,MiniMax M3,AQM,SpecRSI versus Janus,AUBC uplift,2,21.2,percent
+A,MiniMax M3,AQM,SpecRSI versus Janus,AUBC uplift,3,23.1,percent
+A,MiniMax M3,AQM,SpecRSI versus Janus,AUBC uplift,4,18.9,percent
+A,MiniMax M3,AQM,SpecRSI versus Janus,AUBC uplift,5,19.1,percent
+A,MiniMax M3,FDTD,SpecRSI versus Janus,AUBC uplift,1,18.3,percent
+A,MiniMax M3,FDTD,SpecRSI versus Janus,AUBC uplift,2,21.9,percent
+A,MiniMax M3,FDTD,SpecRSI versus Janus,AUBC uplift,3,24.0,percent
+A,MiniMax M3,FDTD,SpecRSI versus Janus,AUBC uplift,4,19.6,percent
+A,MiniMax M3,FDTD,SpecRSI versus Janus,AUBC uplift,5,16.8,percent
+A,MiniMax M3,Reactor,SpecRSI versus Janus,AUBC uplift,1,18.0,percent
+A,MiniMax M3,Reactor,SpecRSI versus Janus,AUBC uplift,2,21.4,percent
+A,MiniMax M3,Reactor,SpecRSI versus Janus,AUBC uplift,3,23.3,percent
+A,MiniMax M3,Reactor,SpecRSI versus Janus,AUBC uplift,4,19.1,percent
+A,MiniMax M3,Reactor,SpecRSI versus Janus,AUBC uplift,5,20.6,percent
+A,MiniMax M3,IRP,SpecRSI versus Janus,AUBC uplift,1,19.6,percent
+A,MiniMax M3,IRP,SpecRSI versus Janus,AUBC uplift,2,23.2,percent
+A,MiniMax M3,IRP,SpecRSI versus Janus,AUBC uplift,3,21.0,percent
+A,MiniMax M3,IRP,SpecRSI versus Janus,AUBC uplift,4,24.9,percent
+A,MiniMax M3,IRP,SpecRSI versus Janus,AUBC uplift,5,18.5,percent
+A,GPT-5.6 Sol,PyBaMM,SpecRSI versus Janus,AUBC uplift,1,15.8,percent
+A,GPT-5.6 Sol,PyBaMM,SpecRSI versus Janus,AUBC uplift,2,19.3,percent
+A,GPT-5.6 Sol,PyBaMM,SpecRSI versus Janus,AUBC uplift,3,17.2,percent
+A,GPT-5.6 Sol,PyBaMM,SpecRSI versus Janus,AUBC uplift,4,20.6,percent
+A,GPT-5.6 Sol,PyBaMM,SpecRSI versus Janus,AUBC uplift,5,14.9,percent
+A,GPT-5.6 Sol,AQM,SpecRSI versus Janus,AUBC uplift,1,15.1,percent
+A,GPT-5.6 Sol,AQM,SpecRSI versus Janus,AUBC uplift,2,18.5,percent
+A,GPT-5.6 Sol,AQM,SpecRSI versus Janus,AUBC uplift,3,20.4,percent
+A,GPT-5.6 Sol,AQM,SpecRSI versus Janus,AUBC uplift,4,16.3,percent
+A,GPT-5.6 Sol,AQM,SpecRSI versus Janus,AUBC uplift,5,17.9,percent
+A,GPT-5.6 Sol,FDTD,SpecRSI versus Janus,AUBC uplift,1,16.2,percent
+A,GPT-5.6 Sol,FDTD,SpecRSI versus Janus,AUBC uplift,2,19.7,percent
+A,GPT-5.6 Sol,FDTD,SpecRSI versus Janus,AUBC uplift,3,21.7,percent
+A,GPT-5.6 Sol,FDTD,SpecRSI versus Janus,AUBC uplift,4,17.3,percent
+A,GPT-5.6 Sol,FDTD,SpecRSI versus Janus,AUBC uplift,5,15.3,percent
+A,GPT-5.6 Sol,Reactor,SpecRSI versus Janus,AUBC uplift,1,16.0,percent
+A,GPT-5.6 Sol,Reactor,SpecRSI versus Janus,AUBC uplift,2,19.4,percent
+A,GPT-5.6 Sol,Reactor,SpecRSI versus Janus,AUBC uplift,3,21.3,percent
+A,GPT-5.6 Sol,Reactor,SpecRSI versus Janus,AUBC uplift,4,17.1,percent
+A,GPT-5.6 Sol,Reactor,SpecRSI versus Janus,AUBC uplift,5,18.7,percent
+A,GPT-5.6 Sol,IRP,SpecRSI versus Janus,AUBC uplift,1,14.9,percent
+A,GPT-5.6 Sol,IRP,SpecRSI versus Janus,AUBC uplift,2,18.2,percent
+A,GPT-5.6 Sol,IRP,SpecRSI versus Janus,AUBC uplift,3,20.1,percent
+A,GPT-5.6 Sol,IRP,SpecRSI versus Janus,AUBC uplift,4,15.9,percent
+A,GPT-5.6 Sol,IRP,SpecRSI versus Janus,AUBC uplift,5,17.6,percent
+A,Claude Sonnet 5-1M,PyBaMM,SpecRSI versus Janus,AUBC uplift,1,17.7,percent
+A,Claude Sonnet 5-1M,PyBaMM,SpecRSI versus Janus,AUBC uplift,2,21.2,percent
+A,Claude Sonnet 5-1M,PyBaMM,SpecRSI versus Janus,AUBC uplift,3,19.1,percent
+A,Claude Sonnet 5-1M,PyBaMM,SpecRSI versus Janus,AUBC uplift,4,23.0,percent
+A,Claude Sonnet 5-1M,PyBaMM,SpecRSI versus Janus,AUBC uplift,5,16.4,percent
+A,Claude Sonnet 5-1M,AQM,SpecRSI versus Janus,AUBC uplift,1,19.2,percent
+A,Claude Sonnet 5-1M,AQM,SpecRSI versus Janus,AUBC uplift,2,22.8,percent
+A,Claude Sonnet 5-1M,AQM,SpecRSI versus Janus,AUBC uplift,3,20.7,percent
+A,Claude Sonnet 5-1M,AQM,SpecRSI versus Janus,AUBC uplift,4,24.5,percent
+A,Claude Sonnet 5-1M,AQM,SpecRSI versus Janus,AUBC uplift,5,17.8,percent
+A,Claude Sonnet 5-1M,FDTD,SpecRSI versus Janus,AUBC uplift,1,18.0,percent
+A,Claude Sonnet 5-1M,FDTD,SpecRSI versus Janus,AUBC uplift,2,21.6,percent
+A,Claude Sonnet 5-1M,FDTD,SpecRSI versus Janus,AUBC uplift,3,23.7,percent
+A,Claude Sonnet 5-1M,FDTD,SpecRSI versus Janus,AUBC uplift,4,19.3,percent
+A,Claude Sonnet 5-1M,FDTD,SpecRSI versus Janus,AUBC uplift,5,16.5,percent
+A,Claude Sonnet 5-1M,Reactor,SpecRSI versus Janus,AUBC uplift,1,17.8,percent
+A,Claude Sonnet 5-1M,Reactor,SpecRSI versus Janus,AUBC uplift,2,21.2,percent
+A,Claude Sonnet 5-1M,Reactor,SpecRSI versus Janus,AUBC uplift,3,23.1,percent
+A,Claude Sonnet 5-1M,Reactor,SpecRSI versus Janus,AUBC uplift,4,18.9,percent
+A,Claude Sonnet 5-1M,Reactor,SpecRSI versus Janus,AUBC uplift,5,20.4,percent
+A,Claude Sonnet 5-1M,IRP,SpecRSI versus Janus,AUBC uplift,1,18.9,percent
+A,Claude Sonnet 5-1M,IRP,SpecRSI versus Janus,AUBC uplift,2,22.4,percent
+A,Claude Sonnet 5-1M,IRP,SpecRSI versus Janus,AUBC uplift,3,20.3,percent
+A,Claude Sonnet 5-1M,IRP,SpecRSI versus Janus,AUBC uplift,4,24.1,percent
+A,Claude Sonnet 5-1M,IRP,SpecRSI versus Janus,AUBC uplift,5,17.5,percent
+A,GPT-5.5,PyBaMM,SpecRSI versus Janus,AUBC uplift,1,17.1,percent
+A,GPT-5.5,PyBaMM,SpecRSI versus Janus,AUBC uplift,2,20.6,percent
+A,GPT-5.5,PyBaMM,SpecRSI versus Janus,AUBC uplift,3,18.5,percent
+A,GPT-5.5,PyBaMM,SpecRSI versus Janus,AUBC uplift,4,22.3,percent
+A,GPT-5.5,PyBaMM,SpecRSI versus Janus,AUBC uplift,5,15.9,percent
+A,GPT-5.5,AQM,SpecRSI versus Janus,AUBC uplift,1,18.7,percent
+A,GPT-5.5,AQM,SpecRSI versus Janus,AUBC uplift,2,22.2,percent
+A,GPT-5.5,AQM,SpecRSI versus Janus,AUBC uplift,3,20.2,percent
+A,GPT-5.5,AQM,SpecRSI versus Janus,AUBC uplift,4,23.9,percent
+A,GPT-5.5,AQM,SpecRSI versus Janus,AUBC uplift,5,17.2,percent
+A,GPT-5.5,FDTD,SpecRSI versus Janus,AUBC uplift,1,17.5,percent
+A,GPT-5.5,FDTD,SpecRSI versus Janus,AUBC uplift,2,21.0,percent
+A,GPT-5.5,FDTD,SpecRSI versus Janus,AUBC uplift,3,23.1,percent
+A,GPT-5.5,FDTD,SpecRSI versus Janus,AUBC uplift,4,18.7,percent
+A,GPT-5.5,FDTD,SpecRSI versus Janus,AUBC uplift,5,15.9,percent
+A,GPT-5.5,Reactor,SpecRSI versus Janus,AUBC uplift,1,17.3,percent
+A,GPT-5.5,Reactor,SpecRSI versus Janus,AUBC uplift,2,20.7,percent
+A,GPT-5.5,Reactor,SpecRSI versus Janus,AUBC uplift,3,22.6,percent
+A,GPT-5.5,Reactor,SpecRSI versus Janus,AUBC uplift,4,18.4,percent
+A,GPT-5.5,Reactor,SpecRSI versus Janus,AUBC uplift,5,20.0,percent
+A,GPT-5.5,IRP,SpecRSI versus Janus,AUBC uplift,1,18.3,percent
+A,GPT-5.5,IRP,SpecRSI versus Janus,AUBC uplift,2,21.8,percent
+A,GPT-5.5,IRP,SpecRSI versus Janus,AUBC uplift,3,19.8,percent
+A,GPT-5.5,IRP,SpecRSI versus Janus,AUBC uplift,4,23.5,percent
+A,GPT-5.5,IRP,SpecRSI versus Janus,AUBC uplift,5,16.9,percent

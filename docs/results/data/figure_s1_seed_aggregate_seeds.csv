@@ -1,0 +1,41 @@
+task,method,seed,metric,value,unit
+PyBaMM,Janus,1,gain,0.04783333333333333,dimensionless
+PyBaMM,Janus,1,total cost,138.14000000000001,k tokens/seed
+PyBaMM,Janus,2,gain,0.05291666666666667,dimensionless
+PyBaMM,Janus,2,total cost,138.69,k tokens/seed
+PyBaMM,Janus,3,gain,0.05641666666666667,dimensionless
+PyBaMM,Janus,3,total cost,138.9,k tokens/seed
+PyBaMM,Janus,4,gain,0.06341666666666666,dimensionless
+PyBaMM,Janus,4,total cost,139.29999999999998,k tokens/seed
+PyBaMM,Janus,5,gain,0.059666666666666666,dimensionless
+PyBaMM,Janus,5,total cost,139.09,k tokens/seed
+PyBaMM,SpecRSI,1,gain,0.11666666666666667,dimensionless
+PyBaMM,SpecRSI,1,total cost,128.55,k tokens/seed
+PyBaMM,SpecRSI,2,gain,0.12991666666666668,dimensionless
+PyBaMM,SpecRSI,2,total cost,128.95,k tokens/seed
+PyBaMM,SpecRSI,3,gain,0.13716666666666666,dimensionless
+PyBaMM,SpecRSI,3,total cost,129.13,k tokens/seed
+PyBaMM,SpecRSI,4,gain,0.15191666666666667,dimensionless
+PyBaMM,SpecRSI,4,total cost,129.51,k tokens/seed
+PyBaMM,SpecRSI,5,gain,0.14416666666666667,dimensionless
+PyBaMM,SpecRSI,5,total cost,129.23000000000002,k tokens/seed
+SWE-Pro,HGM,1,success,60.0,percent
+SWE-Pro,HGM,1,total cost,68.80000000000001,k tokens/seed
+SWE-Pro,HGM,2,success,62.0,percent
+SWE-Pro,HGM,2,total cost,67.41,k tokens/seed
+SWE-Pro,HGM,3,success,64.0,percent
+SWE-Pro,HGM,3,total cost,66.39,k tokens/seed
+SWE-Pro,HGM,4,success,60.0,percent
+SWE-Pro,HGM,4,total cost,70.2,k tokens/seed
+SWE-Pro,HGM,5,success,64.0,percent
+SWE-Pro,HGM,5,total cost,65.28999999999999,k tokens/seed
+SWE-Pro,SpecRSI,1,success,66.0,percent
+SWE-Pro,SpecRSI,1,total cost,62.429999999999986,k tokens/seed
+SWE-Pro,SpecRSI,2,success,70.0,percent
+SWE-Pro,SpecRSI,2,total cost,61.160000000000004,k tokens/seed
+SWE-Pro,SpecRSI,3,success,70.0,percent
+SWE-Pro,SpecRSI,3,total cost,60.42,k tokens/seed
+SWE-Pro,SpecRSI,4,success,64.0,percent
+SWE-Pro,SpecRSI,4,total cost,63.64999999999998,k tokens/seed
+SWE-Pro,SpecRSI,5,success,70.0,percent
+SWE-Pro,SpecRSI,5,total cost,59.35000000000001,k tokens/seed

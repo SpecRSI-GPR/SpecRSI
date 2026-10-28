@@ -1,0 +1,641 @@
+study,metric,budget_percent,condition,seed,value,unit
+budget,cost,10,Full SpecRSI (ours),1,41.08,k tokens/search
+budget,cost,10,Full SpecRSI (ours),2,42.95,k tokens/search
+budget,cost,10,Full SpecRSI (ours),3,44.32,k tokens/search
+budget,cost,10,Full SpecRSI (ours),4,46.87,k tokens/search
+budget,cost,10,Full SpecRSI (ours),5,45.03,k tokens/search
+budget,cost,30,Full SpecRSI (ours),1,43.45,k tokens/search
+budget,cost,30,Full SpecRSI (ours),2,43.98,k tokens/search
+budget,cost,30,Full SpecRSI (ours),3,44.41,k tokens/search
+budget,cost,30,Full SpecRSI (ours),4,45.02,k tokens/search
+budget,cost,30,Full SpecRSI (ours),5,45.34,k tokens/search
+budget,cost,50,Full SpecRSI (ours),1,40.52,k tokens/search
+budget,cost,50,Full SpecRSI (ours),2,42.89,k tokens/search
+budget,cost,50,Full SpecRSI (ours),3,44.76,k tokens/search
+budget,cost,50,Full SpecRSI (ours),4,48.25,k tokens/search
+budget,cost,50,Full SpecRSI (ours),5,47.48,k tokens/search
+budget,cost,70,Full SpecRSI (ours),1,42.58,k tokens/search
+budget,cost,70,Full SpecRSI (ours),2,43.62,k tokens/search
+budget,cost,70,Full SpecRSI (ours),3,44.76,k tokens/search
+budget,cost,70,Full SpecRSI (ours),4,46.55,k tokens/search
+budget,cost,70,Full SpecRSI (ours),5,46.29,k tokens/search
+budget,cost,90,Full SpecRSI (ours),1,41.78,k tokens/search
+budget,cost,90,Full SpecRSI (ours),2,43.85,k tokens/search
+budget,cost,90,Full SpecRSI (ours),3,45.36,k tokens/search
+budget,cost,90,Full SpecRSI (ours),4,48.62,k tokens/search
+budget,cost,90,Full SpecRSI (ours),5,45.64,k tokens/search
+budget,cost,110,Full SpecRSI (ours),1,44.02,k tokens/search
+budget,cost,110,Full SpecRSI (ours),2,44.58,k tokens/search
+budget,cost,110,Full SpecRSI (ours),3,44.95,k tokens/search
+budget,cost,110,Full SpecRSI (ours),4,45.48,k tokens/search
+budget,cost,110,Full SpecRSI (ours),5,45.57,k tokens/search
+budget,cost,130,Full SpecRSI (ours),1,44.25,k tokens/search
+budget,cost,130,Full SpecRSI (ours),2,45.01,k tokens/search
+budget,cost,130,Full SpecRSI (ours),3,45.56,k tokens/search
+budget,cost,130,Full SpecRSI (ours),4,46.29,k tokens/search
+budget,cost,130,Full SpecRSI (ours),5,46.49,k tokens/search
+budget,cost,150,Full SpecRSI (ours),1,42.35,k tokens/search
+budget,cost,150,Full SpecRSI (ours),2,44.36,k tokens/search
+budget,cost,150,Full SpecRSI (ours),3,45.82,k tokens/search
+budget,cost,150,Full SpecRSI (ours),4,48.41,k tokens/search
+budget,cost,150,Full SpecRSI (ours),5,47.56,k tokens/search
+budget,cost,10,Additive MILP,1,44.68,k tokens/search
+budget,cost,10,Additive MILP,2,47.05,k tokens/search
+budget,cost,10,Additive MILP,3,49.07,k tokens/search
+budget,cost,10,Additive MILP,4,52.19,k tokens/search
+budget,cost,10,Additive MILP,5,52.96,k tokens/search
+budget,cost,30,Additive MILP,1,48.38,k tokens/search
+budget,cost,30,Additive MILP,2,49.05,k tokens/search
+budget,cost,30,Additive MILP,3,49.6,k tokens/search
+budget,cost,30,Additive MILP,4,50.34,k tokens/search
+budget,cost,30,Additive MILP,5,50.74,k tokens/search
+budget,cost,50,Additive MILP,1,45.48,k tokens/search
+budget,cost,50,Additive MILP,2,48.24,k tokens/search
+budget,cost,50,Additive MILP,3,50.5,k tokens/search
+budget,cost,50,Additive MILP,4,54.42,k tokens/search
+budget,cost,50,Additive MILP,5,53.22,k tokens/search
+budget,cost,70,Additive MILP,1,47.35,k tokens/search
+budget,cost,70,Additive MILP,2,48.64,k tokens/search
+budget,cost,70,Additive MILP,3,49.36,k tokens/search
+budget,cost,70,Additive MILP,4,50.94,k tokens/search
+budget,cost,70,Additive MILP,5,50.16,k tokens/search
+budget,cost,90,Additive MILP,1,46.88,k tokens/search
+budget,cost,90,Additive MILP,2,49.34,k tokens/search
+budget,cost,90,Additive MILP,3,51.2,k tokens/search
+budget,cost,90,Additive MILP,4,54.85,k tokens/search
+budget,cost,90,Additive MILP,5,51.65,k tokens/search
+budget,cost,110,Additive MILP,1,49.26,k tokens/search
+budget,cost,110,Additive MILP,2,49.96,k tokens/search
+budget,cost,110,Additive MILP,3,50.45,k tokens/search
+budget,cost,110,Additive MILP,4,51.11,k tokens/search
+budget,cost,110,Additive MILP,5,51.32,k tokens/search
+budget,cost,130,Additive MILP,1,49.6,k tokens/search
+budget,cost,130,Additive MILP,2,50.56,k tokens/search
+budget,cost,130,Additive MILP,3,51.24,k tokens/search
+budget,cost,130,Additive MILP,4,52.13,k tokens/search
+budget,cost,130,Additive MILP,5,52.43,k tokens/search
+budget,cost,150,Additive MILP,1,47.61,k tokens/search
+budget,cost,150,Additive MILP,2,50.01,k tokens/search
+budget,cost,150,Additive MILP,3,51.79,k tokens/search
+budget,cost,150,Additive MILP,4,54.76,k tokens/search
+budget,cost,150,Additive MILP,5,53.55,k tokens/search
+budget,cost,10,Seeds only,1,43.75,k tokens/search
+budget,cost,10,Seeds only,2,46.05,k tokens/search
+budget,cost,10,Seeds only,3,48.0,k tokens/search
+budget,cost,10,Seeds only,4,51.02,k tokens/search
+budget,cost,10,Seeds only,5,51.78,k tokens/search
+budget,cost,30,Seeds only,1,47.42,k tokens/search
+budget,cost,30,Seeds only,2,48.05,k tokens/search
+budget,cost,30,Seeds only,3,48.56,k tokens/search
+budget,cost,30,Seeds only,4,49.26,k tokens/search
+budget,cost,30,Seeds only,5,49.63,k tokens/search
+budget,cost,50,Seeds only,1,44.48,k tokens/search
+budget,cost,50,Seeds only,2,47.18,k tokens/search
+budget,cost,50,Seeds only,3,49.37,k tokens/search
+budget,cost,50,Seeds only,4,53.22,k tokens/search
+budget,cost,50,Seeds only,5,52.05,k tokens/search
+budget,cost,70,Seeds only,1,46.65,k tokens/search
+budget,cost,70,Seeds only,2,47.9,k tokens/search
+budget,cost,70,Seeds only,3,49.18,k tokens/search
+budget,cost,70,Seeds only,4,51.18,k tokens/search
+budget,cost,70,Seeds only,5,50.74,k tokens/search
+budget,cost,90,Seeds only,1,45.86,k tokens/search
+budget,cost,90,Seeds only,2,48.26,k tokens/search
+budget,cost,90,Seeds only,3,50.05,k tokens/search
+budget,cost,90,Seeds only,4,53.65,k tokens/search
+budget,cost,90,Seeds only,5,50.48,k tokens/search
+budget,cost,110,Seeds only,1,48.22,k tokens/search
+budget,cost,110,Seeds only,2,48.88,k tokens/search
+budget,cost,110,Seeds only,3,49.33,k tokens/search
+budget,cost,110,Seeds only,4,49.95,k tokens/search
+budget,cost,110,Seeds only,5,50.13,k tokens/search
+budget,cost,130,Seeds only,1,48.54,k tokens/search
+budget,cost,130,Seeds only,2,49.46,k tokens/search
+budget,cost,130,Seeds only,3,50.1,k tokens/search
+budget,cost,130,Seeds only,4,50.95,k tokens/search
+budget,cost,130,Seeds only,5,51.22,k tokens/search
+budget,cost,150,Seeds only,1,46.56,k tokens/search
+budget,cost,150,Seeds only,2,48.9,k tokens/search
+budget,cost,150,Seeds only,3,50.62,k tokens/search
+budget,cost,150,Seeds only,4,53.54,k tokens/search
+budget,cost,150,Seeds only,5,52.36,k tokens/search
+budget,cost,10,Frozen policy,1,42.61,k tokens/search
+budget,cost,10,Frozen policy,2,44.74,k tokens/search
+budget,cost,10,Frozen policy,3,46.53,k tokens/search
+budget,cost,10,Frozen policy,4,49.4,k tokens/search
+budget,cost,10,Frozen policy,5,50.37,k tokens/search
+budget,cost,30,Frozen policy,1,46.04,k tokens/search
+budget,cost,30,Frozen policy,2,46.61,k tokens/search
+budget,cost,30,Frozen policy,3,47.1,k tokens/search
+budget,cost,30,Frozen policy,4,47.77,k tokens/search
+budget,cost,30,Frozen policy,5,48.12,k tokens/search
+budget,cost,50,Frozen policy,1,43.04,k tokens/search
+budget,cost,50,Frozen policy,2,45.62,k tokens/search
+budget,cost,50,Frozen policy,3,47.69,k tokens/search
+budget,cost,50,Frozen policy,4,51.4,k tokens/search
+budget,cost,50,Frozen policy,5,50.37,k tokens/search
+budget,cost,70,Frozen policy,1,45.15,k tokens/search
+budget,cost,70,Frozen policy,2,46.3,k tokens/search
+budget,cost,70,Frozen policy,3,47.55,k tokens/search
+budget,cost,70,Frozen policy,4,49.47,k tokens/search
+budget,cost,70,Frozen policy,5,49.12,k tokens/search
+budget,cost,90,Frozen policy,1,44.39,k tokens/search
+budget,cost,90,Frozen policy,2,46.65,k tokens/search
+budget,cost,90,Frozen policy,3,48.34,k tokens/search
+budget,cost,90,Frozen policy,4,51.82,k tokens/search
+budget,cost,90,Frozen policy,5,48.81,k tokens/search
+budget,cost,110,Frozen policy,1,46.66,k tokens/search
+budget,cost,110,Frozen policy,2,47.27,k tokens/search
+budget,cost,110,Frozen policy,3,47.7,k tokens/search
+budget,cost,110,Frozen policy,4,48.29,k tokens/search
+budget,cost,110,Frozen policy,5,48.45,k tokens/search
+budget,cost,130,Frozen policy,1,46.94,k tokens/search
+budget,cost,130,Frozen policy,2,47.8,k tokens/search
+budget,cost,130,Frozen policy,3,48.41,k tokens/search
+budget,cost,130,Frozen policy,4,49.22,k tokens/search
+budget,cost,130,Frozen policy,5,49.48,k tokens/search
+budget,cost,150,Frozen policy,1,45.02,k tokens/search
+budget,cost,150,Frozen policy,2,47.23,k tokens/search
+budget,cost,150,Frozen policy,3,48.87,k tokens/search
+budget,cost,150,Frozen policy,4,51.67,k tokens/search
+budget,cost,150,Frozen policy,5,50.59,k tokens/search
+budget,cost,10,No seeds,1,46.32,k tokens/search
+budget,cost,10,No seeds,2,49.05,k tokens/search
+budget,cost,10,No seeds,3,51.35,k tokens/search
+budget,cost,10,No seeds,4,54.68,k tokens/search
+budget,cost,10,No seeds,5,54.9,k tokens/search
+budget,cost,30,No seeds,1,50.2,k tokens/search
+budget,cost,30,No seeds,2,50.97,k tokens/search
+budget,cost,30,No seeds,3,51.59,k tokens/search
+budget,cost,30,No seeds,4,52.39,k tokens/search
+budget,cost,30,No seeds,5,52.82,k tokens/search
+budget,cost,50,No seeds,1,47.42,k tokens/search
+budget,cost,50,No seeds,2,50.42,k tokens/search
+budget,cost,50,No seeds,3,52.85,k tokens/search
+budget,cost,50,No seeds,4,57.0,k tokens/search
+budget,cost,50,No seeds,5,55.74,k tokens/search
+budget,cost,70,No seeds,1,49.25,k tokens/search
+budget,cost,70,No seeds,2,50.68,k tokens/search
+budget,cost,70,No seeds,3,52.06,k tokens/search
+budget,cost,70,No seeds,4,54.18,k tokens/search
+budget,cost,70,No seeds,5,53.62,k tokens/search
+budget,cost,90,No seeds,1,48.9,k tokens/search
+budget,cost,90,No seeds,2,51.58,k tokens/search
+budget,cost,90,No seeds,3,53.6,k tokens/search
+budget,cost,90,No seeds,4,57.45,k tokens/search
+budget,cost,90,No seeds,5,54.2,k tokens/search
+budget,cost,110,No seeds,1,51.34,k tokens/search
+budget,cost,110,No seeds,2,52.13,k tokens/search
+budget,cost,110,No seeds,3,52.68,k tokens/search
+budget,cost,110,No seeds,4,53.41,k tokens/search
+budget,cost,110,No seeds,5,53.65,k tokens/search
+budget,cost,130,No seeds,1,51.76,k tokens/search
+budget,cost,130,No seeds,2,52.81,k tokens/search
+budget,cost,130,No seeds,3,53.55,k tokens/search
+budget,cost,130,No seeds,4,54.52,k tokens/search
+budget,cost,130,No seeds,5,54.85,k tokens/search
+budget,cost,150,No seeds,1,49.7,k tokens/search
+budget,cost,150,No seeds,2,52.32,k tokens/search
+budget,cost,150,No seeds,3,54.24,k tokens/search
+budget,cost,150,No seeds,4,57.42,k tokens/search
+budget,cost,150,No seeds,5,56.08,k tokens/search
+budget,cost,10,Coupled,1,42.28,k tokens/search
+budget,cost,10,Coupled,2,44.38,k tokens/search
+budget,cost,10,Coupled,3,46.15,k tokens/search
+budget,cost,10,Coupled,4,48.97,k tokens/search
+budget,cost,10,Coupled,5,49.92,k tokens/search
+budget,cost,30,Coupled,1,45.7,k tokens/search
+budget,cost,30,Coupled,2,46.26,k tokens/search
+budget,cost,30,Coupled,3,46.73,k tokens/search
+budget,cost,30,Coupled,4,47.38,k tokens/search
+budget,cost,30,Coupled,5,47.72,k tokens/search
+budget,cost,50,Coupled,1,42.7,k tokens/search
+budget,cost,50,Coupled,2,45.25,k tokens/search
+budget,cost,50,Coupled,3,47.3,k tokens/search
+budget,cost,50,Coupled,4,50.98,k tokens/search
+budget,cost,50,Coupled,5,49.97,k tokens/search
+budget,cost,70,Coupled,1,44.82,k tokens/search
+budget,cost,70,Coupled,2,45.95,k tokens/search
+budget,cost,70,Coupled,3,47.18,k tokens/search
+budget,cost,70,Coupled,4,49.08,k tokens/search
+budget,cost,70,Coupled,5,48.71,k tokens/search
+budget,cost,90,Coupled,1,44.05,k tokens/search
+budget,cost,90,Coupled,2,46.28,k tokens/search
+budget,cost,90,Coupled,3,47.95,k tokens/search
+budget,cost,90,Coupled,4,51.4,k tokens/search
+budget,cost,90,Coupled,5,48.4,k tokens/search
+budget,cost,110,Coupled,1,46.32,k tokens/search
+budget,cost,110,Coupled,2,46.92,k tokens/search
+budget,cost,110,Coupled,3,47.33,k tokens/search
+budget,cost,110,Coupled,4,47.9,k tokens/search
+budget,cost,110,Coupled,5,48.05,k tokens/search
+budget,cost,130,Coupled,1,46.6,k tokens/search
+budget,cost,130,Coupled,2,47.44,k tokens/search
+budget,cost,130,Coupled,3,48.03,k tokens/search
+budget,cost,130,Coupled,4,48.82,k tokens/search
+budget,cost,130,Coupled,5,49.07,k tokens/search
+budget,cost,150,Coupled,1,44.68,k tokens/search
+budget,cost,150,Coupled,2,46.86,k tokens/search
+budget,cost,150,Coupled,3,48.48,k tokens/search
+budget,cost,150,Coupled,4,51.25,k tokens/search
+budget,cost,150,Coupled,5,50.17,k tokens/search
+budget,cost,10,Greedy,1,44.22,k tokens/search
+budget,cost,10,Greedy,2,46.55,k tokens/search
+budget,cost,10,Greedy,3,48.54,k tokens/search
+budget,cost,10,Greedy,4,51.61,k tokens/search
+budget,cost,10,Greedy,5,52.4,k tokens/search
+budget,cost,30,Greedy,1,47.9,k tokens/search
+budget,cost,30,Greedy,2,48.55,k tokens/search
+budget,cost,30,Greedy,3,49.08,k tokens/search
+budget,cost,30,Greedy,4,49.8,k tokens/search
+budget,cost,30,Greedy,5,50.18,k tokens/search
+budget,cost,50,Greedy,1,44.98,k tokens/search
+budget,cost,50,Greedy,2,47.71,k tokens/search
+budget,cost,50,Greedy,3,49.93,k tokens/search
+budget,cost,50,Greedy,4,53.82,k tokens/search
+budget,cost,50,Greedy,5,52.63,k tokens/search
+budget,cost,70,Greedy,1,47.15,k tokens/search
+budget,cost,70,Greedy,2,48.42,k tokens/search
+budget,cost,70,Greedy,3,49.72,k tokens/search
+budget,cost,70,Greedy,4,51.75,k tokens/search
+budget,cost,70,Greedy,5,51.31,k tokens/search
+budget,cost,90,Greedy,1,46.37,k tokens/search
+budget,cost,90,Greedy,2,48.8,k tokens/search
+budget,cost,90,Greedy,3,50.62,k tokens/search
+budget,cost,90,Greedy,4,54.25,k tokens/search
+budget,cost,90,Greedy,5,51.06,k tokens/search
+budget,cost,110,Greedy,1,48.74,k tokens/search
+budget,cost,110,Greedy,2,49.42,k tokens/search
+budget,cost,110,Greedy,3,49.89,k tokens/search
+budget,cost,110,Greedy,4,50.53,k tokens/search
+budget,cost,110,Greedy,5,50.73,k tokens/search
+budget,cost,130,Greedy,1,49.07,k tokens/search
+budget,cost,130,Greedy,2,50.01,k tokens/search
+budget,cost,130,Greedy,3,50.67,k tokens/search
+budget,cost,130,Greedy,4,51.54,k tokens/search
+budget,cost,130,Greedy,5,51.83,k tokens/search
+budget,cost,150,Greedy,1,47.08,k tokens/search
+budget,cost,150,Greedy,2,49.45,k tokens/search
+budget,cost,150,Greedy,3,51.2,k tokens/search
+budget,cost,150,Greedy,4,54.15,k tokens/search
+budget,cost,150,Greedy,5,52.95,k tokens/search
+budget,gain,10,Full SpecRSI (ours),1,0.95,pp
+budget,gain,10,Full SpecRSI (ours),2,1.72,pp
+budget,gain,10,Full SpecRSI (ours),3,2.28,pp
+budget,gain,10,Full SpecRSI (ours),4,2.95,pp
+budget,gain,10,Full SpecRSI (ours),5,2.9,pp
+budget,gain,30,Full SpecRSI (ours),1,3.52,pp
+budget,gain,30,Full SpecRSI (ours),2,3.91,pp
+budget,gain,30,Full SpecRSI (ours),3,4.25,pp
+budget,gain,30,Full SpecRSI (ours),4,4.53,pp
+budget,gain,30,Full SpecRSI (ours),5,4.79,pp
+budget,gain,50,Full SpecRSI (ours),1,2.87,pp
+budget,gain,50,Full SpecRSI (ours),2,4.12,pp
+budget,gain,50,Full SpecRSI (ours),3,5.56,pp
+budget,gain,50,Full SpecRSI (ours),4,7.21,pp
+budget,gain,50,Full SpecRSI (ours),5,7.0,pp
+budget,gain,70,Full SpecRSI (ours),1,3.65,pp
+budget,gain,70,Full SpecRSI (ours),2,4.98,pp
+budget,gain,70,Full SpecRSI (ours),3,6.32,pp
+budget,gain,70,Full SpecRSI (ours),4,7.89,pp
+budget,gain,70,Full SpecRSI (ours),5,7.16,pp
+budget,gain,90,Full SpecRSI (ours),1,5.05,pp
+budget,gain,90,Full SpecRSI (ours),2,5.52,pp
+budget,gain,90,Full SpecRSI (ours),3,5.87,pp
+budget,gain,90,Full SpecRSI (ours),4,6.19,pp
+budget,gain,90,Full SpecRSI (ours),5,6.47,pp
+budget,gain,110,Full SpecRSI (ours),1,3.58,pp
+budget,gain,110,Full SpecRSI (ours),2,5.02,pp
+budget,gain,110,Full SpecRSI (ours),3,6.78,pp
+budget,gain,110,Full SpecRSI (ours),4,8.65,pp
+budget,gain,110,Full SpecRSI (ours),5,7.72,pp
+budget,gain,130,Full SpecRSI (ours),1,5.25,pp
+budget,gain,130,Full SpecRSI (ours),2,5.79,pp
+budget,gain,130,Full SpecRSI (ours),3,6.24,pp
+budget,gain,130,Full SpecRSI (ours),4,6.68,pp
+budget,gain,130,Full SpecRSI (ours),5,7.09,pp
+budget,gain,150,Full SpecRSI (ours),1,4.42,pp
+budget,gain,150,Full SpecRSI (ours),2,5.68,pp
+budget,gain,150,Full SpecRSI (ours),3,6.85,pp
+budget,gain,150,Full SpecRSI (ours),4,7.92,pp
+budget,gain,150,Full SpecRSI (ours),5,8.08,pp
+budget,gain,10,Additive MILP,1,0.58,pp
+budget,gain,10,Additive MILP,2,1.28,pp
+budget,gain,10,Additive MILP,3,1.87,pp
+budget,gain,10,Additive MILP,4,2.52,pp
+budget,gain,10,Additive MILP,5,2.53,pp
+budget,gain,30,Additive MILP,1,2.92,pp
+budget,gain,30,Additive MILP,2,3.34,pp
+budget,gain,30,Additive MILP,3,3.69,pp
+budget,gain,30,Additive MILP,4,3.99,pp
+budget,gain,30,Additive MILP,5,4.27,pp
+budget,gain,50,Additive MILP,1,2.25,pp
+budget,gain,50,Additive MILP,2,3.38,pp
+budget,gain,50,Additive MILP,3,4.65,pp
+budget,gain,50,Additive MILP,4,6.18,pp
+budget,gain,50,Additive MILP,5,5.94,pp
+budget,gain,70,Additive MILP,1,2.52,pp
+budget,gain,70,Additive MILP,2,3.8,pp
+budget,gain,70,Additive MILP,3,5.05,pp
+budget,gain,70,Additive MILP,4,6.56,pp
+budget,gain,70,Additive MILP,5,5.72,pp
+budget,gain,90,Additive MILP,1,4.02,pp
+budget,gain,90,Additive MILP,2,4.51,pp
+budget,gain,90,Additive MILP,3,4.88,pp
+budget,gain,90,Additive MILP,4,5.22,pp
+budget,gain,90,Additive MILP,5,5.62,pp
+budget,gain,110,Additive MILP,1,2.75,pp
+budget,gain,110,Additive MILP,2,4.12,pp
+budget,gain,110,Additive MILP,3,5.78,pp
+budget,gain,110,Additive MILP,4,7.65,pp
+budget,gain,110,Additive MILP,5,6.6,pp
+budget,gain,130,Additive MILP,1,4.38,pp
+budget,gain,130,Additive MILP,2,4.95,pp
+budget,gain,130,Additive MILP,3,5.43,pp
+budget,gain,130,Additive MILP,4,5.89,pp
+budget,gain,130,Additive MILP,5,6.33,pp
+budget,gain,150,Additive MILP,1,3.6,pp
+budget,gain,150,Additive MILP,2,4.82,pp
+budget,gain,150,Additive MILP,3,5.92,pp
+budget,gain,150,Additive MILP,4,7.01,pp
+budget,gain,150,Additive MILP,5,7.0,pp
+budget,gain,10,Seeds only,1,0.42,pp
+budget,gain,10,Seeds only,2,1.11,pp
+budget,gain,10,Seeds only,3,1.7,pp
+budget,gain,10,Seeds only,4,2.34,pp
+budget,gain,10,Seeds only,5,2.35,pp
+budget,gain,30,Seeds only,1,2.55,pp
+budget,gain,30,Seeds only,2,3.0,pp
+budget,gain,30,Seeds only,3,3.37,pp
+budget,gain,30,Seeds only,4,3.69,pp
+budget,gain,30,Seeds only,5,3.98,pp
+budget,gain,50,Seeds only,1,1.92,pp
+budget,gain,50,Seeds only,2,3.05,pp
+budget,gain,50,Seeds only,3,4.33,pp
+budget,gain,50,Seeds only,4,5.84,pp
+budget,gain,50,Seeds only,5,5.58,pp
+budget,gain,70,Seeds only,1,2.14,pp
+budget,gain,70,Seeds only,2,3.46,pp
+budget,gain,70,Seeds only,3,4.73,pp
+budget,gain,70,Seeds only,4,6.27,pp
+budget,gain,70,Seeds only,5,5.42,pp
+budget,gain,90,Seeds only,1,3.63,pp
+budget,gain,90,Seeds only,2,4.14,pp
+budget,gain,90,Seeds only,3,4.54,pp
+budget,gain,90,Seeds only,4,4.91,pp
+budget,gain,90,Seeds only,5,5.33,pp
+budget,gain,110,Seeds only,1,2.34,pp
+budget,gain,110,Seeds only,2,3.74,pp
+budget,gain,110,Seeds only,3,5.42,pp
+budget,gain,110,Seeds only,4,7.29,pp
+budget,gain,110,Seeds only,5,6.2,pp
+budget,gain,130,Seeds only,1,3.98,pp
+budget,gain,130,Seeds only,2,4.57,pp
+budget,gain,130,Seeds only,3,5.08,pp
+budget,gain,130,Seeds only,4,5.56,pp
+budget,gain,130,Seeds only,5,6.02,pp
+budget,gain,150,Seeds only,1,3.18,pp
+budget,gain,150,Seeds only,2,4.44,pp
+budget,gain,150,Seeds only,3,5.56,pp
+budget,gain,150,Seeds only,4,6.67,pp
+budget,gain,150,Seeds only,5,6.6,pp
+budget,gain,10,Frozen policy,1,0.34,pp
+budget,gain,10,Frozen policy,2,1.02,pp
+budget,gain,10,Frozen policy,3,1.6,pp
+budget,gain,10,Frozen policy,4,2.23,pp
+budget,gain,10,Frozen policy,5,2.24,pp
+budget,gain,30,Frozen policy,1,2.32,pp
+budget,gain,30,Frozen policy,2,2.79,pp
+budget,gain,30,Frozen policy,3,3.18,pp
+budget,gain,30,Frozen policy,4,3.52,pp
+budget,gain,30,Frozen policy,5,3.82,pp
+budget,gain,50,Frozen policy,1,1.69,pp
+budget,gain,50,Frozen policy,2,2.8,pp
+budget,gain,50,Frozen policy,3,4.09,pp
+budget,gain,50,Frozen policy,4,5.58,pp
+budget,gain,50,Frozen policy,5,5.32,pp
+budget,gain,70,Frozen policy,1,1.91,pp
+budget,gain,70,Frozen policy,2,3.24,pp
+budget,gain,70,Frozen policy,3,4.52,pp
+budget,gain,70,Frozen policy,4,6.07,pp
+budget,gain,70,Frozen policy,5,5.21,pp
+budget,gain,90,Frozen policy,1,3.39,pp
+budget,gain,90,Frozen policy,2,3.92,pp
+budget,gain,90,Frozen policy,3,4.34,pp
+budget,gain,90,Frozen policy,4,4.73,pp
+budget,gain,90,Frozen policy,5,5.16,pp
+budget,gain,110,Frozen policy,1,2.09,pp
+budget,gain,110,Frozen policy,2,3.51,pp
+budget,gain,110,Frozen policy,3,5.2,pp
+budget,gain,110,Frozen policy,4,7.08,pp
+budget,gain,110,Frozen policy,5,5.97,pp
+budget,gain,130,Frozen policy,1,3.74,pp
+budget,gain,130,Frozen policy,2,4.35,pp
+budget,gain,130,Frozen policy,3,4.87,pp
+budget,gain,130,Frozen policy,4,5.37,pp
+budget,gain,130,Frozen policy,5,5.84,pp
+budget,gain,150,Frozen policy,1,2.94,pp
+budget,gain,150,Frozen policy,2,4.22,pp
+budget,gain,150,Frozen policy,3,5.35,pp
+budget,gain,150,Frozen policy,4,6.47,pp
+budget,gain,150,Frozen policy,5,6.37,pp
+budget,gain,10,No seeds,1,-0.03,pp
+budget,gain,10,No seeds,2,0.56,pp
+budget,gain,10,No seeds,3,1.21,pp
+budget,gain,10,No seeds,4,1.89,pp
+budget,gain,10,No seeds,5,2.06,pp
+budget,gain,30,No seeds,1,1.69,pp
+budget,gain,30,No seeds,2,2.23,pp
+budget,gain,30,No seeds,3,2.68,pp
+budget,gain,30,No seeds,4,3.08,pp
+budget,gain,30,No seeds,5,3.43,pp
+budget,gain,50,No seeds,1,1.15,pp
+budget,gain,50,No seeds,2,2.22,pp
+budget,gain,50,No seeds,3,3.54,pp
+budget,gain,50,No seeds,4,4.99,pp
+budget,gain,50,No seeds,5,4.71,pp
+budget,gain,70,No seeds,1,1.41,pp
+budget,gain,70,No seeds,2,2.78,pp
+budget,gain,70,No seeds,3,4.08,pp
+budget,gain,70,No seeds,4,5.65,pp
+budget,gain,70,No seeds,5,4.73,pp
+budget,gain,90,No seeds,1,2.83,pp
+budget,gain,90,No seeds,2,3.41,pp
+budget,gain,90,No seeds,3,3.88,pp
+budget,gain,90,No seeds,4,4.32,pp
+budget,gain,90,No seeds,5,4.79,pp
+budget,gain,110,No seeds,1,1.53,pp
+budget,gain,110,No seeds,2,3.0,pp
+budget,gain,110,No seeds,3,4.73,pp
+budget,gain,110,No seeds,4,6.64,pp
+budget,gain,110,No seeds,5,5.45,pp
+budget,gain,130,No seeds,1,3.16,pp
+budget,gain,130,No seeds,2,3.82,pp
+budget,gain,130,No seeds,3,4.39,pp
+budget,gain,130,No seeds,4,4.94,pp
+budget,gain,130,No seeds,5,5.45,pp
+budget,gain,150,No seeds,1,2.36,pp
+budget,gain,150,No seeds,2,3.69,pp
+budget,gain,150,No seeds,3,4.86,pp
+budget,gain,150,No seeds,4,6.02,pp
+budget,gain,150,No seeds,5,5.83,pp
+budget,gain,10,Coupled,1,0.5,pp
+budget,gain,10,Coupled,2,1.2,pp
+budget,gain,10,Coupled,3,1.79,pp
+budget,gain,10,Coupled,4,2.44,pp
+budget,gain,10,Coupled,5,2.45,pp
+budget,gain,30,Coupled,1,2.78,pp
+budget,gain,30,Coupled,2,3.21,pp
+budget,gain,30,Coupled,3,3.56,pp
+budget,gain,30,Coupled,4,3.87,pp
+budget,gain,30,Coupled,5,4.15,pp
+budget,gain,50,Coupled,1,2.11,pp
+budget,gain,50,Coupled,2,3.25,pp
+budget,gain,50,Coupled,3,4.52,pp
+budget,gain,50,Coupled,4,6.04,pp
+budget,gain,50,Coupled,5,5.8,pp
+budget,gain,70,Coupled,1,2.33,pp
+budget,gain,70,Coupled,2,3.63,pp
+budget,gain,70,Coupled,3,4.89,pp
+budget,gain,70,Coupled,4,6.42,pp
+budget,gain,70,Coupled,5,5.58,pp
+budget,gain,90,Coupled,1,3.85,pp
+budget,gain,90,Coupled,2,4.35,pp
+budget,gain,90,Coupled,3,4.73,pp
+budget,gain,90,Coupled,4,5.08,pp
+budget,gain,90,Coupled,5,5.49,pp
+budget,gain,110,Coupled,1,2.57,pp
+budget,gain,110,Coupled,2,3.95,pp
+budget,gain,110,Coupled,3,5.62,pp
+budget,gain,110,Coupled,4,7.49,pp
+budget,gain,110,Coupled,5,6.43,pp
+budget,gain,130,Coupled,1,4.2,pp
+budget,gain,130,Coupled,2,4.78,pp
+budget,gain,130,Coupled,3,5.27,pp
+budget,gain,130,Coupled,4,5.74,pp
+budget,gain,130,Coupled,5,6.19,pp
+budget,gain,150,Coupled,1,3.41,pp
+budget,gain,150,Coupled,2,4.65,pp
+budget,gain,150,Coupled,3,5.76,pp
+budget,gain,150,Coupled,4,6.86,pp
+budget,gain,150,Coupled,5,6.82,pp
+budget,gain,10,Greedy,1,0.2,pp
+budget,gain,10,Greedy,2,0.87,pp
+budget,gain,10,Greedy,3,1.46,pp
+budget,gain,10,Greedy,4,2.08,pp
+budget,gain,10,Greedy,5,2.13,pp
+budget,gain,30,Greedy,1,2.05,pp
+budget,gain,30,Greedy,2,2.55,pp
+budget,gain,30,Greedy,3,2.96,pp
+budget,gain,30,Greedy,4,3.32,pp
+budget,gain,30,Greedy,5,3.64,pp
+budget,gain,50,Greedy,1,1.44,pp
+budget,gain,50,Greedy,2,2.54,pp
+budget,gain,50,Greedy,3,3.84,pp
+budget,gain,50,Greedy,4,5.3,pp
+budget,gain,50,Greedy,5,5.03,pp
+budget,gain,70,Greedy,1,1.68,pp
+budget,gain,70,Greedy,2,3.02,pp
+budget,gain,70,Greedy,3,4.31,pp
+budget,gain,70,Greedy,4,5.87,pp
+budget,gain,70,Greedy,5,5.0,pp
+budget,gain,90,Greedy,1,3.15,pp
+budget,gain,90,Greedy,2,3.7,pp
+budget,gain,90,Greedy,3,4.14,pp
+budget,gain,90,Greedy,4,4.55,pp
+budget,gain,90,Greedy,5,5.0,pp
+budget,gain,110,Greedy,1,1.84,pp
+budget,gain,110,Greedy,2,3.28,pp
+budget,gain,110,Greedy,3,4.99,pp
+budget,gain,110,Greedy,4,6.88,pp
+budget,gain,110,Greedy,5,5.74,pp
+budget,gain,130,Greedy,1,3.49,pp
+budget,gain,130,Greedy,2,4.12,pp
+budget,gain,130,Greedy,3,4.66,pp
+budget,gain,130,Greedy,4,5.18,pp
+budget,gain,130,Greedy,5,5.67,pp
+budget,gain,150,Greedy,1,2.69,pp
+budget,gain,150,Greedy,2,3.99,pp
+budget,gain,150,Greedy,3,5.13,pp
+budget,gain,150,Greedy,4,6.27,pp
+budget,gain,150,Greedy,5,6.13,pp
+information_scope,gain,,Summary + One check,1,3.02,pp
+information_scope,cost,,Summary + One check,1,50.4,k tokens/search
+information_scope,gain,,Summary + One check,2,3.11,pp
+information_scope,cost,,Summary + One check,2,50.9,k tokens/search
+information_scope,gain,,Summary + One check,3,3.2,pp
+information_scope,cost,,Summary + One check,3,51.2,k tokens/search
+information_scope,gain,,Summary + One check,4,3.29,pp
+information_scope,cost,,Summary + One check,4,51.6,k tokens/search
+information_scope,gain,,Summary + One check,5,3.38,pp
+information_scope,cost,,Summary + One check,5,52.0,k tokens/search
+information_scope,gain,,Summary + Bundle,1,3.91,pp
+information_scope,cost,,Summary + Bundle,1,49.3,k tokens/search
+information_scope,gain,,Summary + Bundle,2,4.0,pp
+information_scope,cost,,Summary + Bundle,2,49.8,k tokens/search
+information_scope,gain,,Summary + Bundle,3,4.12,pp
+information_scope,cost,,Summary + Bundle,3,50.0,k tokens/search
+information_scope,gain,,Summary + Bundle,4,4.21,pp
+information_scope,cost,,Summary + Bundle,4,50.4,k tokens/search
+information_scope,gain,,Summary + Bundle,5,4.26,pp
+information_scope,cost,,Summary + Bundle,5,50.55,k tokens/search
+information_scope,gain,,Full state + One check,1,4.5,pp
+information_scope,cost,,Full state + One check,1,46.8,k tokens/search
+information_scope,gain,,Full state + One check,2,4.6,pp
+information_scope,cost,,Full state + One check,2,47.5,k tokens/search
+information_scope,gain,,Full state + One check,3,4.8,pp
+information_scope,cost,,Full state + One check,3,48.0,k tokens/search
+information_scope,gain,,Full state + One check,4,5.0,pp
+information_scope,cost,,Full state + One check,4,48.6,k tokens/search
+information_scope,gain,,Full state + One check,5,5.1,pp
+information_scope,cost,,Full state + One check,5,48.9,k tokens/search
+information_scope,gain,,Full state + Bundle,1,5.98,pp
+information_scope,cost,,Full state + Bundle,1,44.1,k tokens/search
+information_scope,gain,,Full state + Bundle,2,6.11,pp
+information_scope,cost,,Full state + Bundle,2,44.6,k tokens/search
+information_scope,gain,,Full state + Bundle,3,6.29,pp
+information_scope,cost,,Full state + Bundle,3,45.0,k tokens/search
+information_scope,gain,,Full state + Bundle,4,6.53,pp
+information_scope,cost,,Full state + Bundle,4,45.5,k tokens/search
+information_scope,gain,,Full state + Bundle,5,6.59,pp
+information_scope,cost,,Full state + Bundle,5,45.75,k tokens/search
+draft_scope,gain,,Draft-ahead off + One check,1,3.5,pp
+draft_scope,cost,,Draft-ahead off + One check,1,52.1,k tokens/search
+draft_scope,gain,,Draft-ahead off + One check,2,3.65,pp
+draft_scope,cost,,Draft-ahead off + One check,2,52.35,k tokens/search
+draft_scope,gain,,Draft-ahead off + One check,3,3.8,pp
+draft_scope,cost,,Draft-ahead off + One check,3,52.6,k tokens/search
+draft_scope,gain,,Draft-ahead off + One check,4,3.95,pp
+draft_scope,cost,,Draft-ahead off + One check,4,52.85,k tokens/search
+draft_scope,gain,,Draft-ahead off + One check,5,3.95,pp
+draft_scope,cost,,Draft-ahead off + One check,5,53.1,k tokens/search
+draft_scope,gain,,Draft-ahead off + Bundle,1,4.65,pp
+draft_scope,cost,,Draft-ahead off + Bundle,1,49.2,k tokens/search
+draft_scope,gain,,Draft-ahead off + Bundle,2,4.72,pp
+draft_scope,cost,,Draft-ahead off + Bundle,2,49.45,k tokens/search
+draft_scope,gain,,Draft-ahead off + Bundle,3,4.78,pp
+draft_scope,cost,,Draft-ahead off + Bundle,3,49.68,k tokens/search
+draft_scope,gain,,Draft-ahead off + Bundle,4,4.84,pp
+draft_scope,cost,,Draft-ahead off + Bundle,4,49.9,k tokens/search
+draft_scope,gain,,Draft-ahead off + Bundle,5,4.91,pp
+draft_scope,cost,,Draft-ahead off + Bundle,5,50.17,k tokens/search
+draft_scope,gain,,Draft-ahead on + One check,1,3.8,pp
+draft_scope,cost,,Draft-ahead on + One check,1,50.2,k tokens/search
+draft_scope,gain,,Draft-ahead on + One check,2,4.1,pp
+draft_scope,cost,,Draft-ahead on + One check,2,50.45,k tokens/search
+draft_scope,gain,,Draft-ahead on + One check,3,4.35,pp
+draft_scope,cost,,Draft-ahead on + One check,3,50.8,k tokens/search
+draft_scope,gain,,Draft-ahead on + One check,4,4.6,pp
+draft_scope,cost,,Draft-ahead on + One check,4,51.1,k tokens/search
+draft_scope,gain,,Draft-ahead on + One check,5,4.8,pp
+draft_scope,cost,,Draft-ahead on + One check,5,51.35,k tokens/search
+draft_scope,gain,,Draft-ahead on + Bundle,1,5.5,pp
+draft_scope,cost,,Draft-ahead on + Bundle,1,47.1,k tokens/search
+draft_scope,gain,,Draft-ahead on + Bundle,2,5.7,pp
+draft_scope,cost,,Draft-ahead on + Bundle,2,47.25,k tokens/search
+draft_scope,gain,,Draft-ahead on + Bundle,3,6.05,pp
+draft_scope,cost,,Draft-ahead on + Bundle,3,47.6,k tokens/search
+draft_scope,gain,,Draft-ahead on + Bundle,4,6.35,pp
+draft_scope,cost,,Draft-ahead on + Bundle,4,48.0,k tokens/search
+draft_scope,gain,,Draft-ahead on + Bundle,5,6.5,pp
+draft_scope,cost,,Draft-ahead on + Bundle,5,48.25,k tokens/search

@@ -1,0 +1,147 @@
+panel,task,method,metric,unit,n,mean,sd
+Code,SWE-Pro,DGM,score,percent,5,58.02,4.617033679755864
+Code,SWE-Pro,SICA,score,percent,5,60.160000000000004,4.022188459035706
+Code,SWE-Pro,HGM,score,percent,5,62.0,4.257346591481597
+Code,SWE-Pro,Beam-Spec,score,percent,5,61.0,4.69094873133357
+Code,SWE-Pro,FE async,score,percent,5,63.5,4.30987238790199
+Code,SWE-Pro,FE optional,score,percent,5,62.8,4.609772228646442
+Code,SWE-Pro,SpecRSI (ours),score,percent,5,69.5,3.531996602489871
+Code,SWE-Pro,DGM,cost,k tokens,5,45.0,3.6830693721405807
+Code,SWE-Pro,SICA,cost,k tokens,5,42.0,3.5355339059327373
+Code,SWE-Pro,HGM,cost,k tokens,5,39.0,3.6
+Code,SWE-Pro,Beam-Spec,cost,k tokens,5,40.5,3.781534080237807
+Code,SWE-Pro,FE async,cost,k tokens,5,34.0,2.734044622898464
+Code,SWE-Pro,FE optional,cost,k tokens,5,33.5,2.832843094843059
+Code,SWE-Pro,SpecRSI (ours),cost,k tokens,5,30.5,2.5465663156493696
+Code,HumanEval-Ext.,DGM,score,percent,5,57.02,4.81217206674907
+Code,HumanEval-Ext.,SICA,score,percent,5,59.5,5.013980454688672
+Code,HumanEval-Ext.,HGM,score,percent,5,66.0,4.466542286825456
+Code,HumanEval-Ext.,Beam-Spec,score,percent,5,64.16,4.957620396924319
+Code,HumanEval-Ext.,FE async,score,percent,5,67.0,4.574385204593074
+Code,HumanEval-Ext.,FE optional,score,percent,5,66.5,4.742889414692272
+Code,HumanEval-Ext.,SpecRSI (ours),score,percent,5,72.5,4.034228550788858
+Code,HumanEval-Ext.,DGM,cost,k tokens,5,28.0,3.008321791298264
+Code,HumanEval-Ext.,SICA,cost,k tokens,5,26.0,2.9180472922829743
+Code,HumanEval-Ext.,HGM,cost,k tokens,5,24.0,3.024896692450834
+Code,HumanEval-Ext.,Beam-Spec,cost,k tokens,5,25.0,2.898275349237888
+Code,HumanEval-Ext.,FE async,cost,k tokens,5,22.4,2.770379035439014
+Code,HumanEval-Ext.,FE optional,cost,k tokens,5,22.0,2.7613402542968157
+Code,HumanEval-Ext.,SpecRSI (ours),cost,k tokens,5,19.0,2.65141471671257
+Code,MBPP-Advanced,DGM,score,percent,5,50.0,4.676002566295275
+Code,MBPP-Advanced,SICA,score,percent,5,52.5,4.709033871188441
+Code,MBPP-Advanced,HGM,score,percent,5,56.0,4.921889880929885
+Code,MBPP-Advanced,Beam-Spec,score,percent,5,55.0,5.128352561983236
+Code,MBPP-Advanced,FE async,score,percent,5,58.5,4.847679857416328
+Code,MBPP-Advanced,FE optional,score,percent,5,58.0,4.930010141977397
+Code,MBPP-Advanced,SpecRSI (ours),score,percent,5,64.0,4.561797891182815
+Code,MBPP-Advanced,DGM,cost,k tokens,5,22.0,2.6362852652928144
+Code,MBPP-Advanced,SICA,cost,k tokens,5,20.0,2.546566315649368
+Code,MBPP-Advanced,HGM,cost,k tokens,5,18.5,2.5544079548889598
+Code,MBPP-Advanced,Beam-Spec,cost,k tokens,5,19.0,2.4748737341529163
+Code,MBPP-Advanced,FE async,cost,k tokens,5,17.0,2.3611437906235193
+Code,MBPP-Advanced,FE optional,cost,k tokens,5,16.7,2.361143790623519
+Code,MBPP-Advanced,SpecRSI (ours),cost,k tokens,5,14.0,2.361143790623519
+Code,FixBench,DGM,score,percent,5,47.0,4.739198244429115
+Code,FixBench,SICA,score,percent,5,49.5,4.752893855326458
+Code,FixBench,HGM,score,percent,5,53.2,4.767074574621211
+Code,FixBench,Beam-Spec,score,percent,5,51.5,4.921889880929885
+Code,FixBench,FE async,score,percent,5,55.0,4.924428900898052
+Code,FixBench,FE optional,score,percent,5,54.52,5.004198237480206
+Code,FixBench,SpecRSI (ours),score,percent,5,60.5,4.669582422444216
+Code,FixBench,DGM,cost,k tokens,5,30.0,3.324154027718931
+Code,FixBench,SICA,cost,k tokens,5,28.0,3.2318725222384623
+Code,FixBench,HGM,cost,k tokens,5,25.5,3.0487702438852287
+Code,FixBench,Beam-Spec,cost,k tokens,5,26.5,3.1440419844524974
+Code,FixBench,FE async,cost,k tokens,5,23.5,2.9580398915498085
+Code,FixBench,FE optional,cost,k tokens,5,23.0,2.8740215726399825
+Code,FixBench,SpecRSI (ours),cost,k tokens,5,19.52,2.8943047524405574
+Prompt,GPQA-hard100,MIPROv2 +demo,score,percent,5,74.0,4.110960958218894
+Prompt,GPQA-hard100,MIPROv2 −demo,score,percent,5,72.48,4.219834119962537
+Prompt,GPQA-hard100,Trace,score,percent,5,75.2,4.141255848169732
+Prompt,GPQA-hard100,TextGrad,score,percent,5,74.5,4.564537216410884
+Prompt,GPQA-hard100,GEPA,score,percent,5,77.0,4.155117326863347
+Prompt,GPQA-hard100,GEPA+Merge,score,percent,5,78.0,4.253821811030638
+Prompt,GPQA-hard100,SpecRSI (ours),score,percent,5,82.0,4.062019202317984
+Prompt,GPQA-hard100,MIPROv2 +demo,cost,k tokens,5,18.0,2.3926972228010794
+Prompt,GPQA-hard100,MIPROv2 −demo,cost,k tokens,5,16.0,2.070024154448445
+Prompt,GPQA-hard100,Trace,cost,k tokens,5,19.0,2.5865034312755117
+Prompt,GPQA-hard100,TextGrad,cost,k tokens,5,20.0,2.6767517628648343
+Prompt,GPQA-hard100,GEPA,cost,k tokens,5,21.5,2.7703790354390145
+Prompt,GPQA-hard100,GEPA+Merge,cost,k tokens,5,23.5,2.958039891549808
+Prompt,GPQA-hard100,SpecRSI (ours),cost,k tokens,5,22.0,2.778488797889961
+Prompt,MMLU-Pro,MIPROv2 +demo,score,percent,5,67.0,4.306971093471609
+Prompt,MMLU-Pro,MIPROv2 −demo,score,percent,5,65.5,4.4017042154147505
+Prompt,MMLU-Pro,Trace,score,percent,5,68.0,4.497221364353772
+Prompt,MMLU-Pro,TextGrad,score,percent,5,68.5,4.777551674236505
+Prompt,MMLU-Pro,GEPA,score,percent,5,69.5,4.50499722530436
+Prompt,MMLU-Pro,GEPA+Merge,score,percent,5,70.5,4.601630145937418
+Prompt,MMLU-Pro,SpecRSI (ours),score,percent,5,75.0,4.5956501172304245
+Prompt,MMLU-Pro,MIPROv2 +demo,cost,k tokens,5,12.0,2.0211382931407735
+Prompt,MMLU-Pro,MIPROv2 −demo,cost,k tokens,5,10.5,1.8398369492974103
+Prompt,MMLU-Pro,Trace,cost,k tokens,5,12.799999999999999,2.120141504711419
+Prompt,MMLU-Pro,TextGrad,cost,k tokens,5,13.5,2.215851980616034
+Prompt,MMLU-Pro,GEPA,cost,k tokens,5,14.0,2.215851980616034
+Prompt,MMLU-Pro,GEPA+Merge,cost,k tokens,5,15.5,2.3119256043393785
+Prompt,MMLU-Pro,SpecRSI (ours),cost,k tokens,5,15.0,2.3140872930812275
+Prompt,GSM8K-Opt.,MIPROv2 +demo,score,percent,5,62.0,4.568916720624267
+Prompt,GSM8K-Opt.,MIPROv2 −demo,score,percent,5,60.0,4.661008474568565
+Prompt,GSM8K-Opt.,Trace,score,percent,5,63.0,4.644889664997434
+Prompt,GSM8K-Opt.,TextGrad,score,percent,5,62.5,4.852319033204639
+Prompt,GSM8K-Opt.,GEPA,score,percent,5,64.6,4.502776920967771
+Prompt,GSM8K-Opt.,GEPA+Merge,score,percent,5,65.6,4.596194077712556
+Prompt,GSM8K-Opt.,SpecRSI (ours),score,percent,5,70.98,4.514089055390909
+Prompt,GSM8K-Opt.,MIPROv2 +demo,cost,k tokens,5,9.0,1.7507141400011597
+Prompt,GSM8K-Opt.,MIPROv2 −demo,cost,k tokens,5,8.0,1.4713938969562164
+Prompt,GSM8K-Opt.,Trace,cost,k tokens,5,9.5,1.8466185312619388
+Prompt,GSM8K-Opt.,TextGrad,cost,k tokens,5,10.0,1.9429359227725447
+Prompt,GSM8K-Opt.,GEPA,cost,k tokens,5,10.5,2.039607805437114
+Prompt,GSM8K-Opt.,GEPA+Merge,cost,k tokens,5,11.5,2.2338307903688674
+Prompt,GSM8K-Opt.,SpecRSI (ours),cost,k tokens,5,11.0,2.228227995515719
+Workflow,PlanBench,Genesis,score,percent,5,50.0,6.137996415769563
+Workflow,PlanBench,Genesis+SOP,score,percent,5,56.0,5.901271049528227
+Workflow,PlanBench,AFlow,score,percent,5,59.0,6.058052492344385
+Workflow,PlanBench,ADAS,score,percent,5,58.0,6.52495210710393
+Workflow,PlanBench,EMAS,score,percent,5,61.6,6.254198589747529
+Workflow,PlanBench,SpecRSI (ours),score,percent,5,67.0,5.765847726050351
+Workflow,PlanBench,Genesis,cost,k tokens,5,15.0,2.0285462775100798
+Workflow,PlanBench,Genesis+SOP,cost,k tokens,5,14.8,2.0297783130184435
+Workflow,PlanBench,AFlow,cost,k tokens,5,14.0,1.8479718612576328
+Workflow,PlanBench,ADAS,cost,k tokens,5,14.200000000000001,1.9326148090087687
+Workflow,PlanBench,EMAS,cost,k tokens,5,13.5,1.7507141400011592
+Workflow,PlanBench,SpecRSI (ours),cost,k tokens,5,12.0,1.8479718612576328
+Workflow,Math,Genesis,score,percent,5,47.0,5.942642509860406
+Workflow,Math,Genesis+SOP,score,percent,5,50.5,6.028681447878965
+Workflow,Math,AFlow,score,percent,5,53.0,6.206045439730522
+Workflow,Math,ADAS,score,percent,5,54.0,6.390618123468184
+Workflow,Math,EMAS,score,percent,5,56.519999999999996,6.196531287744783
+Workflow,Math,SpecRSI (ours),score,percent,5,62.0,5.863019699779286
+Workflow,Math,Genesis,cost,k tokens,5,16.5,2.223735595793708
+Workflow,Math,Genesis+SOP,cost,k tokens,5,16.0,2.126029162546929
+Workflow,Math,AFlow,cost,k tokens,5,15.5,2.043281674170255
+Workflow,Math,ADAS,cost,k tokens,5,15.0,2.043281674170255
+Workflow,Math,EMAS,cost,k tokens,5,14.5,1.9455076458343719
+Workflow,Math,SpecRSI (ours),cost,k tokens,5,13.5,2.029778313018444
+Workflow,MBPP,Genesis,score,percent,5,45.0,6.047726845683427
+Workflow,MBPP,Genesis+SOP,score,percent,5,48.0,6.135552134893811
+Workflow,MBPP,AFlow,score,percent,5,51.0,6.223744853382086
+Workflow,MBPP,ADAS,score,percent,5,50.0,6.483826030978932
+Workflow,MBPP,EMAS,score,percent,5,53.8,6.216912416947822
+Workflow,MBPP,SpecRSI (ours),score,percent,5,59.0,6.038625671458698
+Workflow,MBPP,Genesis,cost,k tokens,5,17.5,2.3216373532487804
+Workflow,MBPP,Genesis+SOP,cost,k tokens,5,17.0,2.223735595793708
+Workflow,MBPP,AFlow,cost,k tokens,5,16.5,2.1412613105363856
+Workflow,MBPP,ADAS,cost,k tokens,5,16.7,2.223735595793708
+Workflow,MBPP,EMAS,cost,k tokens,5,15.52,1.984187491140895
+Workflow,MBPP,SpecRSI (ours),cost,k tokens,5,14.48,2.1347130954767666
+Workflow,Game24,Genesis,score,percent,5,42.0,5.913543776789007
+Workflow,Game24,Genesis+SOP,score,percent,5,45.0,6.002082971769052
+Workflow,Game24,AFlow,score,percent,5,48.0,6.090976933136424
+Workflow,Game24,ADAS,score,percent,5,49.5,6.184658438426492
+Workflow,Game24,EMAS,score,percent,5,51.0,6.191526467681456
+Workflow,Game24,SpecRSI (ours),score,percent,5,54.5,6.184658438426492
+Workflow,Game24,Genesis,cost,k tokens,5,19.0,2.502998202156766
+Workflow,Game24,Genesis+SOP,cost,k tokens,5,18.48,2.3972901368003
+Workflow,Game24,AFlow,cost,k tokens,5,18.0,2.3216373532487804
+Workflow,Game24,ADAS,cost,k tokens,5,17.5,2.2394195676558692
+Workflow,Game24,EMAS,cost,k tokens,5,17.0,2.1412613105363856
+Workflow,Game24,SpecRSI (ours),cost,k tokens,5,16.0,2.337733945512192

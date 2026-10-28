@@ -1,0 +1,9 @@
+study,condition,hits,searches,hit_percent
+information_scope,Summary + One check,90,125,72.0
+information_scope,Summary + Bundle,97,125,77.60000000000001
+information_scope,Full state + One check,105,125,84.0
+information_scope,Full state + Bundle,115,125,92.0
+draft_scope,Draft-ahead off + One check,101,125,80.80000000000001
+draft_scope,Draft-ahead off + Bundle,110,125,88.0
+draft_scope,Draft-ahead on + One check,102,125,81.6
+draft_scope,Draft-ahead on + Bundle,115,125,92.0

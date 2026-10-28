@@ -1,0 +1,20 @@
+panel,cohort,condition,metric,unit,n,mean,sd
+A,Original,CQ,gain,pp,5,4.19,0.944986772394196
+A,Original,CR,gain,pp,5,5.34,0.7092249290598857
+A,Matched input,CQ,gain,pp,5,4.26,1.517563837207516
+A,Matched input,CR,gain,pp,5,5.58,1.4184498581197715
+B,Original,CQ,cost,k tokens/search,5,47.86,1.3296616110875716
+B,Original,CR,cost,k tokens/search,5,44.58,1.4618481453283723
+B,Matched input,CQ,cost,k tokens/search,5,47.86,4.181267750336015
+B,Matched input,CR,cost,k tokens/search,5,44.34,3.6253275714064803
+C,Evidence,Evidence features hidden,gain,pp,5,3.2,0.5244044240850757
+C,Evidence,Available/missing flags only,gain,pp,5,4.7,0.6519202405202649
+C,Evidence,Observed values only,gain,pp,5,3.8,0.6284902544988268
+C,Evidence,Observed values + availability flags,gain,pp,5,5.8,0.7648529270389177
+C,Evidence,Full evidence,gain,pp,5,6.3,0.7648529270389177
+D,Supervision,Same plans: mean returns,gain,pp,5,5.4,0.5700877125495688
+D,Supervision,Same plans: mean returns + return differences,gain,pp,5,6.3,0.6519202405202646
+D,Supervision,Ordinary-search data: same acquisition cost,gain,pp,5,5.1,0.5700877125495688
+E,Supervision,Same plans: mean returns,training_cost,k tokens,5,237.0,9.534935762762114
+E,Supervision,Same plans: mean returns + return differences,training_cost,k tokens,5,284.0,9.709531399609373
+E,Supervision,Ordinary-search data: same acquisition cost,training_cost,k tokens,5,253.0,9.446692542895637

@@ -1,0 +1,279 @@
+{
+  "statistics": "Unweighted means across five seeds; SD denominator n-1. Pairing applies within each experimental cohort.",
+  "files": {
+    "figure2_seeds.csv": {
+      "rows": 300,
+      "columns": [
+        "model",
+        "method",
+        "metric",
+        "seed",
+        "value",
+        "unit"
+      ],
+      "sha256": "e769264c2fd015a56d78bae44988af19c3ccd1b14ef2f7d138c1637e802a0f59"
+    },
+    "figure2_summary.csv": {
+      "rows": 60,
+      "columns": [
+        "model",
+        "method",
+        "metric",
+        "unit",
+        "n",
+        "mean",
+        "sd"
+      ],
+      "sha256": "1762eba218924add2082d7115b290a934381986a2273ee6523a1b3e0e6249145"
+    },
+    "figure4a_seeds.csv": {
+      "rows": 500,
+      "columns": [
+        "panel",
+        "model",
+        "task",
+        "comparison",
+        "metric",
+        "seed",
+        "value",
+        "unit"
+      ],
+      "sha256": "7886731e66283bbafe58db96a1d2d89c9b7bd28e263a67b3cc2e54c23c2fa12f"
+    },
+    "figure4a_summary.csv": {
+      "rows": 100,
+      "columns": [
+        "panel",
+        "model",
+        "task",
+        "comparison",
+        "metric",
+        "unit",
+        "n",
+        "mean",
+        "sd"
+      ],
+      "sha256": "8e86e725986afcddea9827977d85576e6a46000a192214cf4831d6eec0144fdf"
+    },
+    "figure4b_scores_seeds.csv": {
+      "rows": 300,
+      "columns": [
+        "model",
+        "method",
+        "metric",
+        "seed",
+        "value",
+        "unit"
+      ],
+      "sha256": "1f4ed359dd961d4f0a0f014190a394d6458a5ef65c602c080f46954ac7590cf6"
+    },
+    "figure4b_scores_summary.csv": {
+      "rows": 60,
+      "columns": [
+        "model",
+        "method",
+        "metric",
+        "unit",
+        "n",
+        "mean",
+        "sd"
+      ],
+      "sha256": "9228dce1c5471e3760786daf78f2197b615c0f6b73d1e6dd2b37d57657716b9f"
+    },
+    "figure4b_paired_gain_seeds.csv": {
+      "rows": 100,
+      "columns": [
+        "model",
+        "comparison",
+        "metric",
+        "seed",
+        "value",
+        "unit"
+      ],
+      "sha256": "a69b091af75632be238427b725114ebbddec06859557f612d00f344a6a3a66a9"
+    },
+    "figure4b_paired_gain_summary.csv": {
+      "rows": 20,
+      "columns": [
+        "model",
+        "comparison",
+        "metric",
+        "unit",
+        "n",
+        "mean",
+        "sd"
+      ],
+      "sha256": "fc7039695ec12642df5e67cbde43013f2400b3e84110acd512ff751620659107"
+    },
+    "figure5_seeds.csv": {
+      "rows": 730,
+      "columns": [
+        "panel",
+        "task",
+        "method",
+        "metric",
+        "seed",
+        "value",
+        "unit"
+      ],
+      "sha256": "18c3c95494aca04ecab1742dc0da39fd1f8ee31c389fca8f24a1291f53aba324"
+    },
+    "figure5_summary.csv": {
+      "rows": 146,
+      "columns": [
+        "panel",
+        "task",
+        "method",
+        "metric",
+        "unit",
+        "n",
+        "mean",
+        "sd"
+      ],
+      "sha256": "70c9f10412db4e9ef9cc005a8736fb7eb0205bc6959494920ba8bc3d9c5c12cd"
+    },
+    "figure6_seeds.csv": {
+      "rows": 640,
+      "columns": [
+        "study",
+        "metric",
+        "budget_percent",
+        "condition",
+        "seed",
+        "value",
+        "unit"
+      ],
+      "sha256": "e57db0e62c16d5eab8d276e49ea73b361a9674ed73bb0aa15de7c7f08e6a2b38"
+    },
+    "figure6_summary.csv": {
+      "rows": 128,
+      "columns": [
+        "study",
+        "metric",
+        "budget_percent",
+        "condition",
+        "unit",
+        "n",
+        "mean",
+        "sd"
+      ],
+      "sha256": "4552d1008f10c3790c6321922582ee012593ade4fa73fdbaca94425f70d244e9"
+    },
+    "figure6_pooled_hits.csv": {
+      "rows": 8,
+      "columns": [
+        "study",
+        "condition",
+        "hits",
+        "searches",
+        "hit_percent"
+      ],
+      "sha256": "5ed562b064e8fb7e9ed18c84aa1fc034b0f3de9d6ea6c9d28e548f033172907f"
+    },
+    "figure7_seeds.csv": {
+      "rows": 470,
+      "columns": [
+        "panel",
+        "group",
+        "condition",
+        "round",
+        "seed",
+        "metric",
+        "value",
+        "unit"
+      ],
+      "sha256": "9f4956845cf6dab80739da312a7cf64ab923c626ab731722e0addfaf4a6e491d"
+    },
+    "figure7_summary.csv": {
+      "rows": 94,
+      "columns": [
+        "panel",
+        "group",
+        "condition",
+        "round",
+        "metric",
+        "unit",
+        "n",
+        "mean",
+        "sd"
+      ],
+      "sha256": "add375c7309e79c633dcd17289e19a97a227a1e431b70625a394670c70a2fbcd"
+    },
+    "figure7c_runs.csv": {
+      "rows": 20,
+      "columns": [
+        "condition",
+        "search",
+        "improver",
+        "seed",
+        "accepted_gain_pp",
+        "total_cost_k_tokens"
+      ],
+      "sha256": "60dc1d3597ebd93853ca9eefd5a2bdab0e9094f66bf549d8c8e8c3e209faca3c"
+    },
+    "figure_s1_instances.csv": {
+      "rows": 620,
+      "columns": [
+        "task",
+        "method",
+        "seed",
+        "case",
+        "outcome",
+        "cost_k_tokens"
+      ],
+      "sha256": "fe8fc1ce7749f4adde945dfbdc458fa447324207b8fc0751988851815da9ac82"
+    },
+    "figure_s1_seed_aggregate_seeds.csv": {
+      "rows": 40,
+      "columns": [
+        "task",
+        "method",
+        "seed",
+        "metric",
+        "value",
+        "unit"
+      ],
+      "sha256": "4fa79469e17867b637ed6bdbb2bd78273b101dbf5dc6c2e3b28527a771f5e0c3"
+    },
+    "figure_s1_seed_aggregate_summary.csv": {
+      "rows": 8,
+      "columns": [
+        "task",
+        "method",
+        "metric",
+        "unit",
+        "n",
+        "mean",
+        "sd"
+      ],
+      "sha256": "35273ca1bfd1283b173827817257d405bd7a26e5fdbd1a5fd7b0f336599734b1"
+    },
+    "figure_s2_seeds.csv": {
+      "rows": 95,
+      "columns": [
+        "panel",
+        "cohort",
+        "condition",
+        "metric",
+        "seed",
+        "value",
+        "unit"
+      ],
+      "sha256": "a90cbf20b2bcf467bd027d88c019949a715cabde477f05d5d67ad4a6a3a9a98e"
+    },
+    "figure_s2_summary.csv": {
+      "rows": 19,
+      "columns": [
+        "panel",
+        "cohort",
+        "condition",
+        "metric",
+        "unit",
+        "n",
+        "mean",
+        "sd"
+      ],
+      "sha256": "c343f6932fcdba9c37d5d59dd217c762574c77a21342df95c6502c8a6f0634b8"
+    }
+  }
+}

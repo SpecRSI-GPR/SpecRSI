@@ -1,0 +1,301 @@
+model,method,metric,seed,value,unit
+MiniMax M3,Initial,score,1,31.8,percent
+MiniMax M3,Initial,score,2,37.9,percent
+MiniMax M3,Initial,score,3,34.2,percent
+MiniMax M3,Initial,score,4,36.8,percent
+MiniMax M3,Initial,score,5,34.3,percent
+MiniMax M3,MetaRSI-v1,score,1,45.2,percent
+MiniMax M3,MetaRSI-v1,score,2,48.9,percent
+MiniMax M3,MetaRSI-v1,score,3,47.1,percent
+MiniMax M3,MetaRSI-v1,score,4,49.5,percent
+MiniMax M3,MetaRSI-v1,score,5,46.8,percent
+MiniMax M3,SpecRSI,score,1,46.1,percent
+MiniMax M3,SpecRSI,score,2,52.8,percent
+MiniMax M3,SpecRSI,score,3,49.0,percent
+MiniMax M3,SpecRSI,score,4,52.0,percent
+MiniMax M3,SpecRSI,score,5,49.1,percent
+DeepSeek V4.1 Flash,Initial,score,1,35.5,percent
+DeepSeek V4.1 Flash,Initial,score,2,37.8,percent
+DeepSeek V4.1 Flash,Initial,score,3,36.2,percent
+DeepSeek V4.1 Flash,Initial,score,4,37.9,percent
+DeepSeek V4.1 Flash,Initial,score,5,36.6,percent
+DeepSeek V4.1 Flash,MetaRSI-v1,score,1,45.8,percent
+DeepSeek V4.1 Flash,MetaRSI-v1,score,2,50.9,percent
+DeepSeek V4.1 Flash,MetaRSI-v1,score,3,48.2,percent
+DeepSeek V4.1 Flash,MetaRSI-v1,score,4,51.2,percent
+DeepSeek V4.1 Flash,MetaRSI-v1,score,5,46.4,percent
+DeepSeek V4.1 Flash,SpecRSI,score,1,49.0,percent
+DeepSeek V4.1 Flash,SpecRSI,score,2,51.8,percent
+DeepSeek V4.1 Flash,SpecRSI,score,3,50.2,percent
+DeepSeek V4.1 Flash,SpecRSI,score,4,52.1,percent
+DeepSeek V4.1 Flash,SpecRSI,score,5,49.4,percent
+Amazon Nova Premier,Initial,score,1,34.9,percent
+Amazon Nova Premier,Initial,score,2,39.8,percent
+Amazon Nova Premier,Initial,score,3,37.0,percent
+Amazon Nova Premier,Initial,score,4,39.1,percent
+Amazon Nova Premier,Initial,score,5,37.2,percent
+Amazon Nova Premier,MetaRSI-v1,score,1,48.0,percent
+Amazon Nova Premier,MetaRSI-v1,score,2,50.3,percent
+Amazon Nova Premier,MetaRSI-v1,score,3,49.0,percent
+Amazon Nova Premier,MetaRSI-v1,score,4,50.5,percent
+Amazon Nova Premier,MetaRSI-v1,score,5,48.2,percent
+Amazon Nova Premier,SpecRSI,score,1,49.0,percent
+Amazon Nova Premier,SpecRSI,score,2,53.7,percent
+Amazon Nova Premier,SpecRSI,score,3,51.2,percent
+Amazon Nova Premier,SpecRSI,score,4,53.2,percent
+Amazon Nova Premier,SpecRSI,score,5,50.4,percent
+Cohere Command A+,Initial,score,1,35.1,percent
+Cohere Command A+,Initial,score,2,40.7,percent
+Cohere Command A+,Initial,score,3,37.3,percent
+Cohere Command A+,Initial,score,4,40.0,percent
+Cohere Command A+,Initial,score,5,36.9,percent
+Cohere Command A+,MetaRSI-v1,score,1,46.5,percent
+Cohere Command A+,MetaRSI-v1,score,2,52.8,percent
+Cohere Command A+,MetaRSI-v1,score,3,49.2,percent
+Cohere Command A+,MetaRSI-v1,score,4,52.3,percent
+Cohere Command A+,MetaRSI-v1,score,5,47.7,percent
+Cohere Command A+,SpecRSI,score,1,50.7,percent
+Cohere Command A+,SpecRSI,score,2,53.3,percent
+Cohere Command A+,SpecRSI,score,3,51.9,percent
+Cohere Command A+,SpecRSI,score,4,53.5,percent
+Cohere Command A+,SpecRSI,score,5,51.1,percent
+GPT-5.5,Initial,score,1,44.7,percent
+GPT-5.5,Initial,score,2,46.5,percent
+GPT-5.5,Initial,score,3,45.4,percent
+GPT-5.5,Initial,score,4,46.7,percent
+GPT-5.5,Initial,score,5,44.7,percent
+GPT-5.5,MetaRSI-v1,score,1,53.2,percent
+GPT-5.5,MetaRSI-v1,score,2,57.0,percent
+GPT-5.5,MetaRSI-v1,score,3,54.9,percent
+GPT-5.5,MetaRSI-v1,score,4,56.8,percent
+GPT-5.5,MetaRSI-v1,score,5,54.1,percent
+GPT-5.5,SpecRSI,score,1,56.0,percent
+GPT-5.5,SpecRSI,score,2,58.3,percent
+GPT-5.5,SpecRSI,score,3,57.0,percent
+GPT-5.5,SpecRSI,score,4,58.5,percent
+GPT-5.5,SpecRSI,score,5,56.2,percent
+Claude Sonnet 5-1M,Initial,score,1,43.1,percent
+Claude Sonnet 5-1M,Initial,score,2,46.7,percent
+Claude Sonnet 5-1M,Initial,score,3,44.6,percent
+Claude Sonnet 5-1M,Initial,score,4,46.2,percent
+Claude Sonnet 5-1M,Initial,score,5,43.9,percent
+Claude Sonnet 5-1M,MetaRSI-v1,score,1,53.5,percent
+Claude Sonnet 5-1M,MetaRSI-v1,score,2,55.4,percent
+Claude Sonnet 5-1M,MetaRSI-v1,score,3,54.3,percent
+Claude Sonnet 5-1M,MetaRSI-v1,score,4,55.6,percent
+Claude Sonnet 5-1M,MetaRSI-v1,score,5,53.7,percent
+Claude Sonnet 5-1M,SpecRSI,score,1,54.2,percent
+Claude Sonnet 5-1M,SpecRSI,score,2,58.5,percent
+Claude Sonnet 5-1M,SpecRSI,score,3,56.1,percent
+Claude Sonnet 5-1M,SpecRSI,score,4,58.1,percent
+Claude Sonnet 5-1M,SpecRSI,score,5,55.1,percent
+Qwen3.5-35B-A3B*,Initial,score,1,38.4,percent
+Qwen3.5-35B-A3B*,Initial,score,2,40.9,percent
+Qwen3.5-35B-A3B*,Initial,score,3,39.5,percent
+Qwen3.5-35B-A3B*,Initial,score,4,41.1,percent
+Qwen3.5-35B-A3B*,Initial,score,5,38.6,percent
+Qwen3.5-35B-A3B*,MetaRSI-v1,score,1,48.9,percent
+Qwen3.5-35B-A3B*,MetaRSI-v1,score,2,53.2,percent
+Qwen3.5-35B-A3B*,MetaRSI-v1,score,3,50.8,percent
+Qwen3.5-35B-A3B*,MetaRSI-v1,score,4,53.0,percent
+Qwen3.5-35B-A3B*,MetaRSI-v1,score,5,49.6,percent
+Qwen3.5-35B-A3B*,SpecRSI,score,1,51.5,percent
+Qwen3.5-35B-A3B*,SpecRSI,score,2,55.2,percent
+Qwen3.5-35B-A3B*,SpecRSI,score,3,53.1,percent
+Qwen3.5-35B-A3B*,SpecRSI,score,4,55.0,percent
+Qwen3.5-35B-A3B*,SpecRSI,score,5,52.2,percent
+Mistral Large 3,Initial,score,1,37.5,percent
+Mistral Large 3,Initial,score,2,43.2,percent
+Mistral Large 3,Initial,score,3,40.2,percent
+Mistral Large 3,Initial,score,4,42.8,percent
+Mistral Large 3,Initial,score,5,38.8,percent
+Mistral Large 3,MetaRSI-v1,score,1,50.3,percent
+Mistral Large 3,MetaRSI-v1,score,2,53.2,percent
+Mistral Large 3,MetaRSI-v1,score,3,51.6,percent
+Mistral Large 3,MetaRSI-v1,score,4,53.4,percent
+Mistral Large 3,MetaRSI-v1,score,5,50.5,percent
+Mistral Large 3,SpecRSI,score,1,51.8,percent
+Mistral Large 3,SpecRSI,score,2,57.0,percent
+Mistral Large 3,SpecRSI,score,3,54.2,percent
+Mistral Large 3,SpecRSI,score,4,56.7,percent
+Mistral Large 3,SpecRSI,score,5,52.8,percent
+Llama 4 Maverick,Initial,score,1,39.5,percent
+Llama 4 Maverick,Initial,score,2,43.1,percent
+Llama 4 Maverick,Initial,score,3,41.2,percent
+Llama 4 Maverick,Initial,score,4,42.9,percent
+Llama 4 Maverick,Initial,score,5,40.3,percent
+Llama 4 Maverick,MetaRSI-v1,score,1,49.8,percent
+Llama 4 Maverick,MetaRSI-v1,score,2,55.3,percent
+Llama 4 Maverick,MetaRSI-v1,score,3,52.2,percent
+Llama 4 Maverick,MetaRSI-v1,score,4,55.0,percent
+Llama 4 Maverick,MetaRSI-v1,score,5,50.7,percent
+Llama 4 Maverick,SpecRSI,score,1,52.7,percent
+Llama 4 Maverick,SpecRSI,score,2,57.0,percent
+Llama 4 Maverick,SpecRSI,score,3,54.6,percent
+Llama 4 Maverick,SpecRSI,score,4,56.8,percent
+Llama 4 Maverick,SpecRSI,score,5,53.4,percent
+Qwen3.5-397B-A17B,Initial,score,1,40.0,percent
+Qwen3.5-397B-A17B,Initial,score,2,44.3,percent
+Qwen3.5-397B-A17B,Initial,score,3,41.9,percent
+Qwen3.5-397B-A17B,Initial,score,4,43.9,percent
+Qwen3.5-397B-A17B,Initial,score,5,40.9,percent
+Qwen3.5-397B-A17B,MetaRSI-v1,score,1,52.3,percent
+Qwen3.5-397B-A17B,MetaRSI-v1,score,2,54.5,percent
+Qwen3.5-397B-A17B,MetaRSI-v1,score,3,53.2,percent
+Qwen3.5-397B-A17B,MetaRSI-v1,score,4,54.7,percent
+Qwen3.5-397B-A17B,MetaRSI-v1,score,5,52.3,percent
+Qwen3.5-397B-A17B,SpecRSI,score,1,52.5,percent
+Qwen3.5-397B-A17B,SpecRSI,score,2,58.1,percent
+Qwen3.5-397B-A17B,SpecRSI,score,3,55.0,percent
+Qwen3.5-397B-A17B,SpecRSI,score,4,57.8,percent
+Qwen3.5-397B-A17B,SpecRSI,score,5,53.6,percent
+Kimi K3,Initial,score,1,41.7,percent
+Kimi K3,Initial,score,2,44.4,percent
+Kimi K3,Initial,score,3,42.9,percent
+Kimi K3,Initial,score,4,44.6,percent
+Kimi K3,Initial,score,5,41.9,percent
+Kimi K3,MetaRSI-v1,score,1,52.0,percent
+Kimi K3,MetaRSI-v1,score,2,56.1,percent
+Kimi K3,MetaRSI-v1,score,3,53.8,percent
+Kimi K3,MetaRSI-v1,score,4,55.9,percent
+Kimi K3,MetaRSI-v1,score,5,52.7,percent
+Kimi K3,SpecRSI,score,1,54.9,percent
+Kimi K3,SpecRSI,score,2,58.2,percent
+Kimi K3,SpecRSI,score,3,56.3,percent
+Kimi K3,SpecRSI,score,4,58.4,percent
+Kimi K3,SpecRSI,score,5,55.2,percent
+GLM-5.3,Initial,score,1,41.2,percent
+GLM-5.3,Initial,score,2,46.1,percent
+GLM-5.3,Initial,score,3,43.4,percent
+GLM-5.3,Initial,score,4,45.7,percent
+GLM-5.3,Initial,score,5,42.1,percent
+GLM-5.3,MetaRSI-v1,score,1,52.9,percent
+GLM-5.3,MetaRSI-v1,score,2,56.0,percent
+GLM-5.3,MetaRSI-v1,score,3,54.2,percent
+GLM-5.3,MetaRSI-v1,score,4,56.2,percent
+GLM-5.3,MetaRSI-v1,score,5,53.2,percent
+GLM-5.3,SpecRSI,score,1,53.8,percent
+GLM-5.3,SpecRSI,score,2,58.5,percent
+GLM-5.3,SpecRSI,score,3,55.9,percent
+GLM-5.3,SpecRSI,score,4,58.2,percent
+GLM-5.3,SpecRSI,score,5,55.1,percent
+Qwen3.8 Max,Initial,score,1,42.0,percent
+Qwen3.8 Max,Initial,score,2,46.5,percent
+Qwen3.8 Max,Initial,score,3,43.8,percent
+Qwen3.8 Max,Initial,score,4,46.2,percent
+Qwen3.8 Max,Initial,score,5,43.0,percent
+Qwen3.8 Max,MetaRSI-v1,score,1,52.5,percent
+Qwen3.8 Max,MetaRSI-v1,score,2,57.3,percent
+Qwen3.8 Max,MetaRSI-v1,score,3,54.6,percent
+Qwen3.8 Max,MetaRSI-v1,score,4,57.1,percent
+Qwen3.8 Max,MetaRSI-v1,score,5,53.5,percent
+Qwen3.8 Max,SpecRSI,score,1,55.5,percent
+Qwen3.8 Max,SpecRSI,score,2,58.4,percent
+Qwen3.8 Max,SpecRSI,score,3,56.8,percent
+Qwen3.8 Max,SpecRSI,score,4,58.6,percent
+Qwen3.8 Max,SpecRSI,score,5,55.7,percent
+DeepSeek V4-Pro,Initial,score,1,42.4,percent
+DeepSeek V4-Pro,Initial,score,2,47.5,percent
+DeepSeek V4-Pro,Initial,score,3,44.6,percent
+DeepSeek V4-Pro,Initial,score,4,47.1,percent
+DeepSeek V4-Pro,Initial,score,5,43.4,percent
+DeepSeek V4-Pro,MetaRSI-v1,score,1,53.5,percent
+DeepSeek V4-Pro,MetaRSI-v1,score,2,57.9,percent
+DeepSeek V4-Pro,MetaRSI-v1,score,3,55.3,percent
+DeepSeek V4-Pro,MetaRSI-v1,score,4,57.7,percent
+DeepSeek V4-Pro,MetaRSI-v1,score,5,54.6,percent
+DeepSeek V4-Pro,SpecRSI,score,1,55.7,percent
+DeepSeek V4-Pro,SpecRSI,score,2,60.1,percent
+DeepSeek V4-Pro,SpecRSI,score,3,57.6,percent
+DeepSeek V4-Pro,SpecRSI,score,4,59.8,percent
+DeepSeek V4-Pro,SpecRSI,score,5,56.8,percent
+Grok-4.7,Initial,score,1,44.4,percent
+Grok-4.7,Initial,score,2,46.5,percent
+Grok-4.7,Initial,score,3,45.3,percent
+Grok-4.7,Initial,score,4,46.7,percent
+Grok-4.7,Initial,score,5,44.6,percent
+Grok-4.7,MetaRSI-v1,score,1,53.1,percent
+Grok-4.7,MetaRSI-v1,score,2,58.7,percent
+Grok-4.7,MetaRSI-v1,score,3,55.6,percent
+Grok-4.7,MetaRSI-v1,score,4,58.4,percent
+Grok-4.7,MetaRSI-v1,score,5,54.2,percent
+Grok-4.7,SpecRSI,score,1,55.6,percent
+Grok-4.7,SpecRSI,score,2,59.4,percent
+Grok-4.7,SpecRSI,score,3,57.3,percent
+Grok-4.7,SpecRSI,score,4,59.2,percent
+Grok-4.7,SpecRSI,score,5,56.5,percent
+Gemini 3.5 Flash,Initial,score,1,43.3,percent
+Gemini 3.5 Flash,Initial,score,2,48.1,percent
+Gemini 3.5 Flash,Initial,score,3,45.4,percent
+Gemini 3.5 Flash,Initial,score,4,47.8,percent
+Gemini 3.5 Flash,Initial,score,5,44.4,percent
+Gemini 3.5 Flash,MetaRSI-v1,score,1,55.0,percent
+Gemini 3.5 Flash,MetaRSI-v1,score,2,57.5,percent
+Gemini 3.5 Flash,MetaRSI-v1,score,3,56.1,percent
+Gemini 3.5 Flash,MetaRSI-v1,score,4,57.7,percent
+Gemini 3.5 Flash,MetaRSI-v1,score,5,55.2,percent
+Gemini 3.5 Flash,SpecRSI,score,1,55.1,percent
+Gemini 3.5 Flash,SpecRSI,score,2,60.6,percent
+Gemini 3.5 Flash,SpecRSI,score,3,57.5,percent
+Gemini 3.5 Flash,SpecRSI,score,4,60.3,percent
+Gemini 3.5 Flash,SpecRSI,score,5,56.5,percent
+GPT-5.6 Sol,Initial,score,1,43.1,percent
+GPT-5.6 Sol,Initial,score,2,46.0,percent
+GPT-5.6 Sol,Initial,score,3,44.4,percent
+GPT-5.6 Sol,Initial,score,4,46.2,percent
+GPT-5.6 Sol,Initial,score,5,43.3,percent
+GPT-5.6 Sol,MetaRSI-v1,score,1,53.0,percent
+GPT-5.6 Sol,MetaRSI-v1,score,2,56.8,percent
+GPT-5.6 Sol,MetaRSI-v1,score,3,54.7,percent
+GPT-5.6 Sol,MetaRSI-v1,score,4,56.6,percent
+GPT-5.6 Sol,MetaRSI-v1,score,5,53.9,percent
+GPT-5.6 Sol,SpecRSI,score,1,55.6,percent
+GPT-5.6 Sol,SpecRSI,score,2,58.1,percent
+GPT-5.6 Sol,SpecRSI,score,3,56.7,percent
+GPT-5.6 Sol,SpecRSI,score,4,58.3,percent
+GPT-5.6 Sol,SpecRSI,score,5,55.8,percent
+Claude Opus 5,Initial,score,1,46.3,percent
+Claude Opus 5,Initial,score,2,48.0,percent
+Claude Opus 5,Initial,score,3,47.1,percent
+Claude Opus 5,Initial,score,4,48.2,percent
+Claude Opus 5,Initial,score,5,46.4,percent
+Claude Opus 5,MetaRSI-v1,score,1,56.1,percent
+Claude Opus 5,MetaRSI-v1,score,2,59.4,percent
+Claude Opus 5,MetaRSI-v1,score,3,57.5,percent
+Claude Opus 5,MetaRSI-v1,score,4,59.2,percent
+Claude Opus 5,MetaRSI-v1,score,5,56.8,percent
+Claude Opus 5,SpecRSI,score,1,58.3,percent
+Claude Opus 5,SpecRSI,score,2,60.4,percent
+Claude Opus 5,SpecRSI,score,3,59.2,percent
+Claude Opus 5,SpecRSI,score,4,60.5,percent
+Claude Opus 5,SpecRSI,score,5,58.6,percent
+Claude Opus 5.5,Initial,score,1,45.8,percent
+Claude Opus 5.5,Initial,score,2,49.5,percent
+Claude Opus 5.5,Initial,score,3,47.4,percent
+Claude Opus 5.5,Initial,score,4,49.2,percent
+Claude Opus 5.5,Initial,score,5,46.6,percent
+Claude Opus 5.5,MetaRSI-v1,score,1,57.3,percent
+Claude Opus 5.5,MetaRSI-v1,score,2,59.2,percent
+Claude Opus 5.5,MetaRSI-v1,score,3,58.1,percent
+Claude Opus 5.5,MetaRSI-v1,score,4,59.4,percent
+Claude Opus 5.5,MetaRSI-v1,score,5,57.5,percent
+Claude Opus 5.5,SpecRSI,score,1,57.9,percent
+Claude Opus 5.5,SpecRSI,score,2,61.5,percent
+Claude Opus 5.5,SpecRSI,score,3,59.5,percent
+Claude Opus 5.5,SpecRSI,score,4,61.2,percent
+Claude Opus 5.5,SpecRSI,score,5,58.9,percent
+GPT-6 Astra,Initial,score,1,47.2,percent
+GPT-6 Astra,Initial,score,2,49.5,percent
+GPT-6 Astra,Initial,score,3,48.2,percent
+GPT-6 Astra,Initial,score,4,49.7,percent
+GPT-6 Astra,Initial,score,5,47.4,percent
+GPT-6 Astra,MetaRSI-v1,score,1,56.6,percent
+GPT-6 Astra,MetaRSI-v1,score,2,60.9,percent
+GPT-6 Astra,MetaRSI-v1,score,3,58.4,percent
+GPT-6 Astra,MetaRSI-v1,score,4,60.7,percent
+GPT-6 Astra,MetaRSI-v1,score,5,57.4,percent
+GPT-6 Astra,SpecRSI,score,1,59.1,percent
+GPT-6 Astra,SpecRSI,score,2,61.0,percent
+GPT-6 Astra,SpecRSI,score,3,60.0,percent
+GPT-6 Astra,SpecRSI,score,4,61.1,percent
+GPT-6 Astra,SpecRSI,score,5,59.3,percent

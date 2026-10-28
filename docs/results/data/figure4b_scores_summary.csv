@@ -1,0 +1,61 @@
+model,method,metric,unit,n,mean,sd
+MiniMax M3,Initial,score,percent,5,35.0,2.39895810717903
+MiniMax M3,MetaRSI-v1,score,percent,5,47.5,1.724818831066033
+MiniMax M3,SpecRSI,score,percent,5,49.8,2.6767517628648334
+DeepSeek V4.1 Flash,Initial,score,percent,5,36.8,1.0368220676663846
+DeepSeek V4.1 Flash,MetaRSI-v1,score,percent,5,48.5,2.491987158875424
+DeepSeek V4.1 Flash,SpecRSI,score,percent,5,50.5,1.396424004376894
+Amazon Nova Premier,Initial,score,percent,5,37.6,1.9300259065618781
+Amazon Nova Premier,MetaRSI-v1,score,percent,5,49.2,1.159741350474319
+Amazon Nova Premier,SpecRSI,score,percent,5,51.5,1.954482028569208
+Cohere Command A+,Initial,score,percent,5,38.0,2.3130067012440763
+Cohere Command A+,MetaRSI-v1,score,percent,5,49.7,2.777588882466228
+Cohere Command A+,SpecRSI,score,percent,5,52.1,1.26491106406735
+GPT-5.5,Initial,score,percent,5,45.6,0.9591663046625435
+GPT-5.5,MetaRSI-v1,score,percent,5,55.2,1.6658331248957665
+GPT-5.5,SpecRSI,score,percent,5,57.2,1.159741350474319
+Claude Sonnet 5-1M,Initial,score,percent,5,44.9,1.521512405470295
+Claude Sonnet 5-1M,MetaRSI-v1,score,percent,5,54.5,0.9617692030835668
+Claude Sonnet 5-1M,SpecRSI,score,percent,5,56.4,1.8654758106177622
+Qwen3.5-35B-A3B*,Initial,score,percent,5,39.7,1.2589678312014172
+Qwen3.5-35B-A3B*,MetaRSI-v1,score,percent,5,51.1,1.9493588689617938
+Qwen3.5-35B-A3B*,SpecRSI,score,percent,5,53.4,1.653783540854123
+Mistral Large 3,Initial,score,percent,5,40.5,2.477902338672774
+Mistral Large 3,MetaRSI-v1,score,percent,5,51.8,1.457737973711326
+Mistral Large 3,SpecRSI,score,percent,5,54.5,2.3108440016582703
+Llama 4 Maverick,Initial,score,percent,5,41.4,1.58113883008419
+Llama 4 Maverick,MetaRSI-v1,score,percent,5,52.6,2.4829418035870265
+Llama 4 Maverick,SpecRSI,score,percent,5,54.9,1.9493588689617916
+Qwen3.5-397B-A17B,Initial,score,percent,5,42.199999999999996,1.8654758106177622
+Qwen3.5-397B-A17B,MetaRSI-v1,score,percent,5,53.4,1.1575836902790246
+Qwen3.5-397B-A17B,SpecRSI,score,percent,5,55.4,2.4929901724635815
+Kimi K3,Initial,score,percent,5,43.1,1.3583077707206122
+Kimi K3,MetaRSI-v1,score,percent,5,54.1,1.8506755523321743
+Kimi K3,SpecRSI,score,percent,5,56.6,1.638596960817394
+GLM-5.3,Initial,score,percent,5,43.7,2.1598611066455176
+GLM-5.3,MetaRSI-v1,score,percent,5,54.5,1.5394804318340658
+GLM-5.3,SpecRSI,score,percent,5,56.3,2.018662923818636
+Qwen3.8 Max,Initial,score,percent,5,44.3,1.979898987322334
+Qwen3.8 Max,MetaRSI-v1,score,percent,5,55.0,2.1424285285628546
+Qwen3.8 Max,SpecRSI,score,percent,5,57.0,1.4577379737113247
+DeepSeek V4-Pro,Initial,score,percent,5,45.0,2.2438805672316886
+DeepSeek V4-Pro,MetaRSI-v1,score,percent,5,55.8,1.9364916731037087
+DeepSeek V4-Pro,SpecRSI,score,percent,5,58.0,1.9065675964937612
+Grok-4.7,Initial,score,percent,5,45.5,1.0606601717798223
+Grok-4.7,MetaRSI-v1,score,percent,5,56.0,2.4929901724635815
+Grok-4.7,SpecRSI,score,percent,5,57.6,1.665833124895768
+Gemini 3.5 Flash,Initial,score,percent,5,45.8,2.1011901389450705
+Gemini 3.5 Flash,MetaRSI-v1,score,percent,5,56.300000000000004,1.2589678312014172
+Gemini 3.5 Flash,SpecRSI,score,percent,5,58.0,2.3958297101421873
+GPT-5.6 Sol,Initial,score,percent,5,44.6,1.457737973711326
+GPT-5.6 Sol,MetaRSI-v1,score,percent,5,55.0,1.6658331248957678
+GPT-5.6 Sol,SpecRSI,score,percent,5,56.9,1.258967831201417
+Claude Opus 5,Initial,score,percent,5,47.2,0.8803408430829524
+Claude Opus 5,MetaRSI-v1,score,percent,5,57.8,1.4577379737113254
+Claude Opus 5,SpecRSI,score,percent,5,59.4,1.0124228365658292
+Claude Opus 5.5,Initial,score,percent,5,47.7,1.6124515496597112
+Claude Opus 5.5,MetaRSI-v1,score,percent,5,58.3,0.9617692030835682
+Claude Opus 5.5,SpecRSI,score,percent,5,59.8,1.5297058540778368
+GPT-6 Astra,Initial,score,percent,5,48.4,1.1597413504743206
+GPT-6 Astra,MetaRSI-v1,score,percent,5,58.8,1.935200248036363
+GPT-6 Astra,SpecRSI,score,percent,5,60.1,0.9300537618869144
