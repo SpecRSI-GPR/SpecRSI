@@ -2386,23 +2386,23 @@
     },
     {
       "path": "src/specrsi/science/controls.py",
-      "bytes": 5942,
-      "sha256": "5e6ca72c5026185032c3b75fe4fec89c5d3243a113c5d310dbdbb0c2cf49a4ce"
+      "bytes": 5998,
+      "sha256": "5b13f6fd51bf4a7be0c6d977b453103836d1148f3e27f7f7c1a74d36ac27c353"
     },
     {
       "path": "src/specrsi/science/executor.py",
-      "bytes": 11300,
-      "sha256": "25f2abe58353d014af25c811f1fad47c3f8f716d6cf8b0a2b2b85e4591053b2b"
+      "bytes": 11651,
+      "sha256": "30f6659fa8fbd461d1531919a29d0ba0a04b3931d82f7614c43a655c26d64652"
     },
     {
       "path": "src/specrsi/science/fdtd.py",
-      "bytes": 7913,
-      "sha256": "6d4d98687aae430d85df7f9cf40e5a1e6f0754494f1664318c06ce2dee9d5f48"
+      "bytes": 9092,
+      "sha256": "9933fbec55cf87b05d28aeec11c9320cca57ef2bb7dc38f6a8ee767c460636f6"
     },
     {
       "path": "src/specrsi/science/irp.py",
-      "bytes": 5728,
-      "sha256": "6dab221ab2ad290e3291a2adddb648478e5709948936f903e4507135ef6803c5"
+      "bytes": 6254,
+      "sha256": "a41c82133b7c427e5fee812fd4158a812ba7756baacc8ada383367f25ad7ff75"
     },
     {
       "path": "src/specrsi/science/named_comparison.py",
@@ -2421,13 +2421,13 @@
     },
     {
       "path": "src/specrsi/science/reactor.py",
-      "bytes": 3849,
-      "sha256": "3bf6b0a1c80c59905a67c1f6e948e60e0de3b6c3b1b0c1965970d568b7e7cc7e"
+      "bytes": 4098,
+      "sha256": "e9ac5b97d35489ab09bf2647245d951a9564ee27f69f467d9acb36106c52bab8"
     },
     {
       "path": "src/specrsi/science/registry.py",
-      "bytes": 5826,
-      "sha256": "69d99110a2656462841f50725a20a0cbbf87ddaf85546d2327386d1640320df7"
+      "bytes": 6787,
+      "sha256": "d078702955e98c2bf0fd950f17a4b764147b1245789fefa15c57f3ce08741a76"
     },
     {
       "path": "src/specrsi/science/worker.py",
@@ -2766,8 +2766,8 @@
     },
     {
       "path": "tests/test_science.py",
-      "bytes": 8755,
-      "sha256": "acdd8288cc1941240ece898398d7ddd6c44b0da081eddd462a4a8522c915fb18"
+      "bytes": 8974,
+      "sha256": "eded0dabbcd05f2ad753a7325a27b5285e8a63c961421fba9af8fa5893a3a694"
     },
     {
       "path": "tests/test_science_baseline_routes.py",

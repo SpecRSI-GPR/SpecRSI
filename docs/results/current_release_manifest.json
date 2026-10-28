@@ -8,13 +8,13 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 10646,
-      "sha256": "c75060c2e83380d2a255a6d13587e0e12f8b5494d30869fbd438ef3ce56f6337"
+      "bytes": 10448,
+      "sha256": "97726f2b73f54333c7fe1ee45802e18fefe2f8a203b7c7d5947cc1b21fb87f3d"
     },
     {
       "path": "docs/results/README.md",
-      "bytes": 23109,
-      "sha256": "8b538d3894ea10d335399b47ffe8687677ff9a8432d73e6e539c6f906efaa64c"
+      "bytes": 23072,
+      "sha256": "b12cfa85f4df53b4969b0a1e848c8ec3403aadcbf73314b7270a62fdc1a18492"
     },
     {
       "path": "docs/results/online_supplement.md",
@@ -33,8 +33,8 @@
     },
     {
       "path": "docs/results/tables/README.md",
-      "bytes": 18043,
-      "sha256": "c80b63a0381a50159a1d5013e48234a296c9e42dc07f71aa52e6433a3581420b"
+      "bytes": 18024,
+      "sha256": "cac8a86d951edbc18f533f80d0a772826a64375b610793a60953fe49ed03d638"
     },
     {
       "path": "docs/results/tables/figure_s2de_supervision.csv",
@@ -123,8 +123,8 @@
     },
     {
       "path": "docs/results/data/README.md",
-      "bytes": 5789,
-      "sha256": "09a78687216c35efb63e80ac8c122ea63dabbf8d7477fc3a4d24b6ec91dffc49"
+      "bytes": 5761,
+      "sha256": "aeb067ea7dcac70a563be60acb310e48e8456808d345745be4f7ea2b62f05601"
     },
     {
       "path": "docs/results/data/figure2_seeds.csv",
@@ -283,8 +283,8 @@
     },
     {
       "path": "docs/results/figures/README.md",
-      "bytes": 118,
-      "sha256": "0464df031c916b2692ff83d47bcba81aefa742ccb2a8b9feba541b7fe89aeba6"
+      "bytes": 110,
+      "sha256": "6ffaf9da6292daa43c7d8e083c30693390ec5b16dd25d76bd379271f7389523e"
     },
     {
       "path": "docs/results/figures/figure1.pdf",
@@ -383,8 +383,8 @@
     },
     {
       "path": "docs/results/reactor_model.md",
-      "bytes": 5724,
-      "sha256": "249d5967dd3666c7710040e0935d06e1c5bcaf4a6224ae61b18f5d296154dfce"
+      "bytes": 5744,
+      "sha256": "05bdcbc97494ed24491f4837ee3c017eadc30c061559a0acac934ad0309d15e5"
     },
     {
       "path": "docs/results/data/reactor_reference_default_validation.csv",
@@ -393,33 +393,33 @@
     },
     {
       "path": "src/specrsi/science/reactor.py",
-      "bytes": 4095,
-      "sha256": "e3659c3f196ab89f38dcc613d2c21ed82455c1bb3f7c706bb65e565cb2f30f25"
+      "bytes": 4098,
+      "sha256": "e9ac5b97d35489ab09bf2647245d951a9564ee27f69f467d9acb36106c52bab8"
     },
     {
       "path": "src/specrsi/science/reactor_cstr.py",
-      "bytes": 11314,
-      "sha256": "757918e6c204f5d2a7dc11fe980c767709c027bd620e3cee1b03ce74a715cd41"
+      "bytes": 11325,
+      "sha256": "437d1032d5e594f53801d493c8151db6e3339e4d52388b8fb172e8996d33d559"
     },
     {
       "path": "src/specrsi/science/registry.py",
-      "bytes": 6777,
-      "sha256": "0fad751b0dfe6dda52af3a71605e4cc556d37a19797aa64fd2c08ddbd25db6d1"
+      "bytes": 6787,
+      "sha256": "d078702955e98c2bf0fd950f17a4b764147b1245789fefa15c57f3ce08741a76"
     },
     {
       "path": "src/specrsi/science/executor.py",
-      "bytes": 11647,
-      "sha256": "cd014d93b314c70edae14942e73e160c3a3655b176f230e063001602a3305e14"
+      "bytes": 11651,
+      "sha256": "30f6659fa8fbd461d1531919a29d0ba0a04b3931d82f7614c43a655c26d64652"
     },
     {
       "path": "configs/science/reference/reactor.json",
-      "bytes": 5697,
-      "sha256": "35d30cc20b40b822c55ddecbf4e09263af59f428024a57287c613e76d6779999"
+      "bytes": 5705,
+      "sha256": "51022e9f6e3c538ffce54b03b2b32bcef2ef6685cc8a80a972f7c9464508437b"
     },
     {
       "path": "tests/test_reactor_reference.py",
-      "bytes": 8186,
-      "sha256": "79653b4acee32652ed1fed4800c70800fc47e367ba3e371f4e8aab51f8fc2c7d"
+      "bytes": 8226,
+      "sha256": "59a342e051fbc2ff047397cba950df99f3145da4e12c9644c84e7d477799fd91"
     }
   ]
 }
