@@ -1,0 +1,41 @@
+permission_group,method,task,score_mean_pct,score_sd_pct
+D/H/M,Initial,Terminal-Bench 2.1,23.6,0.7
+D/H/M,Initial,SWE-Pro,10.2,0.3
+D/H/M,Initial,GPQA-hard100,71.2,1.0
+D/H/M,Initial,AIME,54.9,0.5
+D/H/M,Data-RSI,Terminal-Bench 2.1,27.4,0.3
+D/H/M,Data-RSI,SWE-Pro,12.4,0.8
+D/H/M,Data-RSI,GPQA-hard100,73.8,0.3
+D/H/M,Data-RSI,AIME,57.6,0.1
+D/H/M,Harness-RSI,Terminal-Bench 2.1,29.4,0.6
+D/H/M,Harness-RSI,SWE-Pro,14.8,0.3
+D/H/M,Harness-RSI,GPQA-hard100,78.2,0.7
+D/H/M,Harness-RSI,AIME,63.1,0.8
+D/H/M,Model-RSI,Terminal-Bench 2.1,27.0,0.3
+D/H/M,Model-RSI,SWE-Pro,13.9,0.1
+D/H/M,Model-RSI,GPQA-hard100,75.4,0.6
+D/H/M,Model-RSI,AIME,59.7,0.2
+D/H/M,Fixed D→M→H,Terminal-Bench 2.1,30.3,0.6
+D/H/M,Fixed D→M→H,SWE-Pro,15.3,0.3
+D/H/M,Fixed D→M→H,GPQA-hard100,79.5,0.2
+D/H/M,Fixed D→M→H,AIME,64.2,0.6
+D/H/M,Static router,Terminal-Bench 2.1,30.8,0.2
+D/H/M,Static router,SWE-Pro,14.9,0.3
+D/H/M,Static router,GPQA-hard100,79.7,0.9
+D/H/M,Static router,AIME,64.0,0.2
+D/H/M,MetaRSI-v1,Terminal-Bench 2.1,32.1,0.3
+D/H/M,MetaRSI-v1,SWE-Pro,19.5,0.8
+D/H/M,MetaRSI-v1,GPQA-hard100,83.8,0.2
+D/H/M,MetaRSI-v1,AIME,68.5,0.1
+D/H/M,SpecRSI,Terminal-Bench 2.1,35.6,0.6
+D/H/M,SpecRSI,SWE-Pro,23.7,0.1
+D/H/M,SpecRSI,GPQA-hard100,87.3,0.3
+D/H/M,SpecRSI,AIME,72.9,0.3
+D+H,MetaRSI-H,Terminal-Bench 2.1,28.6,0.5
+D+H,MetaRSI-H,SWE-Pro,14.2,0.2
+D+H,MetaRSI-H,GPQA-hard100,77.5,0.5
+D+H,MetaRSI-H,AIME,61.7,0.2
+D+H,SpecRSI-H,Terminal-Bench 2.1,32.1,0.1
+D+H,SpecRSI-H,SWE-Pro,17.3,0.5
+D+H,SpecRSI-H,GPQA-hard100,80.9,0.5
+D+H,SpecRSI-H,AIME,65.6,0.1

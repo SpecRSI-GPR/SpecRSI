@@ -1,0 +1,8 @@
+item,janus,specrsi
+Typical trace,"Calibrates constant diffusivity, then SEI resistance, simulating each step. Proxy screening rejects the joint edit after five proxy evaluations and two full 800-s simulations.","Drafts piecewise SOC-dependent diffusivity, exponential SOC-dependent SEI resistance, and exchange-current/concentration corrections. One bound check and one final simulation verify all three edits without intermediate full simulations."
+Five-seed scores,"0.339, 0.344, 0.347, 0.353, 0.349","0.409, 0.421, 0.427, 0.440, 0.433"
+Mean score,0.3464,0.4260
+RMSE equivalent (mV),27.3,25.6
+Mean gain,0.0664,0.1460
+Mean search cost (k tokens),11.264,10.504
+Token shares,Simulation interaction / proxy / generation: 62% / 21% / 17%.,Simulation interaction / bounds / generation / planning: 39% / 8% / 36% / 17%.

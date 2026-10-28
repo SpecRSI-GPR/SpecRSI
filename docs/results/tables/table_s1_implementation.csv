@@ -1,0 +1,18 @@
+setting,value
+Architecture,"Frozen BF16 text representations; separate Scorer/Policy branches with typed relations and four-head set attention. Inputs: observed outcomes, missing checks, remaining resources, and proposed work."
+Warm-up,Component minibatch 1. Drafter/Policy/Scorer targets are executed legal edits/legal choices/realized returns. Unexecuted alternatives receive no targets.
+VATS solver,SciPy `milp` / HiGHS.
+VATS target limits,"Training/default targets, pair unions, and singleton closures: 2/2/2 versus 4/4/4."
+VATS query and plan limits,"Training/default (q_max, K_Ω, s_max) = (4, 8, 4) versus (96, 32, 4): uncached Scorer queries, retained plans, and accepted extensions per seed."
+GVO objective,"λ = μ = 0: verified gain under hard caps, with cost features and feasibility active. Nonzero penalties use a separate profile."
+GVO updates,"At most one joint SGD step per collection. Scorer/actor learning rates: 5×10⁻⁴ / 10⁻³. (ε_c, β_pair, β_KL) = (0.2, 1, 0.02). Zero momentum and weight decay; no gradient-norm clipping."
+Execution,"Training uses 2,048-token sequences and one H20 per scientific domain. Inference uses a 32,768-token limit and a separate H20. Other backbones use frozen transfer through provider APIs."
+Scientific evaluation,12 held-out instances per task.
+PyBaMM,"Version 23.5. J = 1 − MSE/MSE_ref, dimensionless; MSE = N⁻¹ Σᵢ(V_pred,i − V_true,i)², in V². The reference is fixed unoptimized industry defaults, distinct from the search root. Acceptance requires physical bounds and convergence."
+AQM,"12 parameters and 12 scenarios. U = 0.4g_raw/g_max − 0.3d₉₅/d₉₅,base − 0.2ℓ − 0.1(1−f). Throughput is normalized by link capacity; 95th-percentile delay by initial-controller delay. ℓ is loss fraction and f is Jain fairness. Requires legal parameters, stable queues, and no sustained packet loss."
+FDTD / Reactor / IRP,"Scores are normalized to [0,1]. FDTD requires convergence and crosstalk ≤ −20 dB. Reactor requires convergence and safe temperature/pressure. IRP requires feasible constraints and service level ≥95%."
+Public AQM,"ns-3.44, seven RED/ECN parameters; three TCP NewReno patterns × two seeds per case, 8 s per run; 20-Mb/s dumbbell and four flows. Mean utility g − d₉₅ − 2ℓ − 0.5(1−f), where g is normalized goodput and d₉₅ is 95th-percentile end-to-end delay in seconds. Legal parameters and all six outputs are required; measured simulator time is charged."
+System tasks,"Terminal-Bench 2.1, SWE-Pro v1.0, GPQA-hard100, and AIME 2025 I/II (30 problems)."
+Lifecycle accounting,"Table 2 uses all-round totals per seed, including fine-tuning input/output tokens and serialized snapshots/trajectories."
+Resource experiment defaults,"PyBaMM, 65-k-token search budget, 32 candidate plans, and one H20. Worker threads share global state/caches; worker time sums active execution."
+Training cost in Figure S2E,Forward input/output and forced-continuation tokens are counted. Search is charged separately; backward computation is measured in GPU time.

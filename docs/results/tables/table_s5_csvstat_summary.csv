@@ -1,0 +1,3 @@
+method,target_tests_passed,target_tests_total,target_tests_pct,search_cost_mean_k_tokens
+MetaRSI-v1,26,28,92.9,3.185
+SpecRSI,28,28,100.0,2.974

@@ -1,0 +1,4 @@
+item,description
+Setup,"PyBaMM v23.5; shared root and 140 complete-evaluation-call budget. Calibrates seven NMC–graphite single-particle-model parameters against a 1C discharge curve at 25°C, including diffusivity, SEI resistance, and exchange-current values/SOC dependence."
+Root,Constant diffusivity/SEI resistance; maximal mid-SOC voltage error; underestimated low-SOC resistance; 100-fold exchange-current prefactor error. J(r) = 0.280 and RMSE = 28.7 mV.
+Score and acceptance,Fixed-reference RMSE ≈33.8 mV; J(c) = 1 − MSE(c)/MSE_ref. Physical bounds and convergence determine admissibility. The 15-mV optimization target (J ≈0.80) is not an admissibility threshold.

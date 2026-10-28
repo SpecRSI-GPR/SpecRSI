@@ -1,0 +1,5 @@
+cap,gain_mean_pp,gain_sd_pp,planning_cost_mean_k_tokens,planning_cost_sd_k_tokens
+8,5.2,0.35,1.8,0.12
+16,5.8,0.22,2.7,0.15
+32,6.3,0.27,3.9,0.21
+64,6.5,0.16,5.6,0.23

@@ -1,0 +1,9 @@
+category,metarsi_mean_k_tokens,metarsi_sd_k_tokens,specrsi_mean_k_tokens,specrsi_sd_k_tokens
+Acquisition,14.5,0.41,14.2,0.35
+Training,38.6,0.96,34.8,0.87
+Search,37.2,0.96,36.2,0.86
+Reuse checks,5.1,0.26,4.8,0.26
+Copies,6.3,0.26,6.1,0.25
+Failed work,6.8,0.40,6.3,0.32
+Planning,4.2,0.20,3.9,0.20
+Total,112.7,3.44,106.3,3.09

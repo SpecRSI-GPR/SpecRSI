@@ -1,0 +1,5 @@
+item,metarsi_v1,specrsi
+Typical trace,Replaces summation with Kahan compensation and attempts weighted means. Two boundary-test failures halt that branch after three full pytest runs.,"Drafts compensated summation, weight parsing, weighted mean/variance, and boundary handling alongside a task-model LoRA update. Syntax, precision, weighting-subset, and lightweight post-update checks precede one full pytest/pyflakes run."
+Final target tests,26/28 (92.9%); weighting incomplete.,28/28 (100%); both features complete.
+Mean search cost (k tokens),3.185,2.974
+Token shares,Full-test interaction / generation / other search inference: 69% / 22% / 9%.,Full-test interaction / staged checks / generation / other search inference: 31% / 14% / 38% / 17%.

@@ -1,0 +1,4 @@
+item,description
+Setup,"Shared root and 3.5-k-token budget with data, harness, and task-model editing. Repairs accumulation and adds `--weight` for weighted mean/variance. Requires 28 target tests plus clean syntax/lint."
+Root,21/28 target tests pass (75%). No weighting support; 10⁻⁶-order error on mixed large/small values.
+Search-cost accounting,"Five-seed means in k tokens. Counts input/output and tool-return tokens, excluding simulator/test runtime and separately tracked LoRA training."

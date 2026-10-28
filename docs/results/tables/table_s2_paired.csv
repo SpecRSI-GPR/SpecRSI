@@ -1,0 +1,8 @@
+group,comparison,difference,ci95_lower,ci95_upper,unit,evaluation_stage
+RQ1,PyBaMM gain: vs. Janus,0.07992,0.07057,0.08926,native task units,held-out
+RQ1,SWE-Pro success: vs. HGM,6.00,4.244,7.756,pp,held-out
+RQ1,Reference-system mean: vs. MetaRSI-v1,3.90,3.834,3.966,pp,held-out
+RQ1,PyBaMM AUBC: vs. Janus,14.9,14.776,15.024,native gain × calls,held-out
+RQ2/RQ3,Full − Additive MILP (70%),1.27,1.118,1.422,pp,held-out
+RQ2/RQ3,Full state: bundle − single,1.50,1.475,1.525,pp,in-search
+RQ2/RQ3,Same start: updated − original,1.20,1.112,1.288,pp,in-search
