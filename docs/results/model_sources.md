@@ -12,7 +12,7 @@ The task backbone and the improver are distinct roles. In Figure 4, the task age
 | Figure 4B | Twenty system backbones, including the Qwen reference | Shared frozen Qwen-trained improver; D+H edits (prompts, tool workflows, and non-test data), frozen task-model weights, matched starts, contracts, splits, seeds, and search caps |
 | Table 1B | Reference-backbone system comparison | Upper block: matched D/H/M permissions; lower block: D+H only for MetaRSI-H and SpecRSI-H. D/H/M denotes data, harness, and task-model updates. |
 
-The ten-backbone membership is recorded in [Figure 2 seed data](data/figure2_seeds.csv) and [Figure 4A seed data](data/figure4a_seeds.csv); the twenty-backbone list follows [Figure 4B seed data](data/figure4b_scores_seeds.csv). Figure 2 uses the same ten names, with `GPT 5.5`, `GLM 5.3`, and `DeepSeek V4 Pro` written without the hyphens used below. Model-source links identify releases; they do not specify experiment checkpoints, API request settings, or task partitions.
+The ten-backbone membership is listed in [Figure 2 seed data](data/figure2_seeds.csv) and [Figure 4A seed data](data/figure4a_seeds.csv); the twenty-backbone list follows [Figure 4B seed data](data/figure4b_scores_seeds.csv). Figure 2 uses the same ten names, with `GPT 5.5`, `GLM 5.3`, and `DeepSeek V4 Pro` written without the hyphens used below. The links below document model releases; run-specific checkpoint, API, and task-partition settings are separate configuration fields.
 
 ## Official sources
 

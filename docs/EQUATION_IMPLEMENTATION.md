@@ -1,6 +1,8 @@
 # Equations and executable operations
 
-Reference identity for `ft_local/SpecRSI (33).pdf`: **Qwen3.5-35B-A3B**,
+This equation-to-code index uses the numbering of its source implementation document. Current manuscript settings and protocols are on the [results page](results/README.md); the code locations below provide implementation navigation.
+
+Reference identity for the implementation document: **Qwen3.5-35B-A3B**,
 publisher BF16 revision `59d61f3ce65a6d9863b86d2e96597125219dc754`.
 `learning/hf.py` implements Appendix F.5 with the native MoE text tower,
 rank-16 LoRA on both full-attention and Gated DeltaNet projections, and
@@ -63,7 +65,7 @@ controller.
 Detailed comments are concentrated in [search and execution](../src/specrsi/core/vats.py),
 [completion constraints](../src/specrsi/planning/completion.py),
 [policy probabilities](../src/specrsi/planning/policy.py),
-[recorded returns and pairs](../src/specrsi/learning/records.py),
+[returns and pairs](../src/specrsi/learning/records.py),
 [loss functions](../src/specrsi/learning/objectives.py), and
 [training updates](../src/specrsi/learning/trainer.py).
 
@@ -94,7 +96,7 @@ return is `4-0.1*(2+5+3)=3`; the first paid-state suffix is
 preparation from both the episode and the suffix would count it twice.
 
 Elapsed time follows a single search clock. Concurrent worker durations are
-recorded separately. Failed calls retain actual charges where measured, and
+measured separately. Failed calls retain actual charges where measured, and
 unresolved work retains explicit conservative accounting. Every launched
 primitive consumes attempts, including failed drafts and checks.
 

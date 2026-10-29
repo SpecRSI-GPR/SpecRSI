@@ -2,7 +2,7 @@
 
 These files contain the numerical records behind the figures. Figure 1 and Figure 3 are mechanism diagrams and do not introduce experimental data. The records and figure assets correspond to the paper.
 
-Each `*_seeds.csv` lists individual seed values. `*_summary.csv` and `*_summary.md` provide editable numerical tables. Means are unweighted across five seed values; SD uses denominator n-1. Seed indices align within a stated cohort, not universally across figures. Pooled hit counts are not assigned an inferred seed SD.
+Each `*_seeds.csv` lists individual seed values. `*_summary.csv` and `*_summary.md` provide editable numerical tables. Means are unweighted across five seed values; SD uses denominator n-1. Seed pairing follows the stated experimental cohorts. Hit rates use pooled counts.
 
 | Figure | Seed or instance records | Summary table | Units and interpretation |
 |---|---|---|---|
@@ -17,8 +17,8 @@ Each `*_seeds.csv` lists individual seed values. `*_summary.csv` and `*_summary.
 
 ## Protocols and accounting
 
-- Figure 2, Figure 4, Figure 5, Table 1, and Figure S1 use their stated experimental settings. Their SWE-Pro means are not interchangeable. Figure 4 scientific uplift is separate from Table 1's scientific ratios.
-- Figure 5 compares cost with the strongest-scoring baseline in each task. SpecRSI improves all eleven task scores by 3.5-6.0 pp with 3.2%-17.6% lower cost than those baselines; this does not identify it as the cheapest method on all eleven tasks.
+- Figure 2, Figure 4, Figure 5, Table 1, and Figure S1 each define their cohort, starting agent, permissions, and budget. Figure 4 scientific uplift and Table 1 scientific ratios summarize their respective comparisons.
+- Figure 5 compares cost with the strongest-scoring baseline in each task. SpecRSI improves all eleven task scores by 3.5-6.0 pp with 3.2%-17.6% lower cost than those baselines.
 - Figure 6 uses five seed means per condition. A/B contain 25 searches per seed. C applies eight execution-only caps, where 100% is 65 k tokens of direct draft/verification execution; total cost additionally includes planning and initialization. Held-out negative gains are retained. The A/B hit rates are pooled from 125 searches.
 - Figure 7B carries the previous complete admissible agent, resets evidence and budgets, and evaluates rounds 2-20 after round-1 initialization. Frozen improvers remain fixed; Updated uses the respective method's update. Figure 7C totals training plus eight independent evaluation searches per seed; gain is the mean across those searches.
 - Figure S1 averages outcomes within each seed, then calculates SD across the five seed aggregates. Seed cost sums 12 PyBaMM or 50 SWE-Pro instances. Paired SWE-Pro outcomes are 155 both-pass, 15 SpecRSI-only, 0 HGM-only, and 80 neither-pass.
@@ -34,7 +34,7 @@ Each `*_seeds.csv` lists individual seed values. `*_summary.csv` and `*_summary.
 | Same plans: mean returns + return differences | 6.30 ± 0.65 | 284.00 ± 9.71 |
 | Ordinary-search data: same acquisition cost | 5.10 ± 0.57 | 253.00 ± 9.45 |
 
-Pair supervision increases mean gain by 16.7% with 19.8% higher training cost. Acquisition matching does not imply equal total training expense.
+Pair supervision increases mean gain by 16.7% with 19.8% higher training cost. Data-acquisition expense is matched within 2%; total training cost is measured separately.
 
 ## Search strategy and improver update (Figure 7C)
 

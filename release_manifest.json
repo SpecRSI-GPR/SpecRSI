@@ -1261,8 +1261,8 @@
     },
     {
       "path": "data/reproduction/science_scenarios.json",
-      "bytes": 869889,
-      "sha256": "de9f3179112c373fbc634d17c9982934c1a5abc0fbf893e5e2be7a308e0a9bdb"
+      "bytes": 886323,
+      "sha256": "cc3bd6f15fb10604a2f242b0e53ecf5ba243635432f0dc9b2e0b3abd0f8784cf"
     },
     {
       "path": "data/reproduction/splits/aime25/audit.json",
@@ -1671,13 +1671,13 @@
     },
     {
       "path": "docs/EQUATION_IMPLEMENTATION.md",
-      "bytes": 10977,
-      "sha256": "195a2d815728dc8ce1c9db9e25499ad24b5696fa6df0e7e3ea946573fa363193"
+      "bytes": 11203,
+      "sha256": "19ee6d2a89f993b973f4329b29c046b7dc1ce49a4fd5b3be2cc80244a73b2616"
     },
     {
       "path": "docs/REPRODUCIBILITY.md",
-      "bytes": 16458,
-      "sha256": "470d4aeabfde39df2a17534655ae16381a6c394747412cc817bb81e200953a00"
+      "bytes": 16837,
+      "sha256": "a29d30eeee2fa7bd2fdba2cfd0d8a26f37ab76baf5759231e52704506cb27917"
     },
     {
       "path": "pyproject.toml",

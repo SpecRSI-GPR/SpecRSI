@@ -57,7 +57,7 @@ dT/dt = (F / V) (T_in - T) - deltaH r_gen / H - UA (T - T_c,out) / H
 | Reference coolant flow | 15 L/min |
 | Solver | DOP853; `rtol=1e-10`, `atol=1e-11`, maximum step 0.1 min |
 
-An admissible trajectory completes the horizon with finite, nonnegative physical states, temperature in [300, 400] K, and pressure in [1, 3] MPa. Safety-valve opening at 2.8 MPa is allowed. Boundary-crossing events and dense-output extrema checks detect transient violations; the final state alone is not used to certify admissibility.
+An admissible trajectory completes the horizon with finite, nonnegative physical states, temperature in [300, 400] K, and pressure in [1, 3] MPa. Safety-valve opening at 2.8 MPa is allowed. Boundary-crossing events and dense-output extrema checks assess admissibility over the complete trajectory.
 
 ## Score
 
@@ -90,7 +90,7 @@ The returned `native_score` is `J`; score components and the reference outlet co
 | reactor_case_11 | 3.5 | 2 | 308.15 | 298.15 | 370 | 42.97 | 28 |
 | reactor_case_12 | 1 | 2.8 | 310.15 | 300.15 | 330 | 30.80 | 12 |
 
-Initial pressures are calculated from the listed gas amounts and temperatures rather than read from rounded pressure labels.
+Initial pressures are calculated from the listed gas amounts and temperatures.
 
 ## Numerical checks
 

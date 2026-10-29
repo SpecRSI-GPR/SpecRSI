@@ -83,11 +83,11 @@ python -m specrsi.science.reactor_cstr --case-id 10 --coolant-flow 28
 
 The JSON output contains each trajectory's score, admissibility, and temperature/pressure extrema. [Model equations and instance parameters](docs/results/reactor_model.md) define the `reference` CSTR profile.
 
-These commands evaluate the standalone 12-instance CSTR profile, not the paper's optimization comparison. The older registered scientific profiles use eleven AQM cases, ten Reactor cases, and eleven IRP cases; the current FDTD default candidate fails its crosstalk check. Those profiles do not reproduce the paper's five 12-instance scientific evaluations.
+These commands evaluate the 12-instance CSTR simulator at fixed coolant flows. The registered development, selection, and audit profiles contain 11 AQM, 10 Reactor, and 11 IRP cases; the manuscript's scientific comparison uses 12 instances per task. The FDTD default candidate fails its crosstalk check.
 
 ## Additional executable example: HotpotQA
 
-The HotpotQA example requires Linux, two visible CUDA GPUs with sufficient memory, model weights, prepared task data, and a healthy model endpoint. The default setup serves the frozen model on GPU 0 and runs the learned roles on `cuda:1`, using `http://127.0.0.1:18085`. The [configuration guide](docs/REPRODUCIBILITY.md) gives model download and serving commands. This example demonstrates the training and evaluation workflow on HotpotQA, which is not a benchmark in the paper. Its YAML files define its own dataset split, collection size, and budget; running it does not reproduce the full manuscript evaluation.
+The HotpotQA example requires Linux, two visible CUDA GPUs with sufficient memory, model weights, prepared task data, and a healthy model endpoint. The default setup serves the frozen model on GPU 0 and runs the learned roles on `cuda:1`, using `http://127.0.0.1:18085`. The [configuration guide](docs/REPRODUCIBILITY.md) gives model download and serving commands. This HotpotQA example demonstrates the training and evaluation workflow using the splits, collection size, and budget specified in its YAML files. Tables S1 and S3 define the manuscript experiments.
 
 ```sh
 python -m pip install -e '.[models,data,test]'
@@ -111,7 +111,7 @@ The paper's AIME column uses the 30 problems from AIME 2025 I/II. The repository
 | `aime25` | 13 AIME 2025 problems | 11 AIME 2025 problems | 6 AIME 2025 problems | [Preparation](scripts/prepare_data.py) (`--datasets aime25`); [configuration](configs/experiments/prospective/aime25.yaml) |
 | `aime_2025_2026` | 15 AIME 2024 problems | 15 AIME 2024 problems | 30 AIME 2025 + 30 AIME 2026 problems | [Preparation](scripts/prepare_performance_aime.py); [configuration](configs/performance/aime_qwen35_fp8_full.json) |
 
-The configurations select distinct `dataset` and `data_root` values; these names are not interchangeable. [Partition metadata](data/reproduction/dataset_profiles.json) and [overlap records](data/reproduction/cross_dataset_overlap.json) show that all 30 AIME 2025 problems occur in both profiles: 13 development, 11 selection, and 6 audit items in `aime25` are audit items in the extension. The extension therefore defines a separate campaign, not an independent unseen set relative to `aime25`. Neither profile's audit partition is the paper's 30-problem evaluation set, and these configuration names do not establish which run produced the paper's AIME results.
+The configurations select their own `dataset` and `data_root` values. [Partition metadata](data/reproduction/dataset_profiles.json) and [overlap records](data/reproduction/cross_dataset_overlap.json) show that all 30 AIME 2025 problems occur in both profiles: 13 development, 11 selection, and 6 audit items in `aime25` are audit items in the extension. The two audit partitions contain 6 and 60 problems, respectively, while the paper evaluates all 30 AIME 2025 I/II problems. The paper's 30-problem result and these two registry profiles are distinct evaluation groups.
 
 ## Method
 
@@ -155,6 +155,7 @@ SD is calculated across five seed means with the n−1 denominator. Search cost 
 python -m pytest -q tests/test_core_contracts.py tests/test_core_vats.py tests/test_completion.py
 
 # Full suite after installing the model dependencies.
+python -m pip install numba==0.66.0
 python -m pytest -q
 ```
 

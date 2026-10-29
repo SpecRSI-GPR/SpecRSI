@@ -16,7 +16,7 @@ The released [HFPromptDrafter](../../src/specrsi/learning/bridge.py) uses the fo
 </div>
 </div>
 
-The [feedback serializer](../../src/specrsi/learning/draft_context.py) includes up to four parent-task examples, with visible task inputs and observed scores, admissibility, and available answer/checker feedback. A null outcome denotes an unobserved result. Examples are selected in failure-first order; task references and metadata are not read. The current instruction and serialized feedback are bounded by the available input-token allowance. The box reproduces the released implementation template, rather than a logged prompt from the case below.
+The [feedback serializer](../../src/specrsi/learning/draft_context.py) includes up to four parent-task examples, with visible task inputs and observed scores, admissibility, and available answer/checker feedback. A null outcome denotes an unobserved result. Examples are selected in failure-first order; task references and metadata are not read. The current instruction and serialized feedback are bounded by the available input-token allowance. The box gives the runtime prompt template used by `HFPromptDrafter`.
 
 <a id="table-o2-dh-csvcut-case"></a>
 

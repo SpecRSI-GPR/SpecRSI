@@ -1,4 +1,6 @@
-# Reproducing SpecRSI
+# Implementation configuration guide
+
+This guide covers installation, data preparation, model serving, and the executable configuration registry. [Tables S1 and S3](results/README.md) specify the manuscript experiments. The registry lists 56 scenarios across its scientific profiles; the manuscript uses 12 held-out instances per task. The [12-instance CSTR profile](results/reactor_model.md) is selected with `scenario_set="reference"`.
 
 The reference backbone is the publisher's unquantized BF16 **Qwen/Qwen3.5-35B-A3B**, revision `59d61f3ce65a6d9863b86d2e96597125219dc754`. The executable configurations, complete dataset membership, native evaluation contracts, model file identities, training parameters, and deployment parameters are included in this repository. Data and model weights are obtained from their pinned publishers.
 
@@ -63,7 +65,7 @@ The metadata check validates configuration references, all ordered member lists 
 
 The 139,865 ordered partition members are fully enumerated in JSON. Each source manifest gives direct download links to an immutable publisher revision and checksums for the raw files. The normalizer preserves native IDs and references. HotpotQA merges its distractor train and validation files; HoVer merges released train/dev; Lite merges released dev/test; MBPP uses all 974 native tasks. Polyglot includes the six language directories and PlanBench includes seven domains. Their complete per-split subtype counts are in `dataset_profiles.json`.
 
-For the common partition rule, normalize an input as `" ".join(prompt.split()).casefold()` and compute its SHA256. A recorded `split_group` replaces the input hash with the group's SHA256 so related instances share their partition. With seed `20260916`, let `u` be the first 64 bits of `SHA256(f"{seed}:{split_hash}")`, divided by `2**64`. The intervals `[0,.2)`, `[.2,.6)`, and `[.6,1)` assign development, selection and audit. Members retain their source traversal order.
+For the common partition rule, normalize an input as `" ".join(prompt.split()).casefold()` and compute its SHA256. An explicit `split_group` replaces the input hash with the group's SHA256 so related instances share their partition. With seed `20260916`, let `u` be the first 64 bits of `SHA256(f"{seed}:{split_hash}")`, divided by `2**64`. The intervals `[0,.2)`, `[.2,.6)`, and `[.6,1)` assign development, selection and audit. Members retain their source traversal order.
 
 MATH keeps the original 5,000 test items in audit. Training inputs are split by SHA256 parity, and the exact test-overlapping item `geometry_train:433` is removed. PlanBench retains domain rules and the final `[STATEMENT]` problem while removing the intervening demonstration; original instance groups are kept together. The AIME extension sorts 2024 inputs by hash, taking 15 development and 15 selection items, and reserves all 2025/2026 items for its audit partition.
 
@@ -74,7 +76,7 @@ MATH keeps the original 5,000 test items in audit. Training inputs are split by 
 | Task | Evaluation contract |
 |---|---|
 | HotpotQA | Answer EM/F1 and supporting-fact/joint metrics; each run fixes its metric variant |
-| HoVer | Supporting-document retrieval coverage, with claim-label accuracy recorded separately |
+| HoVer | Supporting-document retrieval coverage, with a separate claim-label accuracy metric |
 | IFBench | Pinned official verifier; prompt/instruction strict/loose variants |
 | PUPA | Explicit judge configuration; quality/privacy utility `(quality + 1 - leakage)/2` |
 | AIME | Explicit final-answer extraction followed by exact integer equality in 0–999 |
@@ -111,7 +113,7 @@ This reference configuration trains on development scenarios with two stages. Th
 | Forced repetitions | 0 | 2 |
 | Exploration | 0 | .1 |
 
-Warmup uses executed demonstrations and the configured stopping/quality rules. Its update count is `ceil(supervised_component_units / batch_size)` per epoch, so it depends on the completed demonstrations. GVO freezes the actor, scorer, menu, root, data and execution contract for the complete collection, differentiates its accumulated objective and performs one optimizer update. `batch_size` does not split this GVO update. Actor terms use ordinary complete searches; forced suffixes contribute critic/pair supervision. Optimizer step counters are cumulative across stage transitions. Checkpoint metadata provide the recorded counters separately from configured epochs and maximum collection sizes.
+Warmup uses executed demonstrations and the configured stopping/quality rules. Its update count is `ceil(supervised_component_units / batch_size)` per epoch, so it depends on the completed demonstrations. GVO freezes the actor, scorer, menu, root, data and execution contract for the complete collection, differentiates its accumulated objective and performs one optimizer update. `batch_size` does not split this GVO update. Actor terms use ordinary complete searches; forced suffixes contribute critic/pair supervision. Optimizer step counters are cumulative across stage transitions. Checkpoint metadata provide the counters separately from configured epochs and maximum collection sizes.
 
 The reference role context is 2,048 tokens; the semantic graph allocation is separately specified as global 512, node minimum 32, node maximum 1,024 and total 8,192 tokens. Generation uses its configured support, temperature and exploration. Gradient checkpointing is enabled with non-reentrant replay; training forward passes disable the generation cache. Native experts use the eager implementation. Each domain uses its own model/process on one GPU. The complete profiles preserve all effective generation/search budgets, action/child/menu limits, seeds, warmup stopping rules, group sizes, stage losses and optimizer settings.
 
@@ -129,9 +131,9 @@ SpecRSI's implementation exposes joint batch values, executed-result observation
 
 ## Hardware, software and serving
 
-The deployment has eight NVIDIA H20 GPUs with 97,871 MiB each and NVIDIA driver `575.57.08`. GPU 0 serves the reference backbone; GPUs 1–5 run Reactor, IRP, AQM, FDTD and PyBaMM respectively. The CPU is AMD EPYC 9K84, with 384 logical CPUs and 2,375,288,992 KiB of system memory. Full recorded CPU/GPU allocation and GPU clock/power settings are in `deployment.json`.
+The deployment has eight NVIDIA H20 GPUs with 97,871 MiB each and NVIDIA driver `575.57.08`. GPU 0 serves the reference backbone; GPUs 1–5 run Reactor, IRP, AQM, FDTD and PyBaMM respectively. The CPU is AMD EPYC 9K84, with 384 logical CPUs and 2,375,288,992 KiB of system memory. Full CPU/GPU allocation and GPU clock/power settings are in `deployment.json`.
 
-Training uses Python 3.11.6, Torch `2.6.0+cu124`, Transformers `5.17.0`, PEFT `0.19.1`, Hugging Face Hub `1.5.0`, Tokenizers `0.23.1`, Accelerate `1.14.0`, Safetensors `0.8.0`, FLA Core `0.3.2` and causal-conv1d `1.5.3.post1`; Torch's CUDA runtime is 12.4. The independent serving environment uses Torch `2.10.0`, vLLM `0.19.1`, Transformers `4.57.6`, Hub `0.36.2` and Tokenizers `0.22.2`. The two environment locks are inventories of the recorded task-specific packages. Install this source repository with `pip install -e .`; the CUDA compiler/native-kernel requirements apply when building native extensions.
+Training uses Python 3.11.6, Torch `2.6.0+cu124`, Transformers `5.17.0`, PEFT `0.19.1`, Hugging Face Hub `1.5.0`, Tokenizers `0.23.1`, Accelerate `1.14.0`, Safetensors `0.8.0`, FLA Core `0.3.2` and causal-conv1d `1.5.3.post1`; Torch's CUDA runtime is 12.4. The independent serving environment uses Torch `2.10.0`, vLLM `0.19.1`, Transformers `4.57.6`, Hub `0.36.2` and Tokenizers `0.22.2`. The two environment locks are inventories of the task-specific packages. Install this source repository with `pip install -e .`; the CUDA compiler/native-kernel requirements apply when building native extensions.
 
 ```bash
 python scripts/deploy_qwen35_bf16.py --python .venv-serving/bin/python
@@ -139,4 +141,4 @@ python scripts/deploy_qwen35_bf16.py --python .venv-serving/bin/python
 
 The BF16 backend serves a 32,768-token context with one active sequence, 2,048 batched tokens, eager safetensors loading, text-only operation, the `qwen3` reasoning parser and Triton GDN prefill. Its memory target is 90,000,000,000 bytes. The backend listens at `127.0.0.1:18086`; the budget gateway at `127.0.0.1:18085` uses the same pinned tokenizer and chat template for accounting. The backend uses `--generation-config vllm`; request-level sampling parameters are fixed by the calling recipe. The publisher's `generation_config.json` is included as snapshot metadata, while executable generation limits come from the selected recipe.
 
-Model weights remain external at the immutable publisher URL in the model lock. All model-file identities, tokenizer configuration, publisher architecture, adapter/head tensor structure, role-stage configurations and recorded checkpoint identities are available as lightweight metadata.
+Model weights remain external at the immutable publisher URL in the model lock. All model-file identities, tokenizer configuration, publisher architecture, adapter/head tensor structure, role-stage configurations and checkpoint identities are available as lightweight metadata.
