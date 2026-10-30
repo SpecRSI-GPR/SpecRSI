@@ -9,6 +9,15 @@ on:
       - 'scripts/deploy_qwen35_bf16.py'
       - 'tests/test_kimi_deployment.py'
       - 'tests/test_qwen35_serving_ownership.py'
+      - 'src/specrsi/benchmarks/external.py'
+      - 'src/specrsi/benchmarks/sandbox.py'
+      - 'src/specrsi/benchmarks/coding.py'
+      - 'src/specrsi/benchmarks/livebench.py'
+      - 'tests/test_benchmarks.py'
+      - 'tests/test_extended_baselines_native.py'
+      - 'tests/test_livebench_local.py'
+      - 'scripts/prepare_data.py'
+      - 'configs/datasets/sources.json'
 
 permissions:
   contents: read
@@ -29,3 +38,43 @@ jobs:
         with:
           name: linux-process-checks
           path: reports/linux-process-checks.xml
+  sandbox-checks:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install sandbox-visible Python and Linux namespaces runtime
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bubblewrap python3-pytest
+          # The sandbox exposes /usr read-only, not the setup-python tool cache.
+          sudo ln -sfn /usr/bin/python3 /usr/local/bin/python
+          /usr/local/bin/python -c 'import pytest'
+      - run: python -m pip install -e '.[test]' lark==1.3.1 antlr4-python3-runtime==4.11.1 sympy==1.13.1
+      - name: Prepare and verify pinned native test inputs
+        run: |
+          python scripts/prepare_data.py --datasets polyglot livebench_harness --workers 2
+          python scripts/prepare_data.py --datasets polyglot livebench_harness --verify
+          test -s data/processed/polyglot/selection.jsonl
+      - name: Exercise native graders and isolation
+        run: |
+          python -m pytest -q \
+            tests/test_benchmarks.py::test_mbpp_real_sandbox_correct_wrong_timeout_and_early_exit \
+            tests/test_benchmarks.py::test_mbpp_sandbox_hides_workspace_and_environment \
+            tests/test_extended_baselines_native.py::test_native_polyglot_adapter_runs_actual_python_tests \
+            tests/test_livebench_local.py::test_real_native_symbolic_path_and_required_fallback_are_isolated \
+            --junitxml=reports/linux-sandbox-checks.xml
+          python - <<'PY'
+          import xml.etree.ElementTree as ET
+          cases = list(ET.parse('reports/linux-sandbox-checks.xml').getroot().iter('testcase'))
+          assert len(cases) == 4, f'Expected four native integration checks, got {len(cases)}'
+          assert not any(case.find('skipped') is not None for case in cases), 'Native integration checks must run, not skip'
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: linux-sandbox-checks
+          path: reports/linux-sandbox-checks.xml

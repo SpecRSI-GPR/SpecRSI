@@ -1,7 +1,9 @@
 import importlib
 import hashlib
+import multiprocessing
 import os
 from pathlib import Path
+import sys
 from types import SimpleNamespace
 
 import pytest
@@ -39,6 +41,10 @@ def fixture_amps_scorer(monkeypatch):
     monkeypatch.setattr('specrsi.benchmarks.livebench.livebench_math_score', score)
 
 
+@pytest.mark.skipif(
+    sys.platform != 'linux' or multiprocessing.get_context().get_start_method() != 'fork',
+    reason='The pinned LiveBench symbolic timeout helper requires Linux fork multiprocessing',
+)
 def test_real_native_symbolic_path_and_required_fallback_are_isolated(native_livebench_harness):
     calls=[]
     environment=hashlib.sha256(repr(sorted(os.environ.items())).encode()).hexdigest()

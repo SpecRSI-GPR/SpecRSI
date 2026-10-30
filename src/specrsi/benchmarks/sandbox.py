@@ -1,7 +1,7 @@
 """Bounded offline process execution for generated solutions and parsers."""
 from __future__ import annotations
 from pathlib import Path
-import math, os, resource, signal, subprocess, tempfile, time, stat
+import math, os, resource, shutil, signal, subprocess, sys, tempfile, time, stat
 from .base import MissingArtifactError
 
 ROOT=Path(__file__).resolve().parents[3]
@@ -9,11 +9,16 @@ ROOT=Path(__file__).resolve().parents[3]
 def run_isolated(command: list[str], work: Path, *, timeout: float=180,
                  memory_mb: int=8192, mounts: dict[str,str]|None=None,
                  environment: dict[str,str]|None=None) -> dict:
+    if sys.platform != 'linux':
+        raise MissingArtifactError('Native sandbox execution requires Linux with bubblewrap namespaces')
+    runtime=shutil.which('bwrap')
+    if runtime is None:
+        raise MissingArtifactError('Native sandbox execution requires bubblewrap; install it before evaluation')
     work=work.resolve()
     null=os.stat('/dev/null')
     if not stat.S_ISCHR(null.st_mode) or null.st_rdev!=os.makedev(1,3):
         raise MissingArtifactError('Host /dev/null is not the correct character device; repair runtime before evaluation')
-    argv=['bwrap','--unshare-pid','--unshare-net','--unshare-ipc','--unshare-uts',
+    argv=[runtime,'--unshare-pid','--unshare-net','--unshare-ipc','--unshare-uts',
           '--die-with-parent','--new-session','--cap-drop','ALL']
     for directory in ['/usr','/bin','/lib','/lib64']:
         if Path(directory).exists(): argv.extend(['--ro-bind',directory,directory])

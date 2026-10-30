@@ -1,6 +1,7 @@
 from dataclasses import replace
 import json
 from pathlib import Path
+import sys
 import pytest
 
 from specrsi.baselines.extended_common import Design,Evaluation,Generated,ItemResult,ExperimentBudget,RunContext
@@ -54,6 +55,7 @@ def test_native_emas_requires_recurrence_and_real_paired_gain():
         validate_revision(initial,Design({'system_prompt':'better'},initial.uid),Hypothesis('accuracy','x','add-node','strategy'))
 
 
+@pytest.mark.skipif(sys.platform != 'linux', reason='Native Polyglot execution requires Linux bubblewrap namespaces')
 def test_native_polyglot_adapter_runs_actual_python_tests():
     if not Path('data/processed/polyglot/selection.jsonl').is_file():
         pytest.skip('Download pinned Polyglot inputs with scripts/prepare_data.py')
@@ -82,3 +84,19 @@ def test_native_polyglot_adapter_runs_actual_python_tests():
     assert backend.calls[0]['stage']=='solution'
     interrupted=backend.evaluate(design,[example],0,'audit',1)
     assert not interrupted.complete and interrupted.tokens==0
+
+
+@pytest.mark.parametrize('platform,available,message', [
+    ('darwin', '/usr/bin/bwrap', 'requires Linux'),
+    ('linux', None, 'requires bubblewrap'),
+])
+def test_native_sandbox_rejects_unsupported_runtime_before_execution(monkeypatch,tmp_path,platform,available,message):
+    from specrsi.benchmarks import sandbox
+    from specrsi.benchmarks.base import MissingArtifactError
+    monkeypatch.setattr(sandbox.sys,'platform',platform)
+    monkeypatch.setattr(sandbox.shutil,'which',lambda name:available)
+    def forbidden(*args,**kwargs):
+        pytest.fail('An unsupported sandbox must not launch candidate code')
+    monkeypatch.setattr(sandbox.subprocess,'Popen',forbidden)
+    with pytest.raises(MissingArtifactError,match=message):
+        sandbox.run_isolated(['/usr/local/bin/python','untrusted.py'],tmp_path)

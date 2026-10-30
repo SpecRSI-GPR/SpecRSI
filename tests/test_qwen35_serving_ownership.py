@@ -5,6 +5,9 @@ from pathlib import Path
 import signal
 import subprocess
 import sys
+import pytest
+
+pytestmark = pytest.mark.skipif(sys.platform != "linux", reason="Linux process identity; covered by Linux process checks")
 
 
 def module():

@@ -2,8 +2,11 @@ import hashlib
 import importlib.util
 import json
 from pathlib import Path
+import sys
 
 import pytest
+
+pytestmark = pytest.mark.skipif(sys.platform != "linux", reason="Linux /proc checkpoint preflight; covered by Linux process checks")
 
 
 def test_startup_verification_rejects_same_size_corruption(tmp_path, monkeypatch):
