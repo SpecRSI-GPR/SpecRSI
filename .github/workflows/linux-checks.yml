@@ -1,0 +1,31 @@
+name: Linux process checks
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/linux-checks.yml'
+      - 'scripts/deploy_kimi_verify.py'
+      - 'scripts/deploy_qwen35_bf16.py'
+      - 'tests/test_kimi_deployment.py'
+      - 'tests/test_qwen35_serving_ownership.py'
+
+permissions:
+  contents: read
+
+jobs:
+  process-checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pytest requests
+      - run: python -m pytest -q tests/test_kimi_deployment.py tests/test_qwen35_serving_ownership.py --junitxml=reports/linux-process-checks.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: linux-process-checks
+          path: reports/linux-process-checks.xml
