@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
-python3 -m venv --system-site-packages .venv
+python3 -m venv .venv
 mkdir -p reports
 .venv/bin/python -m pip install -e '.[models,data,solver,test]'
 .venv/bin/python -m pip freeze > reports/environment.freeze.txt

@@ -139,7 +139,7 @@ def test_unregistered_case_and_wrong_profile_fail_closed():
         with pytest.raises(ValueError, match="case ID"):
             load_config("reactor", "reference", bad)
     with pytest.raises(ValueError):
-        load_config("irp", "reference", 0)
+        load_config("fdtd", "reference", 0)
     with pytest.raises(ValueError):
         case_count("reactor", "arbitrary")
     scope = make_scope("reactor", "reference", (0,))

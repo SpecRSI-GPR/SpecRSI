@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "dataset": "aime2025_full",
+  "data_root": "data",
+  "year": 2025,
+  "evaluation": "AIME 2025 I/II, all 30 problems",
+  "evaluation_only": true,
+  "source_authority": "Math-AI benchmark-maintainer release",
+  "source_revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b",
+  "source_ids": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "28",
+    "29"
+  ],
+  "files": [
+    {
+      "sha256": "b4e273c02d3e7fe1b74b59eae768fc8230bfb0f79539890cb56f4361caac0331",
+      "bytes": 15813,
+      "url": "https://huggingface.co/datasets/math-ai/aime25/resolve/563bb8404243c5f09de6ec262f2db674fe5bce9b/test.jsonl",
+      "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b",
+      "filename": "test.jsonl"
+    },
+    {
+      "sha256": "ea8589560f464f85305edd22e4f5033759561af8040aa59d8b2759b606489c10",
+      "bytes": 878,
+      "url": "https://huggingface.co/datasets/math-ai/aime25/resolve/563bb8404243c5f09de6ec262f2db674fe5bce9b/README.md",
+      "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b",
+      "filename": "README.md"
+    },
+    {
+      "sha256": "498cdc89653a01fca77c90c94f5deb526398a1d4c0f8b54f0fdb93827dd011a9",
+      "bytes": 11356,
+      "url": "https://huggingface.co/datasets/math-ai/aime25/resolve/563bb8404243c5f09de6ec262f2db674fe5bce9b/LICENSE",
+      "revision": "563bb8404243c5f09de6ec262f2db674fe5bce9b",
+      "filename": "LICENSE"
+    }
+  ],
+  "scorer": "specrsi.benchmarks.scorers.aime_score",
+  "selection_policy": "Evaluate an already fixed agent; no development or selection items in this profile."
+}

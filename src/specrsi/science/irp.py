@@ -50,6 +50,9 @@ def policy(state: dict, candidate: dict) -> np.ndarray:
 
 
 def simulate(candidate: dict, c: dict) -> dict:
+    if c.get("model_id") == "reference-irp-same-day-v1":
+        from .irp_reference import simulate as simulate_reference
+        return simulate_reference(candidate, c)
     exact_keys(candidate, ("target_days", "safety_stock", "forecast_blend"))
     scalar(candidate["target_days"], 0, 4, "target_days")
     scalar(candidate["safety_stock"], 0, 30, "safety_stock")

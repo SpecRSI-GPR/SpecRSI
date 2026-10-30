@@ -12,6 +12,7 @@ data/retrieval/
 data/subsets/
 data/training/
 data/manifests/
+data/performance_extension/
 results/
 reports/
 runs/

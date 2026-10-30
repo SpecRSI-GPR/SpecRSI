@@ -75,6 +75,7 @@ The demo runs on CPU without model downloads or API calls. It exercises candidat
 
 ```sh
 # Evaluate all 12 CSTR instances with their default coolant flows.
+mkdir -p reports
 python -m specrsi.science.reactor_cstr --all-cases --output reports/reactor_reference.json
 
 # Evaluate case 11 with a chosen coolant flow (case IDs are zero-based).
@@ -83,7 +84,17 @@ python -m specrsi.science.reactor_cstr --case-id 10 --coolant-flow 28
 
 The JSON output contains each trajectory's score, admissibility, and temperature/pressure extrema. [Model equations and instance parameters](docs/results/reactor_model.md) define the `reference` CSTR profile.
 
-These commands evaluate the 12-instance CSTR simulator at fixed coolant flows. The registered development, selection, and audit profiles contain 11 AQM, 10 Reactor, and 11 IRP cases; the manuscript's scientific comparison uses 12 instances per task. The FDTD default candidate fails its crosstalk check.
+## Run the inventory-routing simulator
+
+```sh
+# Evaluate the deterministic replenishment baseline on all 12 instances.
+mkdir -p reports
+python -m specrsi.science.irp_reference --all-cases --output reports/irp_reference.json
+```
+
+The `reference` IRP profile uses same-day deliveries, FIFO inventory, Next-fit trip allocation, and nearest-neighbor routes. Candidate `target_stock` values set each store's replenishment target. The evaluator checks capacity, per-vehicle daily mileage, and service level; its output includes costs, expired stock, and demand fulfillment. [IRP parameters and interface](docs/irp_reference.md) specify all 12 cases.
+
+The CSTR and IRP `reference` profiles are separate from the existing development, selection, and audit configurations (11 AQM, 10 Reactor, and 11 IRP cases). The manuscript's scientific comparison uses 12 instances per task. The FDTD default candidate fails its crosstalk check. Simulator checks establish executable behavior; reproducing the reported gains also requires the corresponding search runs and trained checkpoints.
 
 ## Additional executable example: HotpotQA
 
@@ -104,14 +115,23 @@ Training writes to `artifacts/training/qwen35/paper_pdf_hotpotqa/`; evaluation w
 
 ## AIME data profiles
 
-The paper's AIME column uses the 30 problems from AIME 2025 I/II. The repository has two executable AIME profiles with different partitions:
+The AIME column uses all 30 problems from AIME 2025 I/II. Use `aime2025_full` for that evaluation set; the other two profiles retain their existing partitions.
 
 | Profile | Development | Selection | Audit | Preparation / example configuration |
 | --- | --- | --- | --- | --- |
+| `aime2025_full` | None | None | All 30 AIME 2025 I/II problems | [Preparation and verification](scripts/aime2025_full.py); [configuration](configs/evaluation/aime2025_full.json) |
 | `aime25` | 13 AIME 2025 problems | 11 AIME 2025 problems | 6 AIME 2025 problems | [Preparation](scripts/prepare_data.py) (`--datasets aime25`); [configuration](configs/experiments/prospective/aime25.yaml) |
 | `aime_2025_2026` | 15 AIME 2024 problems | 15 AIME 2024 problems | 30 AIME 2025 + 30 AIME 2026 problems | [Preparation](scripts/prepare_performance_aime.py); [configuration](configs/performance/aime_qwen35_fp8_full.json) |
 
-The configurations select their own `dataset` and `data_root` values. [Partition metadata](data/reproduction/dataset_profiles.json) and [overlap records](data/reproduction/cross_dataset_overlap.json) show that all 30 AIME 2025 problems occur in both profiles: 13 development, 11 selection, and 6 audit items in `aime25` are audit items in the extension. The two audit partitions contain 6 and 60 problems, respectively, while the paper evaluates all 30 AIME 2025 I/II problems. The paper's 30-problem result and these two registry profiles are distinct evaluation groups.
+```bash
+python scripts/aime2025_full.py prepare   # Download pinned source bytes; keep all 30 as evaluation items.
+python scripts/aime2025_full.py verify    # Check source hashes, problem IDs, answers, and prepared files.
+python scripts/aime2025_full.py score --predictions results/aime2025_predictions.jsonl
+```
+
+Prediction JSONL records contain `seed` (integer), `id` (`aime2025:0` through `aime2025:29`), `prediction` (text), and `candidate_sha256` (the fixed agent artifact's SHA-256). Each seed must include all 30 IDs; use an empty prediction for a failed answer. Scoring reports each seed's accuracy, then mean and SD across seeds. Preparation verifies the benchmark-maintainer release and records exact membership; it does not generate model predictions.
+
+The full set overlaps both older profiles: `aime25` uses 13/11/6 of its problems for development/selection/audit, and `aime_2025_2026` includes all 30 plus 30 from 2026 in its audit. Their [partition metadata](data/reproduction/dataset_profiles.json) and [overlap records](data/reproduction/cross_dataset_overlap.json) remain unchanged. Evaluate a previously fixed agent on `aime2025_full`; do not tune or select it on the overlapping 2025 problems.
 
 ## Method
 
@@ -154,10 +174,20 @@ SD is calculated across five seed means with the n−1 denominator. Search cost 
 # CPU checks for the search and completion solver.
 python -m pytest -q tests/test_core_contracts.py tests/test_core_vats.py tests/test_completion.py
 
-# Full suite after installing the model dependencies.
-python -m pip install numba==0.66.0
+# Prepare dependencies, fixed upstream code, and benchmark inputs.
+bash scripts/bootstrap.sh --with-baselines --with-data
+source .venv/bin/activate
+python scripts/prepare_reproduction_subsets.py
+python scripts/prepare_performance_aime.py
+python scripts/aime2025_full.py prepare
+python scripts/download_pinned_model.py --lock configs/models/qwen35_35b_a3b_bf16.lock.json --tokenizer-only
+
+# Run implementation tests, then verify the release and prepared data.
 python -m pytest -q
+python scripts/verify_reproduction.py --prepared --subsets
 ```
+
+The tokenizer-only download does not fetch model weights. Linux process, sandbox, and native LiveBench checks run in [Linux CI](.github/workflows/linux-checks.yml); sandbox checks need `bubblewrap` and the configured language runtimes. Tests requiring optional local artifacts report explicit skips when those files are absent. Training and model evaluation additionally require the model and role checkpoints named in their configurations.
 
 ## License
 

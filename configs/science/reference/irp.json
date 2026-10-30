@@ -1,0 +1,1189 @@
+{
+  "case_count": 12,
+  "common": {
+    "registration_version": "specrsi-reference-irp-v1",
+    "model_id": "reference-irp-same-day-v1",
+    "domain": "irp",
+    "profile": "full",
+    "scenario_set": "reference",
+    "source": "Author-confirmed daily rules and 12 instance parameter sets.",
+    "replication_scope": "reference_author_confirmed_irp_instances",
+    "depot": [
+      0,
+      0
+    ],
+    "vehicle_capacity": 500,
+    "shelf_life_days": 7,
+    "initial_inventory_age_days": 1,
+    "costs": {
+      "holding": 0.5,
+      "shortage": 10.0,
+      "distance": 3.0
+    },
+    "minimum_service_level": 0.95,
+    "demand_rng": "numpy.PCG64",
+    "demand_order": "day-major, then retailer ID",
+    "demand_rounding": "floor(max(normal, 0))",
+    "trip_assignment": "next-fit retailer ID order; cyclic fixed vehicle assignment",
+    "routing": "nearest-neighbor Euclidean; equal-distance ties by retailer ID",
+    "reference_policy": "fill_to_capacity"
+  },
+  "cases": [
+    {
+      "case_id": 0,
+      "instance_id": "irp_case_01",
+      "retailers": 3,
+      "days": 7,
+      "demand_mean": 20,
+      "demand_cv": 0.15,
+      "locations": [
+        [
+          20,
+          10
+        ],
+        [
+          -15,
+          25
+        ],
+        [
+          10,
+          -20
+        ]
+      ],
+      "store_capacities": [
+        100,
+        100,
+        100
+      ],
+      "vehicle_count": 1,
+      "max_daily_distance_per_vehicle": 200,
+      "initial_inventory": [
+        40,
+        40,
+        40
+      ],
+      "demand_seed": 1001,
+      "baseline": {
+        "target_stock": [
+          100,
+          100,
+          100
+        ]
+      },
+      "invalid": {
+        "target_stock": [
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "case_id": 1,
+      "instance_id": "irp_case_02",
+      "retailers": 4,
+      "days": 7,
+      "demand_mean": 25,
+      "demand_cv": 0.15,
+      "locations": [
+        [
+          20,
+          10
+        ],
+        [
+          -15,
+          25
+        ],
+        [
+          10,
+          -20
+        ],
+        [
+          -25,
+          -15
+        ]
+      ],
+      "store_capacities": [
+        125,
+        125,
+        125,
+        125
+      ],
+      "vehicle_count": 2,
+      "max_daily_distance_per_vehicle": 250,
+      "initial_inventory": [
+        50,
+        50,
+        50,
+        50
+      ],
+      "demand_seed": 1002,
+      "baseline": {
+        "target_stock": [
+          125,
+          125,
+          125,
+          125
+        ]
+      },
+      "invalid": {
+        "target_stock": [
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "case_id": 2,
+      "instance_id": "irp_case_03",
+      "retailers": 6,
+      "days": 10,
+      "demand_mean": 22,
+      "demand_cv": 0.2,
+      "locations": [
+        [
+          20,
+          10
+        ],
+        [
+          -15,
+          25
+        ],
+        [
+          10,
+          -20
+        ],
+        [
+          -25,
+          -15
+        ],
+        [
+          30,
+          5
+        ],
+        [
+          -5,
+          30
+        ]
+      ],
+      "store_capacities": [
+        110,
+        110,
+        110,
+        110,
+        110,
+        110
+      ],
+      "vehicle_count": 2,
+      "max_daily_distance_per_vehicle": 300,
+      "initial_inventory": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "demand_seed": 1003,
+      "baseline": {
+        "target_stock": [
+          110,
+          110,
+          110,
+          110,
+          110,
+          110
+        ]
+      },
+      "invalid": {
+        "target_stock": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "case_id": 3,
+      "instance_id": "irp_case_04",
+      "retailers": 6,
+      "days": 14,
+      "demand_mean": 22,
+      "demand_cv": 0.2,
+      "locations": [
+        [
+          20,
+          10
+        ],
+        [
+          -15,
+          25
+        ],
+        [
+          10,
+          -20
+        ],
+        [
+          -25,
+          -15
+        ],
+        [
+          30,
+          5
+        ],
+        [
+          -5,
+          30
+        ]
+      ],
+      "store_capacities": [
+        110,
+        110,
+        110,
+        110,
+        110,
+        110
+      ],
+      "vehicle_count": 2,
+      "max_daily_distance_per_vehicle": 300,
+      "initial_inventory": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "demand_seed": 1004,
+      "baseline": {
+        "target_stock": [
+          110,
+          110,
+          110,
+          110,
+          110,
+          110
+        ]
+      },
+      "invalid": {
+        "target_stock": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "case_id": 4,
+      "instance_id": "irp_case_05",
+      "retailers": 7,
+      "days": 10,
+      "demand_mean": 30,
+      "demand_cv": 0.25,
+      "locations": [
+        [
+          20,
+          10
+        ],
+        [
+          -15,
+          25
+        ],
+        [
+          10,
+          -20
+        ],
+        [
+          -25,
+          -15
+        ],
+        [
+          30,
+          5
+        ],
+        [
+          -5,
+          30
+        ],
+        [
+          25,
+          -25
+        ]
+      ],
+      "store_capacities": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "vehicle_count": 3,
+      "max_daily_distance_per_vehicle": 350,
+      "initial_inventory": [
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "demand_seed": 1005,
+      "baseline": {
+        "target_stock": [
+          150,
+          150,
+          150,
+          150,
+          150,
+          150,
+          150
+        ]
+      },
+      "invalid": {
+        "target_stock": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "case_id": 5,
+      "instance_id": "irp_case_06",
+      "retailers": 7,
+      "days": 14,
+      "demand_mean": 30,
+      "demand_cv": 0.25,
+      "locations": [
+        [
+          20,
+          10
+        ],
+        [
+          -15,
+          25
+        ],
+        [
+          10,
+          -20
+        ],
+        [
+          -25,
+          -15
+        ],
+        [
+          30,
+          5
+        ],
+        [
+          -5,
+          30
+        ],
+        [
+          25,
+          -25
+        ]
+      ],
+      "store_capacities": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "vehicle_count": 3,
+      "max_daily_distance_per_vehicle": 350,
+      "initial_inventory": [
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "demand_seed": 1006,
+      "baseline": {
+        "target_stock": [
+          150,
+          150,
+          150,
+          150,
+          150,
+          150,
+          150
+        ]
+      },
+      "invalid": {
+        "target_stock": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "case_id": 6,
+      "instance_id": "irp_case_07",
+      "retailers": 9,
+      "days": 14,
+      "demand_mean": 28,
+      "demand_cv": 0.3,
+      "locations": [
+        [
+          20,
+          10
+        ],
+        [
+          -15,
+          25
+        ],
+        [
+          10,
+          -20
+        ],
+        [
+          -25,
+          -15
+        ],
+        [
+          30,
+          5
+        ],
+        [
+          -5,
+          30
+        ],
+        [
+          25,
+          -25
+        ],
+        [
+          -20,
+          -30
+        ],
+        [
+          35,
+          15
+        ]
+      ],
+      "store_capacities": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "vehicle_count": 3,
+      "max_daily_distance_per_vehicle": 400,
+      "initial_inventory": [
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56
+      ],
+      "demand_seed": 1007,
+      "baseline": {
+        "target_stock": [
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140
+        ]
+      },
+      "invalid": {
+        "target_stock": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "case_id": 7,
+      "instance_id": "irp_case_08",
+      "retailers": 11,
+      "days": 14,
+      "demand_mean": 25,
+      "demand_cv": 0.3,
+      "locations": [
+        [
+          20,
+          10
+        ],
+        [
+          -15,
+          25
+        ],
+        [
+          10,
+          -20
+        ],
+        [
+          -25,
+          -15
+        ],
+        [
+          30,
+          5
+        ],
+        [
+          -5,
+          30
+        ],
+        [
+          25,
+          -25
+        ],
+        [
+          -20,
+          -30
+        ],
+        [
+          35,
+          15
+        ],
+        [
+          15,
+          35
+        ],
+        [
+          -35,
+          -10
+        ]
+      ],
+      "store_capacities": [
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125
+      ],
+      "vehicle_count": 4,
+      "max_daily_distance_per_vehicle": 450,
+      "initial_inventory": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ],
+      "demand_seed": 1008,
+      "baseline": {
+        "target_stock": [
+          125,
+          125,
+          125,
+          125,
+          125,
+          125,
+          125,
+          125,
+          125,
+          125,
+          125
+        ]
+      },
+      "invalid": {
+        "target_stock": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "case_id": 8,
+      "instance_id": "irp_case_09",
+      "retailers": 11,
+      "days": 21,
+      "demand_mean": 35,
+      "demand_cv": 0.35,
+      "locations": [
+        [
+          20,
+          10
+        ],
+        [
+          -15,
+          25
+        ],
+        [
+          10,
+          -20
+        ],
+        [
+          -25,
+          -15
+        ],
+        [
+          30,
+          5
+        ],
+        [
+          -5,
+          30
+        ],
+        [
+          25,
+          -25
+        ],
+        [
+          -20,
+          -30
+        ],
+        [
+          35,
+          15
+        ],
+        [
+          15,
+          35
+        ],
+        [
+          -35,
+          -10
+        ]
+      ],
+      "store_capacities": [
+        175,
+        175,
+        175,
+        175,
+        175,
+        175,
+        175,
+        175,
+        175,
+        175,
+        175
+      ],
+      "vehicle_count": 4,
+      "max_daily_distance_per_vehicle": 500,
+      "initial_inventory": [
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70
+      ],
+      "demand_seed": 1009,
+      "baseline": {
+        "target_stock": [
+          175,
+          175,
+          175,
+          175,
+          175,
+          175,
+          175,
+          175,
+          175,
+          175,
+          175
+        ]
+      },
+      "invalid": {
+        "target_stock": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "case_id": 9,
+      "instance_id": "irp_case_10",
+      "retailers": 13,
+      "days": 14,
+      "demand_mean": 32,
+      "demand_cv": 0.35,
+      "locations": [
+        [
+          20,
+          10
+        ],
+        [
+          -15,
+          25
+        ],
+        [
+          10,
+          -20
+        ],
+        [
+          -25,
+          -15
+        ],
+        [
+          30,
+          5
+        ],
+        [
+          -5,
+          30
+        ],
+        [
+          25,
+          -25
+        ],
+        [
+          -20,
+          -30
+        ],
+        [
+          35,
+          15
+        ],
+        [
+          15,
+          35
+        ],
+        [
+          -35,
+          -10
+        ],
+        [
+          40,
+          0
+        ],
+        [
+          0,
+          -40
+        ]
+      ],
+      "store_capacities": [
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160
+      ],
+      "vehicle_count": 5,
+      "max_daily_distance_per_vehicle": 550,
+      "initial_inventory": [
+        64,
+        64,
+        64,
+        64,
+        64,
+        64,
+        64,
+        64,
+        64,
+        64,
+        64,
+        64,
+        64
+      ],
+      "demand_seed": 1010,
+      "baseline": {
+        "target_stock": [
+          160,
+          160,
+          160,
+          160,
+          160,
+          160,
+          160,
+          160,
+          160,
+          160,
+          160,
+          160,
+          160
+        ]
+      },
+      "invalid": {
+        "target_stock": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "case_id": 10,
+      "instance_id": "irp_case_11",
+      "retailers": 15,
+      "days": 21,
+      "demand_mean": 38,
+      "demand_cv": 0.4,
+      "locations": [
+        [
+          20,
+          10
+        ],
+        [
+          -15,
+          25
+        ],
+        [
+          10,
+          -20
+        ],
+        [
+          -25,
+          -15
+        ],
+        [
+          30,
+          5
+        ],
+        [
+          -5,
+          30
+        ],
+        [
+          25,
+          -25
+        ],
+        [
+          -20,
+          -30
+        ],
+        [
+          35,
+          15
+        ],
+        [
+          15,
+          35
+        ],
+        [
+          -35,
+          -10
+        ],
+        [
+          40,
+          0
+        ],
+        [
+          0,
+          -40
+        ],
+        [
+          30,
+          40
+        ],
+        [
+          -40,
+          20
+        ]
+      ],
+      "store_capacities": [
+        190,
+        190,
+        190,
+        190,
+        190,
+        190,
+        190,
+        190,
+        190,
+        190,
+        190,
+        190,
+        190,
+        190,
+        190
+      ],
+      "vehicle_count": 5,
+      "max_daily_distance_per_vehicle": 600,
+      "initial_inventory": [
+        76,
+        76,
+        76,
+        76,
+        76,
+        76,
+        76,
+        76,
+        76,
+        76,
+        76,
+        76,
+        76,
+        76,
+        76
+      ],
+      "demand_seed": 1011,
+      "baseline": {
+        "target_stock": [
+          190,
+          190,
+          190,
+          190,
+          190,
+          190,
+          190,
+          190,
+          190,
+          190,
+          190,
+          190,
+          190,
+          190,
+          190
+        ]
+      },
+      "invalid": {
+        "target_stock": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "case_id": 11,
+      "instance_id": "irp_case_12",
+      "retailers": 15,
+      "days": 28,
+      "demand_mean": 40,
+      "demand_cv": 0.4,
+      "locations": [
+        [
+          20,
+          10
+        ],
+        [
+          -15,
+          25
+        ],
+        [
+          10,
+          -20
+        ],
+        [
+          -25,
+          -15
+        ],
+        [
+          30,
+          5
+        ],
+        [
+          -5,
+          30
+        ],
+        [
+          25,
+          -25
+        ],
+        [
+          -20,
+          -30
+        ],
+        [
+          35,
+          15
+        ],
+        [
+          15,
+          35
+        ],
+        [
+          -35,
+          -10
+        ],
+        [
+          40,
+          0
+        ],
+        [
+          0,
+          -40
+        ],
+        [
+          30,
+          40
+        ],
+        [
+          -40,
+          20
+        ]
+      ],
+      "store_capacities": [
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200
+      ],
+      "vehicle_count": 6,
+      "max_daily_distance_per_vehicle": 650,
+      "initial_inventory": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "demand_seed": 1012,
+      "baseline": {
+        "target_stock": [
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200
+        ]
+      },
+      "invalid": {
+        "target_stock": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      }
+    }
+  ]
+}

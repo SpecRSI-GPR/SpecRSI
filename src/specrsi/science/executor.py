@@ -162,6 +162,10 @@ def mutate(domain: str,parameters: dict,rng: random.Random) -> dict:
         if key=="jacket_temperature_k":p[key][j]=min(330,max(275,p[key][j]))
     elif domain=="pybamm":
         j=rng.randrange(3);p["currents_c"][j]=min(8,max(.1,p["currents_c"][j]*rng.uniform(.9,1.1)))
+    elif domain=="irp" and set(p)=={"target_stock"}:
+        # The frozen evaluator enforces each store's instance-specific capacity.
+        j=rng.randrange(len(p["target_stock"]))
+        p["target_stock"][j]=max(0,p["target_stock"][j]+rng.choice((-5,-1,1,5)))
     elif domain=="irp":
         key=rng.choice(["target_days","safety_stock","forecast_blend"])
         bounds={"target_days":(0,4),"safety_stock":(0,30),"forecast_blend":(0,1)}

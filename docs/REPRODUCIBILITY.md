@@ -1,6 +1,6 @@
 # Implementation configuration guide
 
-This guide covers installation, data preparation, model serving, and the executable configuration registry. [Tables S1 and S3](results/README.md) specify the manuscript experiments. The registry lists 56 scenarios across its scientific profiles; the manuscript uses 12 held-out instances per task. The [12-instance CSTR profile](results/reactor_model.md) is selected with `scenario_set="reference"`.
+This guide covers installation, data preparation, model serving, and the executable configuration registry. [Tables S1 and S3](results/README.md) specify the manuscript experiments. The development, selection, and audit registry lists 56 scenarios per split. The [CSTR](results/reactor_model.md) and [IRP](irp_reference.md) profiles each contain 12 instances and are selected with `scenario_set="reference"`.
 
 The reference backbone is the publisher's unquantized BF16 **Qwen/Qwen3.5-35B-A3B**, revision `59d61f3ce65a6d9863b86d2e96597125219dc754`. The executable configurations, complete dataset membership, native evaluation contracts, model file identities, training parameters, and deployment parameters are included in this repository. Data and model weights are obtained from their pinned publishers.
 
@@ -49,6 +49,7 @@ The metadata check validates configuration references, all ordered member lists 
 | Dataset condition | Development | Selection | Audit |
 |---|---:|---:|---:|
 | AIME25 | 13 | 11 | 6 |
+| AIME2025 full evaluation | 0 | 0 | 30 |
 | Game24 | 254 | 574 | 534 |
 | HotpotQA distractor | 19,622 | 39,351 | 38,879 |
 | HoVer v1.1 | 4,421 | 8,898 | 8,852 |
@@ -62,6 +63,8 @@ The metadata check validates configuration references, all ordered member lists 
 | SWE-bench Lite | 60 | 141 | 122 |
 | SWE-bench Verified | 103 | 190 | 207 |
 | AIME2024 development / AIME2025–2026 audit | 15 | 15 | 60 |
+
+The `aime2025_full` evaluation profile contains all 30 AIME 2025 I/II questions and has no training or selection partition. Run `python scripts/aime2025_full.py prepare`, then `python scripts/aime2025_full.py verify`. Its separate manifest binds the exact source bytes and membership; the 139,865-member registry below retains the other profiles. Prediction files must include all 30 questions for each seed and identify the fixed evaluated agent. The AIME2025 problems overlap the two other AIME profiles, so they cannot also be used to tune that agent.
 
 The 139,865 ordered partition members are fully enumerated in JSON. Each source manifest gives direct download links to an immutable publisher revision and checksums for the raw files. The normalizer preserves native IDs and references. HotpotQA merges its distractor train and validation files; HoVer merges released train/dev; Lite merges released dev/test; MBPP uses all 974 native tasks. Polyglot includes the six language directories and PlanBench includes seven domains. Their complete per-split subtype counts are in `dataset_profiles.json`.
 
@@ -124,6 +127,8 @@ The learned scientific search runner is `scripts/run_paper_science.py --config <
 ## Scientific contracts
 
 There are 56 case IDs per scenario set: PyBaMM 12, AQM 11, FDTD 12, Reactor 10 and IRP 11. Development, selection and audit each have a separate scenario configuration, giving 168 fully expanded registrations. `configs/science/` contains the base configurations, case perturbations and split overrides; `science_scenarios.json` additionally records dependency versions, distribution hashes and numerical runtime contracts.
+
+Use the separate `reference` profiles for the 12-case CSTR and IRP simulators: `python -m specrsi.science.reactor_cstr --all-cases` and `python -m specrsi.science.irp_reference --all-cases`. Their configurations are `configs/science/reference/reactor.json` and `configs/science/reference/irp.json`. IRP candidates edit store-level `target_stock`; daily replenishment follows those targets, with Next-fit trip allocation and nearest-neighbor routing fixed by the evaluator. These profiles preserve the other registered configurations.
 
 PyBaMM uses the SPM/OKane2022 model with lumped thermal, SEI and irreversible plating, three temperatures, 30 aging cycles, the specified SOC/current/temperature/plating constraints and the reference-capacity lifetime estimator. AQM runs native ns-3 TCP NewReno traffic on a dumbbell topology, three traffic modes and two seeds per mode, using goodput/delay/loss/Jain utility. FDTD uses the 480×320 TM Yee grid, 10,000 steps, two wavelengths, reference-waveguide normalization and the configured flux/settling constraints. Reactor integrates the six-state semibatch system with Radau, ten control segments, three cooling scenarios, temperature/feed constraints and native product utility. IRP uses the configured geographic customers, demand seeds and periods, integer routing/inventory constraints and its MILP solver contract. Every numerical value, seed, initial candidate, admissibility bound and case perturbation is included in the corresponding JSON files and evaluator implementation.
 
